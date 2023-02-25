@@ -1,0 +1,17 @@
+<div *ngIf="usuario">
+  <p>Nombre: {{ usuario.nombre }}</p>
+  <p>Email: {{ usuario.email }}</p>
+
+  <!-- Actualizar perfil boton router con parametro usuario._id-->
+  <button routerLink="/perfil/{{usuario._id}}">Actualizar perfil</button>
+
+  <!-- Cambiar contraseña boton router con parametro -->
+  <button routerLink="/actualizar-password/">Cambiar contraseña</button>
+
+  <!-- cerrar sesion funcion -->
+  <button (click)="cerrarSesion()">Cerrar sesión</button>
+</div>
+
+<div *ngIf="!usuario">
+  <p>No se encontró información del usuario.</p>
+</div>

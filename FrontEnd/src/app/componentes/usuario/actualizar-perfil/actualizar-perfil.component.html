@@ -1,0 +1,14 @@
+
+<!-- si usuario no es nullo : -->
+<div *ngIf="usuario">
+  <form (submit)="actualizarPerfil()">
+    <input [(ngModel)]="usuario.nombre" name="nombre" type="text" />
+    <input [(ngModel)]="usuario.telefono" name="telefono" type="text" />
+    <input [(ngModel)]="usuario.email" name="email" type="text" />
+    <button type="submit">Actualizar</button>
+  </form>
+</div>
+
+
+  <!-- Mensaje error -->
+  <p *ngIf="mensajeError" class="error-msg">{{ mensajeError }}</p>

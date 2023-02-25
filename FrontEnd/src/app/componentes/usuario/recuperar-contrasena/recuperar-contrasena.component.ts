@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuarios.service';
 
 @Component({
-  selector: 'app-recuperar-contrasena-usuario',
-  templateUrl: './recuperar-contrasena-usuario.component.html',
-  styleUrls: ['./recuperar-contrasena-usuario.component.scss']
+  selector: 'app-recuperar-contrasena',
+  templateUrl: './recuperar-contrasena.component.html',
+  styleUrls: ['./recuperar-contrasena.component.scss']
 })
-export class RecuperarContrasenaUsuarioComponent implements OnInit {
+export class RecuperarContrasenaComponent implements OnInit {
   form: FormGroup;
   enviado = false;
   mensajeError: string;

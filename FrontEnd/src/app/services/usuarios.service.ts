@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../interfaces/usuario';
+import { LoginResponse } from '../interfaces/login-response';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,8 @@ export class UsuarioService {
   private apiUrl = 'http://localhost:4000/api/usuarios/';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
     })
   };
 
@@ -26,18 +29,51 @@ export class UsuarioService {
 
   login(email: string, password: string) {
     const body = { email, password };
-    return this.http.post(this.apiUrl+'login', body, this.httpOptions);
+    return this.http.post<LoginResponse>(this.apiUrl+'login', body, this.httpOptions);
   }
 
   enviarCorreo(email: string) {
     return this.http.post(`${this.apiUrl}olvide-password`, { email }, this.httpOptions);
   }
 
-  comprobarToken(token: string) {
-    return this.http.get(`${this.apiUrl}olvide-password/${token}`);
+  nuevoPassword(token: string, password: string) {
+      const url = `${this.apiUrl}nuevo-password/${token}`;
+      return this.http.post(url,  { password }, this.httpOptions);
   }
 
-  nuevoPassword(token: string, password: string) {
-    return this.http.post(`${this.apiUrl}olvide-password/${token}`, { password }, this.httpOptions);
+  logout() {
+    localStorage.removeItem('token');
+  }
+
+
+  getPerfil() {
+    if (this.isLoggedIn()) {
+      return this.http.get(this.apiUrl + 'perfil', this.httpOptions).pipe(
+        map((res: any) => {
+          return res; // asumiendo que la respuesta del servidor tiene una propiedad "usuario" que contiene los datos del usuario
+        })
+      );
+    } else {
+      return of(null);
+    }
+  }
+
+  actualizarPassword(pwd_actual: string, pwd_nuevo: string) {
+
+    const body = {
+      pwd_actual: pwd_actual,
+      pwd_nuevo: pwd_nuevo
+    };
+
+    return this.http.put(this.apiUrl + 'actualizar-password', body, this.httpOptions);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  actualizarPerfil(id: string, data: any) {
+    return this.http.put(this.apiUrl + "perfil/" + id, data, this.httpOptions);
   }
 }
+

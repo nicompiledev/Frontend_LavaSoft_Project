@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from '../../../services/usuarios.service';
 
 @Component({
-  selector: 'app-confirmar-usuario',
-  templateUrl: './confirmar-usuario.component.html',
-  styleUrls: ['./confirmar-usuario.component.scss']
+  selector: 'app-confirmar-cuenta',
+  templateUrl: './confirmar-cuenta.component.html',
+  styleUrls: ['./confirmar-cuenta.component.scss']
 })
-export class ConfirmarUsuarioComponent implements OnInit {
+export class ConfirmarCuentaComponent implements OnInit {
   mensajeConfirmacion: string;
   mensajeError: string;
   confirmacionExitosa: boolean = false;

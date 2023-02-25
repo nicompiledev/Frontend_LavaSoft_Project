@@ -104,11 +104,11 @@ const olvidePassword = async (req, res) => {
     await existeUsuario.save();
 
     // Enviar Email con instrucciones
-    /*emailOlvidePassword({
+    emailOlvidePassword({
       email,
       nombre: existeUsuario.nombre,
       token: existeUsuario.token,
-    });*/
+    });
     console.log("Token: " + existeUsuario.token);
 
     res.json({ msg: "Hemos enviado un email con las instrucciones" });
@@ -117,42 +117,42 @@ const olvidePassword = async (req, res) => {
   }
 };
 
-const comprobarToken = async (req, res) => {
+const nuevoPassword = async (req, res) => {
+
   const { token } = req.params;
 
   const tokenValido = await Usuario.findOne({ token });
 
-  if (tokenValido) {
-    // El TOken es válido el usuario existe
-    res.json({ msg: "Token válido y el usuario existe" });
-  } else {
+  if (!tokenValido) {
     const error = new Error("Token no válido");
-    return res.status(400).json({ msg: error.message });
+    return res.status(400).json({ msg: error.message})
   }
-};
 
-const nuevoPassword = async (req, res) => {
-  const { token } = req.params;
+
   const { password } = req.body;
 
   const usuario = await Usuario.findOne({ token });
   if (!usuario) {
     const error = new Error("Hubo un error");
-    return res.status(400).json({ msg: error.message });
+    return res.status(400).json({ error: error.message });
   }
 
   try {
     usuario.token = null;
     usuario.password = password;
     await usuario.save();
-    res.json({ msg: "Password modificado correctamente" });
+    res.json({ message: "Password modificado correctamente" });
   } catch (error) {
     console.log(error);
   }
 };
 
+
 const actualizarPerfil = async (req, res) => {
   const usuario = await Usuario.findById(req.params.id);
+
+  console.log(usuario)
+
   if (!usuario) {
     const error = new Error("Hubo un error");
     return res.status(400).json({ msg: error.message });
@@ -171,11 +171,10 @@ const actualizarPerfil = async (req, res) => {
   try {
     usuario.nombre = req.body.nombre;
     usuario.email = req.body.email;
-    usuario.web = req.body.web;
     usuario.telefono = req.body.telefono;
 
-    const veterianrioActualizado = await usuario.save();
-    res.json(veterianrioActualizado);
+    const usuarioActualizado = await usuario.save();
+    res.json(usuarioActualizado);
   } catch (error) {
     console.log(error);
   }
@@ -212,7 +211,6 @@ export {
   confirmar,
   autenticar,
   olvidePassword,
-  comprobarToken,
   nuevoPassword,
   actualizarPerfil,
   actualizarPassword,

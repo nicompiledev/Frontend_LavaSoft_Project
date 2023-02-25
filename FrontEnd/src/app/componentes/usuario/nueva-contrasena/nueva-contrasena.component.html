@@ -1,0 +1,36 @@
+<div class="container">
+  <!-- Volver -->
+  <div class="row">
+    <div class="col-md-12">
+      <a routerLink="/login" routerLinkActive="active" class="btn btn-primary">Volver</a>
+    </div>
+  </div>
+  <h1>Cambio de contraseña</h1>
+  <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="password">Nueva contraseña:</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+      <div *ngIf="usuarioForm.get('password').invalid && (usuarioForm.get('password').dirty || usuarioForm.get('password').touched)"
+            class="alert alert-danger">
+        <div *ngIf="usuarioForm.get('password').errors['required']">La nueva contraseña es requerida.</div>
+        <div *ngIf="usuarioForm.get('password').errors['minlength']">La nueva contraseña debe tener al menos 8 caracteres.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPass">Confirmar nueva contraseña:</label>
+      <input type="password" class="form-control" id="confirmPass" formControlName="confirmPass">
+      <div *ngIf="usuarioForm.get('confirmPass').invalid && (usuarioForm.get('confirmPass').dirty || usuarioForm.get('confirmPass').touched)"
+            class="alert alert-danger">
+        <div *ngIf="usuarioForm.get('confirmPass').errors['required']">La confirmación de la nueva contraseña es requerida.</div>
+        <div *ngIf="usuarioForm.get('confirmPass').errors['minlength']">La confirmación de la nueva contraseña debe tener al menos 8 caracteres.</div>
+        <div *ngIf="usuarioForm.get('confirmPass').errors['pattern']">La confirmación de la nueva contraseña debe ser igual a la nueva contraseña.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.valid">Cambiar contraseña</button>
+    </div>
+    <div *ngIf="mensajeError" class="alert alert-danger">
+      {{ mensajeError }}
+    </div>
+  </form>
+</div>

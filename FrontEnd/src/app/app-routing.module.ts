@@ -1,17 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ConfirmarUsuarioComponent } from './componentes/usuario/confirmar-usuario/confirmar-usuario.component';
-import { LoginUsuarioComponent } from './componentes/usuario/login-usuario/login-usuario.component';
-import { NuevaContrasenaUsuarioComponent } from './componentes/usuario/nueva-contrasena-usuario/nueva-contrasena-usuario.component';
-import { RecuperarContrasenaUsuarioComponent } from './componentes/usuario/recuperar-contrasena-usuario/recuperar-contrasena-usuario.component';
-import { RegistrarUsuarioComponent } from './componentes/usuario/registrar-usuario/registrar-usuario.component';
+import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
+import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
+import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
+import { LoginComponent } from './componentes/usuario/login/login.component';
+import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
+import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
+import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
+import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
+import { AuthGuard } from './guard/auth.guard';
+import { NoAuthGuard } from './guard/noAuth.guard';
 
 const routes: Routes = [
-  { path: '', component: RegistrarUsuarioComponent },
-  { path: 'confirmar/:token', component: ConfirmarUsuarioComponent },
-  { path: 'login', component: LoginUsuarioComponent },
-  { path: 'recuperar-contrasena', component: RecuperarContrasenaUsuarioComponent },
-  { path: 'olvide-password/:token', component: NuevaContrasenaUsuarioComponent }
+  { path: '', component: LoginComponent , canActivate: [NoAuthGuard]},
+  { path: 'registro', component: RegistrarComponent, canActivate: [NoAuthGuard] },
+  { path: 'confirmar/:token', component: ConfirmarCuentaComponent },
+  { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent },
+  { path: 'nuevo-password/:token', component: NuevaContrasenaComponent },
+  { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
+  { path: 'perfil/:id', component: ActualizarPerfilComponent, canActivate: [AuthGuard] },
+  { path: 'actualizar-password', component: ActualizarPasswordComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

@@ -15,6 +15,10 @@
       <div *ngIf="loginForm.get('password').hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</div>
     </div>
   </label>
+  <!-- Crear una cuenta texto router -->
+  <p>¿No tienes una cuenta? <a routerLink="/registro">Regístrate</a></p>
+  <!-- Olvidé mi contraseña texto router -->
+  <p><a routerLink="/recuperar-contrasena">Olvidé mi contraseña</a></p>
   <button type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
   <div *ngIf="errorMsg">{{ errorMsg }}</div>
 </form>

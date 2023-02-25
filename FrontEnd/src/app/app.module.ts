@@ -7,21 +7,27 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
-import { RegistrarUsuarioComponent } from './componentes/usuario/registrar-usuario/registrar-usuario.component';
-import { ConfirmarUsuarioComponent } from './componentes/usuario/confirmar-usuario/confirmar-usuario.component';
-import { LoginUsuarioComponent } from './componentes/usuario/login-usuario/login-usuario.component';
-import { RecuperarContrasenaUsuarioComponent } from './componentes/usuario/recuperar-contrasena-usuario/recuperar-contrasena-usuario.component';
-import { NuevaContrasenaUsuarioComponent } from './componentes/usuario/nueva-contrasena-usuario/nueva-contrasena-usuario.component';
+import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
+import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
+import { LoginComponent } from './componentes/usuario/login/login.component';
+import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
+import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
+import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
+import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
+import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrarUsuarioComponent,
-    ConfirmarUsuarioComponent,
-    LoginUsuarioComponent,
-    RecuperarContrasenaUsuarioComponent,
-    NuevaContrasenaUsuarioComponent,
+    RegistrarComponent,
+    ConfirmarCuentaComponent,
+    LoginComponent,
+    RecuperarContrasenaComponent,
+    NuevaContrasenaComponent,
+    PerfilComponent,
+    ActualizarPerfilComponent,
+    ActualizarPasswordComponent,
   ],
   imports: [
     BrowserModule,
