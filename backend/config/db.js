@@ -1,14 +1,14 @@
-import mongoose from "mongoose";
+import mysql from "mysql2/promise";
 
 const conectarDB = async () => {
   try {
-    const db = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    const connection = await mysql.createConnection({
+      host: process.env.MYSQL_HOST,
+      user: process.env.MYSQL_USER,
+      password: process.env.MYSQL_PASSWORD,
+      database: process.env.MYSQL_DATABASE,
     });
-
-    const url = `${db.connection.host}:${db.connection.port}`;
-    console.log(`MongoDB conectado en: ${url}`);
+    return connection;
   } catch (error) {
     console.log(`error: ${error.message}`);
     process.exit(1);
