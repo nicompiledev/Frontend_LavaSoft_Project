@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../../services/usuarios.service';
-import { Usuario } from '../../../interfaces/usuario';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -16,32 +15,34 @@ export class RegistrarComponent {
   constructor(private servicio: UsuarioService, private router: Router) {
     this.usuarioForm = new FormGroup({
       nombre: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      apellido: new FormControl('', [Validators.required]),
+      correo_electronico: new FormControl('', [Validators.required, Validators.email]),
+      contrasena: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
       telefono: new FormControl('', [
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(10),
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
+      ])
     });
   }
 
   async onSubmit() {
     if (this.usuarioForm.valid) {
-      const usuario: Usuario = {
+      const usuario: object = {
         nombre: this.usuarioForm.get('nombre').value,
-        email: this.usuarioForm.get('email').value,
+        apellido: this.usuarioForm.get('apellido').value,
+        correo_electronico: this.usuarioForm.get('correo_electronico').value,
+        contrasena: this.usuarioForm.get('contrasena').value,
         telefono: this.usuarioForm.get('telefono').value,
-        password: this.usuarioForm.get('password').value,
       };
 
       this.servicio.registrarUsuario(usuario).subscribe(
         (response) => {
           console.log(response);
-          this.router.navigate(['/login'])
+          this.router.navigate([''])
         },
         (error) => {
           console.log(error);

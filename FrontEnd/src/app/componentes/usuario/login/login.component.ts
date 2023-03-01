@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
     this.service.login(email, password).subscribe(
-      (response) => {
+      (response : any) => {
         console.log(response); // Aquí puedes hacer lo que quieras con la respuesta del servidor
         localStorage.setItem('token', response.token);
         this.router.navigate(['/perfil'])

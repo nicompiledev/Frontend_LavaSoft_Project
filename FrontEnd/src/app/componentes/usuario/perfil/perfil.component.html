@@ -3,10 +3,10 @@
   <p>Email: {{ usuario.email }}</p>
 
   <!-- Actualizar perfil boton router con parametro usuario._id-->
-  <button routerLink="/perfil/{{usuario._id}}">Actualizar perfil</button>
+  <button routerLink="/perfil/{usuario._id}">Actualizar perfil</button>
 
   <!-- Cambiar contraseña boton router con parametro -->
-  <button routerLink="/actualizar-password/">Cambiar contraseña</button>
+  <button routerLink="/actualizar-password">Cambiar contraseña</button>
 
   <!-- cerrar sesion funcion -->
   <button (click)="cerrarSesion()">Cerrar sesión</button>

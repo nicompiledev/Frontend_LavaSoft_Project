@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuarios.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-actualizar-perfil',
@@ -9,7 +10,9 @@ import { UsuarioService } from 'src/app/services/usuarios.service';
 })
 export class ActualizarPerfilComponent implements OnInit {
 
-  usuario: any;
+  usuario : any = {
+    ngModel: NgModel
+  }
 
   mensajeError: string;
 
@@ -20,6 +23,7 @@ export class ActualizarPerfilComponent implements OnInit {
     this.service.getPerfil().subscribe(
       (usuario: any) => {
           this.usuario = usuario;
+          console.log(usuario)
       },
       (error) => {
         console.error(error)

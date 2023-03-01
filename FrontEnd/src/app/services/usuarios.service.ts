@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Usuario } from '../interfaces/usuario';
-import { LoginResponse } from '../interfaces/login-response';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
@@ -19,7 +17,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
-  registrarUsuario(usuario: Usuario) {
+  registrarUsuario(usuario: object) {
     return this.http.post(this.apiUrl, usuario, this.httpOptions);
   }
 
@@ -27,9 +25,9 @@ export class UsuarioService {
     return this.http.get(`${this.apiUrl}confirmar/${token}`);
   }
 
-  login(email: string, password: string) {
-    const body = { email, password };
-    return this.http.post<LoginResponse>(this.apiUrl+'login', body, this.httpOptions);
+  login(correo_electronico: string, contrasena: string) {
+    const body = { correo_electronico, contrasena };
+    return this.http.post(this.apiUrl+'login', body, this.httpOptions);
   }
 
   enviarCorreo(email: string) {
@@ -44,7 +42,6 @@ export class UsuarioService {
   logout() {
     localStorage.removeItem('token');
   }
-
 
   getPerfil() {
     if (this.isLoggedIn()) {
