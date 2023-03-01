@@ -30,13 +30,13 @@ export class UsuarioService {
     return this.http.post(this.apiUrl+'login', body, this.httpOptions);
   }
 
-  enviarCorreo(email: string) {
-    return this.http.post(`${this.apiUrl}olvide-password`, { email }, this.httpOptions);
+  enviarCorreo(correo_electronico: string) {
+    return this.http.post(`${this.apiUrl}olvide-password`, { correo_electronico }, this.httpOptions);
   }
 
-  nuevoPassword(token: string, password: string) {
+  nuevoPassword(token: string, contrasena: string) {
       const url = `${this.apiUrl}nuevo-password/${token}`;
-      return this.http.post(url,  { password }, this.httpOptions);
+      return this.http.post(url,  { contrasena }, this.httpOptions);
   }
 
   logout() {

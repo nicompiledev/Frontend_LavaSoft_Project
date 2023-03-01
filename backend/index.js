@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import conectarDB from "./config/db.js";
 import usuarioRoutes from "./routes/usuarioRoutes.js";
-import clienteRoutes from "./routes/clienteRoutes.js";
+import adminRouter from "./routes/adminRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -28,7 +28,7 @@ const corsOptions = {
 app.use(cors());
 
 app.use("/api/usuarios", usuarioRoutes);
-app.use("/api/clientes", clienteRoutes);
+app.use("/api/admins", adminRouter);
 
 const PORT = process.env.PORT || 4000;
 
