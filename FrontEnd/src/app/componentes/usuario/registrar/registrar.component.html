@@ -1,45 +1,178 @@
-<form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" id="nombre" formControlName="nombre">
-    <div *ngIf="usuarioForm.get('nombre').invalid && usuarioForm.get('nombre').dirty" class="text-danger">
-      <div *ngIf="usuarioForm.get('nombre').hasError('required')">Este campo es requerido</div>
-    </div>
+<div class="container">
+  <div class="progress-bar">
+      <div class="steps">
+          <p>Datos.</p>
+          <div class="number">
+              <span>1</span>
+          </div>
+          <div class="check fas fa-check">✓</div>
+      </div>
+      <div class="steps">
+          <p>Nac.</p>
+          <div class="number">
+              <span>2</span>
+          </div>
+          <div class="check fas fa-check ">✓</div>
+      </div>
+      <div class="steps">
+          <p>Contac.</p>
+          <div class="number">
+              <span>3</span>
+          </div>
+          <div class="check fas fa-check ">✓</div>
+      </div>
+      <div class="steps">
+          <p>password</p>
+          <div class="number">
+              <span>4</span>
+          </div>
+          <div class="check fas fa-check ">✓</div>
+      </div>
   </div>
-  <div class="form-group">
-    <label for="nombre">Apellido</label>
-    <input type="text" class="form-control" id="apellido" formControlName="apellido">
-    <div *ngIf="usuarioForm.get('apellido').invalid && usuarioForm.get('apellido').dirty" class="text-danger">
-      <div *ngIf="usuarioForm.get('apellido').hasError('required')">Este campo es requerido</div>
-    </div>
+  <h2>Bienvenido a LavaSoft</h2>
+  <p>Registrate ahora y has tu reservacion.</p>
+  <div class="form-container">
+      <form [formGroup]="usuarioForm" (onSubmit)="onSubmit()">
+          <!-- Pagina 1 -->
+          <div class="page movPage" >
+
+              <h4>Informacion principal</h4>
+
+              <div class="input-container">
+          
+                  <img src="/assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="">
+                  
+                  <input class="input_text_form" type="text" id="name" placeholder="Nombres" formControlName="name">
+
+              </div>
+
+              <div class="input-container">
+
+                  <img src="/assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="">
+                  
+                  <input class="input_text_form" type="text" id="lastname" placeholder="Apellidos" formControlName="lastname">
+
+              </div>
+
+              <div class="input-container ">
+
+                  <img src="/assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="">
+                  
+                  <input class="input_text_form" type="text" id="cc" placeholder="C.C" formControlName="CC">
+                  
+                  <Select>    
+                      <option value="-1" selected disabled>Tipo</option>
+                      <option value="0">C.C</option>
+                      <option value="1">C.E</option>
+                  </Select>
+              </div>
+
+
+
+              <div class="button siguiente-page2"> 
+                  <button>Siguiente</button>
+              </div>
+          </div>
+
+          <!-- Pagina 2 -->
+
+          <div class="page">
+
+              <h4>Informacion Secundaria</h4>
+
+              <div class="input-container">
+                  
+                  <input class="input_text_form" type="date" id="date"  formControlName="date">
+
+              </div>
+
+              <div class="input-container">
+
+                  <img src="./assets/imgs/genero.png" alt="">
+
+                  <select id="sex" >
+                      <option value="-1" disabled selected>Seleccione su genero</option>
+                      <option value="0"> Hombre </option>
+                      <option value="1"> Mujer </option>
+                      <option value="2"> Prefiero no decirlo</option>
+                  </select>
+                  
+
+              </div>
+
+              <div class="buttons"> 
+                  <button class="volver-page1 volver">Atras</button>
+                  <button class="siguiente-page3 siguiente">Siguiente</button>
+              </div>
+          </div>
+
+          <!-- Pagina 3 -->
+
+          <div class="page">
+
+              <h4>Contacto</h4>
+
+              <div class="input-container">
+
+                  <img src="./assets/imgs/correo-electronico.png" alt="">
+                  
+                  <input class="input_text_form" type="text" id="email"  formControlName="email" placeholder="Correo electronico" >
+
+              </div>
+
+              <div class="input-container">
+
+                  <img src="./assets/imgs/llamada-telefonica.png" alt="">
+
+                  <input class="input_text_form" type="text" id="cel" formControlName="cel" placeholder="Telefono celular">
+                  
+
+              </div>
+
+              <div class="buttons"> 
+                  <button class="volver-page2 volver">Atras</button>
+                  <button class="siguiente-page4 siguiente">Siguiente</button>
+              </div>
+          </div>
+
+          <!-- Pagina 4 -->
+
+          <div class="page">
+
+              <h4>Contraseña</h4>
+
+              <div class="input-container">
+
+                  <img src="./assets/imgs/candado.png" alt="">
+                      
+                  <input class="input_text_form" type="password" id="password"  formControlName="password" placeholder="Contraseña" >
+                  
+                  <div class="eyes" onclick="viewPassword()">
+                      <img src="./assets/imgs/show.png" id="show" alt="">
+                      <img src="./assets/imgs/oculto.png" id="noshow" alt="">
+                  </div>
+              </div>
+
+              <div class="input-container">
+  
+                  <img src="./assets/imgs/recargar.png" alt="">
+
+                  <input class="input_text_form" type="password" id="password-confirm" formControlName="password-confirm" placeholder="Confirmar Contraseña">
+                      
+              </div>
+  
+              <div class="buttons"> 
+                  <button class="volver-page3 volver">Atras</button>
+                  <button class="fin" type="submit">Finalizar</button>
+              </div>
+          </div>   
+      </form> 
+      <div class="slogan">
+          <p>¡Cuida tu auto con LavaSoft y obtén el mejor servicio de lavado en la ciudad! 
+              Regístrate ahora y elige el lavadero más cercano y la hora que mejor se adapte 
+              a tus necesidades.</p>
+      </div>
+
+      
   </div>
-  <div class="form-group">
-    <label for="email">Correo electrónico</label>
-    <input type="email" class="form-control" id="correo_electronico" formControlName="correo_electronico">
-    <div *ngIf="usuarioForm.get('correo_electronico').invalid && usuarioForm.get('correo_electronico').dirty" class="text-danger">
-      <div *ngIf="usuarioForm.get('correo_electronico').hasError('required')">Este campo es requerido</div>
-      <div *ngIf="usuarioForm.get('correo_electronico').hasError('email')">El correo electrónico no es válido</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="contrasena">Contraseña</label>
-    <input type="password" class="form-control" id="contrasena" formControlName="contrasena">
-    <div *ngIf="usuarioForm.get('contrasena').invalid && usuarioForm.get('contrasena').dirty" class="text-danger">
-      <div *ngIf="usuarioForm.get('contrasena').hasError('required')">Este campo es requerido</div>
-      <div *ngIf="usuarioForm.get('contrasena').hasError('minlength')">La contraseña debe tener al menos 8 caracteres</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="telefono">Teléfono</label>
-    <input type="tel" class="form-control" id="telefono" formControlName="telefono">
-    <div *ngIf="usuarioForm.get('telefono').invalid && usuarioForm.get('telefono').dirty" class="text-danger">
-      <div *ngIf="usuarioForm.get('telefono').hasError('required')">Este campo es requerido</div>
-      <div *ngIf="usuarioForm.get('telefono').hasError('minlength')">El número de teléfono debe tener 10 dígitos</div>
-      <div *ngIf="usuarioForm.get('telefono').hasError('maxlength')">El número de teléfono debe tener 10 dígitos</div>
-    </div>
-  </div>
-  <!-- Iniciar sesión texto router -->
-  <p>¿Ya tienes una cuenta? <a routerLink="">Inicia sesión</a></p>
-  <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.valid">Registrar</button>
-  <p *ngIf="mensajeError" class="error-msg">{{ mensajeError }}</p> <!-- mostrar mensaje de error -->
-</form>
+</div>   

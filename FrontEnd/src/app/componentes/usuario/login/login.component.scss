@@ -1,0 +1,185 @@
+
+// paleta de colores
+$gris-claro: #D3D3D3 ;
+$blanco: #FFFFFF ;
+$azul-claro: #87CEEB;
+$azul-oscuro: #1E90FF;
+$gris-oscuro: #A9A9A9;
+$verde-claro: #32CD32;
+$Verde-oscuro: #006400;
+$errores:  #FF0000;
+$negro: #000000;
+
+/*
+1. Fondo: Negro (#000000) o Blanco (#FFFFFF)
+2. Texto normal: Negro (#000000) o Gris oscuro (#A9A9A9)
+3. Texto destacado: Azul oscuro (#1E90FF) o Verde oscuro (#006400)
+4. Enlaces: Azul claro (#87CEEB)
+5. Botones: Azul oscuro (#1E90FF) o Verde oscuro (#006400)
+6. Advertencias o errores: Rojo (#FF0000)
+*/
+
+
+.container{
+    width: 70%;
+    height: auto;
+    background-color: $blanco;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+}
+.box{
+    text-align: center;
+    hr{
+       width: 100%;
+    
+   }
+
+}
+.form{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+
+
+
+    
+}
+.icon-login{
+    border-radius: 0px 7px 7px 0px ;
+    
+
+    
+    img{
+        width: 500px;
+        object-fit: cover;
+    }
+
+}
+.input-container{
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    margin: 5px;
+    border: 2px solid $gris-claro;
+        img{
+            width: 1.3rem;
+            height: auto;
+            margin: 0px 10px 0px 10px;
+        }
+}
+.input_text_form{
+    padding: 10px;
+    border: none;
+    margin: 5px;
+    width: 90%;
+    
+    &:focus{
+        outline: none;
+    }
+}
+
+
+.button{
+    border: none;
+    border-radius: 12px;
+    color: #FFFFFF;
+    background-color: $azul-oscuro;
+    width: 350px;
+    padding: 10px;
+    margin: 5px;
+    &:hover{
+        cursor: pointer;
+        background-color: $azul-claro;
+
+    }
+
+}
+.errors{
+    width: 100%;
+    border-radius: 23px;
+    color:$errores;
+    padding: 5px;
+    font-size: 10px;
+    margin-block-start: -5px;
+}
+.options{
+
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: 10px;
+
+    a{       
+        img{
+            margin: 5px;
+            width: 2.2rem;
+
+            &:hover{
+                width: 2.4rem;
+
+            }
+        }
+    }
+}
+
+.welcome{
+    text-align: center;
+    width: 300px;
+
+        h2{
+            margin-block-end: 0;
+        }
+
+        p{
+            color: $gris-oscuro;
+            margin-top: 0;
+        }
+}
+
+.invitation{
+
+    text-align: center;
+    color: $gris-oscuro;
+    font-size: 10px;
+    width: 350px;
+    margin: 15px;
+
+}
+
+.logo{    
+
+    width: 40%;
+    margin: 40px;
+
+        img{
+           width: 300px;
+        }
+
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    width: 300px;
+
+        p{
+            font-size: 13px;
+            color: $gris-oscuro;
+        }
+
+        .line{
+            margin: 14px;
+            width: 70px;
+            background: $gris-oscuro;
+            height: 1px;
+        }
+}
