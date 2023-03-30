@@ -29,7 +29,8 @@ export class RegistrarComponent  implements OnInit{
     });
   }
 
-  async onSubmit() {
+  onSubmit() {
+    alert("submit")
     if (this.usuarioForm.valid) {
       const usuario: object = {
         nombre: this.usuarioForm.get('name').value,
@@ -75,7 +76,6 @@ export class RegistrarComponent  implements OnInit{
     this.back = document.querySelector('.volver-page1');
     this.back2 = document.querySelector('.volver-page2');
     this.back3 = document.querySelector('.volver-page3');
-    this.end = document.querySelector('.fin');
     this.movPage = document.querySelector('.movPage');
 
     this.numeros = document.querySelectorAll('.steps p')
@@ -125,15 +125,6 @@ export class RegistrarComponent  implements OnInit{
         this.linea[this.count - 2].classList.remove('active');
         this.checks[this.count - 2].innerHTML = "3";
         this.count -= 1;
-        
     });
-    this.end.addEventListener('click', (event: any) => {
-        event.preventDefault();
-        this.linea[this.count - 1].classList.add('active');
-        this.checks[this.count - 1].classList.add('active');
-        this.count += 1;
-         alert("Esta aceptanto terminos")
-        })
-
   }
 }
