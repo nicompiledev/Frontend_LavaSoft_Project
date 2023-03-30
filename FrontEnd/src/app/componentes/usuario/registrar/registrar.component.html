@@ -1,36 +1,18 @@
 <div class="container">
   <div class="progress-bar">
-    <div class="steps">
-      <p>Datos.</p>
-      <div class="number">
-        <span>1</span>
+    <div class="steps" *ngFor="let elemento of elementos">
+        <p>{{ elemento.texto }}</p>
+        <div class="number" [ngClass]="{'active': elemento.activo}">
+          <span>{{ elemento.contenido }}</span>
+        </div>
       </div>
-    </div>
-    <div class="steps">
-      <p>Nac.</p>
-      <div class="number">
-        <span>2</span>
-      </div>
-    </div>
-    <div class="steps">
-      <p>Contac.</p>
-      <div class="number">
-        <span>3</span>
-      </div>
-    </div>
-    <div class="steps">
-      <p>password</p>
-      <div class="number">
-        <span>4</span>
-      </div>
-    </div>
   </div>
   <h2>Bienvenido a LavaSoft</h2>
   <p>Registrate ahora y haz tu reservacion.</p>
   <div class="form-container">
-    <form [formGroup]="usuarioForm" (onSubmit)="onSubmit()">
+    <form [formGroup]="usuarioForm">
       <!-- Pagina 1 -->
-      <div class="page movPage">
+      <div class="page movPage" [ngStyle]="{'margin-left': marginLeft}">
         <h4>Informacion principal</h4>
 
         <div class="input-container">
@@ -115,7 +97,7 @@
         </div>
 
         <div class="button siguiente-page2">
-          <button>Siguiente</button>
+          <button (click)="siguiente('2')">Siguiente</button> 
         </div>
       </div>
 
@@ -144,8 +126,8 @@
         </div>
 
         <div class="buttons">
-          <button class="volver-page1 volver">Atras</button>
-          <button class="siguiente-page3 siguiente">Siguiente</button>
+          <button (click)="anterior('2')" class="volver-page1 volver">Atras</button>
+          <button (click)="siguiente('3')" class="siguiente-page3 siguiente">Siguiente</button>
         </div>
       </div>
 
@@ -195,8 +177,8 @@
         </div>
 
         <div class="buttons">
-          <button class="volver-page2 volver">Atras</button>
-          <button class="siguiente-page4 siguiente">Siguiente</button>
+          <button (click)="anterior('3')" class="volver-page2 volver">Atras</button>
+          <button (click)="siguiente('4')" class="siguiente-page4 siguiente">Siguiente</button>
         </div>
       </div>
 
@@ -216,7 +198,7 @@
             placeholder="Contraseña"
           />
 
-          <div class="eyes" onclick="viewPassword()">
+          <div class="eyes">
             <img src="../../../../assets/imgs/show.png" id="show" alt="" />
             <img src="../../../../assets/imgs/oculto.png" id="noshow" alt="" />
           </div>
@@ -251,8 +233,8 @@
         </div>
 
         <div class="buttons">
-          <button class="volver-page3 volver">Atras</button>
-          <button class="fin" type="submit">Finalizar</button>
+          <button (click)="anterior('4')" class="volver-page3 volver">Atras</button>
+          <button class="fin" (click)="finalizar()">Finalizar</button>
         </div>
       </div>
     </form>

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './registrar.component.html',
   styleUrls: ['./registrar.component.scss'],
 })
-export class RegistrarComponent  implements OnInit{
+export class RegistrarComponent implements OnInit {
   usuarioForm: FormGroup;
   mensajeError = '';
 
@@ -16,7 +16,7 @@ export class RegistrarComponent  implements OnInit{
     this.usuarioForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]), 
+      email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
         Validators.minLength(8),
@@ -25,12 +25,11 @@ export class RegistrarComponent  implements OnInit{
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(10),
-      ])
+      ]),
     });
   }
 
-  onSubmit() {
-    alert("submit")
+  async finalizar() {
     if (this.usuarioForm.valid) {
       const usuario: object = {
         nombre: this.usuarioForm.get('name').value,
@@ -43,7 +42,7 @@ export class RegistrarComponent  implements OnInit{
       this.servicio.registrarUsuario(usuario).subscribe(
         (response) => {
           console.log(response);
-          this.router.navigate([''])
+          this.router.navigate(['']);
         },
         (error) => {
           console.log(error);
@@ -52,79 +51,36 @@ export class RegistrarComponent  implements OnInit{
       );
     }
   }
-  next: any;
-  next2: any;
-  next3: any;
-  back: any;
-  back2: any;
-  back3: any;
-  end: any;
-  movPage: any;
-  numeros: any;
-  checks: any;
-  linea: any;
-  pages: number = 4;
-  count: number = 1;
-
-  
+    marginLeft: string = '0%';
+    elementos: {contenido: string, activo: boolean, texto: string}[] = [
+      {contenido: '1', activo: true, texto: 'Datos.'},
+      {contenido: '2', activo: false, texto: 'Nac.'},
+      {contenido: '3', activo: false, texto: 'Contac.'},
+      {contenido: '4', activo: false, texto: 'password'}
+    ];
 
   ngOnInit(): void {
-    this.next = document.querySelector('.siguiente-page2');
-    this.next2 = document.querySelector('.siguiente-page3');
-    this.next3 = document.querySelector('.siguiente-page4');
 
-    this.back = document.querySelector('.volver-page1');
-    this.back2 = document.querySelector('.volver-page2');
-    this.back3 = document.querySelector('.volver-page3');
-    this.movPage = document.querySelector('.movPage');
+  }
 
-    this.numeros = document.querySelectorAll('.steps p')
-    this.checks = document.querySelectorAll('.steps .number span')
-    this.linea = document.querySelectorAll('.steps .number')
+  siguiente(lugar: string){
+    for(let i = 0; i < this.elementos.length; i++){
+      if(this.elementos[i].contenido === lugar){
+        console.log(lugar)
+        this.marginLeft = '-' + (i * 25) + '%'
+        this.elementos[i].activo = true;
+        this.elementos[i-1].contenido = '✓'
+      }
+    }
+  }
 
-    this.next.addEventListener('click', (event: any) => {
-        event.preventDefault();
-        this.movPage.style.marginLeft = '-25%';
-        this.linea[this.count - 1].classList.add('active');
-        this.checks[this.count - 1].innerHTML = "✓";
-        this.count += 1;
-    });
-    this.next2.addEventListener('click', (event: any) => {
-        event.preventDefault();
-        this.movPage.style.marginLeft = '-50%';
-        this.linea[this.count - 1].classList.add('active');
-        this.checks[this.count - 1].innerHTML = "✓";
-        this.count += 1;
-    });
-    this.next3.addEventListener('click', (event: any) => {
-        event.preventDefault();
-        this.movPage.style.marginLeft = '-75%';
-        this.linea[this.count - 1].classList.add('active');
-        this.checks[this.count - 1].innerHTML = "✓";
-        this.count += 1;
-    });
-    this.back.addEventListener('click', (event: any) => {
-        event.preventDefault();
-        this.movPage.style.marginLeft = '0%';
-        this.linea[this.count - 2].classList.remove('active');
-        this.checks[this.count - 2].innerHTML = "1";
-        this.count -= 1;
-        
-    });
-    this.back2.addEventListener('click', (event: any) => {
-        event.preventDefault();
-        this.movPage.style.marginLeft = '-25%';
-        this.linea[this.count - 2].classList.remove('active');
-        this.checks[this.count - 2].innerHTML = "2";
-        this.count -= 1;
-        
-    });
-    this.back3.addEventListener('click', (event: any) => {
-        event.preventDefault();
-        this.movPage.style.marginLeft = '-50%';
-        this.linea[this.count - 2].classList.remove('active');
-        this.checks[this.count - 2].innerHTML = "3";
-        this.count -= 1;
-    });
+  anterior(lugar: string){
+    for(let i = 0; i < this.elementos.length; i++){
+      if(this.elementos[i].contenido === lugar){
+        this.marginLeft = '-' + ((i - 1) * 25) + '%'
+        this.elementos[i].activo = false;
+        this.elementos[i-1].contenido = (i).toString()
+      }
+    }
   }
 }
