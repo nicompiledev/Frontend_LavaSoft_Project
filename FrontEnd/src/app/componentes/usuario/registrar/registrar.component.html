@@ -5,32 +5,32 @@
           <div class="number">
               <span>1</span>
           </div>
-          <div class="check fas fa-check">✓</div>
+          
       </div>
       <div class="steps">
           <p>Nac.</p>
           <div class="number">
               <span>2</span>
           </div>
-          <div class="check fas fa-check ">✓</div>
+        
       </div>
       <div class="steps">
           <p>Contac.</p>
           <div class="number">
               <span>3</span>
           </div>
-          <div class="check fas fa-check ">✓</div>
+       
       </div>
       <div class="steps">
           <p>password</p>
           <div class="number">
               <span>4</span>
           </div>
-          <div class="check fas fa-check ">✓</div>
+          
       </div>
   </div>
   <h2>Bienvenido a LavaSoft</h2>
-  <p>Registrate ahora y has tu reservacion.</p>
+  <p>Registrate ahora y haz tu reservacion.</p>
   <div class="form-container">
       <form [formGroup]="usuarioForm" (onSubmit)="onSubmit()">
           <!-- Pagina 1 -->
@@ -40,10 +40,16 @@
 
               <div class="input-container">
           
-                  <img src="/assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="">
+                  <img src="../../../../assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="">
                   
                   <input class="input_text_form" type="text" id="name" placeholder="Nombres" formControlName="name">
 
+              </div>
+              <div class="errors">
+                <div *ngIf="usuarioForm.get('name').invalid && (usuarioForm.get('name').dirty || usuarioForm.get('password').touched)" class="text-danger">
+                    <div *ngIf="usuarioForm.get('name').hasError('required')">Este campo es requerido</div>
+                </div>
+            
               </div>
 
               <div class="input-container">
@@ -54,9 +60,15 @@
 
               </div>
 
+              <div class="errors">
+                <div *ngIf="usuarioForm.get('lastname').invalid && usuarioForm.get('lastname').dirty" class="text-danger">
+                    <div *ngIf="usuarioForm.get('lastname').hasError('required')">Este campo es requerido</div>
+                </div>
+              </div>
+
               <div class="input-container ">
 
-                  <img src="/assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="">
+                  <img src="../../../../assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="">
                   
                   <input class="input_text_form" type="text" id="cc" placeholder="C.C" formControlName="CC">
                   
@@ -85,10 +97,11 @@
                   <input class="input_text_form" type="date" id="date"  formControlName="date">
 
               </div>
+              
 
               <div class="input-container">
 
-                  <img src="./assets/imgs/genero.png" alt="">
+                  <img src="../../../../assets/imgs/genero.png" alt="">
 
                   <select id="sex" >
                       <option value="-1" disabled selected>Seleccione su genero</option>
@@ -114,15 +127,22 @@
 
               <div class="input-container">
 
-                  <img src="./assets/imgs/correo-electronico.png" alt="">
+                  <img src="../../../../assets/imgs/correo-electronico.png" alt="">
                   
                   <input class="input_text_form" type="text" id="email"  formControlName="email" placeholder="Correo electronico" >
 
               </div>
 
+              <div class="errros">
+                <div *ngIf="usuarioForm.get('email').invalid && usuarioForm.get('email').dirty" class="text-danger">
+                    <div *ngIf="usuarioForm.get('email').hasError('required')">Este campo es requerido</div>
+                    <div *ngIf="usuarioForm.get('email').hasError('email')">El correo electrónico no es válido</div>
+                  </div>
+              </div>
+
               <div class="input-container">
 
-                  <img src="./assets/imgs/llamada-telefonica.png" alt="">
+                  <img src="../../../../assets/imgs/llamada-telefonica.png" alt="">
 
                   <input class="input_text_form" type="text" id="cel" formControlName="cel" placeholder="Telefono celular">
                   
@@ -143,23 +163,32 @@
 
               <div class="input-container">
 
-                  <img src="./assets/imgs/candado.png" alt="">
+                  <img src="../../../../assets/imgs/candado.png" alt="">
                       
                   <input class="input_text_form" type="password" id="password"  formControlName="password" placeholder="Contraseña" >
                   
                   <div class="eyes" onclick="viewPassword()">
-                      <img src="./assets/imgs/show.png" id="show" alt="">
-                      <img src="./assets/imgs/oculto.png" id="noshow" alt="">
+                      <img src="../../../../assets/imgs/show.png" id="show" alt="">
+                      <img src="../../../../assets/imgs/oculto.png" id="noshow" alt="">
+                  </div>
+              </div>
+
+              <div class="erros">
+                <div *ngIf="usuarioForm.get('password').invalid && usuarioForm.get('password').dirty" class="text-danger">
+                    <div *ngIf="usuarioForm.get('password').hasError('required')">Este campo es requerido</div>
+                    <div *ngIf="usuarioForm.get('password').hasError('minlength')">La contraseña debe tener al menos 8 caracteres</div>
                   </div>
               </div>
 
               <div class="input-container">
   
-                  <img src="./assets/imgs/recargar.png" alt="">
+                  <img src="../../../../assets/imgs/recargar.png" alt="">
 
                   <input class="input_text_form" type="password" id="password-confirm" formControlName="password-confirm" placeholder="Confirmar Contraseña">
                       
               </div>
+              
+          
   
               <div class="buttons"> 
                   <button class="volver-page3 volver">Atras</button>

@@ -79,35 +79,35 @@ export class RegistrarComponent  implements OnInit{
     this.movPage = document.querySelector('.movPage');
 
     this.numeros = document.querySelectorAll('.steps p')
-    this.checks = document.querySelectorAll('.steps .check')
+    this.checks = document.querySelectorAll('.steps .number span')
     this.linea = document.querySelectorAll('.steps .number')
 
     this.next.addEventListener('click', (event: any) => {
         event.preventDefault();
         this.movPage.style.marginLeft = '-25%';
         this.linea[this.count - 1].classList.add('active');
-        this.checks[this.count - 1].classList.add('active');
+        this.checks[this.count - 1].innerHTML = "✓";
         this.count += 1;
     });
     this.next2.addEventListener('click', (event: any) => {
         event.preventDefault();
         this.movPage.style.marginLeft = '-50%';
         this.linea[this.count - 1].classList.add('active');
-        this.checks[this.count - 1].classList.add('active');
+        this.checks[this.count - 1].innerHTML = "✓";
         this.count += 1;
     });
     this.next3.addEventListener('click', (event: any) => {
         event.preventDefault();
         this.movPage.style.marginLeft = '-75%';
         this.linea[this.count - 1].classList.add('active');
-        this.checks[this.count - 1].classList.add('active');
+        this.checks[this.count - 1].innerHTML = "✓";
         this.count += 1;
     });
     this.back.addEventListener('click', (event: any) => {
         event.preventDefault();
         this.movPage.style.marginLeft = '0%';
         this.linea[this.count - 2].classList.remove('active');
-        this.checks[this.count - 2].classList.remove('active');
+        this.checks[this.count - 2].innerHTML = "1";
         this.count -= 1;
         
     });
@@ -115,7 +115,7 @@ export class RegistrarComponent  implements OnInit{
         event.preventDefault();
         this.movPage.style.marginLeft = '-25%';
         this.linea[this.count - 2].classList.remove('active');
-        this.checks[this.count - 2].classList.remove('active');
+        this.checks[this.count - 2].innerHTML = "2";
         this.count -= 1;
         
     });
@@ -123,7 +123,7 @@ export class RegistrarComponent  implements OnInit{
         event.preventDefault();
         this.movPage.style.marginLeft = '-50%';
         this.linea[this.count - 2].classList.remove('active');
-        this.checks[this.count - 2].classList.remove('active');
+        this.checks[this.count - 2].innerHTML = "3";
         this.count -= 1;
         
     });

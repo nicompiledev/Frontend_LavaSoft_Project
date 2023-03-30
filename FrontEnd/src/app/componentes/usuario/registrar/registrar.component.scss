@@ -253,3 +253,11 @@ select{
 .cc{
     width: 50%;
 }
+.errors{
+    width: 150px;
+    color:$errores;
+    font-size: 10px;
+    align-self: flex-start;
+    margin-left: 60px;
+  
+}
