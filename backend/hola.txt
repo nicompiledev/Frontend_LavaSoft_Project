@@ -1,10 +1,10 @@
 JWT_SECRET=your_jwt_secret
-MONGO_URI = mongodb+srv://Jkeviin:Jkeviin2130@cluster0.ovudi9t.mongodb.net/test
+MONGO_URI = mongodb+srv://Jkeviin:<<password>>@cluster0.ovudi9t.mongodb.net/test
 EMAIL_HOST = smtp.gmail.com
 EMAIL_PORT = 465
 
 EMAIL_USER = slash2130kevin@gmail.com
-EMAIL_PASS = uclhijoatcygbuwk
+EMAIL_PASS = asdadsk,
 
 FRONTEND_URL = http://localhost:4200
 
