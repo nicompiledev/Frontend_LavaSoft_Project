@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+const nodemailer = require("nodemailer");
 
 const emailOlvidePassword = async (datos) => {
   const transporter = nodemailer.createTransport({
@@ -46,4 +46,4 @@ const emailOlvidePassword = async (datos) => {
   
 };
 
-export default emailOlvidePassword;
+module.exports = emailOlvidePassword;

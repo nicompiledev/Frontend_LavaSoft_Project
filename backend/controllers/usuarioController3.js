@@ -1,8 +1,9 @@
-import Usuario from "../models/Usuario.js";
-import generarJWT from "../helpers/generarJWT.js";
-import generarId from "../helpers/generarId.js";
-import emailRegistro from "../helpers/emailRegistro.js";
-import emailOlvidePassword from "../helpers/emailOlvidePassword.js";
+const Usuario = require("../models/Usuario.js");
+const generarJWT = require("../helpers/generarJWT.js");
+const generarId = require("../helpers/generarId.js");
+const emailRegistro = require("../helpers/emailRegistro.js");
+const emailOlvidePassword = require("../helpers/emailOlvidePassword.js");
+
 
 const registrar = async (req, res) => {
   const { email, nombre } = req.body;
@@ -205,7 +206,7 @@ const actualizarPassword = async (req, res) => {
   }
 };
 
-export {
+module.exports = {
   registrar,
   perfil,
   confirmar,

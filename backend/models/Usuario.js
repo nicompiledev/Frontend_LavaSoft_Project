@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
-import bcrypt from "bcrypt";
-import generarId from "../helpers/generarId.js";
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const generarId = require("../helpers/generarId.js");
 
 const usuarioSchema = new mongoose.Schema({
 
@@ -59,4 +59,4 @@ usuarioSchema.methods.comprobarPassword = async function (
 };
 
 const Usuario = mongoose.model("Usuario", usuarioSchema);
-export default Usuario;
+module.exports = Usuario;

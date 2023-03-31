@@ -1,6 +1,7 @@
-import express from "express";
+const express = require('express');
 const router = express.Router();
-import {
+
+const {
   registrar,
   perfil,
   confirmar,
@@ -9,8 +10,9 @@ import {
   nuevoPassword,
   actualizarPerfil,
   actualizarPassword,
-} from "../controllers/usuarioController.js";
-import checkAuth from "../middleware/authMiddleware.js";
+} = require('../controllers/usuarioController.js');
+const checkAuth = require('../middleware/authMiddleware.js');
+
 
 // área publica
 router.post("/", registrar);
@@ -24,4 +26,4 @@ router.get("/perfil", checkAuth, perfil);
 router.put("/perfil/:id", checkAuth, actualizarPerfil);
 router.put("/actualizar-password", checkAuth, actualizarPassword);
 
-export default router;
+module.exports = router;

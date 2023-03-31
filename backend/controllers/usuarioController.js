@@ -1,9 +1,10 @@
-import conectarDB from "../config/db.js";
-import generarJWT from "../helpers/generarJWT.js";
-import generarId from "../helpers/generarId.js";
-import emailRegistro from "../helpers/usuarios/emailRegistro.js";
-import emailOlvidePassword from "../helpers/emailOlvidePassword.js";
-import bcrypt from "bcrypt";
+const conectarDB = require("../config/mysql.js");
+const generarJWT = require("../helpers/generarJWT.js");
+const generarId = require("../helpers/generarId.js");
+const emailRegistro = require("../helpers/usuarios/emailRegistro.js");
+const emailOlvidePassword = require("../helpers/emailOlvidePassword.js");
+const bcrypt = require("bcrypt");
+
 
 const registrar = async (req, res) => {
   const { nombre, apellido, correo_electronico, contrasena, telefono } = req.body;
@@ -366,7 +367,7 @@ const actualizarPassword = async (req, res) => {
   }
 };
 
-export {
+module.exports = {
   registrar,
   perfil,
   confirmar,

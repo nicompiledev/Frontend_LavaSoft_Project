@@ -1,0 +1,7 @@
+<div class="lavadero-container">
+  <h1 class="lavadero-title">Lavadero</h1>
+  <ul class="horas-disponibles">
+    <li *ngFor="let hora of horasDisponibles" (click)="seleccionarHora(hora)"
+    class="hora-disponible">{{ hora }}</li>
+  </ul>
+</div>

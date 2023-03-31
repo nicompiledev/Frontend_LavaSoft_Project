@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import conectarDB from "../config/db.js";
+const jwt = require("jsonwebtoken");
+const conectarDB = require("../config/mysql.js");
 
 const checkAuth = async (req, res, next) => {
   let token;
@@ -50,4 +50,4 @@ const checkAuth = async (req, res, next) => {
   }
 };
 
-export default checkAuth;
+module.exports = checkAuth;

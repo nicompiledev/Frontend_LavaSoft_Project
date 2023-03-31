@@ -15,6 +15,7 @@ import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena
 import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
+import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-pa
     PerfilComponent,
     ActualizarPerfilComponent,
     ActualizarPasswordComponent,
+    LavaderoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
-import express from "express";
+const express = require('express');
 const router = express.Router();
 
-import {
+const {
   loguearAdmin,
   registrarLavadero,
   getLavederos,
   getLavadero,
   modificarLavadero,
   eliminarLavadero,
-} from "../controllers/adminController.js";
+} = require('../controllers/adminController.js');
 
 
 // área publica
@@ -20,4 +20,4 @@ router.put("/lavaderos/:id_lavadero", modificarLavadero);
 router.delete("/lavaderos/:id_lavadero", eliminarLavadero);
 
 
-export default router;
+module.exports = router;

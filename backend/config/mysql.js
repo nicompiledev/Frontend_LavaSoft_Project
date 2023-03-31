@@ -1,6 +1,6 @@
-import mysql from "mysql2/promise";
+const mysql = require("mysql2/promise");
 
-const conectarDB = async () => {
+const conectarMySqlDB = async () => {
   try {
     const connection = await mysql.createConnection({
       host: process.env.MYSQL_HOST,
@@ -8,11 +8,12 @@ const conectarDB = async () => {
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
     });
+    console.log("Conexión a la base de datos MySQL exitosa");
     return connection;
   } catch (error) {
-    console.log(`error: ${error.message}`);
+    console.error(`Error al conectarse a la base de datos MySQL: ${error.message}`);
     process.exit(1);
   }
 };
 
-export default conectarDB;
+module.exports = conectarMySqlDB;

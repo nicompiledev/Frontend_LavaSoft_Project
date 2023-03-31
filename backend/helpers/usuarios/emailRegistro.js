@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+const nodemailer = require("nodemailer");
 
 const emailRegistro = async (datos) => {
   const transporter = nodemailer.createTransport({
@@ -39,4 +39,4 @@ console.log("Mensaje enviado correctamente. ID del mensaje: %s", info.messageId)
 
 };
 
-export default emailRegistro;
+module.exports = emailRegistro;

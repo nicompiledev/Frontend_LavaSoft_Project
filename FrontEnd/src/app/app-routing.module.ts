@@ -10,6 +10,7 @@ import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-co
 import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
 import { AuthGuard } from './guard/auth.guard';
 import { NoAuthGuard } from './guard/noAuth.guard';
+import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent , canActivate: [NoAuthGuard]},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: 'perfil/:id', component: ActualizarPerfilComponent, canActivate: [AuthGuard] },
   { path: 'actualizar-password', component: ActualizarPasswordComponent, canActivate: [AuthGuard]},
+  { path: 'reservar/:id', component: LavaderoComponent}
 ];
 
 @NgModule({

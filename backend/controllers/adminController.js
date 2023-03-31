@@ -1,9 +1,10 @@
-import conectarDB from "../config/db.js";
-import generarJWT from "../helpers/generarJWT.js";
-import generarId from "../helpers/generarId.js";
-import emailRegistro from "../helpers/lavaderos/emailRegistro.js";
-import emailOlvidePassword from "../helpers/emailOlvidePassword.js";
-import bcrypt from "bcrypt";
+const conectarDB = require("../config/mysql.js");
+const generarJWT = require("../helpers/generarJWT.js");
+const generarId = require("../helpers/generarId.js");
+const emailRegistro = require("../helpers/lavaderos/emailRegistro.js");
+const emailOlvidePassword = require("../helpers/emailOlvidePassword.js");
+const bcrypt = require("bcrypt");
+
 
 const loguearAdmin = async (req, res) => {
   const { correo_electronico, contrasena } = req.body;
@@ -237,7 +238,7 @@ const eliminarLavadero = async (req, res) => {
 
 
 
-export {
+module.exports = {
   loguearAdmin,
   registrarLavadero,
   getLavederos,
