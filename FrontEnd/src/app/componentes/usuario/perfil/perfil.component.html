@@ -1,6 +1,6 @@
 <div *ngIf="usuario">
   <p>Nombre: {{ usuario.nombre }}</p>
-  <p>Email: {{ usuario.email }}</p>
+  <p>Email: {{ usuario.correo_electronico }}</p>
 
   <!-- Actualizar perfil boton router con parametro usuario._id-->
   <button routerLink="/perfil/{usuario._id}">Actualizar perfil</button>
