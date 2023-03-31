@@ -4,6 +4,7 @@ const cors = require('cors');
 const { conectarMySqlDB, conectarMongoDB } = require('./config/index.js');
 const usuarioRoutes = require('./routes/usuarioRoutes.js');
 const adminRouter = require('./routes/adminRoutes.js');
+const imagenRouter = require('./routes/imagenRoutes.js');
 const initSockets = require('./socket/sockets.js');
 const socketIO = require('socket.io');
 
@@ -52,13 +53,14 @@ const corsOptions = {
   },
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 // Rutas
 
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/admins", adminRouter);
+app.use("/api/imagenes", imagenRouter);
 
 // Inicio del servidor
 

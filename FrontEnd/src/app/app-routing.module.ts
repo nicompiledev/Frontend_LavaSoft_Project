@@ -11,6 +11,7 @@ import { RegistrarComponent } from './componentes/usuario/registrar/registrar.co
 import { AuthGuard } from './guard/auth.guard';
 import { NoAuthGuard } from './guard/noAuth.guard';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
+import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent , canActivate: [NoAuthGuard]},
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: 'perfil/:id', component: ActualizarPerfilComponent, canActivate: [AuthGuard] },
   { path: 'actualizar-password', component: ActualizarPasswordComponent, canActivate: [AuthGuard]},
-  { path: 'reservar/:id', component: LavaderoComponent}
+  { path: 'reservar/:id', component: LavaderoComponent},
+  { path: 'imagenes', component: ImagenesComponent}
 ];
 
 @NgModule({

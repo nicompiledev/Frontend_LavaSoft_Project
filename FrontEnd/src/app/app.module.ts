@@ -16,6 +16,7 @@ import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
+import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
     PerfilComponent,
     ActualizarPerfilComponent,
     ActualizarPasswordComponent,
-    LavaderoComponent
+    LavaderoComponent,
+    ImagenesComponent
   ],
   imports: [
     BrowserModule,
