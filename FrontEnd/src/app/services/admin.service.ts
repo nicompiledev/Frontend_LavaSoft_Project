@@ -12,8 +12,8 @@ private httpOptions = {
     'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
 }
+
   constructor( 
-    
     private http : HttpClient
   ) { }
 
@@ -40,5 +40,4 @@ private httpOptions = {
   deleteLavadero( id_lavadero : string){
     return this.http.delete(`${this.url}lavaderos/${id_lavadero}`)
   }
-  
 }
