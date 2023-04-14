@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
+import { AuthService } from './security/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,15 @@ export class UsuarioService {
     })
   };
 
-  constructor(private http: HttpClient) {}
+  isLoggedIn: boolean;
+
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.auth.isLoggedIn().subscribe(
+      (isLoggedIn: boolean) => {
+        this.isLoggedIn = isLoggedIn;
+      }
+    );
+  }
 
   registrarUsuario(usuario: object) {
     return this.http.post(this.apiUrl, usuario, this.httpOptions);
@@ -39,12 +48,8 @@ export class UsuarioService {
       return this.http.post(url,  { contrasena }, this.httpOptions);
   }
 
-  logout() {
-    localStorage.removeItem('token');
-  }
-
   getPerfil() {
-    if (this.isLoggedIn()) {
+    if (this.isLoggedIn){
       return this.http.get(this.apiUrl + 'perfil', this.httpOptions).pipe(
         map((res: any) => {
           return res; // asumiendo que la respuesta del servidor tiene una propiedad "usuario" que contiene los datos del usuario
@@ -63,10 +68,6 @@ export class UsuarioService {
     };
 
     return this.http.put(this.apiUrl + 'actualizar-password', body, this.httpOptions);
-  }
-
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
   }
 
   actualizarPerfil(id: string, data: any) {
