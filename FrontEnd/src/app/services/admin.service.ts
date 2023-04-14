@@ -13,7 +13,7 @@ private httpOptions = {
   })
 }
 
-  constructor( 
+  constructor(
     private http : HttpClient
   ) { }
 
