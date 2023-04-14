@@ -12,7 +12,6 @@ private httpOptions = {
     'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
 }
-
   constructor(
     private http : HttpClient
   ) { }
