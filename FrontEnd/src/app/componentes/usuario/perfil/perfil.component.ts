@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuarios.service';
+import { AuthService } from 'src/app/services/security/auth.service';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class PerfilComponent implements OnInit {
   usuario: any;
 
   constructor(private service: UsuarioService,
-              private router: Router) { }
+              private router: Router,
+              public auth: AuthService) { }
 
   ngOnInit() {
     this.service.getPerfil().subscribe(
@@ -28,7 +30,7 @@ export class PerfilComponent implements OnInit {
   }
 
   cerrarSesion(){
-    this.service.logout();
+    this.auth.logout()
     this.router.navigate(['/']);
   }
 }

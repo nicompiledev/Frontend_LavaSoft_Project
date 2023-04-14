@@ -9,13 +9,12 @@ import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
 import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
 import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
 import { AuthGuard } from './guard/auth.guard';
-import { NoAuthGuard } from './guard/noAuth.guard';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent , canActivate: [NoAuthGuard]},
-  { path: 'registro', component: RegistrarComponent, canActivate: [NoAuthGuard] },
+  { path: '', component: LoginComponent , canActivate: [AuthGuard]},
+  { path: 'registro', component: RegistrarComponent, canActivate: [AuthGuard] },
   { path: 'confirmar/:token', component: ConfirmarCuentaComponent },
   { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent },
   { path: 'nuevo-password/:token', component: NuevaContrasenaComponent },
