@@ -5,11 +5,33 @@ const emailRegistro = require("../helpers/lavaderos/emailRegistro.js");
 const emailOlvidePassword = require("../helpers/emailOlvidePassword.js");
 const bcrypt = require("bcrypt");
 
+// Importaciones adicionales
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const multer = require('multer');
+
+// Configuración de Cloudinary
+cloudinary.config({
+  cloud_name: 'dma9ouzwf',
+  api_key: '613731451848539',
+  api_secret: 'RaOglZL1K3XiItWXtmzZH0ENte4'
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'imagenes',
+    format: async (req, file) => 'jpg',
+    public_id: (req, file) => file.fieldname + '-' + Date.now(),
+  }
+});
+
+const upload2 = multer({ storage: storage }).array('images');
 
 const loguearAdmin = async (req, res) => {
   const { correo_electronico, contrasena } = req.body;
   let conexion;
-  try{
+  try {
 
     conexion = await conectarDB();
 
@@ -48,8 +70,8 @@ const loguearAdmin = async (req, res) => {
 
 
 const registrarLavadero = async (req, res) => {
-
   const { nombre, ciudad, direccion, telefono, correo_electronico, contrasena, horario_atencion } = req.body;
+  const images = req.files;
   // Prevenir usuarios duplicados MYSQL
   let conexion;
   try {
@@ -64,6 +86,26 @@ const registrarLavadero = async (req, res) => {
       res.status(400).json({ msg: "El usuario ya existe" });
       return;
     }
+
+    // Nueva línea
+    upload2(req, res, async (err) => {
+      if (err) {
+        res.status(500).send('Hubo un error al subir las imágenes');
+      } else {
+        const imageUrls = req.files.map((file) => file.path);
+        const sql = 'INSERT INTO imagenes (url) VALUES ?';
+        const values = imageUrls.map((url) => [url]);
+
+        await conexion.query(sql, [values], (error, result) => {
+          if (error) {
+            res.status(500).send('Hubo un error al guardar las imágenes en la base de datos');
+          } else {
+            res.status(200).send(result);
+          }
+        });
+      }
+    });
+
 
     const token = generarId();
     const salt = await bcrypt.genSalt(10);
@@ -134,7 +176,7 @@ const getLavadero = async (req, res) => {
 
     const lavadero = row[0];
 
-    if(!lavadero){
+    if (!lavadero) {
       res.status(400).json({ msg: "El lavadero no existe" });
       return;
     }
@@ -170,7 +212,7 @@ const modificarLavadero = async (req, res) => {
 
     const lavadero = row[0];
 
-    if(!lavadero){
+    if (!lavadero) {
       res.status(400).json({ msg: "El lavadero no existe" });
       return;
     }
@@ -210,7 +252,7 @@ const eliminarLavadero = async (req, res) => {
 
     const lavadero = row[0];
 
-    if(!lavadero){
+    if (!lavadero) {
       res.status(400).json({ msg: "El lavadero no existe" });
       return;
     }
