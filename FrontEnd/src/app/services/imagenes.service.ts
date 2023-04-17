@@ -23,6 +23,8 @@ export class ImagenesService {
       formData.append('images', images[i]);
     }
 
+    console.log(formData)
+
     return this.http.post(`${this.apiUrl}upload-multiple`, formData)
   }
 

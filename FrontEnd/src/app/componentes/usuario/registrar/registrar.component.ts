@@ -39,7 +39,7 @@ export class RegistrarComponent implements OnInit {
         telefono: this.usuarioForm.get('cel').value,
       };
 
-      this.servicio.registrarUsuario(usuario).subscribe(
+      this.servicio.registrarUsuario(usuario,).subscribe(
         (response) => {
           console.log(response);
           this.router.navigate(['']);
@@ -51,35 +51,33 @@ export class RegistrarComponent implements OnInit {
       );
     }
   }
-    marginLeft: string = '0%';
-    elementos: {contenido: string, activo: boolean, texto: string}[] = [
-      {contenido: '1', activo: true, texto: 'Datos.'},
-      {contenido: '2', activo: false, texto: 'Nac.'},
-      {contenido: '3', activo: false, texto: 'Contac.'},
-      {contenido: '4', activo: false, texto: 'password'}
-    ];
+  marginLeft: string = '0%';
+  elementos: { contenido: string; activo: boolean; texto: string }[] = [
+    { contenido: '1', activo: true, texto: 'Datos.' },
+    { contenido: '2', activo: false, texto: 'Nac.' },
+    { contenido: '3', activo: false, texto: 'Contac.' },
+    { contenido: '4', activo: false, texto: 'password' },
+  ];
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-  }
-
-  siguiente(lugar: string){
-    for(let i = 0; i < this.elementos.length; i++){
-      if(this.elementos[i].contenido === lugar){
-        console.log(lugar)
-        this.marginLeft = '-' + (i * 25) + '%'
+  siguiente(lugar: string) {
+    for (let i = 0; i < this.elementos.length; i++) {
+      if (this.elementos[i].contenido === lugar) {
+        console.log(lugar);
+        this.marginLeft = '-' + i * 25 + '%';
         this.elementos[i].activo = true;
-        this.elementos[i-1].contenido = '✓'
+        this.elementos[i - 1].contenido = '✓';
       }
     }
   }
 
-  anterior(lugar: string){
-    for(let i = 0; i < this.elementos.length; i++){
-      if(this.elementos[i].contenido === lugar){
-        this.marginLeft = '-' + ((i - 1) * 25) + '%'
+  anterior(lugar: string) {
+    for (let i = 0; i < this.elementos.length; i++) {
+      if (this.elementos[i].contenido === lugar) {
+        this.marginLeft = '-' + (i - 1) * 25 + '%';
         this.elementos[i].activo = false;
-        this.elementos[i-1].contenido = (i).toString()
+        this.elementos[i - 1].contenido = i.toString();
       }
     }
   }

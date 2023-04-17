@@ -9,6 +9,7 @@ const bcrypt = require("bcrypt");
 const registrar = async (req, res) => {
   const { nombre, apellido, correo_electronico, contrasena, telefono } = req.body;
 
+  console.log(req.body);
   // Prevenir usuarios duplicados
   let conexion;
   try {
@@ -27,10 +28,11 @@ const registrar = async (req, res) => {
     const token = generarId();
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(contrasena, salt);
+    const id = await bcrypt.hash(nombre + correo_electronico, salt);
 
     await conexion.execute(
-      "INSERT INTO usuarios (nombre, apellido, correo_electronico, contrasena, telefono, token) VALUES (?, ?, ?, ?, ?, ?)",
-      [nombre, apellido, correo_electronico, hashedPassword, telefono, token]
+      "INSERT INTO usuarios (id_usuario, nombre, apellido, correo_electronico, contrasena, telefono, token) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      [id, nombre, apellido, correo_electronico, hashedPassword, telefono, token]
     );
 
     // Enviar el email
@@ -147,7 +149,7 @@ const autenticar = async (req, res) => {
         apellido: usuario.apellido,
         correo_electronico: usuario.correo_electronico,
         telefono: usuario.telefono,
-        token: generarJWT(usuario.id_usuario),
+        token: token,
       });
     } else {
       const error = new Error("La contraseña es incorrecta");
