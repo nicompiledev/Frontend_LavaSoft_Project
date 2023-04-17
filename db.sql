@@ -4,7 +4,7 @@ create database lavasoft;
 use lavasoft;
 
 create table usuarios (
-id_usuario int auto_increment not null primary key,
+id_usuario varchar(100) not null primary key,
 nombre varchar(50) not null,
 apellido varchar(50) not null,
 correo_electronico varchar(255) not null unique,
@@ -16,17 +16,10 @@ confirmado boolean not null default false,
 rol varchar(50) not null default 'cliente'
 );
 
-CREATE TABLE imagenes (
-   id INT AUTO_INCREMENT PRIMARY KEY,
-   url VARCHAR(255) NOT NULL
-);
-
-select * from imagenes;
-
 select * from usuarios;
 
 create table lavaderos (
-id_lavadero int not null auto_increment primary key,
+id_lavadero varchar(100) not null primary key,
 nombre varchar(50) not null,
 ciudad varchar(50) not null,
 direccion varchar(100) not null,
@@ -41,18 +34,22 @@ confirmado boolean not null default false,
 estado boolean not null default false
 -- imagen_lavadero varchar(255)
 );
+select * from lavaderos;
 
-create table imagenes_lavaderos (
-id_imagen_lavadero int not null auto_increment primary key,
-id_lavadero int not null,
-ruta_imagen varchar(255) not null,
-foreign key (id_lavadero) references lavaderos(id_lavadero)
+CREATE TABLE imagenes_lavaderos (
+   id INT AUTO_INCREMENT PRIMARY KEY,
+   id_lavadero varchar(100) not null,
+   ruta_imagen VARCHAR(255) NOT NULL,
+   foreign key (id_lavadero) references lavaderos(id_lavadero)
 );
+
+select * from imagenes_lavaderos;
+
 
 create table quejas_reclamaciones (
 id_queja_reclamacion int not null auto_increment primary key,
-id_usuario int not null,
-id_lavadero int not null,
+id_usuario varchar(100) not null,
+id_lavadero varchar(100) not null,
 descripcion_queja varchar(255) not null,
 fecha_hora_queja datetime not null,
 estado_queja enum('pendiente', 'resuelta') not null,
@@ -63,7 +60,7 @@ foreign key (id_lavadero) references lavaderos(id_lavadero)
 
 create table horarios (
 id_horario int not null auto_increment primary key,
-id_lavadero int not null,
+id_lavadero varchar(100) not null,
 dia_semana varchar(20) not null,
 hora_apertura time not null,
 hora_cierre time not null,
@@ -98,8 +95,8 @@ foreign key (id_precio) references precios(id_precio)
 
 create table reservas (
 id_reserva int not null auto_increment primary key,
-id_usuario int not null,
-id_lavadero int not null,
+id_usuario varchar(100) not null,
+id_lavadero varchar(100) not null,
 id_servicio int not null,
 fecha_hora_reserva datetime not null,
 estado_reserva enum('pendiente', 'confirmada', 'cancelada') not null,
@@ -119,7 +116,7 @@ foreign key (id_reserva) references reservas(id_reserva)
 create table vehiculos (
 id_vehiculo int not null auto_increment primary key,
 id_tipo_vehiculo int not null,
-id_usuario int not null,
+id_usuario varchar(100) not null,
 marca varchar(50) not null,
 modelo varchar(50) not null,
 anio int not null,
@@ -130,8 +127,8 @@ foreign key (id_tipo_vehiculo) references tipos_vehiculos(id_tipo_vehiculo)
 
 create table notificaciones (
 id_notificacion int not null auto_increment primary key,
-id_usuario int not null,
-id_lavadero int not null,
+id_usuario varchar(100) not null,
+id_lavadero varchar(100) not null,
 fecha_hora_notificacion datetime not null,
 mensaje varchar(100) not null,
 foreign key (id_usuario) references usuarios(id_usuario),
@@ -140,8 +137,8 @@ foreign key (id_lavadero) references lavaderos(id_lavadero)
 
 create table valoracionesusuarios (
 id_valoracion_usuario int not null auto_increment primary key,
-id_lavadero int not null,
-id_usuario int not null,
+id_lavadero varchar(100) not null,
+id_usuario varchar(100) not null,
 valoracion float not null,
 fecha_valoracion datetime not null,
 comentarios varchar(255) not null,
@@ -151,7 +148,7 @@ foreign key (id_usuario) references usuarios(id_usuario)
 
 create table promocionesdescuentos (
 id_promocion_descuento int not null auto_increment primary key,
-id_lavadero int not null,
+id_lavadero varchar(100) not null,
 id_tipo_vehiculo int not null,
 id_servicio int not null,
 descuento float not null,
@@ -167,7 +164,7 @@ foreign key (id_servicio) references servicios(id_servicio)
 
 create table estadisticas (
 id_estadisticas int not null auto_increment primary key,
-id_lavadero int not null,
+id_lavadero varchar(100) not null,
 fecha_estadisticas date not null,
 cantidad_vehiculos_lavados int not null,
 cantidad_servicios_vendidos int not null,
@@ -188,8 +185,8 @@ foreign key (id_reserva) references reservas(id_reserva)
 
 create table transacciones (
 id_transaccion int not null auto_increment primary key,
-id_usuario int not null,
-id_lavadero int,
+id_usuario varchar(100) not null,
+id_lavadero varchar(100),
 id_reserva int,
 tipo_transaccion varchar(50) not null,
 fecha_hora_transaccion datetime not null,
