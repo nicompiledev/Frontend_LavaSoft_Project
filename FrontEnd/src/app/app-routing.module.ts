@@ -11,6 +11,7 @@ import { RegistrarComponent } from './componentes/usuario/registrar/registrar.co
 import { AuthGuard } from './guard/auth.guard';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
+import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent , canActivate: [AuthGuard]},
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'perfil/:id', component: ActualizarPerfilComponent, canActivate: [AuthGuard] },
   { path: 'actualizar-password', component: ActualizarPasswordComponent, canActivate: [AuthGuard]},
   { path: 'reservar/:id', component: LavaderoComponent},
+  { path: 'registro-lavadero', component: RegistrarLavaderoComponent},
   { path: 'imagenes', component: ImagenesComponent}
 ];
 

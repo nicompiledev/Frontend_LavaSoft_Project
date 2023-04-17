@@ -17,6 +17,7 @@ import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perf
 import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
+import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
     ActualizarPerfilComponent,
     ActualizarPasswordComponent,
     LavaderoComponent,
-    ImagenesComponent
+    ImagenesComponent,
+    RegistrarLavaderoComponent
   ],
   imports: [
     BrowserModule,
