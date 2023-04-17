@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AdminService {
+
   private url = 'http://localhost:4000/api/admins/';
   private httpOptions = {
     headers: new HttpHeaders({
@@ -13,6 +14,7 @@ export class AdminService {
     }),
   };
   constructor(private http: HttpClient) {}
+
 
   registrarLavadero(formData: FormData) {
     return this.http.post(`${this.url}registrar-lavadero`, formData);
@@ -45,4 +47,5 @@ export class AdminService {
   deleteLavadero(id_lavadero: string) {
     return this.http.delete(`${this.url}lavaderos/${id_lavadero}`);
   }
+
 }
