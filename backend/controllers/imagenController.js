@@ -3,13 +3,6 @@ const conectarDB = require("../config/mysql.js");
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const multer = require('multer');
 
-// Configuración de Cloudinary
-cloudinary.config({
-  cloud_name: 'dma9ouzwf',
-  api_key: '613731451848539',
-  api_secret: 'RaOglZL1K3XiItWXtmzZH0ENte4'
-});
-
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
