@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
@@ -12,6 +12,8 @@ import { AuthGuard } from './guard/auth.guard';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
 import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
+import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent , canActivate: [AuthGuard]},
@@ -24,7 +26,8 @@ const routes: Routes = [
   { path: 'actualizar-password', component: ActualizarPasswordComponent, canActivate: [AuthGuard]},
   { path: 'reservar/:id', component: LavaderoComponent},
   { path: 'registro-lavadero', component: RegistrarLavaderoComponent},
-  { path: 'imagenes', component: ImagenesComponent}
+  { path: 'imagenes', component: ImagenesComponent} ,
+  { path: 'catalogue' ,component:CatalogueComponent}
 ];
 
 @NgModule({
