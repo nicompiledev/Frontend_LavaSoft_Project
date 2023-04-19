@@ -1,0 +1,84 @@
+@import "../../../../../../src/app/app.component.scss";
+
+.container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+}
+.input_container{
+    width: 30%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    margin: 5px;
+    border: 2px solid $gris-claro;
+        img{
+            width: 2rem;
+            height: auto;
+            margin: 0px 10px 0px 10px;
+            user-select: none;
+        }
+        &:hover{
+            border-color: $negro;
+        }
+}
+select{  
+  -webkit-appearance:none; 
+  -moz-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
+  background: url(https://cdn-icons-png.flaticon.com/512/32/32195.png) no-repeat 95% 50%;
+  background-size: 10px;
+  border: 0;
+  border-radius: 0;
+  width: 100%;
+  font-size: 14px;
+  color: $gris-oscuro;
+  font-weight: 300;
+  line-height: 1.5;
+  height: 40px;
+  cursor: pointer;
+
+ 
+        
+    &:focus{
+        outline: none !important;
+    }
+}
+
+select::-ms-expand {
+    display: none;
+ }
+
+.button-container{
+    background: $azul-oscuro;
+    border-radius: 100%;
+    margin-left: 15px;
+    border: none;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+    button{
+        background: transparent;
+        border: none;
+        margin-block: 12px;
+        padding: 0;
+        img{
+            width: 25px;
+            height: 25px;
+            cursor:pointer;
+            user-select: none;
+        }
+       
+    }
+
+    &:hover{
+        cursor: pointer;
+        background:$azul-claro ;
+    }
+}

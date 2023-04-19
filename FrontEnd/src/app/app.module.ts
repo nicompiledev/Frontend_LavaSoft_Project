@@ -17,7 +17,11 @@ import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perf
 import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
-
+import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
+import { FilterBasicComponent } from './componentes/usuario/catalogue/filter-basic/filter-basic.component';
+import { FilterCompleteComponent } from './componentes/usuario/catalogue/filter-complete/filter-complete.component';
+import { PreviewCarwashComponent } from './componentes/usuario/catalogue/preview-carwash/preview-carwash.component';
+import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,12 @@ import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
     ActualizarPerfilComponent,
     ActualizarPasswordComponent,
     LavaderoComponent,
-    ImagenesComponent
+    ImagenesComponent,
+    RegistrarLavaderoComponent,
+    FilterBasicComponent,
+    FilterCompleteComponent,
+    PreviewCarwashComponent,
+    CatalogueComponent
   ],
   imports: [
     BrowserModule,
