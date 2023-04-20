@@ -19,7 +19,7 @@ const checkAuth = async (req, res, next) => {
 
       // Buscar el usuario correspondiente al ID del token decodificado
       const [rows] = await conexion.execute(
-        "SELECT * FROM usuarios WHERE id_usuario = ?",
+        "SELECT * FROM administradores WHERE id_administrador = ?",
         [decoded.id]
       );
 
