@@ -23,6 +23,8 @@ export class AdminService {
   loginAdmin(correo_electronico: string, contasena: string) {
     const body = { correo_electronico, contasena };
     return this.http.post(this.url + 'login', body, this.httpOptions);
+    // Cuando se haga el componete poner esto:
+    //  localStorage.setItem('token', response.token);
   }
 
   getAllLavaderos() {

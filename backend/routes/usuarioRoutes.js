@@ -11,7 +11,7 @@ const {
   actualizarPerfil,
   actualizarPassword,
 } = require('../controllers/usuarioController.js');
-const checkAuth = require('../middleware/authMiddleware.js');
+const checkAuth = require('../middleware/authMiddleware.js')
 
 
 // área publica

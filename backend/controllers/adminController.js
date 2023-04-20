@@ -47,7 +47,7 @@ const registrarLavadero = async (req, res) => {
       const imageUrls = req.files.map((file) => file.path);
       const sql = 'INSERT INTO imagenes_lavaderos (id_lavadero, ruta_imagen) VALUES ?';
       const values = imageUrls.map((url) => [id, url]);
-          
+
       await conexion.query(sql, [values], (error, result) => {
         if (error) {
           res.status(500).send('Hubo un error al guardar las imágenes en la base de datos');
@@ -88,12 +88,23 @@ const loguearAdmin = async (req, res) => {
       return;
     }
 
-    const validPassword = await bcrypt.compare(contrasena, row[0].contrasena);
+    const usuarioAdmin = row[0];
+
+    const validPassword = await bcrypt.compare(contrasena, usuarioAdmin.contrasena);
 
     if (!validPassword) {
       res.status(400).json({ msg: "Contraseña incorrecta" });
       return;
     }
+
+    // Generar el JWT y devolverlo:
+    const token = generarJWT(usuarioAdmin.id_administrador);
+    // Autenticar
+    res.json({
+      id_usuario: usuarioAdmin.id_administrador,
+      correo_electronico: usuarioAdmin.correo_electronico,
+      token: token,
+    });
 
     res.status(200).json({ msg: "Usuario logueado correctamente" });
 
