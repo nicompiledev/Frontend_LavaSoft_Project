@@ -5,7 +5,9 @@
   <input type="text" placeholder="Telefono" formControlName="telefono" />
   <input type="text" placeholder="Correo electrónico" formControlName="correo_electronico" />
   <input type="password" placeholder="Contraseña" formControlName="contrasena" />
-  <input type="text" placeholder="Horario de atención" formControlName="horario_atencion" />
+  <input type="text" placeholder="Hora de apertura (HH:MM AM/PM)" formControlName="hora_apertura" />
+  <input type="text" placeholder="Hora de cierre (HH:MM AM/PM)" formControlName="hora_cierre" />
+
   <input type="file" (change)="onFileSelected($event)" multiple />
   <button type="submit">Enviar</button>
 </form>

@@ -5,12 +5,9 @@ const emailRegistro = require("../helpers/lavaderos/emailRegistro.js");
 const emailOlvidePassword = require("../helpers/emailOlvidePassword.js");
 const bcrypt = require("bcrypt");
 
-// Modelos
-const { ImagenLavadero } = require("../models/Lavadero.js");
-
 const registrarLavadero = async (req, res) => {
 
-  const { nombre, ciudad, direccion, telefono, correo_electronico, contrasena, horario_atencion } = req.body;
+  const { nombre, ciudad, direccion, telefono, correo_electronico, contrasena, hora_apertura, hora_cierre } = req.body;
 
   const token = generarId();
   const salt = await bcrypt.genSalt(10);
@@ -34,8 +31,8 @@ const registrarLavadero = async (req, res) => {
     }
 
     await conexion.execute(
-      `INSERT INTO lavaderos (id_lavadero, nombre, ciudad, direccion, telefono, token, correo_electronico, contrasena, horario_atencion, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, true)`,
-      [id, nombre, ciudad, direccion, telefono, token, correo_electronico, hashedPassword, horario_atencion]
+      `INSERT INTO lavaderos (id_lavadero, nombre, ciudad, direccion, telefono, token, correo_electronico, contrasena, hora_apertura, hora_cierre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, true)`,
+      [id, nombre, ciudad, direccion, telefono, token, correo_electronico, hashedPassword, hora_apertura, hora_cierre]
     );
 
     res.status(200).json({ msg: "Usuario registrado correctamente" });
@@ -129,7 +126,7 @@ const getLavederos = async (req, res) => {
     conexion = await conectarDB();
 
     const [row] = await conexion.execute(
-      `SELECT id_lavadero, nombre, ciudad, direccion, telefono, correo_electronico, horario_atencion FROM lavaderos`
+      `SELECT id_lavadero, nombre, ciudad, direccion, telefono, correo_electronico, hora_apertura, hora_cierre FROM lavaderos`
     );
 
     res.status(200).json({ lavaderos: row });
@@ -155,7 +152,7 @@ const getLavadero = async (req, res) => {
     conexion = await conectarDB();
 
     const [row] = await conexion.execute(
-      `SELECT id_lavadero, nombre, ciudad, direccion, telefono, correo_electronico, horario_atencion FROM lavaderos WHERE id_lavadero = ?`,
+      `SELECT id_lavadero, nombre, ciudad, direccion, telefono, correo_electronico, hora_apertura, hora_cierre FROM lavaderos WHERE id_lavadero = ?`,
       [id_lavadero]
     );
 
@@ -184,7 +181,7 @@ const getLavadero = async (req, res) => {
 
 const modificarLavadero = async (req, res) => {
   const { id_lavadero } = req.params;
-  const { nombre, ciudad, direccion, telefono, correo_electronico, horario_atencion } = req.body;
+  const { nombre, ciudad, direccion, telefono, correo_electronico, hora_apertura, hora_cierre } = req.body;
 
   let conexion;
   try {
@@ -203,8 +200,8 @@ const modificarLavadero = async (req, res) => {
     }
 
     await conexion.execute(
-      `UPDATE lavaderos SET nombre = ?, ciudad = ?, direccion = ?, telefono = ?, correo_electronico = ?, horario_atencion = ? WHERE id_lavadero = ?`,
-      [nombre, ciudad, direccion, telefono, correo_electronico, horario_atencion, id_lavadero]
+      `UPDATE lavaderos SET nombre = ?, ciudad = ?, direccion = ?, telefono = ?, correo_electronico = ?, hora_apertura = ?, hora_cierre = ? WHERE id_lavadero = ?`,
+      [nombre, ciudad, direccion, telefono, correo_electronico, hora_apertura, hora_cierre, id_lavadero]
     );
 
     res.status(200).json({ msg: "Lavadero modificado correctamente" });

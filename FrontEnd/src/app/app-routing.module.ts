@@ -10,7 +10,6 @@ import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-co
 import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
 import { AuthGuard } from './guard/auth.guard';
 import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
-import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
 import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
 import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
 
