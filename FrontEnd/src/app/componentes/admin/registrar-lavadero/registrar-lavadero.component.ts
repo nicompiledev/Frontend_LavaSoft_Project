@@ -19,7 +19,8 @@ export class RegistrarLavaderoComponent {
       telefono: [''],
       correo_electronico: [''],
       contrasena: [''],
-      horario_atencion: [''],
+      hora_apertura: [''],
+      hora_cierre: ['']
     });
   }
 
@@ -35,7 +36,8 @@ export class RegistrarLavaderoComponent {
     formData.append('telefono', this.lavaderoForm.get('telefono').value);
     formData.append('correo_electronico', this.lavaderoForm.get('correo_electronico').value);
     formData.append('contrasena', this.lavaderoForm.get('contrasena').value);
-    formData.append('horario_atencion', this.lavaderoForm.get('horario_atencion').value);
+    formData.append('hora_apertura', this.lavaderoForm.get('hora_apertura').value);
+    formData.append('hora_cierre', this.lavaderoForm.get('hora_cierre').value);
 
     for (let i = 0; i < this.files.length; i++) {
       formData.append('images', this.files[i]);

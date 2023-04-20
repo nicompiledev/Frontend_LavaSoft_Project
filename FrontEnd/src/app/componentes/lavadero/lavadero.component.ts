@@ -38,11 +38,9 @@ export class LavaderoComponent {
       hora
     }
     this.horarioService.reservar(object)
-    this.actualizarHorario();
   }
 
   actualizarHorario(){
-    //let id_lavadero = '641344c2a4489bbd6bd9e90f';
     let id_lavadero = this.route.snapshot.paramMap.get('id');
     let fecha = '2023-03-20'
     let object = {id_lavadero, fecha}
