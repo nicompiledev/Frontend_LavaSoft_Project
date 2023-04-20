@@ -12,13 +12,12 @@ export class HorarioService {
 
   constructor(private socket: SocketService) {
     this.socket.io.on('horasLibres', (horas: string[]) => {
-      console.log(horas)
+      console.log("horas libres:", horas)
       this.horasDSubject.next(horas);
     })
   }
 
   listarHorario(object: object){
-    console.log(object)
     this.socket.io.emit('actualizarHorario', object);
   }
 
