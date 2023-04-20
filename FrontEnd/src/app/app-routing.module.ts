@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'actualizar-password', component: ActualizarPasswordComponent, canActivate: [AuthGuard]},
   { path: 'reservar/:id', component: LavaderoComponent},
   { path: 'registro-lavadero', component: RegistrarLavaderoComponent},
-  { path: 'imagenes', component: ImagenesComponent} ,
   { path: 'catalogue' ,component:CatalogueComponent}
 ];
 
