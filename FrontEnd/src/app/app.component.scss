@@ -1,15 +1,14 @@
-
-$gris-claro: #D3D3D3 ;
-$blanco: #FFFFFF ;
-$azul-claro: #87CEEB;
-$azul-oscuro: #1E90FF;
-$gris-oscuro: #A9A9A9;
-$verde-claro: #32CD32;
-$Verde-oscuro: #006400;
-$errores:  #FF0000;
-$negro: #000000;
-
+@import "../styles/fonts.scss";
+@import "../styles/variables.scss";
 *{
-  margin: 0;
-  padding: 0;
+  h1 , h2  {
+    font-family: 'Montserrat', sans-serif;
+  }
+  h3 ,h4 , h5 , h6 {
+    font-family: 'Hind Guntur', sans-serif;
+  }
+  p , strong , span {
+    font-family: 'Hind Vadodara', sans-serif;
+  }
 }
+

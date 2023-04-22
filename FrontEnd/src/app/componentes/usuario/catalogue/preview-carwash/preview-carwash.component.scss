@@ -44,5 +44,24 @@ body{
   .data{
       width: 100%;
       height: 125px;
+      position: relative;
+      .container-icons{
+        position: absolute;
+        
+        strong{
+          display: block;
+          margin-block: 20px ;
+        }
+       i{
+        border: solid 2px $gris-claro;
+        border-radius: 20px;
+        margin: 5px;
+       }
+        .icon{
+          padding: 10px 5px 5px 5px;
+          font-size: 20px;
+        }
+
+      }
   }
 }
