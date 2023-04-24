@@ -5,68 +5,6 @@ const emailRegistro = require("../helpers/lavaderos/emailRegistro.js");
 const emailOlvidePassword = require("../helpers/emailOlvidePassword.js");
 const bcrypt = require("bcrypt");
 
-const registrarLavadero = async (req, res) => {
-
-  const { nombre, ciudad, direccion, telefono, correo_electronico, contrasena, hora_apertura, hora_cierre } = req.body;
-
-  const token = generarId();
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(contrasena, salt);
-  const id = await bcrypt.hash(nombre + correo_electronico, salt);
-
-
-  let conexion;
-  try {
-    conexion = await conectarDB();
-
-    // Verificar si el usuario ya existe
-    const [row] = await conexion.execute(
-      `SELECT id_lavadero FROM lavaderos WHERE correo_electronico = ?`,
-      [correo_electronico]
-    );
-
-    if (row.length > 0) {
-      res.status(400).json({ msg: "El usuario ya existe" });
-      return;
-    }
-
-    await conexion.execute(
-      `INSERT INTO lavaderos (id_lavadero, nombre, ciudad, direccion, telefono, token, correo_electronico, contrasena, hora_apertura, hora_cierre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, true)`,
-      [id, nombre, ciudad, direccion, telefono, token, correo_electronico, hashedPassword, hora_apertura, hora_cierre]
-    );
-
-    res.status(200).json({ msg: "Usuario registrado correctamente" });
-
-    // Si la inserción fue exitosa, guardar imagenes:
-    if (!req.files) {
-      res.status(500).send('Hubo un error al subir las imágenes');
-    } else {
-      const imageUrls = req.files.map((file) => file.path);
-      const sql = 'INSERT INTO imagenes_lavaderos (id_lavadero, ruta_imagen) VALUES ?';
-      const values = imageUrls.map((url) => [id, url]);
-
-      await conexion.query(sql, [values], (error, result) => {
-        if (error) {
-          res.status(500).send('Hubo un error al guardar las imágenes en la base de datos');
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ msg: "Hubo un error" });
-  } finally {
-    if (conexion) {
-      try {
-        await conexion.close();
-      } catch (error) {
-        console.log('Error al cerrar la conexión:', error);
-      }
-    }
-  }
-};
-
-
 
 const loguearAdmin = async (req, res) => {
   const { correo_electronico, contrasena } = req.body;
@@ -264,7 +202,6 @@ const eliminarLavadero = async (req, res) => {
 
 module.exports = {
   loguearAdmin,
-  registrarLavadero,
   getLavederos,
   getLavadero,
   modificarLavadero,

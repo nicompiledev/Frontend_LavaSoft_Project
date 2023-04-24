@@ -23,6 +23,8 @@
     "multer-storage-cloudinary": "^4.0.0",
     "mysql2": "^3.1.2",
     "nodemailer": "^6.7.2",
+    "redis": "^3.1.2",
+    "response-time": "^2.3.2",
     "socket.io": "^4.6.1"
   },
   "devDependencies": {
