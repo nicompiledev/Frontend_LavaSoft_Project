@@ -6,18 +6,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AdminService {
 
-  private url = 'http://localhost:4000/api/admins/';
+  private url = 'http://localhost:4000/api/lavaderos/';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
+      'Content-Type': 'multipart/form-data;',
     }),
   };
   constructor(private http: HttpClient) {}
 
 
   registrarLavadero(formData: FormData) {
-    return this.http.post(`${this.url}registrar-lavadero`, formData);
+    return this.http.post(`${this.url}peticion`, formData);
   }
 
   loginAdmin(correo_electronico: string, contasena: string) {

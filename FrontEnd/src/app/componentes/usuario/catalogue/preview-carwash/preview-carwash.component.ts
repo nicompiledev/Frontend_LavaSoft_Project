@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-preview-carwash',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./preview-carwash.component.scss']
 })
 export class PreviewCarwashComponent {
+
+  @Input() lavadero: any;
 
 }
