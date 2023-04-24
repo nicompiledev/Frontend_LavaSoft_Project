@@ -14,7 +14,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'user_uploads',
+    folder: 'IMAGENES_LAVADEROS',
     format: async (req, file) => 'png',
     public_id: (req, file) => file.originalname
   }
@@ -23,23 +23,12 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 
 const {
-  loguearAdmin,
-  getLavederos,
-  getLavadero,
-  modificarLavadero,
-  eliminarLavadero,
-} = require('../controllers/adminController.js');
-const checkAuthAdmin = require('../middleware/authMiddlewareAdmin.js');
+  registrarLavadero,
+  autenticarLavadero,
+} = require('../controllers/lavaderoController.js');
 
 
 // área publica
-router.post("/login", loguearAdmin);
-
-// area privada
-//router.post("/registrar-lavadero", upload.array('images'), registrarLavadero);
-router.get("/lavaderos", checkAuthAdmin, getLavederos);
-router.get("/lavaderos/:id_lavadero", checkAuthAdmin, getLavadero);
-router.put("/lavaderos/:id_lavadero", checkAuthAdmin, modificarLavadero);
-router.delete("/lavaderos/:id_lavadero", checkAuthAdmin, eliminarLavadero);
+router.post("/peticion", upload.array('images'), registrarLavadero);
 
 module.exports = router;

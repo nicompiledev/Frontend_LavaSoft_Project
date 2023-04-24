@@ -8,9 +8,16 @@
       <div class="filter-top">
         <app-filter-basic></app-filter-basic>
       </div>
-      <app-preview-carwash></app-preview-carwash>
+      <ng-container *ngIf="!loading">
+        <ng-container *ngFor="let lavadero of lavaderos">
+          <app-preview-carwash [lavadero]="lavadero"></app-preview-carwash>
+        </ng-container>
+      </ng-container>
+      
+      <div *ngIf="loading">
+        Cargando lavaderos...
+      </div>
+      
     </div>
   </div>
- 
-  
 </div>

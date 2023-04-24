@@ -1,10 +1,12 @@
 const express = require('express');
+const responseTime = require("response-time");
 const dotenv = require('dotenv');
 const cors = require('cors');
 const { conectarMySqlDB, conectarMongoDB } = require('./config/index.js');
 const usuarioRoutes = require('./routes/usuarioRoutes.js');
 const adminRouter = require('./routes/adminRoutes.js');
-const imagenRouter = require('./routes/imagenRoutes.js');
+const lavaderoRouter = require('./routes/lavaderoRoutes.js');
+const anonimoRouter = require('./routes/anonimoRoutes.js');
 const initSockets = require('./socket/sockets.js');
 const socketIO = require('socket.io');
 
@@ -53,6 +55,7 @@ const corsOptions = {
 };
 
 app.use(cors());
+app.use(responseTime());
 app.use(express.json({limit: '50mb'}));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -71,7 +74,8 @@ app.use((error, req, res, next) => {
 
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/admins", adminRouter);
-app.use("/api/imagenes", imagenRouter);
+app.use("/api/lavaderos", lavaderoRouter);
+app.use("/api/anonimo", anonimoRouter);
 
 // Inicio del servidor
 
