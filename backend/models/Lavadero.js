@@ -14,8 +14,17 @@ const LavaderoSchema = new mongoose.Schema({
   estado: { type: Boolean, default: true },
   confirmado: {type: Boolean, default: false,},
   token: { type: String, default: generarId() },
-  imagenes: [{ type: String }] // nuevo campo de matriz de imágenes
+  imagenes: [{ type: String }], // nuevo campo de matriz de imágenes
+  espacios_de_trabajo: { type: Number, required: true },
+  ubicacion: {
+    type: { type: String, default: "Point" },
+    coordinates: [Number],
+    required: true,
+  }
 });
+
+// indexar ubicación
+LavaderoSchema.index({ ubicacion: "2dsphere" });
 
 // pre-save hook
 LavaderoSchema.pre("save", async function (next) {
