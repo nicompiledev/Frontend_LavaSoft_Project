@@ -22,6 +22,12 @@ import { FilterBasicComponent } from './componentes/usuario/catalogue/filter-bas
 import { FilterCompleteComponent } from './componentes/usuario/catalogue/filter-complete/filter-complete.component';
 import { PreviewCarwashComponent } from './componentes/usuario/catalogue/preview-carwash/preview-carwash.component';
 import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
+import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/reserve.component';
+import { InformationComponent } from './componentes/usuario/profile_carwash/information/information.component';
+import { DataProfileComponent } from './componentes/usuario/profile_carwash/data-profile/data-profile.component';
+import { CarruselComponent } from './componentes/usuario/profile_carwash/carrusel/carrusel.component';
+import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
+import { ServicesCarwashComponent } from './componentes/usuario/profile_carwash/services-carwash/services-carwash.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,13 @@ import { CatalogueComponent } from './componentes/views/catalogue/catalogue.comp
     FilterBasicComponent,
     FilterCompleteComponent,
     PreviewCarwashComponent,
-    CatalogueComponent
+    CatalogueComponent,
+    ReserveComponent,
+    InformationComponent,
+    DataProfileComponent,
+    CarruselComponent,
+    ProfileCarwashComponent,
+    ServicesCarwashComponent
   ],
   imports: [
     BrowserModule,
