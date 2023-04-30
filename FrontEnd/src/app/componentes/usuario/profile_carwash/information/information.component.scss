@@ -1,0 +1,45 @@
+
+@import "../../../../../../src/app/app.component.scss";
+
+.container{
+    width: 100%;
+    padding-top: 50px;
+    details{
+        margin: 0 auto;
+        width: 70%;
+        summary{
+            list-style: none;
+            padding: 10px;
+            border-block-end: solid 4px $gris-claro;
+            cursor: pointer;
+            &::before{
+                font-family: "Font Awesome 5 Free"; 
+                font-weight: 900; 
+                content: "\f107";
+                padding-right: 10px;
+            }
+            h4{
+                display: inline;
+            }
+        }
+        .content{
+            display: flex;
+            align-items: center;
+            .data-container{
+                width: 500px;
+
+            }
+            .img-container{
+                width: 500px;
+                height:auto;
+                img{
+                    max-width: 100%;
+                    max-height: 100%;
+                    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+
+                }
+            }
+        }
+
+}
+}

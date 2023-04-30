@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="content">
+      <div class="imgs"  [style.margin-left]="marginleft" [class.paused]="animationPaused" id="slider">
+          <div class="img"><img id="img_1" src="https://www.elcarrocolombiano.com/wp-content/uploads/2023/01/20230110-VENTAS-DE-AUTOS-DE-LUJO-2022-PORTADA.jpg" alt=""></div>
+          <div class="img"> <img id="img_2" src="https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_d71cdaceff82463c893d1d117fc2802d.jpg" alt=""></div>
+          <div class="img"><img id="img_3" src="https://www.elcarrocolombiano.com/wp-content/uploads/2023/01/20230110-VENTAS-DE-AUTOS-DE-LUJO-2022-PORTADA.jpg" alt=""></div>
+          <div class="img"><img id="img_4" src="https://acroadtrip.blob.core.windows.net/catalogo-imagenes/m/RT_V_d71cdaceff82463c893d1d117fc2802d.jpg" alt=""></div>   
+      </div>
+      <div class="buttons">
+          <div class="controlers">
+              <input type="button" value="" (click)="mover('0')" >
+              <input type="button" value="" (click)="mover('-100%')">
+              <input type="button" value="" (click)="mover('-200%')">
+              <input type="button" value="" (click)="mover('-300%')">
+          </div>
+      </div>
+  </div>
+</div>
