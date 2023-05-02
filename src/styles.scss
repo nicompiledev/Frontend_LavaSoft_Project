@@ -2,5 +2,13 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  -webkit-user-drag: none;
+  text-decoration: none;
+  list-style: none;
 }
 
+app-principal{
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+}

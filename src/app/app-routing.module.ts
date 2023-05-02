@@ -15,9 +15,11 @@ import { CatalogueComponent } from './componentes/views/catalogue/catalogue.comp
 import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
 
 import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/reserve.component';
+import { PrincipalComponent } from './componentes/views/principal/principal.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent , canActivate: [AuthGuard]},
+  { path: '', component: PrincipalComponent},
+  { path: 'login', component: LoginComponent , canActivate: [AuthGuard]},
   { path: 'registro', component: RegistrarComponent, canActivate: [AuthGuard] },
   { path: 'confirmar/:token', component: ConfirmarCuentaComponent },
   { path: 'recuperar-contrasena', component: RecuperarContrasenaComponent },

@@ -28,6 +28,10 @@ import { DataProfileComponent } from './componentes/usuario/profile_carwash/data
 import { CarruselComponent } from './componentes/usuario/profile_carwash/carrusel/carrusel.component';
 import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
 import { ServicesCarwashComponent } from './componentes/usuario/profile_carwash/services-carwash/services-carwash.component';
+import { HeaderComponent } from './componentes/principales/header/header.component';
+import { FooterComponent } from './componentes/principales/footer/footer.component';
+import { MainComponent } from './componentes/principales/main/main.component';
+import { PrincipalComponent } from './componentes/views/principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,11 @@ import { ServicesCarwashComponent } from './componentes/usuario/profile_carwash/
     DataProfileComponent,
     CarruselComponent,
     ProfileCarwashComponent,
-    ServicesCarwashComponent
+    ServicesCarwashComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
