@@ -1,3 +1,9 @@
-<app-carrusel></app-carrusel>
-<app-services-carwash></app-services-carwash>
-<app-information></app-information>
+<div class="container">    
+    <app-carrusel></app-carrusel>
+    <app-services-carwash></app-services-carwash>
+    <app-information></app-information>
+    <div *ngIf="active == true" class="modal">
+        <app-reserve></app-reserve>
+    </div>
+</div>
+

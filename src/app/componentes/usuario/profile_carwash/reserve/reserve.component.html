@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container" >
         
   <form action="">
-      <h2>Reservar</h2>
-      <div class="content">
+     <div class="close"> <h2>Reservar</h2>  <input type="button" value="X"  (click)="closeModal()"></div>
+      <div class="content" [ngStyle]="{'margin-left': margin}">
 
           <div class="page"> 
               <div class="input-container">
@@ -72,8 +72,9 @@
       <div class="container-bottom">
           <div><strong>Total:</strong><span>$200.000</span></div> 
           <div class="buttons"> 
-          <input type="button" class="siguiente" value="Siguiente">
-          <input type="button" class="atras" value="atras">
+          <input *ngIf=" page2 ==  true "  (click)="page('back')" type="button" class="atras" value="atras">
+          <input *ngIf=" page2 ==  false " (click)="page('next')" type="button"  class="siguiente" value="Siguiente">
+          <input *ngIf=" page2 ==  true "  (click)="page('end')" type="button"  class="siguiente" value="finalizar">
           </div>    
       </div>
      
