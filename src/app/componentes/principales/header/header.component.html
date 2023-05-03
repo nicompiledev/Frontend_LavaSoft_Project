@@ -6,10 +6,10 @@
   </button>
   <ul class="nav nav-clientes">
     <li>
-      <a>INICIAR SESIÓN</a>
+      <a (click)="openModal(1)">INICIAR SESIÓN</a>
     </li>
     <li>
-      <a class="create" [routerLink]="['/registro']">CREAR CUENTA</a>
+      <a class="create" (click)="openModal(2)">CREAR CUENTA</a>
     </li>
   </ul>
   <ul class="nav">

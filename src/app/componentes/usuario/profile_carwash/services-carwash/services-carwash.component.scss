@@ -6,14 +6,14 @@
   gap: 20px;
   padding-top: 20px;
   .filter-services{
-      width: 70%;
+      width: 900px;
       height: 70px;
       display: flex;
       justify-content: space-around;
       align-items: center;
       border-radius: 10px;
       background-color: $blanco;
-      box-shadow: 0px 5px 15px darkgrey;
+      border: solid $gris-claro;
       margin: auto;
     
       .category {
@@ -53,7 +53,7 @@
   
   }
   .services-container{
-      width: 50%;
+      width: 700px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(3 , 1fr);
@@ -61,12 +61,10 @@
       grid-gap: 20px;
       
       .service{
-          position: relative;
           background-color: $blanco;
           border-radius: 20px;
           padding: 20px;
-          box-shadow: 0px 5px 15px darkgrey;
-          overflow: hidden;
+          border: solid $gris-oscuro;
           &:hover{
               transform: scale(1.05);
           }

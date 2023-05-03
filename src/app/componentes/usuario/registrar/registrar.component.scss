@@ -1,13 +1,4 @@
-// paleta de colores
-$gris-claro: #D3D3D3 ;
-$blanco: #FFFFFF ;
-$azul-claro: #87CEEB;
-$azul-oscuro: #1E90FF;
-$gris-oscuro: #A9A9A9;
-$verde-claro: #32CD32;
-$Verde-oscuro: #006400;
-$errores:  #FF0000;
-$negro: #000000;
+@import "../../../../../src/app/app.component.scss";
 
 @mixin button($width) {
     padding: 11px;
@@ -20,14 +11,6 @@ $negro: #000000;
     border-radius: 20px;
 }  
 
-
-*{
-    margin:0;
-    padding: 0;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    
-}   
-
 body{
     min-height: 100vh;
 }
@@ -38,15 +21,6 @@ body{
     margin: 0px 10px 0px 10px;
 }
 
-.fondo{
-    background-image: url("https://images.pexels.com/photos/325676/pexels-photo-325676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-}
 
 
 
@@ -55,7 +29,7 @@ body{
     max-width: 750px;
     border-radius: 25px;
     background-color: $blanco;
-    padding: 2.3rem;
+    padding: 0.3rem;
 
         .progress-barr{
            

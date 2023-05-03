@@ -1,3 +1,10 @@
-<app-header></app-header>
-<app-main></app-main>
-<app-footer></app-footer>
+
+<div class="container-all">
+    <app-header></app-header>
+    <app-main></app-main>
+    <app-footer></app-footer>
+    <div class="modal-p" *ngIf="activeModal !=  0" (click)="closeModal()">
+        <app-login *ngIf="activeModal == 1"></app-login>
+        <app-registrar *ngIf="activeModal == 2"></app-registrar>
+    </div>    
+</div>
