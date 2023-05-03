@@ -18,7 +18,8 @@ import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
 
 const routes: Routes = [
-  { path: '', component: PrincipalComponent},
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+  { path: 'inicio', component: PrincipalComponent},
   { path: 'login', component: LoginComponent , canActivate: [AuthGuard]},
   { path: 'registro', component: RegistrarComponent, canActivate: [AuthGuard] },
   { path: 'confirmar/:token', component: ConfirmarCuentaComponent },

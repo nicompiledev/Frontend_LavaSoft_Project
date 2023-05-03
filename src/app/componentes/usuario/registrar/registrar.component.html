@@ -1,6 +1,6 @@
 <div class="fondo">
   <div class="container">
-    <div class="progress-bar">
+    <div class="progress-barr">
       <div class="steps" *ngFor="let elemento of elementos">
         <p>{{ elemento.texto }}</p>
         <div class="number" [ngClass]="{'active': elemento.activo}">
@@ -13,7 +13,7 @@
     <div class="form-container">
       <form [formGroup]="usuarioForm">
         <!-- Pagina 1 -->
-        <div class="page movPage" [ngStyle]="{'margin-left': marginLeft}">
+        <div class="pagina movPage" [ngStyle]="{'margin-left': marginLeft}">
           <h4>Informacion principal</h4>
 
           <div class="input-container">
@@ -69,8 +69,7 @@
         </div>
 
         <!-- Pagina 2 -->
-
-        <div class="page">
+        <div class="pagina">
           <h4>Informacion Secundaria</h4>
 
           <div class="input-container">
@@ -96,7 +95,7 @@
 
         <!-- Pagina 3 -->
 
-        <div class="page">
+        <div class="pagina">
           <h4>Contacto</h4>
 
           <div class="input-container">
@@ -133,7 +132,7 @@
 
         <!-- Pagina 4 -->
 
-        <div class="page">
+        <div class="pagina">
           <h4>Contraseña</h4>
 
           <div class="input-container">

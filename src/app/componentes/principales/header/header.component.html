@@ -14,10 +14,10 @@
   </ul>
   <ul class="nav">
     <li>
-      <a [routerLink]="['/']"><span class="hover-underline-animation" [routerLinkActive]="['active']"> INICIO </span></a>
+      <a [routerLink]="['/inicio']"><span class="hover-underline-animation" [routerLinkActive]="['active']"> INICIO </span></a>
     </li>
     <li>
-      <a><span class="hover-underline-animation" [routerLinkActive]="['active']"> LAVADEROS </span></a>
+      <a><span [routerLink]="'/catalogue'" class="hover-underline-animation" [routerLinkActive]="['active']"> LAVADEROS </span></a>
     </li>
     <li>
       <a [routerLink]="'/peticion-empresa'"><span class="hover-underline-animation" [routerLinkActive]="['active']"> EMPRESAS </span></a>

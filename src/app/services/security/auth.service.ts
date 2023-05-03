@@ -15,7 +15,6 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-
   //método que nos permite establecer el token en el almacenamiento local
   //y enviar una señal del BehaviorSubject para establecer su nuevo valor en
   //true para indicar que estamos logueados

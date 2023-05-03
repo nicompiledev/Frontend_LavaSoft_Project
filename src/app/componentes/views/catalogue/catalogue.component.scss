@@ -12,13 +12,13 @@
 .filter-top{
   width: 950px;
 }
-.container{
+.container2{
+  padding-top: 6rem;
   display: flex;
   justify-content: center;
   background-color: #f2f2f2;
   width: 100%;
   min-height: calc(100vh - 30px);
-  padding-top: 15px;
 }
 header{
   background-color: black;
@@ -31,4 +31,5 @@ header{
   padding: 25px 40px;
   background-color: #FFFFFF;
   border-radius: 20px;
+  margin-block: 50px;
 }

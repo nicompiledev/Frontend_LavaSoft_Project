@@ -1,5 +1,5 @@
-<header></header>
-<div class="container">
+<app-header></app-header>
+<div class="container2">
   <div class="lol">
     <div class="filter">
       <app-filter-complete></app-filter-complete>
@@ -13,11 +13,10 @@
           <app-preview-carwash [lavadero]="lavadero"></app-preview-carwash>
         </ng-container>
       </ng-container>
-      
       <div *ngIf="loading">
         Cargando lavaderos...
       </div>
-      
     </div>
   </div>
 </div>
+<app-footer></app-footer>

@@ -32,6 +32,10 @@ import { HeaderComponent } from './componentes/principales/header/header.compone
 import { FooterComponent } from './componentes/principales/footer/footer.component';
 import { MainComponent } from './componentes/principales/main/main.component';
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
+import { TestimonialsComponent } from './componentes/principales/testimonials/testimonials.component';
+import { AboutComponent } from './componentes/principales/about/about.component';
+import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.component';
+import { TeamComponent } from './componentes/principales/team/team.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { PrincipalComponent } from './componentes/views/principal/principal.comp
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    TestimonialsComponent,
+    AboutComponent,
+    SponsorsComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
