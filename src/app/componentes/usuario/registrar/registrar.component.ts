@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuarios.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
   selector: 'app-registrar',
@@ -12,7 +13,8 @@ export class RegistrarComponent implements OnInit {
   usuarioForm: FormGroup;
   mensajeError = '';
 
-  constructor(private servicio: UsuarioService, private router: Router) {
+
+  constructor(private servicio: UsuarioService, private router: Router , private modal_service:ModalReserveService) {
     this.usuarioForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       lastname: new FormControl('', [Validators.required]),
@@ -27,6 +29,10 @@ export class RegistrarComponent implements OnInit {
         Validators.maxLength(10),
       ]),
     });
+  }
+
+  closeModal(stateModal:number , focus:string){
+    this.modal_service.estadomodal(stateModal,focus)
   }
 
   async finalizar() {

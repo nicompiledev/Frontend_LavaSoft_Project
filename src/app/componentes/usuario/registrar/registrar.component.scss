@@ -31,6 +31,23 @@ body{
     background-color: $blanco;
     padding: 0.3rem;
 
+        .container_buttom{
+                input{
+                    width: 40px;
+                    height: 35px;
+                    border-radius: 20px;
+                    border: none;
+                    color: wheat;
+                    cursor: pointer;
+                    position: absolute;
+                    left: 82%;
+                    &:hover{
+                      background: repeating-linear-gradient(312deg, $azul-oscuro , transparent 100px) ;
+                      transform:scale(1.10);
+                    }
+                }
+        }
+
         .progress-barr{
            
             display: flex;

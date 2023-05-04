@@ -18,9 +18,4 @@ export class PrincipalComponent implements OnInit {
     
   }
 
-
-  closeModal(){
-    this.activeModal = 0
-  }
-
 }
