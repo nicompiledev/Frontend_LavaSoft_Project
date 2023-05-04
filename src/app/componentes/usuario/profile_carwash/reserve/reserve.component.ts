@@ -57,7 +57,7 @@ export class ReserveComponent implements OnInit {
     
   }
 
-  closeModal(){
-    this.modal_service.$modal_reserve.emit(false)
+  closeModal(stateModal:boolean , focus:string){
+    this.modal_service.estadomodal(stateModal,focus)
   }
 }

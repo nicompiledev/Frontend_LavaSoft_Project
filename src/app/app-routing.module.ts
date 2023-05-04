@@ -14,6 +14,7 @@ import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavade
 import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
 import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
 
+
 import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/reserve.component';
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
 
@@ -32,7 +33,8 @@ const routes: Routes = [
   { path: 'registro-lavadero', component: RegistrarLavaderoComponent},
   { path: 'catalogue' ,component:CatalogueComponent},
   {path: 'profile_carwash', component: ProfileCarwashComponent},
-  {path: 'reserva' , component: ReserveComponent}
+  {path: 'reserva' , component: ReserveComponent},
+  {path: 'hola' , component: RegistrarComponent}
 
 ];
 

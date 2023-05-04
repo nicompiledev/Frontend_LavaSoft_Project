@@ -9,10 +9,8 @@ import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve
 export class HeaderComponent {
   constructor(private modal_service : ModalReserveService){}
 
-  openModal(modal){
-    this.modal_service.$modal_home.emit(modal)
-    console.log(modal);
-    
+  openModal(stateModal:number , focus:string){
+    this.modal_service.estadomodal(stateModal, focus )
   }
 
   isActive(url: string) {

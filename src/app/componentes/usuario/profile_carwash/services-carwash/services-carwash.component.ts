@@ -12,8 +12,8 @@ export class ServicesCarwashComponent {
 
   }
 
-openModal(){
- this.modal_service.$modal_reserve.emit(true)
+openModal(stateModal:boolean , focus: string){
+ this.modal_service.estadomodal(stateModal ,focus)
 }
 
 

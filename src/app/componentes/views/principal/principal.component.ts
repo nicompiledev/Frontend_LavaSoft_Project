@@ -12,8 +12,9 @@ export class PrincipalComponent implements OnInit {
   activeModal: number = 0;
 
   ngOnInit(): void {
-    this.modal_service.$modal_home.subscribe((valor)=>{this.activeModal = valor})
-    console.log(this.activeModal);
+    this.modal_service.$modal.subscribe(valor => {
+      this.activeModal = valor
+    })
     
   }
 
