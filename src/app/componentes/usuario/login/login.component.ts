@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuarios.service';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMsg: string;
 
-  constructor(private fb: FormBuilder, private service: UsuarioService, private router: Router) {}
+  constructor(private fb: FormBuilder, private service: UsuarioService, private router: Router ,private modal_service: ModalReserveService) {}
 
+  closeModal(stateModal:number , focus:string) : void{
+    this.modal_service.estadomodal(stateModal,focus)
+  }
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],

@@ -31,19 +31,33 @@ $negro: #000000;
     position: relative;
         .button_container{
             width: 75px;
-            height: 50px;
+            height: 75px;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
             border-radius: 20px;
             border: none;
-            color: $azul-oscuro;
+            color: #1E90FF;
             font-weight: 600;
             cursor: pointer;
             position: absolute;
-            left: 90%;
+            left: 15px;
             top: -3%;
+            background: white;
             &:hover{
                 color: #FFFFFF;
               background: repeating-linear-gradient(312deg, $azul-oscuro , $azul-claro 100px) ;
               transform:scale(1.10);
+            }
+            &:active{
+                background: repeating-linear-gradient(312deg, $azul-oscuro, $azul-claro 100px) ;
+            }
+
+            i{
+                font-size: 50px;
+                display: block;
+                height: 55px;
             }
         }
 
