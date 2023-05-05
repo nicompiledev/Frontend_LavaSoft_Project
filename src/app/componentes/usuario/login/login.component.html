@@ -10,79 +10,79 @@
       <h2>Bienvenido a Lavasoft</h2>
       <p>Bienvenido de nuevo, que esperas para reservar</p>
     </div>
-
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="inputs">
-        <div class="input-container">
-          <img src="../../../../assets/imgs/correo-electronico.png" alt="" />
-
-          <input
-            class="input_text_form"
-            type="text"
-            placeholder="Correo electronico"
-            formControlName="email"
-          />
-        </div>
-
-        <div class="input-container">
-          <img src="../../../../assets/imgs/llave.png" alt="" />
-
-          <input
-            id="password"
-            class="input_text_form"
-            type="password"
-            placeholder="Contraseña"
-            formControlName="password"
-          />
-        </div>
-
-        <div class="errors">
-          <div
-            *ngIf="
-              loginForm.get('email').errors &&
-              (loginForm.get('email').dirty || loginForm.get('email').touched)
-            "
-          >
-            <div *ngIf="loginForm.get('email').hasError('required')">
-              El email es requerido.
-            </div>
-            <div *ngIf="loginForm.get('email').hasError('email')">
-              El email no es válido.
-            </div>
-          </div>
-
-          <div
-            *ngIf="
-              loginForm.get('password').errors &&
-              (loginForm.get('password').dirty ||
-                loginForm.get('password').touched)
-            "
-          >
-            <div *ngIf="loginForm.get('password').hasError('required')">
-              La contraseña es requerida.
-            </div>
-            <div *ngIf="loginForm.get('password').hasError('minlength')">
-              La contraseña debe tener al menos 6 caracteres.
-            </div>
-          </div>
-          <div *ngIf="errorMsg">{{ errorMsg }}</div>
-        </div>
+    <ng-container *ngIf="viewComponent == false">
+      <div class="back">
+        <div class="buttom_back ps" (click)="Component(true)"><i class="fi fi-sr-question-square"></i> <span></span>Olvidaste tu contraseña</div>
       </div>
-      <input type="button" class="button" type="submit" value="Ingresar" />
-    </form>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="inputs">
+          <div class="input-container">
+            <img src="../../../../assets/imgs/correo-electronico.png" alt="" />
+  
+            <input
+              class="input_text_form"
+              type="text"
+              placeholder="Correo electronico"
+              formControlName="email"
+            />
+          </div>
+  
+          <div class="input-container">
+            <img src="../../../../assets/imgs/llave.png" alt="" />
+  
+            <input
+              id="password"
+              class="input_text_form"
+              type="password"
+              placeholder="Contraseña"
+              formControlName="password"
+            />
+          </div>
+  
+          <div class="errors">
+            <div
+              *ngIf="
+                loginForm.get('email').errors &&
+                (loginForm.get('email').dirty || loginForm.get('email').touched)
+              "
+            >
+              <div *ngIf="loginForm.get('email').hasError('required')">
+                El email es requerido.
+              </div>
+              <div *ngIf="loginForm.get('email').hasError('email')">
+                El email no es válido.
+              </div>
+            </div>
+  
+            <div
+              *ngIf="
+                loginForm.get('password').errors &&
+                (loginForm.get('password').dirty ||
+                  loginForm.get('password').touched)
+              "
+            >
+              <div *ngIf="loginForm.get('password').hasError('required')">
+                La contraseña es requerida.
+              </div>
+              <div *ngIf="loginForm.get('password').hasError('minlength')">
+                La contraseña debe tener al menos 6 caracteres.
+              </div>
+            </div>
+            <div *ngIf="errorMsg">{{ errorMsg }}</div>
+          </div>
+        </div>
+        <input type="button" class="button" type="submit" value="Ingresar" />
+      </form>
+  
+    </ng-container>
 
-    <div class="box">
-      <div class="line"></div>
-      <p>O Continua Con...</p>
-      <div class="line"></div>
-    </div>
-
-    <div class="options">
-      <a href="#"><img src="../../../../assets/imgs/buscar.png" alt="" /></a>
-      <a href="#"><img src="../../../../assets/imgs/manzana.png" alt="" /></a>
-      <a href="#"><img src="../../../../assets/imgs/facebook .png" alt="" /></a>
-    </div>
-
+    <ng-container *ngIf="viewComponent == true">
+      <div class="back">
+        <div class="buttom_back" (click)="Component(false)"><i class="fi fi-br-arrow-small-left"></i> <span></span>Volver al login</div>
+      </div>
+      <app-recuperar-contrasena></app-recuperar-contrasena>
+    </ng-container>
+    
     <div class="invitation">
       <p>
         Únase y sea pionero en una comunidad de conductores que confían en este

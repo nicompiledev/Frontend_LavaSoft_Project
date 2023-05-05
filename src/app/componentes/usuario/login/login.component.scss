@@ -1,23 +1,5 @@
 
-// paleta de colores
-$gris-claro: #D3D3D3 ;
-$blanco: #FFFFFF ;
-$azul-claro: #87CEEB;
-$azul-oscuro: #1E90FF;
-$gris-oscuro: #A9A9A9;
-$verde-claro: #32CD32;
-$Verde-oscuro: #006400;
-$errores:  #FF0000;
-$negro: #000000;
-
-/*
-1. Fondo: Negro (#000000) o Blanco (#FFFFFF)
-2. Texto normal: Negro (#000000) o Gris oscuro (#A9A9A9)
-3. Texto destacado: Azul oscuro (#1E90FF) o Verde oscuro (#006400)
-4. Enlaces: Azul claro (#87CEEB)
-5. Botones: Azul oscuro (#1E90FF) o Verde oscuro (#006400)
-6. Advertencias o errores: Rojo (#FF0000)
-*/
+@import "../../../../../src/app/app.component.scss";
 
 
 .container_login{
@@ -45,13 +27,11 @@ $negro: #000000;
             left: 15px;
             top: -3%;
             background: white;
+            
             &:hover{
                 color: #FFFFFF;
               background: repeating-linear-gradient(312deg, $azul-oscuro , $azul-claro 100px) ;
               transform:scale(1.10);
-            }
-            &:active{
-                background: repeating-linear-gradient(312deg, $azul-oscuro, $azul-claro 100px) ;
             }
 
             i{
@@ -81,6 +61,32 @@ $negro: #000000;
 
 
     
+}
+.ps{
+    width: 190px !important;
+}
+.back{
+    width: 350px;
+    display: flex;
+    justify-content: flex-end;
+    .buttom_back{
+        width: 125px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        color: #1E90FF;
+        border-bottom: solid 1px $blanco;
+       
+        i{
+            display: block;
+            height: 18px;
+        }
+
+        &:hover{
+            border-color: $azul-oscuro;
+        }
+    }
 }
 .icon_login{
     width: 500px;

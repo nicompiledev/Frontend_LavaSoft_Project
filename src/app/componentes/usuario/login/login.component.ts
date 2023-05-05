@@ -12,12 +12,24 @@ import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMsg: string;
+  viewComponent:boolean = false;
 
   constructor(private fb: FormBuilder, private service: UsuarioService, private router: Router ,private modal_service: ModalReserveService) {}
 
   closeModal(stateModal:number , focus:string) : void{
     this.modal_service.estadomodal(stateModal,focus)
   }
+
+  Component(state:boolean){
+    if(state == false){
+      this.viewComponent = state;
+    }
+    else{
+      this.viewComponent = state;
+    }
+  }
+
+
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],

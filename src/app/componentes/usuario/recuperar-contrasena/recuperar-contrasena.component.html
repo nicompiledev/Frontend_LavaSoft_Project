@@ -1,20 +1,26 @@
-
-
-<!-- volver -->
-<div class="row">
-  <div class="col-12">
-    <a routerLink="/" class="btn btn-link">Volver</a>
+<div class="container_form">
+  <div class="text">
+    <h2>Cambiar contraseña</h2>
+    <p> <i class="fi fi-sr-question-square"></i>  Se le enviara un link donde podra modificar su contraseña </p>
   </div>
+    
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="input-container">
+        <img src="../../../../assets/imgs/correo-electronico.png" alt="" />
+
+        <input type="email" class="input" formControlName="email" id="email" placeholder="Ingresa tu correo electrónico">
+
+      </div>
+      <div *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)" class="errors">
+        <div *ngIf="form.get('email').hasError('required')">El correo electrónico es obligatorio</div>
+        <div *ngIf="form.get('email').hasError('email')">Ingresa un correo electrónico válido</div>
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="buttom" [disabled]="!form.valid">Enviar correo electrónico</button>
+    </div>
+  </form>
 </div>
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="email">Correo electrónico</label>
-    <input type="email" class="form-control" formControlName="email" id="email" placeholder="Ingresa tu correo electrónico">
-    <div *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)" class="alert alert-danger">
-      <div *ngIf="form.get('email').hasError('required')">El correo electrónico es obligatorio</div>
-      <div *ngIf="form.get('email').hasError('email')">Ingresa un correo electrónico válido</div>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Enviar correo electrónico</button>
-</form>
