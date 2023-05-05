@@ -37,6 +37,9 @@ import { AboutComponent } from './componentes/principales/about/about.component'
 import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.component';
 import { TeamComponent } from './componentes/principales/team/team.component';
 
+// Libreria  PrimeNG
+import { GalleriaModule } from 'primeng/galleria';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +78,8 @@ import { TeamComponent } from './componentes/principales/team/team.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GalleriaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

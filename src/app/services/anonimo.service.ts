@@ -17,4 +17,8 @@ export class anonimoService {
     return this.http.get(`${this.apiUrl}lavaderos`, this.httpOptions);
   }
 
+  getLavadero(id: string){
+    return this.http.get(`${this.apiUrl}lavadero/${id}`, this.httpOptions);
+  }
+
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import { ActivatedRoute } from '@angular/router';
+import { anonimoService } from 'src/app/services/anonimo.service';
+import { InputService } from 'src/app/services/comunicación/input.service';
 
 @Component({
   selector: 'app-profile-carwash',
@@ -8,10 +10,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile-carwash.component.scss'],
 })
 export class ProfileCarwashComponent implements OnInit {
-  lavadero: any;
+
 
   constructor(
     private route: ActivatedRoute,
+    private anonimoService: anonimoService,
+    private input: InputService,
     private modal_service: ModalReserveService
   ) {}
 
@@ -22,9 +26,11 @@ export class ProfileCarwashComponent implements OnInit {
       this.active = valor;
     });
 
-    this.route.queryParams.subscribe((params) => {
-      this.lavadero = JSON.parse(params['data']);
-      console.log(this.lavadero);
+    // traer id con validaciones
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.anonimoService.getLavadero(id).subscribe((res: any) => {
+      this.input.getImagenes(res.imagenes);
     });
   }
 }

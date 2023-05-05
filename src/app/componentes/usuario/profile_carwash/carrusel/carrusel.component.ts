@@ -1,21 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { InputService } from 'src/app/services/comunicación/input.service';
 
 @Component({
   selector: 'app-carrusel',
   templateUrl: './carrusel.component.html',
   styleUrls: ['./carrusel.component.scss']
 })
-export class CarruselComponent {
+export class CarruselComponent implements OnInit {
 
-  marginleft: string;
-  animationPaused: boolean = false;
-  mover(tamaño: string) {
-    this.marginleft = tamaño;
-    this.animationPaused = true ;
-    setTimeout(() => {
-      this.animationPaused = false
+  images: any[] = [];
+  responsiveOptions = [
+    {
+        breakpoint: '1024px',
+        numVisible: 5
+    },
+    {
+        breakpoint: '768px',
+        numVisible: 3
+    },
+    {
+        breakpoint: '560px',
+        numVisible: 1
+    }
+];
 
-    } ,5000)
+  constructor(private input: InputService) {}
+
+  ngOnInit(): void {
+
+    this.input.$imagenes.subscribe((imagenes) => {
+      this.images = imagenes;
+    });
 
   }
 }
