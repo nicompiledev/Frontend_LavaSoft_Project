@@ -30,6 +30,27 @@ body{
     border-radius: 25px;
     background-color: $blanco;
     padding: 0.3rem;
+    position: relative;
+
+        .container_buttom{
+                input{
+                    width: 75px;
+                    height: 50px;
+                    border-radius: 20px;
+                    border: none;
+                    color: $azul-oscuro;
+                    font-weight: 600;
+                    cursor: pointer;
+                    position: absolute;
+                    left: 90%;
+                    top: -3%;
+                    &:hover{
+                        color: #FFFFFF;
+                      background: repeating-linear-gradient(312deg, $azul-oscuro , $azul-claro 100px) ;
+                      transform:scale(1.10);
+                    }
+                }
+        }
 
         .container_buttom{
                 input{
@@ -190,7 +211,7 @@ h4{
         }
 }
 
-.form-container{
+.form_container{
     width: 100%;
     overflow: hidden;
     form{

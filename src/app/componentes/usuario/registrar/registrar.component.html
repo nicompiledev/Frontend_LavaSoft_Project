@@ -13,7 +13,7 @@
     </div>
     <h2>Bienvenido a LavaSoft</h2>
     <p>Registrate ahora y haz tu reservacion.</p>
-    <div class="form-container">
+    <div class="form_container">
       <form [formGroup]="usuarioForm">
         <!-- Pagina 1 -->
         <div class="pagina movPage" [ngStyle]="{'margin-left': marginLeft}">
@@ -54,18 +54,7 @@
             </div>
           </div>
 
-          <div class="input-container">
-            <img src="../../../../assets/imgs/tarjeta-de-identificacion.png" class="img-diferent" alt="" />
-
-            <input class="input_text_form" type="text" id="cc" placeholder="C.C" />
-
-            <Select>
-              <option value="-1" selected disabled>Tipo</option>
-              <option value="0">C.C</option>
-              <option value="1">C.E</option>
-            </Select>
-          </div>
-
+         
           <div class="button siguiente-page2">
             <button (click)="siguiente('2')">Siguiente</button>
           </div>

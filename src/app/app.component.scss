@@ -10,5 +10,33 @@
   p , strong , span {
     font-family: 'Hind Vadodara', sans-serif;
   }
+  
+}
+
+/* Cambiar scroll-bar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: $gris-claro;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $azul-oscuro;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  /* Boxshadow izquierda */
+  box-shadow: inset 0 0 6px rgba(255, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #de181e;
 }
 
