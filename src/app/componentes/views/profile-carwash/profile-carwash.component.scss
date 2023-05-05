@@ -1,9 +1,10 @@
 @import "../../../../app/app.component.scss";
 
 .container {
+    padding-top: 7rem;
+    padding-bottom: 2rem;
     position: relative;
   }
-  
   .modal {
     position: fixed;
     top: 0;

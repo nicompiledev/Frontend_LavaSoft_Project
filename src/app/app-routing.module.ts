@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'reservar/:id', component: LavaderoComponent},
   { path: 'registro-lavadero', component: RegistrarLavaderoComponent},
   { path: 'catalogue' ,component:CatalogueComponent},
-  {path: 'profile_carwash', component: ProfileCarwashComponent}
+  {path: 'profile_carwash/:id', component: ProfileCarwashComponent}
 ];
 
 @NgModule({

@@ -9,4 +9,8 @@ export class PreviewCarwashComponent {
 
   @Input() lavadero: any;
 
+  stringify(data: any): string {
+    return JSON.stringify(data);
+  }
+
 }
