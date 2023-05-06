@@ -36,6 +36,11 @@ import { TestimonialsComponent } from './componentes/principales/testimonials/te
 import { AboutComponent } from './componentes/principales/about/about.component';
 import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.component';
 import { TeamComponent } from './componentes/principales/team/team.component';
+import { BookingComponent } from './components/booking/booking.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+
+// Libreria  PrimeNG
+import { GalleriaModule } from 'primeng/galleria';
 
 // Libreria  PrimeNG
 import { GalleriaModule } from 'primeng/galleria';
@@ -71,7 +76,9 @@ import { GalleriaModule } from 'primeng/galleria';
     TestimonialsComponent,
     AboutComponent,
     SponsorsComponent,
-    TeamComponent
+    TeamComponent,
+    BookingComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
