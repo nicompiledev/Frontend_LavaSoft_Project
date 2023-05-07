@@ -37,13 +37,6 @@ import { AboutComponent } from './componentes/principales/about/about.component'
 import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.component';
 import { TeamComponent } from './componentes/principales/team/team.component';
 import { BookingComponent } from './components/booking/booking.component';
-import { CarouselComponent } from './components/carousel/carousel.component';
-
-// Libreria  PrimeNG
-import { GalleriaModule } from 'primeng/galleria';
-
-// Libreria  PrimeNG
-import { GalleriaModule } from 'primeng/galleria';
 
 @NgModule({
   declarations: [
@@ -78,7 +71,6 @@ import { GalleriaModule } from 'primeng/galleria';
     SponsorsComponent,
     TeamComponent,
     BookingComponent,
-    CarouselComponent
   ],
   imports: [
     BrowserModule,

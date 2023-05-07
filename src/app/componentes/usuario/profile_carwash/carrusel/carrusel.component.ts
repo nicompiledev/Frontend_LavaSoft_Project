@@ -9,6 +9,9 @@ import { InputService } from 'src/app/services/comunicación/input.service';
 export class CarruselComponent implements OnInit {
 
   images: any[] = [];
+
+  iterations: number = 0;
+  
   responsiveOptions = [
     {
         breakpoint: '1024px',
@@ -23,13 +26,14 @@ export class CarruselComponent implements OnInit {
         numVisible: 1
     }
 ];
-
   constructor(private input: InputService) {}
 
   ngOnInit(): void {
 
     this.input.$imagenes.subscribe((imagenes) => {
       this.images = imagenes;
+      this.images = ['https://seguroserenus.com.co/wp-content/uploads/2022/09/imagen-seguro-carro1-serenus.jpg', 'https://elestimulo.com/wp-content/uploads/2015/07/carro1.jpg', 'https://d2yoo3qu6vrk5d.cloudfront.net/images/20211220091840/carro1.jpg']
+      this.iterations = this.images.length - 2;
     });
 
   }
