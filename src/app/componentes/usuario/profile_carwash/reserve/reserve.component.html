@@ -1,83 +1,122 @@
-<div class="container" >
-        
+<div class="container">
   <form action="">
-     <div class="close"> <h2>Reservar</h2>  <input type="button" value="X"  (click)="closeModal(false , 'reserve')"></div>
-      <div class="content" [ngStyle]="{'margin-left': margin}">
-
-          <div class="page"> 
-              <div class="input-container">
-                  <i class="fa-solid fa-user"></i>
-                  <input class="inputs" id="responsible" type="text" placeholder="Nombre responsable">
-              </div>
-              <div class="input-container">
-                  <i class="fa-solid fa-car"></i>
-                  <select class="inputs">
-                      <option value="" selected disabled>seleciona tu vehiculo</option>
-                      <option value=""></option>
-                     </select>
-              </div>
-              <div class="description">
-                  <strong>Description servicio</strong>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam harum consectetur impedit. Voluptatum rem et recusandae vitae, doloribus veritatis, dicta itaque nesciunt, reiciendis quis excepturi dolorum earum? Perferendis, praesentium expedita.
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit, iusto, ipsum voluptate iste ipsa assumenda amet dignissimos facilis quos repellendus quo temporibus consequuntur ullam mollitia enim ut omnis, veritatis necessitatibus.
-                  </p>
-              </div>
-          </div>
-          <div class="page p2">
-            <h4>Dia de reserva:</h4>
-              <div class="container-date">
-               <ng-container *ngFor="let date of day">
-                 <div class="container-day" (click)="cambiar(date.index)" [ngClass]="{'after-circle': index === date.index}">
-                  <div><span>{{date.day}}</span></div>
-                  <div><span>{{date.date}}</span></div>
-                 </div>
-                </ng-container>
-              </div>
-              <div class="container-time">
-                <div class="container-time-name">
-                  <div class="name">
-                    <h4>Mañana</h4>
-                    <div class="times">
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                    </div>
-
-                  </div>
-                  <div class="name">
-                    <h4>Tarde</h4>
-                    <div class="times">
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                    </div>
-                  </div>
-                  <div class="name">
-                    <h4>Noche</h4>
-                    <div class="times">
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                      <div class="box_time"><span>10:00 Am</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-        
+    <div class="close">
+      <h2>Reservar</h2>
+      <input type="button" value="X" (click)="closeModal(false, 'reserve')" />
+    </div>
+    <div class="content" [ngStyle]="{ 'margin-left': margin }">
+      <div class="page">
+        <div class="input-container">
+          <i class="fa-solid fa-user"></i>
+          <input
+            class="inputs"
+            id="responsible"
+            type="text"
+            placeholder="Nombre responsable"
+          />
+        </div>
+        <div class="input-container">
+          <i class="fa-solid fa-car"></i>
+          <select class="inputs">
+            <option value="" selected disabled>seleciona tu vehiculo</option>
+            <option value=""></option>
+          </select>
+        </div>
+        <div class="description">
+          <strong>Description servicio</strong>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam harum
+            consectetur impedit. Voluptatum rem et recusandae vitae, doloribus
+            veritatis, dicta itaque nesciunt, reiciendis quis excepturi dolorum
+            earum? Perferendis, praesentium expedita. Lorem ipsum, dolor sit
+            amet consectetur adipisicing elit. Reprehenderit, iusto, ipsum
+            voluptate iste ipsa assumenda amet dignissimos facilis quos
+            repellendus quo temporibus consequuntur ullam mollitia enim ut
+            omnis, veritatis necessitatibus.
+          </p>
+        </div>
       </div>
-      <div class="container-bottom">
-          <div><strong>Total:</strong><span>$200.000</span></div> 
-          <div class="buttons"> 
-          <input *ngIf=" page2 ==  true "  (click)="page('back')" type="button" class="atras" value="atras">
-          <input *ngIf=" page2 ==  false " (click)="page('next')" type="button"  class="siguiente" value="Siguiente">
-          <input *ngIf=" page2 ==  true "  (click)="page('end')" type="button"  class="siguiente" value="finalizar">
-          </div>    
+      <div class="page p2">
+        <h4>Dia de reserva:</h4>
+        <div class="booking-container d-flex justify-content-between">
+          <div class="button-container">
+            <button class="arrow-button btn" (click)="scrollPrevious()">
+              ←
+            </button>
+          </div>
+          <div id="container" class="dates-container">
+            <div
+              *ngFor="let date of day"
+              class="dates-list"
+              (click)="cambiar(date.index)"
+              [ngClass]="{'selected': index === date.index}"
+            >
+            <div class="day">{{date.day}}</div>
+            <div class="date">{{date.date}}</div>
+            </div>
+          </div>
+          <div class="button-container">
+            <button class="arrow-button btn" (click)="scrollNext()">→</button>
+          </div>
+        </div>
+        <div class="container-time">
+          <div class="container-time-name">
+            <div class="name">
+              <h4>Mañana</h4>
+              <div class="times">
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+              </div>
+            </div>
+            <div class="name">
+              <h4>Tarde</h4>
+              <div class="times">
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+              </div>
+            </div>
+            <div class="name">
+              <h4>Noche</h4>
+              <div class="times">
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time"><span>10:00 Am</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-     
-
+    </div>
+    <div class="container-bottom">
+      <div><strong>Total:</strong><span>$200.000</span></div>
+      <div class="buttons">
+        <input
+          *ngIf="page2 == true"
+          (click)="page('back')"
+          type="button"
+          class="atras"
+          value="atras"
+        />
+        <input
+          *ngIf="page2 == false"
+          (click)="page('next')"
+          type="button"
+          class="siguiente"
+          value="Siguiente"
+        />
+        <input
+          *ngIf="page2 == true"
+          (click)="page('end')"
+          type="button"
+          class="siguiente"
+          value="finalizar"
+        />
+      </div>
+    </div>
   </form>
 </div>

@@ -7,7 +7,7 @@
     padding: 20px;
     background-color: $blanco;
     overflow: hidden;
-    .close{
+    .close {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -16,71 +16,123 @@
         border-bottom: 2px solid $gris-claro;
         padding: 5px;
       }
-      input{
+      input {
         width: 40px;
         height: 35px;
         border-radius: 20px;
         border: none;
         color: wheat;
         cursor: pointer;
-        &:hover{
-          background: repeating-linear-gradient(312deg, $azul-oscuro , transparent 100px) ;
-          transform:scale(1.10);
+        &:hover {
+          background: repeating-linear-gradient(
+            312deg,
+            $azul-oscuro,
+            transparent 100px
+          );
+          transform: scale(1.1);
         }
       }
-      
     }
-   
+
     .content {
-        width: 200%;
-        display: flex;
-        transition: margin-left 0.3s ease-in-out;
+      width: 200%;
+      display: flex;
+      transition: margin-left 0.3s ease-in-out;
 
-
-      .p2{
+      .p2 {
         grid-template-columns: 1fr !important;
         grid-template-rows: 25px auto 1.5fr !important;
         gap: 20px;
 
-       .container-date{
-        display: flex;
-        justify-content: space-around;
+        // Distribuir al centro
         align-items: center;
-        text-align: center;
 
-      .container-day{
-        width: 50px;
-        height: 50px;
-        background-color: $blanco;
-        border: 2px solid $gris-claro;
-        border-radius: 100%;
-        cursor:pointer;
-      }
-      .after-circle{
-        border-color: $azul-oscuro;
-      }
-       }
-        .container-time{
-          
-        .container-time-name{
+        .booking-container {
           display: flex;
-          justify-content: space-around;
-          .name{
-            width: 100px;
-            text-align: center;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
 
-            .times{
-              .box_time{
+          .arrow-button {
+            background-color: $azul-oscuro;
+            color: white;
+            width: 40px;
+            border: none;
+            cursor: pointer;
+            height: 40px;
+            display: flex;
+            padding: 0;
+            font-size: 20px;
+            align-items: center;
+            flex-shrink: 0;
+            font-weight: bold;
+            border-radius: 50%;
+            margin-bottom: 5px;
+            justify-content: center;
+            text-decoration: none;
+          }
+        }
 
-                border:  1px solid $gris-claro;
-                margin-block:10px ;
-                border-radius: 10px;
+        .dates-container {
+          display: flex;
+          overflow-x: hidden;
+          overflow-y: hidden;
+          align-items: center;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+          border-radius: 5px;
+          padding: 3px 5px;
+          border: 1px solid #d3d3d361;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          -ms-border-radius: 5px;
+          -o-border-radius: 5px;
+
+          .dates-list {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            flex-direction: column;
+            border: 2px solid $gris-claro;
+            border-radius: 40%;
+            cursor: pointer;
+            &:hover {
+              border: $azul-oscuro 2px solid;
+              color: $azul-oscuro;
+              background-color: $blanco;
+            }
+
+            &.selected {
+              font-weight: bold;
+              color: $blanco;
+              background-color: $azul-oscuro;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        .container-time {
+          .container-time-name {
+            display: flex;
+            justify-content: space-around;
+            .name {
+              width: 100px;
+              text-align: center;
+
+              .times {
+                .box_time {
+                  border: 1px solid $gris-claro;
+                  margin-block: 10px;
+                  border-radius: 10px;
+                }
               }
             }
           }
         }
-      }
-        
       }
       .page {
         width: 100%;
@@ -89,7 +141,6 @@
         display: grid;
         grid-template-columns: 0.5fr 0.5fr;
         grid-template-rows: repeat(3, minmax(50px, auto));
-     
 
         .date-container::after {
           content: "fecha de reserva";
@@ -153,7 +204,7 @@
           border: 2px solid $gris-claro;
           padding: 5px;
           border-radius: 5px;
-          width:100%;
+          width: 100%;
           color: $gris-claro;
           grid-column: 1 / -1;
           grid-row: 2 / 4;
@@ -164,11 +215,11 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      strong{
+      strong {
         margin-right: 10px;
       }
       .buttons {
-        input{
+        input {
           margin: 5px;
         }
         .siguiente {
@@ -195,4 +246,12 @@
       }
     }
   }
+}
+
+.button-container {
+  display: flex;
+  padding: 5px;
+  z-index: 2;
+  background: inherit;
+  align-items: flex-end;
 }

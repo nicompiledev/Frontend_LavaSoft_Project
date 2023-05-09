@@ -15,18 +15,19 @@ export class ReserveComponent implements OnInit {
   day: any[] = [] ;
   index: number = 0;
 
+  constructor(private modal_service: ModalReserveService){}
+
   ngOnInit(): void {
- 
     let today =  new Date();
-    for( let i = 0 ; i <= 6 ; i++ ) {
+    for( let i = 0 ; i <= 7 ; i++ ) {
       let date = new Date(today);
       date.setDate(today.getDate() + i)
       this.day.push({index: i, day: this.days[date.getDay()] , date: date.getDate()})
     }
     console.log(this.day);
   }
+
   ngAfterViewInit(): void {
- 
   }page(e): void {
     switch (e) {
       case 'next':
@@ -45,16 +46,17 @@ export class ReserveComponent implements OnInit {
     }
   }
 
-
-  
-  
-
-  cambiar(index): void {
+  cambiar(index: number): void {
     this.index = index;
   }
-  constructor(private modal_service: ModalReserveService){
 
-    
+  scrollPrevious() {
+    const container = document.getElementById('container');
+    container.scrollBy({ left: -80, behavior: 'smooth' });
+  }
+  scrollNext() {
+    const container = document.getElementById('container');
+    container.scrollBy({ left: 80, behavior: 'smooth' });
   }
 
   closeModal(stateModal:boolean , focus:string){

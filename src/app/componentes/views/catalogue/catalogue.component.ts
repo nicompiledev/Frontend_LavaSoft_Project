@@ -23,8 +23,7 @@ export class CatalogueComponent {
 
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.anonimoService.getLavaderos().subscribe((res) => {
-      console.log(res)
+    this.anonimoService.getLavaderos(1).subscribe((res) => {
       this.lavaderos = res
       this.loading = false;
     })

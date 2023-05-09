@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private modal_service : ModalReserveService){}
+  constructor(private modal_service : ModalReserveService, public loaderService: LoaderService) { }
 
   openModal(stateModal:number , focus:string){
     this.modal_service.estadomodal(stateModal, focus )

@@ -9,7 +9,9 @@ body{
 }
 .container-cards{
   width: 100%;
-
+  &:hover{
+    cursor: pointer;
+  }
 }
 .container{
   overflow: hidden;

@@ -36,7 +36,7 @@ import { TestimonialsComponent } from './componentes/principales/testimonials/te
 import { AboutComponent } from './componentes/principales/about/about.component';
 import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.component';
 import { TeamComponent } from './componentes/principales/team/team.component';
-import { BookingComponent } from './components/booking/booking.component';
+import { LoadersComponent } from './componentes/principales/loaders/loaders.component';
 
 @NgModule({
   declarations: [
@@ -70,15 +70,14 @@ import { BookingComponent } from './components/booking/booking.component';
     AboutComponent,
     SponsorsComponent,
     TeamComponent,
-    BookingComponent,
+    LoadersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    GalleriaModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

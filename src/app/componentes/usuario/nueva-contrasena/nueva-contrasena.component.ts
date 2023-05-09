@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   FormGroup,
   FormBuilder,
@@ -14,22 +14,24 @@ import { UsuarioService } from '../../../services/usuarios.service';
   styleUrls: ['./nueva-contrasena.component.scss'],
 })
 export class NuevaContrasenaComponent {
-  usuarioForm: FormGroup = this.formBuilder.group(
-    {
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPass: ['', [Validators.required, Validators.minLength(8)]],
-    },
-    { validators: this.passwordMatchValidator }
-  );
+
+  usuarioForm: FormGroup;
 
   mensajeError = '';
 
   constructor(
+    private formBuilder: FormBuilder,
     private service: UsuarioService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
-  ) {}
+    private router: Router,
+  ) {
 
+    this.usuarioForm = this.formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPass: ['', [Validators.required, Validators.minLength(8)]],
+    }, { validator: this.passwordMatchValidator });
+
+  }
 
   onSubmit() {
     if (this.usuarioForm.valid) {
@@ -37,7 +39,7 @@ export class NuevaContrasenaComponent {
       const password = this.usuarioForm.value.password;
       this.service.nuevoPassword(token, password).subscribe(
         (response) => {
-          console.log(response);
+          this.router.navigate(['/login']);
         },
         (error) => {
           console.log(error);
@@ -52,4 +54,5 @@ export class NuevaContrasenaComponent {
     const confirmPass = control.get('confirmPass').value;
     return password === confirmPass ? null : { passwordMatch: true };
   }
+
 }

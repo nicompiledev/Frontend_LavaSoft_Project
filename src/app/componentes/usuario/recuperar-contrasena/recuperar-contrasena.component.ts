@@ -26,6 +26,7 @@ export class RecuperarContrasenaComponent implements OnInit {
       this.usuarioService.enviarCorreo(email).subscribe(
         response => {
           this.enviado = true;
+          console.log(response)
         },
         error => {
           console.error(error);

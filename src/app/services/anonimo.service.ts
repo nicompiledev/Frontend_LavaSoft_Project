@@ -13,8 +13,8 @@ export class anonimoService {
 
   constructor(private http: HttpClient) {}
 
-  getLavaderos(){
-    return this.http.get(`${this.apiUrl}lavaderos`, this.httpOptions);
+  getLavaderos(page: number = 1){
+    return this.http.get(`${this.apiUrl}lavaderos`, { params: { page: page.toString() } });
   }
 
   getLavadero(id: string){

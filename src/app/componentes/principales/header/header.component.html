@@ -1,4 +1,5 @@
 <!-- -------------NAVBAR---------------  -->
+<app-loaders *ngIf="loaderService.isLoading$ | async"></app-loaders>
 <nav class="container-nav">
   <button data-text="Awesome" class="button"  [routerLink]="['/inicio']">
     <span class="actual-text">&nbsp;&nbsp;LavaSoft&nbsp;&nbsp;</span>
