@@ -1,35 +1,20 @@
-
-<div class="container-all">
-
-  <app-header></app-header>
-  <div class="container2">
+<app-header></app-header>
+  <div class="contenedor-principal">
     <div class="lol">
       <div class="filter">
         <app-filter-complete></app-filter-complete>
       </div>
       <div class="cards">
-        <div class="filter-top">
+        <div class="filter-basic">
           <app-filter-basic></app-filter-basic>
         </div>
-        <ng-container *ngIf="!loading">
+        <div *ngIf="!loading" class="carta">
           <ng-container *ngFor="let lavadero of lavaderos">
             <app-preview-carwash [lavadero]="lavadero"></app-preview-carwash>
           </ng-container>
-        </ng-container>
-        <div *ngIf="loading">
-          Cargando lavaderos...
         </div>
+        <div *ngIf="loading" class="carta">Cargando lavaderos...</div>
       </div>
     </div>
   </div>
-  <app-footer></app-footer>
-
-  <div class="modal-p" *ngIf="activeModal !=  0">
-      <ng-container *ngIf="activeModal == 1">
-          <app-login></app-login>
-      </ng-container>
-      <ng-container *ngIf="activeModal == 2">
-          <app-registrar></app-registrar>
-      </ng-container>
-  </div>
-</div>
+<app-footer></app-footer>

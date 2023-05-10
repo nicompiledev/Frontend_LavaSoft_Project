@@ -85,7 +85,7 @@ export class RegistrarComponent implements OnInit {
     { contenido: '1', activo: true, texto: 'Datos.' },
     { contenido: '2', activo: false, texto: 'Nac.' },
     { contenido: '3', activo: false, texto: 'Contac.' },
-    { contenido: '4', activo: false, texto: 'password' },
+    { contenido: '4', activo: false, texto: 'Pass.' },
   ];
 
   ngOnInit(): void {}

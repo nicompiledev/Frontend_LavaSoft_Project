@@ -24,47 +24,52 @@ body{
 
 
 
-.container{
+.contenedor{
     text-align: center;
     max-width: 550px;
-    border-radius: 25px;
+    border-radius: 20px;
     background-color: $blanco;
     padding: 0.3rem;
     position: relative;
 
-        .container_buttom{
+        .contenedor_buttom{
                 input{
-                    width: 75px;
-                    height: 50px;
-                    border-radius: 20px;
+                    width: 72px;
+                    height: 33px;
+                    border-radius: 0px 20px 0px 20px;
                     border: none;
                     color: $azul-oscuro;
-                    font-weight: 600;
+                    background-color: $blanco;
+                    border: 2px solid $gris-claro;
+                    font-weight: bold;
                     cursor: pointer;
                     position: absolute;
-                    left: 90%;
-                    top: -3%;
+                    left: 87%;
+                    top: 0%;
+                    // Grosor letra
+                    font-size: 15px;
+                    line-height: 35px;
+                    text-align: center;
+                    text-transform: uppercase;
                     &:hover{
                         color: #FFFFFF;
-                      background: repeating-linear-gradient(312deg, $azul-oscuro , $azul-claro 100px) ;
-                      transform:scale(1.10);
+                        background: repeating-linear-gradient(312deg, $azul-oscuro , $azul-claro 100px) ;
+
                     }
                 }
         }
         .progress-barr{
-           
             display: flex;
-            margin: 40px 0 ;
+            margin: 30px 40px ;
 
-           
-                .steps:last-child .number::after{
+                .pasos:last-child .number::after{
                     display: none;
                 }
-                .steps:last-child .number::before{
+                .pasos:last-child .number::before{
                     display: none;
                 }
 
-                .steps{
+                .pasos{
                     position: relative;
                     text-align: center;
                     width: 100%;
@@ -74,15 +79,15 @@ body{
                             position: absolute;
                             top: 50%;
                             left: 46%;
+
+                            .active{
+                                display: block;
+                                color:$blanco;
+                            }
                         }
 
-                        .check.active{
-                            display: block;
-                            color:$blanco;
-                        }
                         p{
-                            font-size: 18px;
-                            margin-bottom: 8px;
+                            font-size: 15px;
                             color: $azul-oscuro;
                         }
 
@@ -90,7 +95,7 @@ body{
                             position: relative;
                             width: 25px;
                             height: 25px;
-                            border: 2px solid $gris-oscuro;
+                            border: 1px solid $gris-claro;
                             border-radius: 50%;
                             display: inline-block;
                             font-size: 17px;;
@@ -104,30 +109,26 @@ body{
                                     transform: translateX(-50%);
                                 }
 
-
-
                                 &::after,&::before{
                                     position: absolute;
                                     content: "";
-                                    width: 75px;
-                                    height: 3px;
-                                    bottom: 11px;
-                                    right: -108px;
+                                    width: 78px;
+                                    height: 2px;
+                                    bottom: 10.5px;
+                                    right: -92px;
                                     background: $gris-claro;
-                                }   
-                              
+                                }
                         }
-
-                        .number.active{
+                        .active{
                             border-color: $azul-oscuro;
                             background-color: $azul-claro;
                         }
-
-                      
                     }
-
-                        
                 }
+
+        p{
+            margin-bottom: 0;
+        }
 }
 
 .eyes{
@@ -143,7 +144,7 @@ h4{
     margin: 25px 0;
 }
 
-.progress-bar .steps .number.active:after{
+.progress-bar .pasos .number.active:after{
     background: $azul-oscuro !important;
     animation: mov_line 0.4s linear forwards ;
     transform: scaleX(0);
@@ -185,11 +186,15 @@ h4{
     }
 }
 .slogan{
-    margin-top: 20px;
     color:dimgray;
-    font-size: 13px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
         p{
             font-family: sans-serif;
+            margin-bottom: 1.5rem;
+            max-width: 90%;
         }
 }
 
@@ -206,8 +211,11 @@ h4{
             align-items: center;
             width: 25%;
             transition: margin-left 0.3s ease-in-out;
-           
-           
+            margin-bottom: 35px;
+            h4{
+                margin-bottom: 10px;
+                margin-top: 40px
+            }
         }
         .buttons{
             display: flex;

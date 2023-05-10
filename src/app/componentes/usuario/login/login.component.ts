@@ -63,7 +63,6 @@ export class LoginComponent implements OnInit {
           (response: any) => {
             this.auth.login(response.token);
             this.modal_service.estadomodal(0, 'profile_carwash');
-            this.router.navigate(['/']);
           },
           (error) => {
             console.log(error);

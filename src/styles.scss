@@ -1,3 +1,7 @@
+html{
+  min-height: 100vh;
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -7,7 +11,7 @@
   list-style: none;
 }
 
-app-principal{
+app-principal, app-catalogue, app-profile-carwash{
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;

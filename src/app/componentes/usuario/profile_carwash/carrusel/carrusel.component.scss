@@ -1,13 +1,11 @@
 @import "../../../../../../src/app/app.component.scss";
 
 .padre{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
+    border-radius: 15px;
     .carousel, .slide{
-        height: 500px !important;
-        width: 900px !important;
+        height: 400px !important;
+        width: 700px !important;
         position: relative !important;
         display: flex;
         flex-direction: column;
@@ -17,29 +15,41 @@
         .carousel-indicators{
             position: absolute !important;
             margin: auto;
+
+            & > button{
+                &:hover{
+                    background-color: $azul-oscuro !important;
+                }
+            }
         }
     
         .carousel-inner{
-            height: 500px !important;
-            width: 900px !important;
+            height: 400px !important;
+            width: 700px !important;
     
             .carousel-item{
                 width: 100% !important;
                 height: 100% !important;
-                
                 img{
                     object-fit: cover !important;
                     width:100% !important;
                     height:100% !important;
+                    border-radius: 15px;
                 }
             }
         }
 
-        .carousel-control-prev, .carousel-control-next {
+        .carousel-control-prev {
             &:hover{
-                .carousel-control-prev-icon{
-                    box-shadow: inset 0 0 6px rgba(255, 0, 0, 0.5);
-                }
+                //Sombra en la parte derecha interna
+                background: linear-gradient(to right, rgba(0, 0, 0, 0.239), rgba(0,0,0,0));
+            }
+        }
+
+        .carousel-control-next {
+            &:hover{
+                //Sombra en la parte izquierda interna
+                background: linear-gradient(to left, rgba(0, 0, 0, 0.239), rgba(0,0,0,0));
             }
         }
     }

@@ -1,6 +1,6 @@
 <div class="fondo">
-  <div class="container">
-    <div class="container_buttom">
+  <div class="contenedor">
+    <div class="contenedor_buttom">
       <input
         (click)="closeModal(0, 'profile_carwash')"
         type="button"
@@ -8,7 +8,7 @@
       />
     </div>
     <div class="progress-barr">
-      <div class="steps" *ngFor="let elemento of elementos">
+      <div class="pasos" *ngFor="let elemento of elementos">
         <p>{{ elemento.texto }}</p>
         <div class="number" [ngClass]="{ active: elemento.activo }">
           <span>{{ elemento.contenido }}</span>

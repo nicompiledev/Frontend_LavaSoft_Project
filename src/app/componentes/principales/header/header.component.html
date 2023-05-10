@@ -1,27 +1,66 @@
 <!-- -------------NAVBAR---------------  -->
 <app-loaders *ngIf="loaderService.isLoading$ | async"></app-loaders>
+<div class="modal-p" *ngIf="activeModal != 0">
+  <ng-container *ngIf="activeModal == 1">
+    <app-login></app-login>
+  </ng-container>
+  <ng-container *ngIf="activeModal == 2">
+    <app-registrar></app-registrar>
+  </ng-container>
+</div>
 <nav class="container-nav">
-  <button data-text="Awesome" class="button"  [routerLink]="['/inicio']">
+  <button data-text="Awesome" class="button" [routerLink]="['/inicio']">
     <span class="actual-text">&nbsp;&nbsp;LavaSoft&nbsp;&nbsp;</span>
-    <span class="hover-text" ></span>
+    <span class="hover-text"></span>
   </button>
   <ul class="nav nav-clientes">
-    <li>
-      <a (click)="openModal(1 , 'profile_carwash' )">INICIAR SESIÓN</a>
-    </li>
-    <li>
-      <a class="create" (click)="openModal(2 , 'profile_carwash')">CREAR CUENTA</a>
-    </li>
+    <ng-container *ngIf="!(auth.isLogin | async)">
+      <li>
+        <a (click)="openModal(1, 'profile_carwash')">INICIAR SESIÓN</a>
+      </li>
+      <li>
+        <a class="create" (click)="openModal(2, 'profile_carwash')"
+          >CREAR CUENTA</a
+        >
+      </li>
+    </ng-container>
+    <ng-container *ngIf="(auth.isLogin | async)">
+      <li>
+        <a class="create" (click)="logout()">CERRAR SESIÓN</a>
+      </li>
+    </ng-container>
   </ul>
   <ul class="nav">
     <li>
-      <a [routerLink]="['/inicio']"><span class="hover-underline-animation" [routerLinkActive]="['active']"> INICIO </span></a>
+      <a [routerLink]="['/inicio']"
+        ><span
+          class="hover-underline-animation"
+          [routerLinkActive]="['active']"
+        >
+          INICIO
+        </span></a
+      >
     </li>
     <li>
-      <a><span [routerLink]="'/catalogue'" class="hover-underline-animation" [routerLinkActive]="['active']"> LAVADEROS </span></a>
+      <a
+        ><span
+          [routerLink]="'/catalogue'"
+          class="hover-underline-animation"
+          [routerLinkActive]="['active']"
+        >
+          LAVADEROS
+        </span></a
+      >
     </li>
     <li>
-      <a [routerLink]="'/peticion-empresa'"><span class="hover-underline-animation" [routerLinkActive]="['active']"> EMPRESAS </span></a>
+      <a [routerLink]="'/peticion-empresa'"
+        ><span
+          class="hover-underline-animation"
+          [routerLinkActive]="['active']"
+        >
+          EMPRESAS
+        </span></a
+      >
     </li>
   </ul>
 </nav>

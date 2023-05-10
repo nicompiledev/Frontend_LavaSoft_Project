@@ -1,10 +1,14 @@
 <app-header></app-header>
-<div class="container">
-    <app-carrusel></app-carrusel>
+<section class="contenedor-principal">
+  <div class="contenedor">
+    <div class="carrusel">
+      <app-carrusel></app-carrusel>
+    </div>
     <app-services-carwash></app-services-carwash>
     <app-information></app-information>
     <div *ngIf="active == true" class="modal">
-        <app-reserve></app-reserve>
+      <app-reserve></app-reserve>
     </div>
-</div>
+  </div>
+</section>
 <app-footer></app-footer>
