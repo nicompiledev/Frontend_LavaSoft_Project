@@ -18,7 +18,7 @@ export class HorarioService {
   }
 
   listarHorario(object: object){
-    this.socket.io.emit('actualizarHorario', object);
+    this.socket.io.emit('horasDisponibles', object);
   }
 
   reservar(datos: object){

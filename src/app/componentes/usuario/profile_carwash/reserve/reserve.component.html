@@ -48,7 +48,7 @@
             <div
               *ngFor="let date of day"
               class="dates-list"
-              (click)="cambiar(date.index)"
+              (click)="cambiar(date)"
               [ngClass]="{'selected': index === date.index}"
             >
             <div class="day">{{date.day}}</div>
@@ -62,30 +62,19 @@
         <div class="container-time">
           <div class="container-time-name">
             <div class="name">
-              <h4>Mañana</h4>
+              <h4>AM</h4>
               <div class="times">
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time" *ngFor="let hora of horaAM" (click)="seleccionarHora(hora)">
+                  <span>{{hora}}</span>
+                </div>
               </div>
             </div>
             <div class="name">
-              <h4>Tarde</h4>
+              <h4>PM</h4>
               <div class="times">
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
-              </div>
-            </div>
-            <div class="name">
-              <h4>Noche</h4>
-              <div class="times">
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
-                <div class="box_time"><span>10:00 Am</span></div>
+                <div class="box_time" *ngFor="let hora of horaPM" (click)="seleccionarHora(hora)">
+                  <span>{{hora}}</span>
+                </div>
               </div>
             </div>
           </div>

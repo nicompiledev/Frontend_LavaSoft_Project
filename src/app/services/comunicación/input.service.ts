@@ -14,9 +14,13 @@ export class InputService {
   private servicios = new BehaviorSubject<any[]>([]);
   $servicios = this.servicios.asObservable();
 
+  // Componente Reserva
+  private servioID = new BehaviorSubject<string>('');
+  $servioID = this.servioID.asObservable();
+
   constructor() { }
 
-  getImagenes(imagenes: any[]){
+  setImagenes(imagenes: any[]){
     for (let i = 0; i < imagenes.length; i++) {
       imagenes[i] = {
         ImageSrc: imagenes[i],
@@ -26,7 +30,11 @@ export class InputService {
     this.imagenes.next(imagenes);
   }
 
-  getServicios(servicios: any[]){
+  setServicios(servicios: any[]){
     this.servicios.next(servicios);
+  }
+
+  setServicioID(id: string){
+    this.servioID.next(id);
   }
 }
