@@ -25,9 +25,7 @@
       </li>
     </ng-container>
     <ng-container *ngIf="(auth.isLogin | async)">
-      <li>
-        <a class="create" (click)="logout()">CERRAR SESIÓN</a>
-      </li>
+      <app-perfil-menu></app-perfil-menu>
     </ng-container>
   </ul>
   <ul class="nav">

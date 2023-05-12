@@ -38,6 +38,7 @@ import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.c
 import { TeamComponent } from './componentes/principales/team/team.component';
 import { LoadersComponent } from './componentes/principales/loaders/loaders.component';
 import { CardsPacksComponent } from './componentes/lavaderos/cards-packs/cards-packs.component';
+import { PerfilMenuComponent } from './componentes/usuario/perfil-menu/perfil-menu.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { CardsPacksComponent } from './componentes/lavaderos/cards-packs/cards-p
     TeamComponent,
     LoadersComponent,
     CardsPacksComponent,
+    PerfilMenuComponent,
   ],
   imports: [
     BrowserModule,

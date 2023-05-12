@@ -52,8 +52,4 @@ export class HeaderComponent {
       this.activeModal = valor;
     });
   }
-
-  logout(): void {
-    this.auth.logout();
-  }
 }
