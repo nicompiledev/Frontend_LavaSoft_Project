@@ -15,8 +15,8 @@ export class InputService {
   $servicios = this.servicios.asObservable();
 
   // Componente Reserva
-  private servioID = new BehaviorSubject<string>('');
-  $servioID = this.servioID.asObservable();
+  private servicioID = new BehaviorSubject<string>('');
+  $servicioID = this.servicioID.asObservable();
 
   constructor() { }
 
@@ -34,7 +34,7 @@ export class InputService {
     this.servicios.next(servicios);
   }
 
-  setServicioID(id: string){
-    this.servioID.next(id);
+  setServicioID(servicio: any){
+    this.servicioID.next(servicio);
   }
 }

@@ -25,15 +25,14 @@ export class ReserveComponent implements OnInit {
   horaSeleccionada: string = '';
 
   // ID servicio
-  idServicio: string = '';
+  idServicio: any;
 
   constructor(private modal_service: ModalReserveService,
               private horarioService: HorarioService,
               private route: ActivatedRoute,
               private comunicacion: InputService) {
-                this.comunicacion.$servioID.subscribe(id => {
-                  this.idServicio = id;
-                  console.log(this.idServicio);
+                this.comunicacion.$servicioID.subscribe((servicio: any) => {
+                  this.idServicio = servicio;
                 })
               }
 
@@ -105,7 +104,7 @@ export class ReserveComponent implements OnInit {
   actualizarHorario(fecha: string){
     console.log(fecha);
     let id_lavadero = this.route.snapshot.paramMap.get('id');
-    let object = {id_lavadero, fecha, id_servicio: this.idServicio}
+    let object = {id_lavadero, fecha, id_servicio: this.idServicio._id}
     this.horarioService.listarHorario(object);
   }
 

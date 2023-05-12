@@ -10,11 +10,11 @@ export class ModalReserveService {
 
   constructor() {}
 
-  estadomodal(modal: any, focus: string, id?: string) {
+  estadomodal(modal: any, focus: string, servicio?: any) {
     if (focus == 'profile_carwash') {
       this.$modal.next(modal);
     } else if (focus == 'reserve') {
-      this.$modal_reserve.next({ estado: modal, id: id })
+      this.$modal_reserve.next({ estado: modal, servicio: servicio })
     }
   }
 }

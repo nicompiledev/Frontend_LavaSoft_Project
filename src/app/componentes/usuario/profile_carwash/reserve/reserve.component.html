@@ -25,14 +25,7 @@
         <div class="description">
           <strong>Description servicio</strong>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam harum
-            consectetur impedit. Voluptatum rem et recusandae vitae, doloribus
-            veritatis, dicta itaque nesciunt, reiciendis quis excepturi dolorum
-            earum? Perferendis, praesentium expedita. Lorem ipsum, dolor sit
-            amet consectetur adipisicing elit. Reprehenderit, iusto, ipsum
-            voluptate iste ipsa assumenda amet dignissimos facilis quos
-            repellendus quo temporibus consequuntur ullam mollitia enim ut
-            omnis, veritatis necessitatibus.
+            {{idServicio.detalle}}
           </p>
         </div>
       </div>
@@ -82,7 +75,7 @@
       </div>
     </div>
     <div class="container-bottom">
-      <div><strong>Total:</strong><span>$200.000</span></div>
+      <div><strong>Total:</strong><span>${{idServicio.costo}}</span></div>
       <div class="buttons">
         <input
           *ngIf="page2 == true"

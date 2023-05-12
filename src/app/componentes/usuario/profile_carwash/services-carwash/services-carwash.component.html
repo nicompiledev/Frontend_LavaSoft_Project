@@ -28,7 +28,7 @@ costo 100
 duracion 30
 -->
   <div class="services-container">
-    <div class="service" *ngFor="let servicio of servicios" id="{{servicio._id}}">
+    <div class="service" *ngFor="let servicio of servicios">
       <h4>{{ servicio.nombre }}</h4>
 
       <p>{{ servicio.duracion }} minutos</p>
@@ -41,7 +41,7 @@ duracion 30
         <input
           type="button"
           value="Reservar"
-          (click)="openModal(true, 'reserve', servicio._id)"
+          (click)="openModal(true, 'reserve', servicio)"
         />
       </div>
     </div>

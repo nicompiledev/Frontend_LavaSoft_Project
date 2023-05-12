@@ -20,7 +20,6 @@ export class ProfileCarwashComponent implements OnInit {
     private input: InputService,
     private modal_service: ModalReserveService,
     private loader: LoaderService,
-    private comunicacion: InputService,
   ) {}
 
   active: boolean = false;
@@ -28,7 +27,7 @@ export class ProfileCarwashComponent implements OnInit {
   ngOnInit(): void {
     this.modal_service.$modal_reserve.subscribe((valor) => {
       this.active = valor.estado;
-      this.input.setServicioID(valor.id);
+      this.input.setServicioID(valor.servicio);
     });
     // traer id con validaciones
     const id = this.route.snapshot.paramMap.get('id');
