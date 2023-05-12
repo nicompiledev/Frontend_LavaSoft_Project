@@ -3,19 +3,22 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import { AuthService } from 'src/app/services/security/auth.service';
 
+import { ViewportScroller } from '@angular/common';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.checkScrollPosition();
   }
 
   checkScrollPosition() {
-    if (document.documentElement.scrollTop > 400) {
+    if (this.viewportScroller.getScrollPosition()[1] > 200) {
       document.querySelector('.go-top-container').classList.add('show');
     } else {
       document.querySelector('.go-top-container').classList.remove('show');
@@ -23,7 +26,8 @@ export class HeaderComponent {
   }
 
   subir(){
-    window.scrollTo(0,0);
+    // Subir navegador arriba solamente
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   activeModal: number = 0;
@@ -31,7 +35,8 @@ export class HeaderComponent {
   constructor(
     private modal_service: ModalReserveService,
     public loaderService: LoaderService,
-    public auth: AuthService
+    public auth: AuthService,
+    private viewportScroller: ViewportScroller
   ) {}
 
   openModal(stateModal: number, focus: string) {
