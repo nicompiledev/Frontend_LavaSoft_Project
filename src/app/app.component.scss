@@ -10,7 +10,10 @@
   p , strong , span {
     font-family: 'Hind Vadodara', sans-serif;
   }
-  
+}
+
+html{
+  scroll-behavior: smooth;   /* for smooth scrolling */
 }
 
 /* Cambiar scroll-bar */

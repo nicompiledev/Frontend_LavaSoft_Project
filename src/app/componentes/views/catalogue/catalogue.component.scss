@@ -13,9 +13,21 @@
   z-index: 500;
 }
 
+.filter{
+  padding-top: 15px;
+  min-width: 22%;
+  height: 100%;
+  position: relative;
+
+  app-filter-complete{
+    position: fixed;
+    margin-left: 5px;
+  }
+}
 
 .cards{
   width:78%;
+  min-height: 100%;
   .filter-basic{
 
     background-color: red;
@@ -31,17 +43,7 @@
     padding-right: 40px;
   }
 }
-.filter{
-  padding-top: 15px;
-  min-width: 22%;
-  height: 100%;
-  position: relative;
 
-  app-filter-complete{
-    position: fixed;
-    margin-left: 5px;
-  }
-}
 
 .contenedor-principal{
   padding-top: 5rem;
@@ -60,4 +62,38 @@
   padding: 0px 0px 70px 40px;
   background-color: #FFFFFF;
   min-width: 1200px;
+}
+
+// paginacion
+
+/* Estilos para el número de página */
+.page-number {
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Estilos para los botones de paginación */
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.pagination-button:hover {
+  background-color: #ddd;
+}
+
+
+.filter .fixed {
+  position: absolute;
+  // document.documentElement.clientHeight - 200;
+  top: var(--top);
 }
