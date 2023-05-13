@@ -113,8 +113,8 @@ export class ReserveComponent implements OnInit {
     let object = {
       id_lavadero : parametro,
       id_servicio: this.idServicio._id,
-      hora_agendada : this.fechaSeleccionada,
-      hora: this.horaSeleccionada,
+      fecha : this.fechaSeleccionada,
+      hora_agendada: this.horaSeleccionada,
     }
     this.horarioService.reservar(object);
   }
