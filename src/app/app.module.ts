@@ -38,7 +38,10 @@ import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.c
 import { TeamComponent } from './componentes/principales/team/team.component';
 import { LoadersComponent } from './componentes/principales/loaders/loaders.component';
 import { CardsPacksComponent } from './componentes/lavaderos/cards-packs/cards-packs.component';
+import { BenefitsComponentComponent } from './componentes/lavaderos/benefits-component/benefits-component.component';
+import { WelcomeComponentComponent } from './componentes/lavaderos/welcome-component/welcome-component.component';
 import { PerfilMenuComponent } from './componentes/usuario/perfil-menu/perfil-menu.component';
+import { CompaniesComponent } from './componentes/views/companies/companies.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,10 @@ import { PerfilMenuComponent } from './componentes/usuario/perfil-menu/perfil-me
     TeamComponent,
     LoadersComponent,
     CardsPacksComponent,
+    BenefitsComponentComponent,
+    WelcomeComponentComponent,
     PerfilMenuComponent,
+    CompaniesComponent,
   ],
   imports: [
     BrowserModule,

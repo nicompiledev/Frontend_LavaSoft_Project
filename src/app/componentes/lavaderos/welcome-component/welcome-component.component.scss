@@ -1,0 +1,40 @@
+@import '../../../app.component.scss';
+.container_ {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    .background_video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .content_ {
+      position: absolute;
+      left: 50px;
+      bottom: 0;
+      width: 650px;
+      padding: 20px;
+      color: white;
+      .txt{
+        background: #0000005c;
+        padding: 30px;
+
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      .btn {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+    }
+  }
+  

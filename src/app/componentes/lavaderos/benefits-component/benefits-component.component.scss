@@ -1,0 +1,48 @@
+@import "../../../app.component.scss";
+.container_benefits{
+    width: 100%;
+    height: 550px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $negro-claro;
+
+    svg{
+        transform: rotate(180deg);
+    }   
+    
+
+    .benefits{
+        color: $blanco;
+        width: 1000px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto repeat(2,180px);
+       
+        .title{
+        grid-column: 1/-1;
+        font-weight: 600;
+        text-align: center;
+        }
+        .box{
+            .img_icon{
+                width: 45px;
+                height: 45px;
+                background: white;
+                color: black;
+                border-radius: 100%;
+                position: relative;
+                
+                i{
+                    position: absolute;
+                    top: 10%;
+                    left: 50%;
+                    transform: translate(-50%);
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}

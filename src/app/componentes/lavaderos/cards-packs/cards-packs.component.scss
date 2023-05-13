@@ -1,0 +1,104 @@
+@import '../../../app.component.scss';
+.container_cards{
+    width: 100%;
+    height: 100vh;
+    background-color: $blanco;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    .title{
+        width: 100%;
+        text-align: center;
+        box-shadow: 10px 10px 10px black;
+    }
+
+    .cards{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        width: 900px;
+        grid-gap: 50px;
+        h4{
+            margin: 0;
+        }
+        .card_{
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: $blanco;
+            transition: all 1s;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: -5px 25px 20px cadetblue;
+            cursor: pointer;
+            &:hover{
+                transform: scale(1.05);
+            }
+
+            .text_card{
+                width: 100%;
+                text-align: center;
+                padding: 10px 10px 5px 10px;
+                background: #1e1e1e;
+                color: $blanco;    
+            }
+
+            .icon_container{
+                display: block;
+                margin-block: 15px;
+                width: 100px;
+                height: 100px;
+                background-color: #1e1e1e;
+                position: relative;
+                color: white;
+                border-radius: 100%;
+                i{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                }
+            }
+
+            .options{
+                width: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                margin-block-end: 10px;
+
+                .option{
+                    gap: 10px;
+                    width: 250px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    .icon_option{
+                        justify-content: center;
+                        height: 30px;
+                        background-color: #1e1e1e;
+                        color: #FFFFFF;
+                        border-radius: 100%;
+                        display: flex;
+                        width: 30px;
+                        align-items: center;
+                        i{
+                            height: 20px;
+                        }
+                    }
+                    .text_option{
+                        width: 220px;
+                        font-size: 12px;
+                    }
+                }
+
+            }
+
+          
+        }
+    }
+
+}
