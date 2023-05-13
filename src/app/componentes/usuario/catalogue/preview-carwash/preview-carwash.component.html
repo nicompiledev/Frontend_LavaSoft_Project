@@ -1,7 +1,7 @@
 
-<div class="container-cards" [routerLink]="['/profile_carwash', lavadero._id]">
-    <div class="container">
-        <div class="container-img">
+<div class="contendor-cards" [routerLink]="['/profile_carwash', lavadero._id]">
+    <div class="contendor">
+        <div class="contendor-img">
             <img src="{{lavadero.imagenes[0]}}" alt="">
         </div>
         <div class="data-carwash">
@@ -10,14 +10,14 @@
                 <div id="stars">★★★★★</div>
             </div>
             <div class="data">
-                <div class="ubication-container"><i class="fi fi-sr-marker icon-ubication"></i> <span id="ubication">{{lavadero.ciudad}}</span></div>
-                <div class="container-icons">
-                    <strong>vehiculos que manejamos:</strong>
-                    <i class="fi fi-ss-motorcycle icon"></i>
-                    <i class="fi fi-br-car icon"></i>
-                    <i class="fi fi-bs-truck-pickup icon"></i>
-                    <i class="fi fi-bs-truck-moving icon"></i>
-                    <i class="fi fi-rr-bus icon"></i>
+                <div class="ubication-contendor"><i class="fi fi-sr-marker icono-ubication"></i> <span id="ubication">{{lavadero.ciudad}}</span></div>
+                <div class="contendor-iconos">
+                    <p>Vehiculos que manejamos:</p>
+                    <i class="fi fi-ss-motorcycle icono"></i>
+                    <i class="fi fi-br-car icono"></i>
+                    <i class="fi fi-bs-truck-pickup icono"></i>
+                    <i class="fi fi-bs-truck-moving icono"></i>
+                    <i class="fi fi-rr-bus icono"></i>
                 </div>
             </div>
         </div>

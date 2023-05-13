@@ -24,6 +24,8 @@ export class ReserveComponent implements OnInit {
   horaPM: string[] = [];
   horaSeleccionada: string = '';
 
+  fechaSeleccionada: any;
+
   // ID servicio
   idServicio: any;
 
@@ -54,8 +56,9 @@ export class ReserveComponent implements OnInit {
       this.horaAM = this.horasDisponibles.filter(hora => hora.includes('AM'));
     });
 
-    let formattedDate = today.toISOString().slice(0, 10)
-    this.actualizarHorario(formattedDate);
+    this.fechaSeleccionada = today.toISOString().slice(0, 10);
+
+    this.actualizarHorario(this.fechaSeleccionada);
   }
 
   ngAfterViewInit(): void {
@@ -69,17 +72,14 @@ export class ReserveComponent implements OnInit {
         this.margin = '0%'
         this.page2 = false;
         break;
-      case 'end':
-        alert('finalizado');
-        break;
-      default:
-        alert('error');
     }
   }
 
   cambiar(index: any): void {
     this.index = index.index;
-    this.actualizarHorario(index.dateISO);
+
+    this.fechaSeleccionada = index.dateISO;
+    this.actualizarHorario(this.fechaSeleccionada);
   }
 
   scrollPrevious() {
@@ -112,7 +112,8 @@ export class ReserveComponent implements OnInit {
     let parametro = this.route.snapshot.paramMap.get('id');
     let object = {
       id_lavadero : parametro,
-      fecha : '2023-03-20',
+      id_servicio: this.idServicio._id,
+      hora_agendada : this.fechaSeleccionada,
       hora: this.horaSeleccionada,
     }
     this.horarioService.reservar(object);

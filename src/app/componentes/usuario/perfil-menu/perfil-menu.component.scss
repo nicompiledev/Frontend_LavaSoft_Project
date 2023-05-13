@@ -9,15 +9,11 @@ img {
   opacity: 0.8;
 }
 
+
 .contenedor {
-  background-color: #ffffffd5;
+  background-color: transparent;
   padding: 0 1rem;
   border-radius: 0.625rem;
-}
-
-.contenedor:hover{
-  background-color: white;
-  opacity: 1;
 }
 
 ul {
@@ -39,7 +35,7 @@ li {
     background-color: white;
     align-items: flex-start;
     transition: all 0.5s ease;
-    width: 15rem;
+    width: 11rem;
     right: -1rem;
     top: 3rem;
     border-radius: 0.325rem;

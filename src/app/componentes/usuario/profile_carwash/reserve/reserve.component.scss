@@ -85,7 +85,6 @@
           -webkit-overflow-scrolling: touch;
           border-radius: 5px;
           padding: 3px 5px;
-          border: 1px solid #d3d3d361;
           -webkit-border-radius: 5px;
           -moz-border-radius: 5px;
           -ms-border-radius: 5px;
@@ -99,7 +98,7 @@
             align-items: center;
             flex-shrink: 0;
             flex-direction: column;
-            border: 2px solid $gris-claro;
+            border: 1px solid $gris-claro;
             border-radius: 40%;
             cursor: pointer;
             &:hover {
@@ -130,6 +129,12 @@
                   border: 1px solid $gris-claro;
                   margin-block: 10px;
                   border-radius: 10px;
+                  cursor: pointer;
+
+                  &.horaSelect{
+                    background: $azul-oscuro;
+                    color: white;
+                  }
                 }
               }
             }

@@ -1,9 +1,8 @@
 
 @import "../../../../../../src/app/app.component.scss";
 
-.container{
+.contendor{
     width: 100%;
-    padding-top: 50px;
     details{
         margin: 0 auto;
         width: 900px;
@@ -25,11 +24,11 @@
         .content{
             display: flex;
             align-items: center;
-            .data-container{
+            .data-contendor{
                 width: 500px;
 
             }
-            .img-container{
+            .img-contendor{
                 width: 500px;
                 height:auto;
                 img{

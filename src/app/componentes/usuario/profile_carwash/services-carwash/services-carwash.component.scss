@@ -1,5 +1,5 @@
 @import "../../../../../../src/app/app.component.scss";
-.container{
+.contenedor{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -13,20 +13,24 @@
       align-items: center;
       border-radius: 10px;
       background-color: $blanco;
-      border: solid $gris-claro;
+      border: 1px solid $gris-claro;
       margin: auto;
+
+      h4{
+        margin:0;
+      }
     
-      .category {
+      .categoria {
           position: relative;
           display: flex;
-          border-radius: 0.5rem;
+          border-radius: 10px;
           background-color: #EEE;
           box-sizing: border-box;
           box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
           padding: 0.25rem;
           width: 70%;
           font-size: 14px;
-              .category-container {
+              .categoria-contenedor {
               flex: 1 1 auto;
               text-align: center;
                      .name {
@@ -34,7 +38,7 @@
                       cursor: pointer;
                       align-items: center;
                       justify-content: center;
-                      border-radius: 0.5rem;
+                      border-radius: 10px;
                       border: none;
                       padding: .5rem 0;
                       color: rgba(51, 65, 85, 1);
@@ -45,14 +49,13 @@
                   }
                   input:checked + .name {
                       background-color: #fff;
-                      font-weight: 600;
                     }
               }
         }
      
   
   }
-  .services-container{
+  .services-contenedor{
       width: 700px;
       margin: 0 auto;
       display: grid;
@@ -62,9 +65,9 @@
       
       .service{
           background-color: $blanco;
-          border-radius: 20px;
+          border-radius: 10px;
           padding: 20px;
-          border: solid $gris-oscuro;
+          border: 1px solid $gris-claro;
           &:hover{
               transform: scale(1.05);
           }
@@ -79,7 +82,7 @@
               height: 80px;
               border-radius: 50%;
               text-align: center;
-              background-color: #87CEEB;
+              background-color: $azul-oscuro;
               margin: auto;
               margin-block: 11px;
 
@@ -95,14 +98,13 @@
               justify-content: space-between;
               input{
                   color: #1E90FF;
-                  border-radius: 20px;
+                  border-radius: 10px;
                   background-color: $blanco;
-                  border: 2px solid $gris-claro;
+                  border: 1px solid $azul-oscuro;
                   padding: 5px;
-                  font-weight: 600;
                   cursor: pointer;
                   &:hover{
-                      background-color: $azul-claro;
+                      background-color: $azul-oscuro;
                       color: $blanco;
                       
                   }

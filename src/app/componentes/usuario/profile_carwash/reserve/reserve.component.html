@@ -57,7 +57,7 @@
             <div class="name">
               <h4>AM</h4>
               <div class="times">
-                <div class="box_time" *ngFor="let hora of horaAM" (click)="seleccionarHora(hora)">
+                <div class="box_time" *ngFor="let hora of horaAM" (click)="seleccionarHora(hora)" [ngClass]="{'horaSelect': horaSeleccionada === hora}">
                   <span>{{hora}}</span>
                 </div>
               </div>
@@ -65,7 +65,7 @@
             <div class="name">
               <h4>PM</h4>
               <div class="times">
-                <div class="box_time" *ngFor="let hora of horaPM" (click)="seleccionarHora(hora)">
+                <div class="box_time" *ngFor="let hora of horaPM" (click)="seleccionarHora(hora)" [ngClass]="{'horaSelect': horaSeleccionada === hora}">
                   <span>{{hora}}</span>
                 </div>
               </div>
@@ -93,7 +93,7 @@
         />
         <input
           *ngIf="page2 == true"
-          (click)="page('end')"
+          (click)="reservar()"
           type="button"
           class="siguiente"
           value="finalizar"

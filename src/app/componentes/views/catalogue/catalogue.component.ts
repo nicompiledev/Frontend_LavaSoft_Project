@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { anonimoService } from 'src/app/services/anonimo.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs/operators';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-catalogue',
@@ -40,7 +41,8 @@ export class CatalogueComponent {
 
   constructor(
     private anonimoService: anonimoService,
-    private loader: LoaderService
+    private loader: LoaderService,
+    private viewportScroller: ViewportScroller
   ) {
   }
 
@@ -66,6 +68,7 @@ export class CatalogueComponent {
   }
 
   paginacion() {
+    this.subirVentana()
     this.loader.showLoader();
     this.anonimoService
       .getLavaderos(this.page)
@@ -84,6 +87,10 @@ export class CatalogueComponent {
       });
   }
 
+
+  subirVentana(){
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
 
   
 }
