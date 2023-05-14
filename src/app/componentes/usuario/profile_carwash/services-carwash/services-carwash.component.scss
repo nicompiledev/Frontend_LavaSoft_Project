@@ -64,6 +64,9 @@
       grid-gap: 20px;
       
       .service{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
           background-color: $blanco;
           border-radius: 10px;
           padding: 20px;
@@ -71,27 +74,25 @@
           &:hover{
               transform: scale(1.05);
           }
+          
+          .name_service{
+            h4{
+                content: "";
+                background: aquamarine;
+                border-radius: 100%;
+                padding: 8px;
+            
+           
+          }
+        }
+
+     
 
           h4{
               border-width: 20px;
               border-block-end: solid 2px $gris-oscuro ;
-              padding-block-end: 10px ;
           }
-          .icon-service{
-              width: 80px;
-              height: 80px;
-              border-radius: 50%;
-              text-align: center;
-              background-color: $azul-oscuro;
-              margin: auto;
-              margin-block: 11px;
-
-              .icon{
-                  color: $blanco;
-                  font-size:50px;
-                  padding-top: 15px;
-              }
-          }
+  
           .cost{
               display: flex;
               align-items: center;

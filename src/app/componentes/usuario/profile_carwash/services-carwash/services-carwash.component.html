@@ -22,22 +22,19 @@
     </div>
   </div>
   <!--
-nombre "Servicio 1"
-detalle "Detalle del servicio 1"
-costo 100
-duracion 30
+
 -->
   <div class="services-contenedor">
     <div class="service" *ngFor="let servicio of servicios">
-      <h4>{{ servicio.nombre }}</h4>
-
-      <p>{{ servicio.duracion }} minutos</p>
-
-      <div class="icon-service">
-        <i class="fa-solid fa-file-invoice icon"></i>
+      <div class="name_service">
+        <h4><i class="fa-solid fa-car-side"></i> {{ servicio.nombre }}</h4>
       </div>
+     
+      <p><i class="fa-regular fa-clock"></i> {{ servicio.duracion }} minutos</p>
+
+      
       <div class="cost">
-        <strong>${{ servicio.costo }}</strong>
+        <strong> <i class="fa-solid fa-money-bill-wave"></i> ${{ servicio.costo }}</strong>
         <input
           type="button"
           value="Reservar"

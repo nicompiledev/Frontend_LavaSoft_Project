@@ -1,6 +1,4 @@
 
-@import url(https://fonts.googleapis.com/icon?family=Material+Icons+Outlined);
-
 img {
   max-width: 40px;
   max-height: 40px;
@@ -28,6 +26,7 @@ li {
   list-style-type: none;
   position: relative;
   padding: 0.4rem 0 0.4rem;
+  font-size: 20px;
 
   ul {
     flex-direction: column;
