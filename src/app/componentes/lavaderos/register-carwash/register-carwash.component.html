@@ -1,0 +1,268 @@
+<div class="fondo">
+    <div class="contenedor">
+      <div class="progress-barr">
+        <div class="pasos" *ngFor="let elemento of elementos">
+          <p>{{ elemento.texto }}</p>
+          <div class="number" [ngClass]="{ active: elemento.activo }">
+            <span>{{ elemento.contenido }}</span>
+          </div>
+        </div>
+      </div>
+      <h2>Bienvenido a LavaSoft para Empresas</h2>
+      <p>! Realiza tu peticion ya que esperas¡</p>
+      <div class="form_container">
+        <form (ngSubmit)="onSubmit()" [formGroup]="lavaderoForm">
+          <!-- Pagina 1 -->
+          <div class="pagina movPage" [ngStyle]="{ 'margin-left': marginLeft }">
+            <h4>Informacion principal</h4>
+  
+            <div class="input-container">
+            <i class="fi fi-rs-picpeople"></i>
+  
+              <input type="text"  class="input_text_form" placeholder="Nombre" formControlName="nombre" />
+
+            </div>
+            <div class="errors">
+              <div
+                *ngIf="
+                  lavaderoForm.get('nombre').invalid &&
+                  (lavaderoForm.get('nombre').dirty ||
+                    lavaderoForm.get('nombre').touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="lavaderoForm.get('nombre').hasError('required')">
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+  
+            <div class="input-container">
+                <i class="fi fi-br-square-phone-hangup"></i>
+  
+              <input class="input_text_form" type="text" placeholder="Telefono" formControlName="telefono" />
+
+            </div>
+  
+            <div class="errors">
+              <div
+                *ngIf="
+                  lavaderoForm.get('telefono').invalid &&
+                  (lavaderoForm.get('telefono').dirty ||
+                    lavaderoForm.get('telefono').touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="lavaderoForm.get('telefono').hasError('required')">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="lavaderoForm.get('telefono').hasError('minlength')">
+                    el telefono debe tener al menos 8 numeros                 </div>
+              </div>
+            </div>
+  
+            <div class="button siguiente-page2">
+              <button tabindex="-1" (click)="siguiente('2')">Siguiente</button>
+            </div>
+          </div>
+  
+          <!-- Pagina 2 -->
+          <div class="pagina">
+            <h4>Informacion Secundaria</h4>
+  
+            <div class="input-container">
+                <i class="fi fi-rs-house-building"></i>
+
+                <input class="input_text_form"  type="text" placeholder="Ciudad" formControlName="ciudad" />
+
+            </div>
+  
+            <div class="errors">
+              <div
+                *ngIf="
+                  lavaderoForm.get('ciudad').invalid &&
+                  (lavaderoForm.get('ciudad').dirty ||
+                    lavaderoForm.get('ciudad').touched)
+                "
+                class="text-danger"
+              >
+                <div
+                  *ngIf="lavaderoForm.get('ciudad').hasError('required')"
+                >
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+  
+            <div class="input-container">
+              <i class="fi fi-br-map-marker-home"></i>
+
+              <input class="input_text_form" type="text" placeholder="Direccion" formControlName="direccion" />
+
+            </div>
+  
+            <div class="errors">
+              <div
+                *ngIf="
+                  lavaderoForm.get('direccion').invalid &&
+                  (lavaderoForm.get('direccion').dirty ||
+                    lavaderoForm.get('direccion').touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="lavaderoForm.get('direccion').hasError('required')">
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+  
+            <div class="buttons">
+              <button tabindex="-1" (click)="anterior('2')" class="volver-page1 volver">
+                Atras
+              </button>
+              <button tabindex="-1" (click)="siguiente('3')" class="siguiente-page3 siguiente">
+                Siguiente
+              </button>
+            </div>
+          </div>
+  
+          <!-- Pagina 3 -->
+  
+          <div class="pagina">
+            <h4>Contacto</h4>
+  
+            <div class="input-container">
+                <i class="fi fi-rr-circle-envelope"></i> 
+
+                <input class="input_text_form" type="text" placeholder="Correo electrónico" formControlName="correo_electronico" />
+
+            </div>
+  
+            <div class="errors">
+              <div
+                *ngIf="
+                  lavaderoForm.get('correo_electronico').invalid &&
+                  (lavaderoForm.get('correo_electronico').dirty ||
+                    lavaderoForm.get('correo_electronico').touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="lavaderoForm.get('correo_electronico').hasError('required')">
+                  Este campo es requerido
+                </div>
+                <div *ngIf="lavaderoForm.get('correo_electronico').hasError('email')">
+                  El correo electrónico no es válido
+                </div>
+              </div>
+            </div>
+  
+            <div class="input-container">
+              <i class="fi fi-br-lock"></i>  
+              <input class="input_text_form" type="password" id="password" placeholder="Contraseña" formControlName="contrasena" />
+              <div class="eyes">
+                <img src="../../../../assets/imgs/show.png" id="show" alt="" />
+                <img
+                  src="../../../../assets/imgs/oculto.png"
+                  id="noshow"
+                  alt=""
+                />
+              </div>
+            </div>
+  
+            <div class="errors">
+              <div
+                *ngIf="
+                  lavaderoForm.get('contrasena').invalid &&
+                  (lavaderoForm.get('contrasena').dirty || lavaderoForm.get('contrasena').touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="lavaderoForm.get('contrasena').hasError('required')">
+                  Este campo es requerido
+                </div>
+                <div *ngIf="lavaderoForm.get('password').hasError('minlength')">
+                    La contraseña debe tener al menos 8 caracteres
+                  </div>
+              </div>
+            </div>
+  
+            <div class="buttons">
+              <button tabindex="-1" (click)="anterior('3')" class="volver-page2 volver">
+                Atras
+              </button>
+              <button tabindex="-1" (click)="siguiente('4')" class="siguiente-page4 siguiente">
+                Siguiente
+              </button>
+            </div>
+          </div>
+  
+          <!-- Pagina 4 -->
+  
+          <div class="pagina">
+            <h4>Contraseña</h4>
+  
+            <div class="input-container">
+              <i class="fi fi-br-time-check"></i>  
+
+              <input class="input_text_form" type="text" placeholder="Hora de apertura (HH:MM AM/PM)" formControlName="hora_apertura" />
+
+            </div>
+  
+            <div class="erros">
+              <div
+                *ngIf="
+                  lavaderoForm.get('hora_apertura').invalid &&
+                  (lavaderoForm.get('hora_apertura').dirty ||
+                    lavaderoForm.get('hora_apertura').touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="lavaderoForm.get('hora_apertura').hasError('required')">
+                  Este campo es requerido
+                </div>
+                
+              </div>
+            </div>
+  
+            <div class="input-container">
+                <i class="fi fi-br-time-delete"></i>
+
+                <input class="input_text_form" type="text" placeholder="Hora de cierre (HH:MM AM/PM)" formControlName="hora_cierre" />
+
+            </div>
+  
+            <div class="errors">
+                <div
+                *ngIf="
+                  lavaderoForm.get('hora_cierre').invalid &&
+                  (lavaderoForm.get('hora_cierre').dirty ||
+                    lavaderoForm.get('hora_cierre').touched)
+                "
+                class="text-danger"
+              >
+                <div *ngIf="lavaderoForm.get('hora_cierre').hasError('required')">
+                  Este campo es requerido
+                </div>
+                
+              </div>
+            </div>
+  
+            <div class="buttons">
+              <button tabindex="-1" (click)="anterior('4')" class="volver-page3 volver">
+                Atras
+              </button>
+              <button tabindex="-1" class="fin" (click)="siguiente('5')">Finalizar</button>
+            </div>
+          </div>
+        </form>
+        <div class="slogan">
+          <p>
+            ¡Cuida tu auto con LavaSoft y obtén el mejor servicio de lavado en la
+            ciudad! Regístrate ahora y elige el lavadero más cercano y la hora que
+            mejor se adapte a tus necesidades.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -22,16 +22,52 @@
     border-radius: 8px;
     margin: 5px;
     border: 2px solid $gris-claro;
-        img{
+   
+       i{
+            font-size: 20px;
             width: 2rem;
             height: auto;
             margin: 0px 10px 0px 10px;
             user-select: none;
+            color: $gris-oscuro;
         }
         &:hover{
-            border-color: $negro;
+            border-color: $negro_claro;
         }
+        &:hover i {
+            color: $negro_claro;
+        }     
 }
+input[type="date"] {
+    appearance: none; /* quita el icono */
+    border: none; /* quita el borde */
+    background-color: #fff; /* establece el color de fondo */
+    padding: 0.5em; /* agrega un poco de espacio alrededor del campo de entrada */
+    font-size: 1em; /* establece el tamaño de fuente */
+    color: #333; /* establece el color del texto */
+    /* Agrega cualquier otro estilo personalizado que desees */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: $gris-oscuro;
+    &::-webkit-calendar-picker-indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+
+      }
+      &:hover{
+        color: $negro_claro;
+      }
+      &:focus{
+        outline: none;
+      }
+  }
+  
 select{  
   -webkit-appearance:none; 
   -moz-appearance:none;
@@ -45,11 +81,13 @@ select{
   font-size: 14px;
   color: $gris-oscuro;
   font-weight: 300;
-  line-height: 1.5;
   height: 40px;
   cursor: pointer;
+  
 
- 
+    &:hover{
+        color: $negro_claro;
+    }
         
     &:focus{
         outline: none !important;
@@ -70,15 +108,18 @@ select::-ms-expand {
     text-align: center;
     cursor: pointer;
     button{
+        position: relative;
         background: transparent;
         border: none;
         margin-block: 12px;
         padding: 0;
-        img{
-            width: 25px;
-            height: 25px;
-            cursor:pointer;
-            user-select: none;
+        i{
+            position: absolute;
+            top: 8px;
+            transform: translate(-50%,-50%);
+            color: $blanco;
+            font-size: 20px;
+
         }
        
     }

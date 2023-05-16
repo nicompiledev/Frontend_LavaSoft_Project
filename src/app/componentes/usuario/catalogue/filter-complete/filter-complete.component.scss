@@ -20,21 +20,29 @@
   background-color: #FFFFFF;
   border-radius: 8px;
   border: 2px solid $gris-claro;
-      img{
-          width: 2rem;
+      i{
+          color: $gris-claro;
+          font-size: 20px;
           height: auto;
           margin: 0px 10px 0px 10px;
           user-select: none;
       }
       &:hover{
-          border-color: $negro;
+          border-color: $negro_claro;
+      }
+      &:hover i{
+        color: $negro_claro;
       }
 
       #search{
           padding: 10px;
           border: none;
           width: 90%;
-          color:dimgray;
+          color:$gris-claro;
+          
+          &:hover{
+            color: $negro_claro;
+          }
           
           &:focus{
               outline: none;

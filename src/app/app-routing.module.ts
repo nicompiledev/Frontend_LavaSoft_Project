@@ -16,7 +16,8 @@ import { ProfileCarwashComponent } from './componentes/views/profile-carwash/pro
 
 import { CompaniesComponent } from './componentes/views/companies/companies.component';
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
-
+import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/reserve.component';
+import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent},
@@ -32,7 +33,9 @@ const routes: Routes = [
   { path: 'registro-lavadero', component: RegistrarLavaderoComponent},
   { path: 'catalogue' ,component:CatalogueComponent},
   {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
-  {path: 'empresas' , component:CompaniesComponent}
+  {path: 'empresas' , component:CompaniesComponent},
+  {path:'reserva', component: ReserveComponent},
+  {path:'registro_lavadero' , component: RegisterCarwashComponent}
 ];
 
 @NgModule({

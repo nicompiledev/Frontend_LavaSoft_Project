@@ -42,6 +42,7 @@ import { BenefitsComponentComponent } from './componentes/lavaderos/benefits-com
 import { WelcomeComponentComponent } from './componentes/lavaderos/welcome-component/welcome-component.component';
 import { PerfilMenuComponent } from './componentes/usuario/perfil-menu/perfil-menu.component';
 import { CompaniesComponent } from './componentes/views/companies/companies.component';
+import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { CompaniesComponent } from './componentes/views/companies/companies.comp
     WelcomeComponentComponent,
     PerfilMenuComponent,
     CompaniesComponent,
+    RegisterCarwashComponent,
   ],
   imports: [
     BrowserModule,

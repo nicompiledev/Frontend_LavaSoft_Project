@@ -1,0 +1,268 @@
+@import "../../../../../src/app/app.component.scss";
+
+@mixin button($width) {
+    padding: 11px;
+    width: $width !important;
+    margin: 5px;
+    text-align: center;
+    color: $blanco;
+    background-color: $azul-oscuro;
+    border: none;
+    border-radius: 20px;
+}  
+
+body{
+    min-height: 100vh;
+}
+
+.img-diferent {
+    width: 2.3rem !important;
+    height: auto;
+    margin: 0px 10px 0px 10px;
+}
+
+
+
+
+.contenedor{
+    text-align: center;
+    max-width: 550px;
+    border-radius: 20px;
+    background-color: $blanco;
+    padding: 0.3rem;
+    position: relative;
+
+        .contenedor_buttom{
+                input{
+                    width: 72px;
+                    height: 33px;
+                    border-radius: 0px 20px 0px 20px;
+                    border: none;
+                    color: $azul-oscuro;
+                    background-color: $blanco;
+                    border: 2px solid $gris-claro;
+                    font-weight: bold;
+                    cursor: pointer;
+                    position: absolute;
+                    left: 87%;
+                    top: 0%;
+                    // Grosor letra
+                    font-size: 15px;
+                    line-height: 35px;
+                    text-align: center;
+                    text-transform: uppercase;
+                    &:hover{
+                        color: #FFFFFF;
+                        background: repeating-linear-gradient(312deg, $azul-oscuro , $azul-claro 100px) ;
+
+                    }
+                }
+        }
+        .progress-barr{
+            display: flex;
+            margin: 30px 40px ;
+
+                .pasos:last-child .number::after{
+                    display: none;
+                }
+                .pasos:last-child .number::before{
+                    display: none;
+                }
+
+                .pasos{
+                    position: relative;
+                    text-align: center;
+                    width: 100%;
+
+                        .check{
+                            display: none;
+                            position: absolute;
+                            top: 50%;
+                            left: 46%;
+
+                            .active{
+                                display: block;
+                                color:$blanco;
+                            }
+                        }
+
+                        p{
+                            font-size: 15px;
+                            color: $azul-oscuro;
+                        }
+
+                        .number{
+                            position: relative;
+                            width: 25px;
+                            height: 25px;
+                            border: 1px solid $gris-claro;
+                            border-radius: 50%;
+                            display: inline-block;
+                            font-size: 17px;;
+                            line-height: 25px;
+
+                                span{
+                                    font-size: 17px;
+                                    line-height: 25px;
+                                    position: absolute;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                }
+
+                                &::after,&::before{
+                                    position: absolute;
+                                    content: "";
+                                    width: 78px;
+                                    height: 2px;
+                                    bottom: 10.5px;
+                                    right: -92px;
+                                    background: $gris-claro;
+                                }
+                        }
+                        .active{
+                            border-color: $azul-oscuro;
+                            background-color: $azul-claro;
+                        }
+                    }
+                }
+
+        p{
+            margin-bottom: 0;
+        }
+}
+
+.eyes{
+   display: flex;
+    
+        #show{
+            display: none;
+        }
+}
+
+
+h4{
+    margin: 25px 0;
+}
+
+.progress-bar .pasos .number.active:after{
+    background: $azul-oscuro !important;
+    animation: mov_line 0.4s linear forwards ;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+@keyframes mov_line {
+    100%{
+        
+        transform: scaleX(1);
+    }
+    
+}
+
+
+.input-container{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    margin: 5px;
+    border: 2px solid $gris-claro;
+        i{
+         font-size: 20px;
+         margin-inline: 15px;
+        }
+}
+.input_text_form{
+    padding: 10px;
+    border: none;
+    margin: 5px;
+    width: 90%;
+    color:dimgray;
+    
+    &:focus{
+        outline: none;
+    }
+}
+.slogan{
+    color:dimgray;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        p{
+            font-family: sans-serif;
+            margin-bottom: 1.5rem;
+            max-width: 90%;
+        }
+}
+
+.form_container{
+    width: 100%;
+    overflow: hidden;
+    form{
+        display: flex;
+        width: 400%;
+        .pagina{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 25%;
+            transition: margin-left 0.3s ease-in-out;
+            margin-bottom: 35px;
+            h4{
+                margin-bottom: 10px;
+                margin-top: 40px
+            }
+        }
+        .buttons{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+
+                button{
+                    @include button(40%)
+                }
+        
+        }
+
+        .button{
+            width: 80%;
+
+            button{
+            @include button(80%)
+            }
+        }
+    
+    }
+}
+
+select{
+    // se le pone boreder radius para que se pueda eliminar el borde seguidamente 
+    border-radius: 36px;
+    border: 0px;
+    margin: 5px;
+    width: 90%;
+    padding: 10px;
+    color:dimgray;
+
+    &::-ms-expand{
+        display: none;
+    }
+        
+    &:focus{
+        outline: none !important;
+    }
+}
+.cc{
+    width: 50%;
+}
+.errors{
+    width: 150px;
+    color:$errores;
+    font-size: 10px;
+    align-self: flex-start;
+    margin-left: 60px;
+  
+}

@@ -31,7 +31,7 @@
             transition: all 1s;
             overflow: hidden;
             border-radius: 10px;
-            box-shadow: -5px 25px 20px cadetblue;
+            box-shadow: -5px 25px 20px $negro_claro;
             cursor: pointer;
             &:hover{
                 transform: scale(1.05);
@@ -54,10 +54,12 @@
                 position: relative;
                 color: white;
                 border-radius: 100%;
-                i{
+                img{
+                    width: 3rem;
                     position: absolute;
                     top: 50%;
                     left: 50%;
+                    transform: translate(-50% , -50%);
                 }
             }
 
