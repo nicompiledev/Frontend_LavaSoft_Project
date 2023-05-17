@@ -6,7 +6,7 @@
     margin: 5px;
     text-align: center;
     color: $blanco;
-    background-color: $azul-oscuro;
+    background-color: $negro_claro;
     border: none;
     border-radius: 20px;
 }  
@@ -23,10 +23,23 @@ body{
 
 
 
+.container_all{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:$negro_claro;
 
-.contenedor{
+    svg{
+        position: absolute;
+        top: 0;
+    }
+}
+.container_register{
     text-align: center;
-    max-width: 550px;
+    max-width: 700px;
     border-radius: 20px;
     background-color: $blanco;
     padding: 0.3rem;
@@ -88,40 +101,39 @@ body{
 
                         p{
                             font-size: 15px;
-                            color: $azul-oscuro;
+                            color: $gris-claro;
                         }
 
                         .number{
+                            
                             position: relative;
-                            width: 25px;
-                            height: 25px;
+                            width: 140px;
+                            height: 40px;
                             border: 1px solid $gris-claro;
-                            border-radius: 50%;
+                            border-radius: 10px;
                             display: inline-block;
                             font-size: 17px;;
                             line-height: 25px;
 
                                 span{
+                                  
                                     font-size: 17px;
                                     line-height: 25px;
                                     position: absolute;
+                                    top: 15%;
                                     left: 50%;
                                     transform: translateX(-50%);
+
                                 }
 
-                                &::after,&::before{
-                                    position: absolute;
-                                    content: "";
-                                    width: 78px;
-                                    height: 2px;
-                                    bottom: 10.5px;
-                                    right: -92px;
-                                    background: $gris-claro;
-                                }
+                 
                         }
                         .active{
-                            border-color: $azul-oscuro;
-                            background-color: $azul-claro;
+                            background-color: $negro_claro;
+                        }
+                        .active span{
+                            color: $blanco;
+                            font-weight: 900;
                         }
                     }
                 }
@@ -131,32 +143,13 @@ body{
         }
 }
 
-.eyes{
-   display: flex;
-    
-        #show{
-            display: none;
-        }
-}
 
 
 h4{
     margin: 25px 0;
 }
 
-.progress-bar .pasos .number.active:after{
-    background: $azul-oscuro !important;
-    animation: mov_line 0.4s linear forwards ;
-    transform: scaleX(0);
-    transform-origin: left;
-}
-@keyframes mov_line {
-    100%{
-        
-        transform: scaleX(1);
-    }
-    
-}
+
 
 
 .input-container{
@@ -265,4 +258,11 @@ select{
     align-self: flex-start;
     margin-left: 60px;
   
+}
+.double{
+    width: 80%;
+    display: flex;
+.input_double{
+    width: 50%;
+}
 }

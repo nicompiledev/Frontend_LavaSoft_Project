@@ -1,5 +1,6 @@
-<div class="fondo">
-    <div class="contenedor">
+<div class="container_all">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#d3d3d3" fill-opacity="1" d="M0,256L30,266.7C60,277,120,299,180,261.3C240,224,300,128,360,85.3C420,43,480,53,540,90.7C600,128,660,192,720,197.3C780,203,840,149,900,160C960,171,1020,245,1080,240C1140,235,1200,149,1260,128C1320,107,1380,149,1410,170.7L1440,192L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path></svg>
+    <div class="container_register">
       <div class="progress-barr">
         <div class="pasos" *ngFor="let elemento of elementos">
           <p>{{ elemento.texto }}</p>
@@ -16,25 +17,53 @@
           <div class="pagina movPage" [ngStyle]="{ 'margin-left': marginLeft }">
             <h4>Informacion principal</h4>
   
-            <div class="input-container">
-            <i class="fi fi-rs-picpeople"></i>
-  
-              <input type="text"  class="input_text_form" placeholder="Nombre" formControlName="nombre" />
-
-            </div>
-            <div class="errors">
-              <div
-                *ngIf="
-                  lavaderoForm.get('nombre').invalid &&
-                  (lavaderoForm.get('nombre').dirty ||
-                    lavaderoForm.get('nombre').touched)
-                "
-                class="text-danger"
-              >
-                <div *ngIf="lavaderoForm.get('nombre').hasError('required')">
-                  Este campo es requerido
-                </div>
+            <div class="double">
+              <div>
+                <div class="input-container input_double">
+                  <i class="fi fi-rs-picpeople"></i>
+        
+                    <input type="text"  class="input_text_form" placeholder="Nombre" formControlName="nombre" />
+      
+                  </div>
+                  <div class="errors">
+                    <div
+                      *ngIf="
+                        lavaderoForm.get('nombre').invalid &&
+                        (lavaderoForm.get('nombre').dirty ||
+                          lavaderoForm.get('nombre').touched)
+                      "
+                      class="text-danger"
+                    >
+                      <div *ngIf="lavaderoForm.get('nombre').hasError('required')">
+                        Este campo es requerido
+                      </div>
+                    </div>
+                  </div>
               </div>
+             
+    
+            <div>
+              <div class="input-container input_double">
+                <i class="fa-regular fa-building"></i>
+      
+                  <input type="text"  class="input_text_form" placeholder="Nombre" formControlName="nombre" />
+    
+                </div>
+                <div class="errors">
+                  <div
+                    *ngIf="
+                      lavaderoForm.get('nombre').invalid &&
+                      (lavaderoForm.get('nombre').dirty ||
+                        lavaderoForm.get('nombre').touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="lavaderoForm.get('nombre').hasError('required')">
+                      Este campo es requerido
+                    </div>
+                  </div>
+                </div>
+            </div>
             </div>
   
             <div class="input-container">
@@ -160,12 +189,8 @@
               <i class="fi fi-br-lock"></i>  
               <input class="input_text_form" type="password" id="password" placeholder="Contraseña" formControlName="contrasena" />
               <div class="eyes">
-                <img src="../../../../assets/imgs/show.png" id="show" alt="" />
-                <img
-                  src="../../../../assets/imgs/oculto.png"
-                  id="noshow"
-                  alt=""
-                />
+                <i class="fi fi-ss-eye-crossed"></i>
+                <i class="fi fi-ss-eye"></i>
               </div>
             </div>
   
@@ -254,6 +279,7 @@
               <button tabindex="-1" class="fin" (click)="siguiente('5')">Finalizar</button>
             </div>
           </div>
+           
         </form>
         <div class="slogan">
           <p>
