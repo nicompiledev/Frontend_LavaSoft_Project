@@ -23,27 +23,50 @@ body{
 
 
 
+input[type="file"]::-webkit-file-upload-button{
+    border: none;
+    border-radius: 10px;
+    margin-right: 5px;
+    font-weight: 500;
+
+
+    
+}
+
+
 .container_all{
     width: 100%;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
     background-color:$negro_claro;
 
-    svg{
+    .top{
         position: absolute;
         top: 0;
     }
+    .bottom{
+        position: absolute;
+        top:57.5%;
+    }
+
+    .welcome{
+        color: $negro;
+        width: 400px;
+        text-align: center;
+        z-index: 10;
+
+    }
 }
 .container_register{
+    z-index: 1;
     text-align: center;
-    max-width: 700px;
-    border-radius: 20px;
+    max-width: 600px;
     background-color: $blanco;
     padding: 0.3rem;
     position: relative;
+    box-shadow: 0PX 0PX 10PX 10PX #A1A1A1;
 
         .contenedor_buttom{
                 input{
@@ -73,7 +96,7 @@ body{
         }
         .progress-barr{
             display: flex;
-            margin: 30px 40px ;
+            margin: 25px 40px ;
 
                 .pasos:last-child .number::after{
                     display: none;
@@ -107,7 +130,7 @@ body{
                         .number{
                             
                             position: relative;
-                            width: 140px;
+                            width: 100px;
                             height: 40px;
                             border: 1px solid $gris-claro;
                             border-radius: 10px;
@@ -149,8 +172,29 @@ h4{
     margin: 25px 0;
 }
 
+.long_text{
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+    &:focus{
+        outline: none;
+    }
+}
 
+.types{
+    display: flex;
+    margin: 10px;
+    span{
+        padding-top: 10px;
+        width: 180px;
+        height: 18px;
+        text-align: start;
+    }
 
+    
+}
 
 .input-container{
     width: 80%;
@@ -162,8 +206,14 @@ h4{
     margin: 5px;
     border: 2px solid $gris-claro;
         i{
+            font-weight: 500;
          font-size: 20px;
-         margin-inline: 15px;
+         margin-inline-start: 10px;
+        }
+        span{
+            width: 350px;
+            color: dimgrey;
+            margin-left: 0px;
         }
 }
 .input_text_form{
@@ -178,16 +228,9 @@ h4{
     }
 }
 .slogan{
-    color:dimgray;
+    color:$blanco;
     font-size: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-        p{
-            font-family: sans-serif;
-            margin-bottom: 1.5rem;
-            max-width: 90%;
-        }
+    text-align: center;
 }
 
 .form_container{
@@ -199,15 +242,12 @@ h4{
         .pagina{
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
             width: 25%;
             transition: margin-left 0.3s ease-in-out;
             margin-bottom: 35px;
-            h4{
-                margin-bottom: 10px;
-                margin-top: 40px
-            }
+          
         }
         .buttons{
             display: flex;
@@ -248,21 +288,118 @@ select{
         outline: none !important;
     }
 }
-.cc{
-    width: 50%;
-}
 .errors{
-    width: 150px;
     color:$errores;
     font-size: 10px;
     align-self: flex-start;
     margin-left: 60px;
   
 }
-.double{
+
+.mapa{
     width: 80%;
+    height: 250px;
+    background-color: $negro_claro;
+}
+.double{
+    width: 82%;
     display: flex;
-.input_double{
-    width: 50%;
+    justify-content: space-between;
+
+    .input_double{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        div{
+            width: 95%;
+           
+
+        }
+        .errors{
+            align-self: self-end;
+        }
+    }
+
 }
-}
+
+
+
+
+
+
+.container_ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .radio-tile-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .radio-tile-group .input_container {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin: 0px 10px 10px 10px;
+  }
+  
+  .radio-tile-group .input_container .radio-button {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .radio-tile-group .input_container .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border: 2px solid $gris-claro;
+    border-radius: 5px;
+    padding: 1rem;
+    transition: transform 300ms ease;
+  }
+  
+
+  .radio-tile-group .input_container .icon i {
+    margin: 0;
+    font-weight:900;
+    color: $gris-claro;
+  }
+  
+  .radio-tile-group .input_container .radio-tile-label {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: absolute;
+    color: $gris-claro;
+    top: 39px;
+  }
+  
+  .radio-tile-group .input_container .radio-button:checked + .radio-tile {
+    background-color: $negro_claro;
+    border: 2px solid $negro_claro;
+    color: white;
+    transform: scale(1.1, 1.1);
+  }
+  
+  
+  .radio-tile-group .input_container .radio-button:checked + .radio-tile .icon i {
+    color: white;
+  }
+  
+ 
+  .radio-tile-group .input_container .radio-button:checked + .radio-tile .radio-tile-label {
+    color: $negro_claro;
+  }

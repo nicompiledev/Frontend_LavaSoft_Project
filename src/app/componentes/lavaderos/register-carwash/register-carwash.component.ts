@@ -14,7 +14,9 @@ export class RegisterCarwashComponent {
 
   constructor(private fb: FormBuilder, private admin: AdminService) {
     this.lavaderoForm = this.fb.group({
-      nombre: new FormControl ('' ,[Validators.required]),
+      nit: new FormControl ('' ,[Validators.required, Validators.minLength(8)]),
+      nombrelavadero: new FormControl ('' ,[Validators.required]),
+      descripcion: new FormControl ('' ,[Validators.required , ]),
       ciudad: new FormControl ('' ,[Validators.required]),
       direccion: new FormControl ('' ,[Validators.required]),
       telefono:new FormControl ('', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]),
@@ -25,7 +27,12 @@ export class RegisterCarwashComponent {
       ]),
       hora_apertura: new FormControl ('', [Validators.required ]),
       hora_cierre: new FormControl ('', [Validators.required]),
-      espacios_de_trabajo:new FormControl ('' , [Validators.required])
+      espacios_de_trabajo:new FormControl ('' , [Validators.required]),
+      tipoVehiculo: new FormControl ('' ,[Validators.required]),
+      siNoLoRecojen: new FormControl ('' ,[Validators.required ,Validators.minLength(80)]),
+      imagenes: new FormControl ('' ,[Validators.required]),
+      ubicacion: new FormControl ('' ,[Validators.required]),
+
     });
   }
 
@@ -58,7 +65,28 @@ export class RegisterCarwashComponent {
     );
   }
 
+  
+  //validar soloNumeros
 
+  soloNumeros(event: KeyboardEvent): boolean {
+    const tecla = event.keyCode;
+    if (tecla > 31 && (tecla < 48 || tecla > 57)) {
+      event.preventDefault();
+      return false;
+    }
+    return true;
+  }
+
+  bloquearPegado(event: ClipboardEvent): void {
+    event.preventDefault();
+  }
+
+  validarInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input && input instanceof HTMLInputElement) {
+      input.value = input.value.replace(/\D/g, '');
+    }
+  }
 
 
   // paginacion del formulario
