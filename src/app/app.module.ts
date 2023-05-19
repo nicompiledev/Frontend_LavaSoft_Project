@@ -44,6 +44,9 @@ import { PerfilMenuComponent } from './componentes/usuario/perfil-menu/perfil-me
 import { CompaniesComponent } from './componentes/views/companies/companies.component';
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 
+// Leaflet
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +92,8 @@ import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwa
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LeafletModule
   ],
   providers: [],
   bootstrap: [AppComponent]

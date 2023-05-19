@@ -35,7 +35,9 @@ const routes: Routes = [
   {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
   {path: 'empresas' , component:CompaniesComponent},
   {path:'reserva', component: ReserveComponent},
-  {path:'registro_lavadero' , component: RegisterCarwashComponent}
+  {path:'empresas/registro_lavadero' , component: RegisterCarwashComponent},
+  {path:'perfil_l' , component: PerfilComponent}
+  
 ];
 
 @NgModule({

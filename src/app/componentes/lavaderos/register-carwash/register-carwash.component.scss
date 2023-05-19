@@ -6,9 +6,9 @@
     margin: 5px;
     text-align: center;
     color: $blanco;
-    background-color: $negro_claro;
+    background-color: $azul-oscuro;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
 }  
 
 body{
@@ -28,9 +28,6 @@ input[type="file"]::-webkit-file-upload-button{
     border-radius: 10px;
     margin-right: 5px;
     font-weight: 500;
-
-
-    
 }
 
 
@@ -40,7 +37,7 @@ input[type="file"]::-webkit-file-upload-button{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color:$negro_claro;
+    background-color:$blanco;
 
     .top{
         position: absolute;
@@ -48,7 +45,7 @@ input[type="file"]::-webkit-file-upload-button{
     }
     .bottom{
         position: absolute;
-        top:57.5%;
+        bottom: 0;
     }
 
     .welcome{
@@ -56,6 +53,15 @@ input[type="file"]::-webkit-file-upload-button{
         width: 400px;
         text-align: center;
         z-index: 10;
+        h4{
+            color: $azul-oscuro;
+        }
+
+        .slogan{
+            p{
+                color: $negro;
+            }
+        }
 
     }
 }
@@ -63,6 +69,7 @@ input[type="file"]::-webkit-file-upload-button{
     z-index: 1;
     text-align: center;
     max-width: 600px;
+    border-radius: 10px;
     background-color: $blanco;
     padding: 0.3rem;
     position: relative;
@@ -72,7 +79,7 @@ input[type="file"]::-webkit-file-upload-button{
                 input{
                     width: 72px;
                     height: 33px;
-                    border-radius: 0px 20px 0px 20px;
+                    border-radius: 10px;
                     border: none;
                     color: $azul-oscuro;
                     background-color: $blanco;
@@ -124,7 +131,7 @@ input[type="file"]::-webkit-file-upload-button{
 
                         p{
                             font-size: 15px;
-                            color: $gris-claro;
+                            color: $negro_claro;
                         }
 
                         .number{
@@ -152,7 +159,7 @@ input[type="file"]::-webkit-file-upload-button{
                  
                         }
                         .active{
-                            background-color: $negro_claro;
+                            background-color: $azul-oscuro;
                         }
                         .active span{
                             color: $blanco;
@@ -176,8 +183,8 @@ h4{
     width: 100%;
     height: 56px;
     border: none;
-    border-radius: 5px;
-    padding: 3px;
+    border-radius: 10px;
+    padding: 12px;
     &:focus{
         outline: none;
     }
@@ -202,7 +209,7 @@ h4{
     flex-direction: row;
     align-items: center;
     background-color: #FFFFFF;
-    border-radius: 8px;
+    border-radius: 10px;
     margin: 5px;
     border: 2px solid $gris-claro;
         i{
@@ -242,11 +249,42 @@ h4{
         .pagina{
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: space-around;
             align-items: center;
             width: 25%;
             transition: margin-left 0.3s ease-in-out;
             margin-bottom: 35px;
+
+            .conjunto_inputs{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .input_buscar_direccion{
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                padding-bottom: 4px;
+
+
+                button{
+                    border-radius: 10px;
+                    border: none;
+                    padding: 5px;
+                    background-color: $azul-oscuro;
+                    color: $blanco;
+                }
+                input{
+                    border-radius: 10px;
+                }
+            }
+
+            #map{
+                border-radius: 10px;
+            }
           
         }
         .buttons{
@@ -261,7 +299,7 @@ h4{
         }
 
         .button{
-            width: 80%;
+            width: 100%;
 
             button{
             @include button(80%)
@@ -273,7 +311,7 @@ h4{
 
 select{
     // se le pone boreder radius para que se pueda eliminar el borde seguidamente 
-    border-radius: 36px;
+    border-radius: 10px;
     border: 0px;
     margin: 5px;
     width: 90%;
@@ -365,7 +403,7 @@ select{
     width: 100%;
     height: 100%;
     border: 2px solid $gris-claro;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 1rem;
     transition: transform 300ms ease;
   }
@@ -388,10 +426,10 @@ select{
   }
   
   .radio-tile-group .input_container .radio-button:checked + .radio-tile {
-    background-color: $negro_claro;
-    border: 2px solid $negro_claro;
+    background-color: $verde-claro;
+    border: 2px solid $azul-claro;
     color: white;
-    transform: scale(1.1, 1.1);
+
   }
   
   
@@ -402,4 +440,9 @@ select{
  
   .radio-tile-group .input_container .radio-button:checked + .radio-tile .radio-tile-label {
     color: $negro_claro;
+  }
+  
+
+  h4{
+    margin: 0;
   }
