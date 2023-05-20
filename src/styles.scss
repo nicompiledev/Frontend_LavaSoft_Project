@@ -11,7 +11,7 @@ html{
   list-style: none;
 }
 
-app-principal, app-catalogue, app-profile-carwash{
+app-principal, app-catalogue, app-profile-carwash, app-companies{
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;

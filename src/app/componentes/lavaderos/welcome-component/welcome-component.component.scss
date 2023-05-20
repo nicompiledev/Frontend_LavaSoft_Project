@@ -1,8 +1,13 @@
 @import '../../../app.component.scss';
+.padrecontenedor{
+  padding-top: 5rem;
+  width: 100%;
+}
 .container_ {
     position: relative;
     height: 500px;
     width: 100%;
+
     .background_video {
       position: absolute;
       top: 0;

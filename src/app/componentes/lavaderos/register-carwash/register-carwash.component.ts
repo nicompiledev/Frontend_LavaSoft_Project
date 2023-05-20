@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { HttpClient } from '@angular/common/http';
+import { finalize } from 'rxjs/operators';
 
 import * as mapboxgl from 'mapbox-gl';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 
 @Component({
   selector: 'app-register-carwash',
@@ -14,6 +16,7 @@ export class RegisterCarwashComponent  implements OnInit {
   //el formulario
   lavaderoForm: FormGroup;
   files: File[] = [];
+  selectedVehicles: string[] = [];
 
   //MAP
   map!: mapboxgl.Map;
@@ -21,7 +24,7 @@ export class RegisterCarwashComponent  implements OnInit {
   latitud: string;
   logintud: string;
 
-  constructor(private fb: FormBuilder, private admin: AdminService, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private admin: AdminService, private http: HttpClient, private loader: LoaderService) {
     this.lavaderoForm = this.fb.group({
       nit: new FormControl ('' ,[Validators.required, Validators.minLength(8)]),
       nombreLavadero: new FormControl ('' ,[Validators.required]),
@@ -30,15 +33,11 @@ export class RegisterCarwashComponent  implements OnInit {
       direccion: new FormControl ('' ,[Validators.required]),
       telefono:new FormControl ('', [Validators.required, Validators.minLength(10),Validators.maxLength(10)]),
       correo_electronico: new FormControl ('', [Validators.required, Validators.email]),
-      contrasena: new FormControl ('', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
       hora_apertura: new FormControl ('', [Validators.required ]),
       hora_cierre: new FormControl ('', [Validators.required]),
       espacios_de_trabajo:new FormControl ('' , [Validators.required]),
       tipoVehiculo: new FormControl ('' ,[Validators.required]),
-      siNoLoRecojen: new FormControl ('' ,[Validators.required ,Validators.minLength(80)]),
+      siNoLoRecogen: new FormControl ('' ,[Validators.required ,Validators.minLength(80)]),
       imagenes: new FormControl ('' ,[Validators.required]),
       ubicacion: new FormControl ('' ,[Validators.required]),
       mapa: new FormControl ('')
@@ -92,9 +91,12 @@ export class RegisterCarwashComponent  implements OnInit {
   }
 
   finalizar() {
+    // Loaders 
+    this.loader.showLoader();
+
     const formData = new FormData();
     formData.append('NIT', this.lavaderoForm.get('nit').value);
-    formData.append('nombreLavadero', this.lavaderoForm.get('nombrelavadero').value);
+    formData.append('nombreLavadero', this.lavaderoForm.get('nombreLavadero').value);
     formData.append('descripcion', this.lavaderoForm.get('descripcion').value);
     formData.append('ciudad', this.lavaderoForm.get('ciudad').value);
     formData.append('direccion', this.lavaderoForm.get('direccion').value);
@@ -103,16 +105,25 @@ export class RegisterCarwashComponent  implements OnInit {
     formData.append('hora_apertura', this.lavaderoForm.get('hora_apertura').value);
     formData.append('hora_cierre', this.lavaderoForm.get('hora_cierre').value);
     formData.append('espacios_de_trabajo', this.lavaderoForm.get('espacios_de_trabajo').value);
-    //formData.append('tipoVehiculo', this.lavaderoForm.get('tipoVehiculo').value);
-    formData.append('siNoLoRecojen', this.lavaderoForm.get('siNoLoRecojen').value);
+    formData.append('siNoLoRecogen', this.lavaderoForm.get('siNoLoRecogen').value);
     formData.append('longitud', this.logintud);
     formData.append('latitud', this.latitud);
+
+    for(let i = 0; i < this.selectedVehicles.length; i++){
+      formData.append('tipoVehiculos', this.selectedVehicles[i])
+    }
 
     for (let i = 0; i < this.files.length; i++) {
       formData.append('images', this.files[i]);
     }
 
-    this.admin.registrarLavadero(formData).subscribe(
+    this.admin.registrarLavadero(formData)
+    .pipe(
+      finalize(() => {
+        this.loader.hideLoader();
+      })
+    )
+    .subscribe(
       (response) => {
         console.log('Datos enviados correctamente', response);
       },
@@ -190,18 +201,38 @@ export class RegisterCarwashComponent  implements OnInit {
   // MAPA
 
   searchCity() {
-    this.http
-      .get(
-        'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
-        this.lavaderoForm.get('mapa').value  +
-          '.json?access_token=' +
-          "pk.eyJ1Ijoia2V2aW5vcnRlZ2EiLCJhIjoiY2xocWg3M3I3MDJ4OTNwbmtjaHNqeGg5ZCJ9.r8eGnQZEtKmjEpKtAVoopA"
-      )
-      .subscribe((res: any) => {
-        this.map.flyTo({
-          center: res.features[0].center,
-          zoom: this.zoomInicial,
+    try {
+      this.http
+        .get(
+          'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
+          this.lavaderoForm.get('mapa').value  +
+            '.json?access_token=' +
+            "pk.eyJ1Ijoia2V2aW5vcnRlZ2EiLCJhIjoiY2xocWg3M3I3MDJ4OTNwbmtjaHNqeGg5ZCJ9.r8eGnQZEtKmjEpKtAVoopA"
+        )
+        .subscribe((res: any) => {
+          this.map.flyTo({
+            center: res.features[0].center,
+            zoom: this.zoomInicial,
+          });
         });
-      });
+    } catch (error) {
+      // Manejar el error de alguna manera, por ejemplo, imprimirlo en la consola sin interrumpir la ejecución:
+      console.log('Error en la solicitud a la API de Mapbox:', error);
+    }
+  }  
+
+
+  // Seleccionar vehiculos
+  onCheckboxChange(event: any, vehicle: string) {
+    const checked = event.target.checked;
+    if (checked) {
+      this.selectedVehicles.push(vehicle);
+    } else {
+      const index = this.selectedVehicles.indexOf(vehicle);
+      if (index > -1) {
+        this.selectedVehicles.splice(index, 1);
+      }
+    }
   }
+  
 }

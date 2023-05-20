@@ -9,7 +9,7 @@ export class AdminService {
   private url = 'http://localhost:4000/api/lavaderos/';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'multipart/form-data;',
+      'Content-Type': 'multipart/form-data',
     }),
   };
   constructor(private http: HttpClient) {}

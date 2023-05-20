@@ -1,7 +1,6 @@
 @import "../../../app.component.scss";
 .container_benefits{
     width: 100%;
-    height: 550px;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -13,37 +12,50 @@
     }   
     
 
-    .benefits{
+    .padre-beneficios{
         color: $blanco;
-        width: 1000px;
-        display: grid;
-        gap: 20px;
-        grid-template-columns: repeat(2,1fr);
-        grid-template-rows: auto repeat(2,180px);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
        
         .title{
-        grid-column: 1/-1;
+        width: 90%;
+        padding-top: 50px;
         font-weight: 600;
         text-align: center;
+        
         }
-        .box{
-            .img_icon{
-                width: 45px;
-                height: 45px;
-                background: white;
-                color: black;
-                border-radius: 100%;
-                position: relative;
-                margin-bottom: 10px;
-                
-                i{
-                    position: absolute;
-                    top: 10%;
-                    left: 50%;
-                    transform: translate(-50%);
-                    font-size: 25px;
+        .benefits{
+            width: 1100px;
+            padding-top: 50px;
+            padding-bottom: 70px;
+            display: grid;
+            gap: 40px;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: auto repeat(1,180px);
+
+            .box{
+                .img_icon{
+                    width: 45px;
+                    height: 45px;
+                    background: white;
+                    color: black;
+                    border-radius: 100%;
+                    position: relative;
+                    margin-bottom: 10px;
+                    
+                    i{
+                        position: absolute;
+                        top: 10%;
+                        left: 50%;
+                        transform: translate(-50%);
+                        font-size: 25px;
+                    }
                 }
             }
         }
+        
     }
 }
