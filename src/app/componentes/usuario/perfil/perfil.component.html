@@ -1,17 +1,102 @@
-<div *ngIf="usuario">
+<!-- User Profile -->
+<div class="user-profile py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent text-center">
+            <div class="user">
+              <i class="fi fi-rs-circle-user"></i>
+            </div>
+            <h3>Tohidul Islam Showrav</h3>
+          </div>
+          <div class="card-body">
+            <div class="card card-body shadow-sm bg-primary border-0 mb-3">
+              <h3 class="text-light text-center mb-0">Total Points <div class="text-warning">300</div></h3>
+            </div>
+            <ul class="nav flex-column side-menu">
+              <li class="nav-item">
+                <a href="#" class="nav-link">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Shoping History</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Contact us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="card shadow-sm mb-3">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"> <i class="fi fi-rr-car-bus"></i>Vehiculos disponibles</h3>
+            <button type="button" class="btn btn-success">+</button>
+            <table class="table table table-hover">
+             <thead>
+              <tr class="table-active">
+                <th>Tipo</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>modelo</th>
+                <th>placa</th>
+              </tr>
+             </thead>
+
+             <tbody>
+              <tr>
+                <th><i class="fa-solid fa-motorcycle"></i></th>
+                <td>NKD 125 cc</td>
+                <td>AKT</td>
+                <td>2023</td>
+                <td>PFF 000</td>
+              </tr>
+             </tbody>
+            </table>
+          </div>
+          <div class="card-body pt-0">
+            <table class="table table-bordered">
+
+
+            
+                
+            </table>
+          </div>
+        </div>
+        <div class="card shadow-sm">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="mb-0"><i class="fa fas fa-user-circle"></i>Editar perfil</h3>
+          </div>
+          <div class="card-body pt-0">
+            <form action="#">
+           
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /User Profile -->
+<!-- 
+  <div *ngIf="usuario">
   <p>Nombre: {{ usuario.nombre }}</p>
   <p>Email: {{ usuario.correo_electronico }}</p>
 
-  <!-- Actualizar perfil boton router con parametro usuario._id-->
+  Actualizar perfil boton router con parametro usuario._id
   <button routerLink="/perfil/{usuario._id}">Actualizar perfil</button>
 
-  <!-- Cambiar contraseña boton router con parametro -->
+ Cambiar contraseña boton router con parametro 
   <button routerLink="/actualizar-password">Cambiar contraseña</button>
 
-  <!-- cerrar sesion funcion -->
+  
   <button (click)="cerrarSesion()">Cerrar sesión</button>
-</div>
+  </div>
 
-<div *ngIf="!usuario">
-  <p>No se encontró información del usuario.</p>
-</div>
+  <div *ngIf="!usuario">
+    <p>No se encontró información del usuario.</p>
+  </div>
+ -->
+
+
