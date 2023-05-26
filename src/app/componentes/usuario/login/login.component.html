@@ -16,7 +16,7 @@
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="inputs">
-          <div class="input-container">
+          <div class="input-container relative">
             <img src="../../../../assets/imgs/correo-electronico.png" alt="" />
 
             <input
@@ -25,6 +25,39 @@
               placeholder="Correo electronico"
               formControlName="email"
             />
+            <div class="types">
+              <div class="container_">
+                <div class="radio-tile-group">
+                  <label for="user" class="input_container">
+                    <input id="user" class="radio-button" type="radio" name="radio">
+                    <div class="radio-tile">
+                      <div class="icon">
+                        <i class="fi fi-ss-user"></i>
+                      </div>
+                      <label class="radio-tile-label">Usuario</label>
+                    </div>
+                  </label>
+                </div>
+              </div>
+              <div class="container_">
+                <div class="radio-tile-group">
+                  <label for="carwash" class="input_container">
+                    <input id="carwash" class="radio-button" type="radio" name="radio">
+                    <div class="radio-tile">
+                      <div class="icon">
+                        <i class="fi fi-sr-garage-car"></i>                      
+                      </div>
+                      <label class="radio-tile-label">Lavadero</label>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+
+
+            </div>
+
+
           </div>
   
           <div class="input-container">

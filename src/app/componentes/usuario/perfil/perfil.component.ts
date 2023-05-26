@@ -1,7 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuarios.service';
 import { AuthService } from 'src/app/services/security/auth.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,12 +12,38 @@ import { AuthService } from 'src/app/services/security/auth.service';
   styleUrls: ['./perfil.component.scss']
 })
 export class PerfilComponent implements OnInit {
+  usuarioForm: FormGroup;
+
+ 
 
   usuario: any;
 
   constructor(private service: UsuarioService,
               private router: Router,
-              public auth: AuthService) { }
+              public auth: AuthService) { 
+
+                this.usuarioForm = new FormGroup(
+                  {
+                    name: new FormControl('', [Validators.required]),
+                    lastname: new FormControl('', [Validators.required]),
+                    genero: new FormControl('', [Validators.required]),
+                    fecha_nacimiento: new FormControl('', [Validators.required]),
+                    email: new FormControl('', [Validators.required, Validators.email]),
+                    password: new FormControl('', [
+                      Validators.required,
+                      Validators.minLength(8),
+                    ]),
+                    confimar_password: new FormControl('', [
+                      Validators.required,
+                      Validators.minLength(8),
+                    ]),
+                    cel: new FormControl('', [
+                      Validators.required,
+                      Validators.minLength(10),
+                      Validators.maxLength(10),
+                    ]),
+                  })
+              }
 
   ngOnInit() {
     this.service.getPerfil().subscribe(
@@ -34,3 +62,9 @@ export class PerfilComponent implements OnInit {
     this.router.navigate(['/']);
   }
 }
+
+
+
+
+
+

@@ -1,28 +1,25 @@
+
 <!-- User Profile -->
-<div class="user-profile py-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4">
+
+  <div class="container_all">
+    <div class="content">
+      <div class="col-lg-8">
         <div class="card shadow-sm">
           <div class="card-header bg-transparent text-center">
             <div class="user">
               <i class="fi fi-rs-circle-user"></i>
             </div>
-            <h3>Tohidul Islam Showrav</h3>
           </div>
           <div class="card-body">
-            <div class="card card-body shadow-sm bg-primary border-0 mb-3">
-              <h3 class="text-light text-center mb-0">Total Points <div class="text-warning">300</div></h3>
-            </div>
-            <ul class="nav flex-column side-menu">
+            <ul class="nav justify-content-center side-menu">
               <li class="nav-item">
-                <a href="#" class="nav-link">Dashboard</a>
+                <a href="#" class="nav-link"> <h3>{{ usuario.nombre }}</h3></a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Shoping History</a>
+                <a href="#" class="nav-link"><h3>3104010625</h3> </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Contact us</a>
+                <button (click)="cerrarSesion()"  class="btn btn-dark">Cerrar Sesion</button>
               </li>
             </ul>
           </div>
@@ -33,14 +30,15 @@
           <div class="card-header bg-transparent border-0">
             <h3 class="mb-0"> <i class="fi fi-rr-car-bus"></i>Vehiculos disponibles</h3>
             <button type="button" class="btn btn-success">+</button>
-            <table class="table table table-hover">
+            <table class="table  table-hover">
              <thead>
               <tr class="table-active">
                 <th>Tipo</th>
                 <th>Nombre</th>
                 <th>Marca</th>
-                <th>modelo</th>
-                <th>placa</th>
+                <th>Modelo</th>
+                <th>Placa</th>
+                <th>Eliminar</th>
               </tr>
              </thead>
 
@@ -51,6 +49,7 @@
                 <td>AKT</td>
                 <td>2023</td>
                 <td>PFF 000</td>
+                <td><button type="button" class="danger">-</button></td>
               </tr>
              </tbody>
             </table>
@@ -64,19 +63,225 @@
             </table>
           </div>
         </div>
-        <div class="card shadow-sm">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="mb-0"><i class="fa fas fa-user-circle"></i>Editar perfil</h3>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h3 class="mb-0"><i class="fa fas fa-user-circle"></i>Editar perfil</h3>
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <form [formGroup]="usuarioForm">
+                  <!-- Pagina 1 -->
+                 
+                    <h4>Informacion principal</h4>
+          
+                    <div class="input-container">
+                      <img
+                        src="../../../../assets/imgs/tarjeta-de-identificacion.png"
+                        class="img-diferent"
+                        alt=""
+                      />
+          
+                      <input
+                        class="input_text_form"
+                        type="text"
+                        id="name"
+                        placeholder="Nombres"
+                        formControlName="name"
+                        tabindex="-1"
+                      />
+                    </div>
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                          usuarioForm.get('name').invalid &&
+                          (usuarioForm.get('name').dirty ||
+                            usuarioForm.get('name').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="usuarioForm.get('name').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+          
+                    <div class="input-container">
+                      <img
+                        src="/assets/imgs/tarjeta-de-identificacion.png"
+                        class="img-diferent"
+                        alt=""
+                      />
+          
+                      <input
+                        class="input_text_form"
+                        type="text"
+                        id="lastname"
+                        placeholder="Apellidos"
+                        formControlName="lastname"
+                        tabindex="-1"
+                      />
+                    </div>
+          
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                          usuarioForm.get('lastname').invalid &&
+                          (usuarioForm.get('lastname').dirty ||
+                            usuarioForm.get('lastname').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="usuarioForm.get('lastname').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+          
+                  
+          
+                  <!-- Pagina 2 -->
+                  
+                    <h4>Informacion Secundaria</h4>
+          
+                    <div class="input-container">
+                      <input
+                        class="input_text_form"
+                        type="date"
+                        id="date"
+                        formControlName="fecha_nacimiento"
+                        tabindex="-1"
+                      />
+                    </div>
+          
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                          usuarioForm.get('fecha_nacimiento').invalid &&
+                          (usuarioForm.get('fecha_nacimiento').dirty ||
+                            usuarioForm.get('fecha_nacimiento').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div
+                          *ngIf="usuarioForm.get('fecha_nacimiento').hasError('required')"
+                        >
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+          
+                    <div class="input-container">
+                      <img src="../../../../assets/imgs/genero.png" alt="" />
+          
+                      <select id="sex" formControlName="genero" tabindex="-1">
+                        <option value="" disabled selected>Genero</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                      </select>
+                    </div>
+          
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                          usuarioForm.get('genero').invalid &&
+                          (usuarioForm.get('genero').dirty ||
+                            usuarioForm.get('genero').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="usuarioForm.get('genero').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+          
+          
+                  <!-- Pagina 3 -->
+          
+    
+                    <h4>Contacto</h4>
+          
+                    <div class="input-container">
+                      <img src="../../../../assets/imgs/correo-electronico.png" alt="" />
+          
+                      <input
+                        class="input_text_form"
+                        type="text"
+                        id="email"
+                        formControlName="email"
+                        placeholder="Correo electronico"
+                        tabindex="-1"
+                      />
+                    </div>
+          
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                          usuarioForm.get('email').invalid &&
+                          (usuarioForm.get('email').dirty ||
+                            usuarioForm.get('email').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="usuarioForm.get('email').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                        <div *ngIf="usuarioForm.get('email').hasError('email')">
+                          El correo electrónico no es válido
+                        </div>
+                      </div>
+                    </div>
+          
+                    <div class="input-container">
+                      <img src="../../../../assets/imgs/llamada-telefonica.png" alt="" />
+          
+                      <input
+                        class="input_text_form"
+                        type="text"
+                        id="cel"
+                        formControlName="cel"
+                        placeholder="Telefono celular"
+                        tabindex="-1"
+                      />
+                    </div>
+          
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                          usuarioForm.get('cel').invalid &&
+                          (usuarioForm.get('cel').dirty || usuarioForm.get('cel').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="usuarioForm.get('cel').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="btn-group">
+                      <button class="btn btn-dark" routerLink="/actualizar-password">Cambiar contraseña</button>
+                    <button class="btn btn-info" routerLink="/perfil/{usuario._id}">Actualizar perfil</button>
+                 
+                    </div>
+
+                    
+                </form>
+              </div>
+            </div>
           </div>
-          <div class="card-body pt-0">
-            <form action="#">
-           
-            </form>
           </div>
-        </div>
+       
       </div>
     </div>
   </div>
+
+
+<div *ngIf="!usuario">
+  <p>No se encontró información del usuario.</p>
 </div>
 <!-- /User Profile -->
 <!-- 
@@ -98,5 +303,3 @@
     <p>No se encontró información del usuario.</p>
   </div>
  -->
-
-
