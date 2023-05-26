@@ -1,4 +1,7 @@
 <!-- -------------NAVBAR---------------  -->
+<ng-container *ngIf="auth.isLogin | async">
+  <app-chat></app-chat>
+</ng-container>
 <app-loaders *ngIf="loaderService.isLoading$ | async"></app-loaders>
 <div class="modal-p" *ngIf="activeModal != 0">
   <ng-container *ngIf="activeModal == 1">
@@ -24,7 +27,7 @@
         >
       </li>
     </ng-container>
-    <ng-container *ngIf="(auth.isLogin | async)">
+    <ng-container *ngIf="auth.isLogin | async">
       <app-perfil-menu></app-perfil-menu>
     </ng-container>
   </ul>
@@ -64,10 +67,10 @@
 </nav>
 <!-- ----------------------------  -->
 
-
 <div class="go-top-container" (click)="subir()">
-  <a><div class="go-top-button">
-<!--     <i class="fa fa-caret-up"></i> -->
-    <i class="fa fa-arrow-up"></i>
-  </div></a>
+  <a
+    ><div class="go-top-button">
+      <!--     <i class="fa fa-caret-up"></i> -->
+      <i class="fa fa-arrow-up"></i></div
+  ></a>
 </div>

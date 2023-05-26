@@ -9,7 +9,6 @@ import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
 import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
 import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
 import { AuthGuard } from './guard/auth.guard';
-import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
 import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
 import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
 import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
@@ -18,6 +17,10 @@ import { CompaniesComponent } from './componentes/views/companies/companies.comp
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
 import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/reserve.component';
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
+
+// CHAT
+import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent},
@@ -29,7 +32,6 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
   { path: 'perfil/:id', component: ActualizarPerfilComponent, canActivate: [AuthGuard] },
   { path: 'actualizar-password', component: ActualizarPasswordComponent, canActivate: [AuthGuard]},
-  { path: 'reservar/:id', component: LavaderoComponent},
   { path: 'registro-lavadero', component: RegistrarLavaderoComponent},
   { path: 'catalogue' ,component:CatalogueComponent},
   {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
@@ -37,7 +39,8 @@ const routes: Routes = [
   {path:'reserva', component: ReserveComponent},
   {path:'empresas/registro_lavadero' , component: RegisterCarwashComponent},
   {path:'perfil_l' , component: PerfilComponent}
-  
+  // CHAT
+  ,{ path: 'chat-admin', component: ChatAdminComponent }
 ];
 
 @NgModule({

@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
         )
         .subscribe(
           (response: any) => {
-            this.auth.login(response.token);
+            this.auth.login(response.token, response.rol);
             this.modal_service.estadomodal(0, 'profile_carwash');
           },
           (error) => {

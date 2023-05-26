@@ -1,0 +1,80 @@
+<div
+  class="app-main"
+  id="appMain"
+  [ngStyle]="{
+    height: isChatVisible ? '500px' : '50px',
+    transition: 'height 0.5s'
+  }"
+>
+  <div class="header-chat" (click)="toggleChat()">
+    <div class="header-chat-name">Chat de Soporte</div>
+    <!-- Boton cerrar -->
+    <div class="header-chat-close">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        color="#fff"
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="feather feather-x-circle"
+        viewBox="0 0 24 24"
+      >
+        <defs></defs>
+        <circle cx="12" cy="12" r="10"></circle>
+        <path d="M15 9l-6 6M9 9l6 6"></path>
+      </svg>
+    </div>
+  </div>
+  <div
+    class="chat-wrapper"
+    id="chatWrapper"
+    [ngClass]="{ hidden: !isChatVisible }"
+  >
+    <div *ngIf="mensajes.length === 0" class="primerMensajeSistema">
+      <p>En esta seccion podrás hablar con nuestro BOT de soporte, el cual te ayudará a resolver tus dudas.</p>
+      <p>Si no quieres hablar con el BOT, puedes escribir "asesor" y te pondremos en contacto con un asesor.</p>
+    </div>
+    <ng-container *ngFor="let mensaje of mensajes">
+      <div class="mensajeSistema" *ngIf="mensaje.from === 'sistema'">
+        {{ mensaje.message }}
+      </div>
+      <div
+        class="message-wrapper"
+        [ngClass]="mensaje.from"
+        *ngIf="mensaje.from != 'sistema'"
+      >
+        <img
+          class="message-pp"
+          src="https://w7.pngwing.com/pngs/527/663/png-transparent-logo-person-user-person-icon-rectangle-photography-computer-wallpaper.png"
+          alt="profile-pic"
+        />
+        <div class="message-box-wrapper">
+          <div class="message-box">
+            {{ mensaje.message }}
+          </div>
+          <span>{{ mensaje.hora }}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div
+    class="chat-input-wrapper"
+    id="chatInputWrapper"
+    [ngClass]="{ hidden: !isChatVisible }"
+  >
+    <div class="input-wrapper">
+      <input
+        type="text"
+        class="chat-input"
+        placeholder="Escribe tu mensaje aqui..."
+        [(ngModel)]="message"
+        (keydown.enter)="sendMessage()"
+      />
+    </div>
+    <button class="chat-send-btn" (click)="sendMessage()">Enviar</button>
+  </div>
+</div>

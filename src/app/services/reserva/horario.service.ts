@@ -22,6 +22,8 @@ export class HorarioService {
   }
 
   reservar(datos: object){
+    console.log("reservar:", datos);
+    
     this.socket.io.emit('reservar', datos)
   }
 

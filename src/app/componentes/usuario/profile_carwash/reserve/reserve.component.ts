@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InputService } from 'src/app/services/comunicación/input.service';
 import { HorarioService } from 'src/app/services/reserva/horario.service';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
@@ -32,8 +33,13 @@ export class ReserveComponent implements OnInit {
   constructor(private modal_service: ModalReserveService,
               private horarioService: HorarioService,
               private route: ActivatedRoute,
-              private comunicacion: InputService) {
+              private comunicacion: InputService,
+              private loader: LoaderService) {
+
+                this.loader.showLoader();
+
                 this.comunicacion.$servicioID.subscribe((servicio: any) => {
+                  this.loader.hideLoader();
                   this.idServicio = servicio;
                 })
               }
@@ -109,6 +115,7 @@ export class ReserveComponent implements OnInit {
   }
 
   reservar(){
+
     let parametro = this.route.snapshot.paramMap.get('id');
     let object = {
       id_lavadero : parametro,

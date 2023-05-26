@@ -18,8 +18,9 @@ export class AuthService {
   //método que nos permite establecer el token en el almacenamiento local
   //y enviar una señal del BehaviorSubject para establecer su nuevo valor en
   //true para indicar que estamos logueados
-  login(token: string): void {
+  login(token: string, rol: string): void {
     localStorage.setItem('token', token);
+    localStorage.setItem('rol', rol);
     this.isLogin.next(true);
   }
 
@@ -39,6 +40,13 @@ export class AuthService {
       return localStorage.getItem('token');
     }
     return 'No hay token';
+  }
+
+  getRol() {
+    if (this.checkToken()) {
+      return localStorage.getItem('rol');
+    }
+    return 'No hay rol';
   }
 
   //método que nos permite romover el token almacenado y el nombre del

@@ -15,8 +15,6 @@ import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena
 import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
-import { LavaderoComponent } from './componentes/lavadero/lavadero.component';
-import { ImagenesComponent } from './componentes/imagenes/imagenes.component';
 import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
 import { FilterBasicComponent } from './componentes/usuario/catalogue/filter-basic/filter-basic.component';
 import { FilterCompleteComponent } from './componentes/usuario/catalogue/filter-complete/filter-complete.component';
@@ -47,6 +45,11 @@ import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwa
 // Leaflet
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
+// CHAT
+import { ChatComponent } from './componentes/usuario/chat/chat.component';
+import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +61,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     PerfilComponent,
     ActualizarPerfilComponent,
     ActualizarPasswordComponent,
-    LavaderoComponent,
-    ImagenesComponent,
     RegistrarLavaderoComponent,
     FilterBasicComponent,
     FilterCompleteComponent,
@@ -86,6 +87,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     PerfilMenuComponent,
     CompaniesComponent,
     RegisterCarwashComponent,
+    ChatComponent,
+    ChatAdminComponent,
   ],
   imports: [
     BrowserModule,
