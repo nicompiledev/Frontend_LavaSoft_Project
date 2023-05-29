@@ -209,6 +209,11 @@ a {
 .cuadro-errores{
 		background-color: transparent;
 		min-height: 50px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 		border-radius: 5px;
-		color: red;
+		color: rgb(255, 0, 0);
+		font-size: 14px;
+    line-height: 1.2;
 }
