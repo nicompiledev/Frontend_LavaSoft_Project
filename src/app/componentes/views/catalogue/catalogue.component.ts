@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { anonimoService } from 'src/app/services/anonimo.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs/operators';
@@ -9,12 +9,13 @@ import { ViewportScroller } from '@angular/common';
   templateUrl: './catalogue.component.html',
   styleUrls: ['./catalogue.component.scss'],
 })
-export class CatalogueComponent {
+export class CatalogueComponent implements OnInit {
 
   isFixed = false;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    this.isFixed = false;
     this.checkScrollPosition();
   }
 
@@ -47,6 +48,8 @@ export class CatalogueComponent {
   }
 
   ngOnInit(): void {
+
+    // volver scroll arribba
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.paginacion();
@@ -90,7 +93,6 @@ export class CatalogueComponent {
 
   subirVentana(){
     this.viewportScroller.scrollToPosition([0, 0]);
+    this.isFixed = false;
   }
-
-  
 }
