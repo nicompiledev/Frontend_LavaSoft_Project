@@ -60,6 +60,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
+import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
 
 
 @NgModule({
@@ -102,6 +103,7 @@ import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin
     NavegacionComponent,
     LavaderosPendientesComponent,
     LoginAdminComponent,
+    ModalVehiclesComponent,
   ],
   imports: [
     BrowserModule,

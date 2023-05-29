@@ -1,115 +1,136 @@
 @import "../../../../../../src/app/app.component.scss";
-.contenedor{
+.contenedor {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding-top: 20px;
-  .filter-services{
-      width: 900px;
-      height: 70px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+  padding-block: 20px;
+  .filter-services {
+    width: 900px;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    background-color: $blanco;
+    border: 1px solid $gris-claro;
+    margin: auto;
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      background: url(https://cdn-icons-png.flaticon.com/512/32/32195.png)
+        no-repeat 95% 50%;
+      background-size: 10px;
       border-radius: 10px;
-      background-color: $blanco;
-      border: 1px solid $gris-claro;
-      margin: auto;
+      padding-left: 10px;
+      width: 150px;
+      font-size: revert;
+      color: rgb(51, 65, 85);
+      height: 45px;
+      border: 1px solid rgba(105, 105, 105, 0.397);
+      cursor: pointer;
 
-      h4{
-        margin:0;
+      &:hover {
+        color: rgb(45, 57, 73);
       }
-    
-      .categoria {
-          position: relative;
+
+      &:focus {
+        outline: none !important;
+      }
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+
+    h4 {
+      margin: 0;
+    }
+
+    .categoria {
+      position: relative;
+      display: flex;
+      border-radius: 10px;
+      background-color: #eee;
+      box-sizing: border-box;
+      box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+      padding: 0.25rem;
+      width: 70%;
+      font-size: 14px;
+      .categoria-contenedor {
+        flex: 1 1 auto;
+        text-align: center;
+        .name {
           display: flex;
+          cursor: pointer;
+          align-items: center;
+          justify-content: center;
           border-radius: 10px;
-          background-color: #EEE;
-          box-sizing: border-box;
-          box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
-          padding: 0.25rem;
-          width: 70%;
-          font-size: 14px;
-              .categoria-contenedor {
-              flex: 1 1 auto;
-              text-align: center;
-                     .name {
-                      display: flex;
-                      cursor: pointer;
-                      align-items: center;
-                      justify-content: center;
-                      border-radius: 10px;
-                      border: none;
-                      padding: .5rem 0;
-                      color: rgba(51, 65, 85, 1);
-                      transition: all .15s ease-in-out;
-                  }
-                      input {
-                  display: none;
-                  }
-                  input:checked + .name {
-                      background-color: #fff;
-                    }
-              }
+          border: none;
+          padding: 0.5rem 0;
+          color: rgba(51, 65, 85, 1);
+          transition: all 0.15s ease-in-out;
         }
-     
-  
-  }
-  .services-contenedor{
-      width: 700px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3 , 1fr);
-      grid-template-rows: repeat(3, auto) ;
-      grid-gap: 20px;
-      
-      .service{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-          background-color: $blanco;
-          border-radius: 10px;
-          padding: 20px;
-          border: 1px solid $gris-claro;
-          &:hover{
-              transform: scale(1.05);
-          }
-          
-          .name_service{
-            h4{
-                content: "";
-                padding: 8px;
-            
-           
-          }
+        input {
+          display: none;
         }
-
-     
-
-          h4{
-              border-width: 20px;
-              border-block-end: solid 2px $gris-oscuro ;
-          }
-  
-          .cost{
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              input{
-                  color: #1E90FF;
-                  border-radius: 10px;
-                  background-color: $blanco;
-                  border: 1px solid $azul-oscuro;
-                  padding: 5px;
-                  cursor: pointer;
-                  &:hover{
-                      background-color: $azul-oscuro;
-                      color: $blanco;
-                      
-                  }
-              }
-          }
+        input:checked + .name {
+          background-color: #fff;
+        }
       }
+    }
+  }
+  .services-contenedor {
+    width: 700px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 20px;
+
+    .service {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: $blanco;
+      border-radius: 10px;
+      padding: 20px;
+      border: 1px solid $gris-claro;
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .name_service {
+        h4 {
+          content: "";
+          padding: 8px;
+        }
+      }
+
+      h4 {
+        border-width: 20px;
+        border-block-end: solid 2px $gris-oscuro;
+      }
+
+      .cost {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        input {
+          color: #1e90ff;
+          border-radius: 10px;
+          background-color: $blanco;
+          border: 1px solid $azul-oscuro;
+          padding: 5px;
+          cursor: pointer;
+          &:hover {
+            background-color: $azul-oscuro;
+            color: $blanco;
+          }
+        }
+      }
+    }
   }
 }
-

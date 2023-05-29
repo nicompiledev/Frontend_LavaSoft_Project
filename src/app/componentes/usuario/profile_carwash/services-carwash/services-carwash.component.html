@@ -1,6 +1,16 @@
 <div class="contenedor">
+  <h4>Escoge tu Servicio</h4>
   <div class="filter-services">
-    <h4>Categorias</h4>
+    <select name="" id="" class="fa">
+      <option value="" disabled selected> <strong>Vehiculo:</strong></option>
+      <option value="motorcycle" class="fa">&#xf21c; moto</option>
+      <option value="car" class="fa">&#xf1b9; Carro</option>
+      <option value="truck_small" class="fa">&#xf63c; camioneta</option>
+      <option value="truck_big" class="fa">&#xf0d1; camion</option>
+      <option value="van" class="fa">&#xf5b6; Bus</option>
+      <option value="all" class="fa">&#xf03a; todos</option>
+    </select>
+
     <div class="categoria">
       <label class="categoria-contenedor">
         <input type="radio" name="radio" checked="" />
@@ -29,10 +39,8 @@
       <div class="name_service">
         <h4><i class="fa-solid fa-car-side"></i> {{ servicio.nombre }}</h4>
       </div>
-     
       <p><i class="fa-regular fa-clock"></i> {{ servicio.duracion }} minutos</p>
 
-      
       <div class="cost">
         <strong> <i class="fa-solid fa-money-bill-wave"></i> ${{ servicio.costo }}</strong>
         <input

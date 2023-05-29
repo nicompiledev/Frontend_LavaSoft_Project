@@ -1,0 +1,119 @@
+<form class="form" [formGroup]="vehicleForm">
+  <p class="title">
+    <span class="ms-2">Registrar Vehiculo</span> <span class="close">x</span>
+  </p>
+  <p class="message">
+    Llena todos los campos con informacion valida , esta se utilizara para
+    identificar tu vehiculo.
+  </p>
+
+  <div class="flex">
+    <div>
+      <label>
+        <input
+          required=""
+          placeholder=""
+          type="text"
+          class="input"
+          formControlName="placa"
+        />
+        <span>N° Placa</span>
+      </label>
+      <div class="errors">
+        <div
+          *ngIf="
+            vehicleForm.get('placa').invalid &&
+            (vehicleForm.get('placa').dirty || vehicleForm.get('placa').touched)
+          "
+          class="text-danger"
+        >
+          <div *ngIf="vehicleForm.get('placa').hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label>
+        <input
+          required=""
+          placeholder=""
+          type="text"
+          class="input"
+          formControlName="marca"
+        />
+        <span>Marca</span>
+      </label>
+      <div class="errors">
+        <div
+          *ngIf="
+            vehicleForm.get('marca').invalid &&
+            (vehicleForm.get('marca').dirty || vehicleForm.get('marca').touched)
+          "
+          class="text-danger"
+        >
+          <div *ngIf="vehicleForm.get('marca').hasError('required')">
+            Este campo es requerido
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="colum">
+    <label>
+      <input
+        required=""
+        placeholder=""
+        type="email"
+        class="input"
+        formControlName="modelo"
+      />
+      <span>modelo</span>
+    </label>
+
+    <div class="errors">
+      <div
+        *ngIf="
+          vehicleForm.get('modelo').invalid &&
+          (vehicleForm.get('modelo').dirty || vehicleForm.get('modelo').touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="vehicleForm.get('modelo').hasError('required')">
+          Este campo es requerido
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="colum">
+    <label>
+      <select id="type-vehicle" formControlName="tipo_vehiculo">
+        <option disabled selected value="">Tipo Vehículo</option>
+        <option value="motorcycle">moto</option>
+        <option value="car">Carro</option>
+        <option value="truck_small">camioneta</option>
+        <option value="truck_big">camion</option>
+        <option value="van">Bus</option>
+        <option value="all">todos</option>
+      </select>
+    </label>
+
+    <div class="errors">
+      <div
+        *ngIf="
+          vehicleForm.get('tipo_vehiculo').invalid &&
+          (vehicleForm.get('tipo_vehiculo').dirty ||
+            vehicleForm.get('tipo_vehiculo').touched)
+        "
+        class="text-danger"
+      >
+        <div *ngIf="vehicleForm.get('tipo_vehiculo').hasError('required')">
+          Este campo es requerido
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="submit">Registrar</button>
+</form>
