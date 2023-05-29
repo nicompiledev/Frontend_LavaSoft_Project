@@ -8,6 +8,8 @@ export class AuthService {
   // el BehaviorSubject que nos permitirá guardar el estado de login
   //tendrá un estado inicial booleano según lo que retorne checkToken
   isLogin = new BehaviorSubject<boolean>(this.checkToken());
+  // ROL:
+  rol = new BehaviorSubject<string>(this.getRol());
 
   //método que nos permitirá chequear si existe un token, en tal
   //caso retornará true
@@ -23,18 +25,6 @@ export class AuthService {
     localStorage.setItem('rol', rol);
     this.isLogin.next(true);
   }
-
-/*   //método que nos permite establecer el nombre del usuario
-
-  setCourrentUser(user: string): void {
-    localStorage.setItem('courrentUser', user);
-  }
-
-  //método que nos permite recuperar el nombre del usuario
-  getCourrentUser(): string {
-    return localStorage.getItem('courrentUser');
-  } */
-
   getToken() {
     if (this.checkToken()) {
       return localStorage.getItem('token');
@@ -54,6 +44,7 @@ export class AuthService {
   //su nuevo valor, en este caso false para indicar que no estamos logueados
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('rol');
     this.isLogin.next(false);
   }
 

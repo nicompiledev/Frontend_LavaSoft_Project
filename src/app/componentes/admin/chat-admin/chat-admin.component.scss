@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 60px);
   overflow: hidden;
   background-color: var(--app-bg);
   font-family: "DM Sans", sans-serif;
@@ -30,11 +30,11 @@
   --info-icon-bg-2: #c6f0ea;
   --info-icon-bg-3: #d9d3ff;
   --info-icon-bg-4: #ffe1d4;
-  --app-bg: #060415;
+  --app-bg: #fff;
   --box-color: #12172d;
   --box-border: #477eff;
   --button-bg: #477eff;
-  --text-dark: rgba(255, 255, 255, 1);
+  --text-dark: #1a2f45;
   --text-light: rgba(255, 255, 255, 0.6);
   --info-box-1: rgba(160, 186, 242, 0.5);
   --info-box-2: rgba(168, 240, 229, 0.55);
@@ -56,7 +56,7 @@
 
 .app-container {
   display: flex;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   width: 100%;
   padding: 24px;
   max-width: 1800px;

@@ -1,0 +1,74 @@
+<img class="imagen" src="assets/loginAdmin/img/image.png" alt="" />
+<div class="contenedor">
+  <div class="img">
+    <img src="assets/loginAdmin/img/background.svg" alt="" />
+  </div>
+  <div class="login-contenedor">
+    <form (submit)="onSubmit()" [formGroup]="loginForm">
+      <img class="avatar" src="assets/loginAdmin/img/avatar.svg" alt="" />
+      <h2>Bienvenido Admin</h2>
+      <div class="input-div one" [ngClass]="{ focus: focusEmail }">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        <div>
+          <h5>Correo</h5>
+          <input
+            class="input"
+            type="email"
+            formControlName="correo_electronico"
+            (focus)="focusFunc($event, 'email')"
+            (blur)="blurFunc($event, 'email')"
+            [ngClass]="{ focus: focusEmail }"
+          />
+        </div>
+      </div>
+      <div class="input-div two" [ngClass]="{ focus: focusPassword }">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div>
+          <h5>Contraseña</h5>
+          <input
+            class="input"
+            type="password"
+            formControlName="contrasena"
+            (focus)="focusFunc($event, 'password')"
+            (blur)="blurFunc($event, 'password')"
+          />
+        </div>
+      </div>
+      <div class="cuadro-errores">
+        <div
+          *ngIf="
+            loginForm.get('correo_electronico').errors &&
+            (loginForm.get('correo_electronico').dirty ||
+              loginForm.get('correo_electronico').touched)
+          "
+        >
+          <div *ngIf="loginForm.get('correo_electronico').hasError('required')">
+            El email es requerido.
+          </div>
+          <div *ngIf="loginForm.get('correo_electronico').hasError('email')">
+            El email no es válido.
+          </div>
+        </div>
+        <div
+          *ngIf="
+            loginForm.get('contrasena').errors &&
+            (loginForm.get('contrasena').dirty ||
+              loginForm.get('contrasena').touched)
+          "
+        >
+          <div *ngIf="loginForm.get('contrasena').hasError('required')">
+            La contraseña es requerida.
+          </div>
+        </div>
+        <div *ngIf="mensajeError">
+          {{ mensajeError }}
+        </div>
+      </div>
+      <input class="btn" type="submit" value="Login" />
+    </form>
+  </div>
+</div>

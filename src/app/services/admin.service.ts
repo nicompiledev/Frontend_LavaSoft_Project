@@ -9,13 +9,15 @@ export class AdminService {
   private url = 'http://localhost:4000/api/admins/';
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/json',
     }),
   };
   constructor(private http: HttpClient) {}
 
-  loginAdmin(correo_electronico: string, contasena: string) {
-    const body = { correo_electronico, contasena };
+  loginAdmin(correo_electronico: string, contrasena: string) {
+    const body = { correo_electronico, contrasena };
+    console.log(correo_electronico, contrasena);
+    
     return this.http.post(this.url + 'login', body, this.httpOptions);
     // Cuando se haga el componete poner esto:
     //  localStorage.setItem('token', response.token);

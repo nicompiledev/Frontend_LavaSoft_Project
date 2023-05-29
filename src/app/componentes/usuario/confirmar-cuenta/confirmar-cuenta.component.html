@@ -1,19 +1,24 @@
-<div class="container" >
-  <div class="card o-hidden border-0 shadow-lg my-5 alert-container">
-    <div class="p-5">
-      <!-- Confirmación exitosa -->
-      <div *ngIf="confirmacionExitosa">
-        <div class="alert alert-success mensaje-confirmacion" role="alert">
-          ¡Felicidades! Tu cuenta ha sido confirmada exitosamente.
+<div class="padre">
+  <div class="container">
+    <div class="card o-hidden border-0 shadow-lg my-5 alert-container">
+      <div class="p-5">
+        <!-- Confirmación exitosa -->
+        <div *ngIf="confirmacionExitosa">
+          <div class="alert alert-success mensaje-confirmacion" role="alert">
+            ¡Felicidades! Tu cuenta ha sido confirmada exitosamente.
+          </div>
+          <button class="btn btn-primary" routerLink="">
+            Clic aquí para iniciar sesión
+          </button>
         </div>
-        <button class="btn btn-primary" routerLink="">Clic aquí para iniciar sesión</button>
-      </div>
-      <!-- Confirmación fallida -->
-      <div *ngIf="!confirmacionExitosa">
-        <div class="alert alert-danger mensaje-error" role="alert">
-          ¡Lo sentimos! No se pudo confirmar tu cuenta.<br> Por favor, intenta nuevamente.
+        <!-- Confirmación fallida -->
+        <div *ngIf="!confirmacionExitosa">
+          <div class="alert alert-danger mensaje-error" role="alert">
+            ¡Lo sentimos! No se pudo confirmar tu cuenta.<br />
+            Por favor, intenta nuevamente.
+          </div>
+          <button class="btn btn-primary" routerLink="">Volver atrás</button>
         </div>
-        <button class="btn btn-primary" routerLink="">Volver atrás</button>
       </div>
     </div>
   </div>

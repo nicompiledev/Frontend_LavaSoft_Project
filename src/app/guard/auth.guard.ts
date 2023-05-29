@@ -9,21 +9,36 @@ import { map, take } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate {
 
+  rol: string = '';
+
   constructor(private authService: AuthService, private router: Router) { }
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.isLoggedIn().pipe(
-      take(1),
-      map((isLoggedIn: boolean) => {
-        if (isLoggedIn && (state.url === '' || state.url === '/registro')) {
-          this.router.navigate(['/perfil']);
+  canActivate(_: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+
+  this.rol = this.authService.getRol();
+
+  return this.authService.isLoggedIn().pipe(
+    take(1),
+    map((isLoggedIn: boolean) => {
+      if (isLoggedIn) {
+        if (this.rol === 'admin' && (state.url === '/perfil_usuario' || state.url === '/login-admin')) {
+          this.router.navigate(['/inicio']);
           return false;
-        } else if (!isLoggedIn && state.url === '/perfil') {
-          this.router.navigate(['']);
+        }
+        if (this.rol === 'usuario' && (state.url === '/dashboard-admin' || state.url === '/login-admin')) {
+          this.router.navigate(['/inicio']);
           return false;
         }
         return true;
-      })
-    );
-  }
+      } else {
+        if (state.url === '/perfil_usuario' || state.url === '/dashboard-admin') {
+          this.router.navigate(['/inicio']);
+          return false;
+        }
+      }
+      return false;
+    })
+  );
+
+}
 }

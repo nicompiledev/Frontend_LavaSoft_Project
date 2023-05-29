@@ -37,16 +37,16 @@
           </a>
         </li>
 
-        <li routerLink="/dashboard-admin/configuracion" [routerLinkActive]="['hovered']">
+        <li routerLink="/dashboard-admin/chat-asesor" [routerLinkActive]="['hovered']">
           <a >
             <span class="icon">
-              <fa-icon [icon]="configuracion"></fa-icon>
+              <fa-icon [icon]="chatAsesor"></fa-icon>
             </span>
-            <span class="title">Configuración</span>
+            <span class="title">Chat Asesor</span>
           </a>
         </li>
 
-        <li>
+        <li (click)="cerrarSesion()">
           <a >
             <span class="icon">
               <fa-icon [icon]="salir"></fa-icon>
@@ -65,7 +65,11 @@
         </div>
 
         <div class="titulo">
-          <div>Dashboard</div>
+            <!-- Dependiendo que tenga el router link es el titulo h1: routerLink de manera dinamica: -->
+            <div *ngIf="router.url == '/dashboard-admin/dashboard'">Dashboard</div>
+            <div *ngIf="router.url == '/dashboard-admin/peticion-empresa'">Petición Empresa</div>
+            <div *ngIf="router.url == '/dashboard-admin/reportes'">Reportes</div>
+            <div *ngIf="router.url == '/dashboard-admin/chat-asesor'">Chat Asesor</div> 
         </div>
 
         <div class="user"></div>
