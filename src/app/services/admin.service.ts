@@ -6,18 +6,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AdminService {
 
-  private url = 'http://localhost:4000/api/lavaderos/';
+  private url = 'http://localhost:4000/api/admins/';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'multipart/form-data',
     }),
   };
   constructor(private http: HttpClient) {}
-
-
-  registrarLavadero(formData: FormData) {
-    return this.http.post(`${this.url}peticion`, formData);
-  }
 
   loginAdmin(correo_electronico: string, contasena: string) {
     const body = { correo_electronico, contasena };

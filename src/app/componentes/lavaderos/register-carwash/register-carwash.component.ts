@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AdminService } from 'src/app/services/admin.service';
 import { HttpClient } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
 
 import * as mapboxgl from 'mapbox-gl';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
+import { LavaderoService } from 'src/app/services/lavadero.service';
 
 @Component({
   selector: 'app-register-carwash',
@@ -24,7 +24,7 @@ export class RegisterCarwashComponent  implements OnInit {
   latitud: string;
   logintud: string;
 
-  constructor(private fb: FormBuilder, private admin: AdminService, private http: HttpClient, private loader: LoaderService) {
+  constructor(private fb: FormBuilder, private lavadero: LavaderoService, private http: HttpClient, private loader: LoaderService) {
     this.lavaderoForm = this.fb.group({
       nit: new FormControl ('' ,[Validators.required, Validators.minLength(8)]),
       nombreLavadero: new FormControl ('' ,[Validators.required]),
@@ -117,7 +117,7 @@ export class RegisterCarwashComponent  implements OnInit {
       formData.append('images', this.files[i]);
     }
 
-    this.admin.registrarLavadero(formData)
+    this.lavadero.registrarLavadero(formData)
     .pipe(
       finalize(() => {
         this.loader.hideLoader();

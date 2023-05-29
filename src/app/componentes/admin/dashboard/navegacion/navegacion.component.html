@@ -1,0 +1,76 @@
+<div class="contenedor-padre">
+  <div class="contenedor">
+    <div class="navegacion" [ngClass]="{'active': ocultarMenu}">
+      <ul>
+        <li>
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="titulo"></fa-icon>
+            </span>
+            <span class="title">STAFF LavaSoft</span>
+          </a>
+        </li>
+        <li routerLink="/dashboard-admin/dashboard" [routerLinkActive]="['hovered']">
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="dashboard"></fa-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li routerLink="/dashboard-admin/peticion-empresa" [routerLinkActive]="['hovered']">
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="peticionEmpresa"></fa-icon>
+            </span>
+            <span class="title">Petición Empresa</span>
+          </a>
+        </li>
+
+        <li routerLink="/dashboard-admin/reportes" [routerLinkActive]="['hovered']">
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="reportes"></fa-icon>
+            </span>
+            <span class="title">Reportes</span>
+          </a>
+        </li>
+
+        <li routerLink="/dashboard-admin/configuracion" [routerLinkActive]="['hovered']">
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="configuracion"></fa-icon>
+            </span>
+            <span class="title">Configuración</span>
+          </a>
+        </li>
+
+        <li>
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="salir"></fa-icon>
+            </span>
+            <span class="title">Cerrar Sesión</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ========================= principal ==================== -->
+    <div class="principal" [ngClass]="{'active': ocultarMenu}">
+      <div class="barraArriba">
+        <div class="menu" (click)="ocultarMenu = !ocultarMenu">
+          <fa-icon [icon]="menu"></fa-icon>
+        </div>
+
+        <div class="titulo">
+          <div>Dashboard</div>
+        </div>
+
+        <div class="user"></div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

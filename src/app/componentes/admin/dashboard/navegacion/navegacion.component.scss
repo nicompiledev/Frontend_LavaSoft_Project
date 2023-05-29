@@ -1,0 +1,252 @@
+.contenedor-padre {
+  min-height: 100vh;
+  overflow-x: hidden;
+  --blue:#2a2185;
+  --white:#fff;
+  --gray:#f5f5f5;
+  --black1:#222;
+  --black2:#999;
+}
+
+.contenedor {
+  position: relative;
+  width: 100%;
+}
+
+/* =============== navegacion ================ */
+
+.navegacion {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+
+  &.active {
+    width: 80px;
+  }
+
+  ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+
+    li {
+      position: relative;
+      width: 100%;
+      list-style: none;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
+
+      &.hovered {
+        background-color: var(--white);
+      }
+
+      &:hover {
+        box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+      }
+
+      &.hovered:hover {
+        box-shadow: none;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+
+      &:nth-child(1) {
+        margin-bottom: 40px;
+        pointer-events: none;
+      }
+
+      a {
+        position: relative;
+        display: block;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: var(--white);
+      }
+
+      &.hovered a {
+        color: var(--blue);
+      }
+
+      a {
+        cursor: pointer;
+        .icon {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-width: 60px;
+          height: 60px;
+          line-height: 75px;
+          text-align: center;
+
+          fa-icon {
+            font-size: 1.55rem;
+          }
+        }
+
+        .title {
+          position: relative;
+          display: block;
+          padding: 0 10px;
+          height: 60px;
+          line-height: 60px;
+          text-align: start;
+          white-space: nowrap;
+        }
+      }
+
+      &.hovered a {
+        &::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: -50px;
+          width: 50px;
+          height: 50px;
+          background-color: transparent;
+          border-radius: 50%;
+          box-shadow: 35px 35px 0 10px var(--white);
+          pointer-events: none;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: -50px;
+          width: 50px;
+          height: 50px;
+          background-color: transparent;
+          border-radius: 50%;
+          box-shadow: 35px -35px 0 10px var(--white);
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
+/* --------- curve outside ---------- */
+
+/* ===================== principal ===================== */
+
+.principal {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+
+  &.active {
+    width: calc(100% - 80px);
+    left: 80px;
+  }
+}
+
+.barraArriba {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.menu {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.titulo {
+  position: relative;
+  margin: 0 10px;
+
+  div {
+    width: 100%;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 25px;
+  }
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 991px) {
+  .navegacion {
+    left: -300px;
+
+    &.active {
+      width: 300px;
+      left: 0;
+    }
+  }
+
+  .principal {
+    width: 100%;
+    left: 0;
+
+    &.active {
+      left: 300px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .user {
+    min-width: 40px;
+  }
+
+  .navegacion {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+
+    &.active {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  .menu {
+    z-index: 10001;
+  }
+
+  .principal.active .menu {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}

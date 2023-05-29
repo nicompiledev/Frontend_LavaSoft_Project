@@ -15,7 +15,6 @@ import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena
 import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
-import { RegistrarLavaderoComponent } from './componentes/admin/registrar-lavadero/registrar-lavadero.component';
 import { FilterBasicComponent } from './componentes/usuario/catalogue/filter-basic/filter-basic.component';
 import { FilterCompleteComponent } from './componentes/usuario/catalogue/filter-complete/filter-complete.component';
 import { PreviewCarwashComponent } from './componentes/usuario/catalogue/preview-carwash/preview-carwash.component';
@@ -49,6 +48,19 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { ChatComponent } from './componentes/usuario/chat/chat.component';
 import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// Dashboard
+import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/navegacion.component';
+import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
+
+// Angular Material
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +73,6 @@ import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.co
     PerfilComponent,
     ActualizarPerfilComponent,
     ActualizarPasswordComponent,
-    RegistrarLavaderoComponent,
     FilterBasicComponent,
     FilterCompleteComponent,
     PreviewCarwashComponent,
@@ -89,6 +100,8 @@ import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.co
     RegisterCarwashComponent,
     ChatComponent,
     ChatAdminComponent,
+    NavegacionComponent,
+    LavaderosPendientesComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +109,15 @@ import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.co
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    LeafletModule
+    LeafletModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+
+    // Angular Material
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
