@@ -145,10 +145,11 @@
 }
 .errors{
     width: 100%;
+    height: 40px;
     border-radius: 23px;
     color:$errores;
     padding: 5px;
-    font-size: 10px;
+    font-size: 11px;
     margin-block-start: -5px;
 }
 .options{
@@ -158,7 +159,7 @@
     text-align: center;
     margin: 10px;
 
-    a{       
+    a{
         img{
             margin: 5px;
             width: 2.2rem;
@@ -182,6 +183,7 @@
         p{
             color: $gris-oscuro;
             margin-top: 0;
+            margin-bottom: 25px
         }
 }
 
@@ -310,4 +312,8 @@
   .relative{
     width: 250px;
 position: relative;
+  }
+
+  .errorInput{
+    border: 2px $errores solid;
   }

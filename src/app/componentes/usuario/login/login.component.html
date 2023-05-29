@@ -16,7 +16,12 @@
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="inputs">
-          <div class="input-container relative">
+          <div class="input-container relative" [ngClass]="{ 
+            errorInput:
+            loginForm.get('email').invalid &&
+            (loginForm.get('email').dirty || loginForm.get('email').touched)
+          }">
+
             <img src="../../../../assets/imgs/correo-electronico.png" alt="" />
 
             <input
@@ -60,7 +65,12 @@
 
           </div>
   
-          <div class="input-container">
+          <div class="input-container" [ngClass]="{
+            errorInput:
+            loginForm.get('password').invalid &&
+            (loginForm.get('password').dirty || loginForm.get('password').touched)
+          }">
+
             <img src="../../../../assets/imgs/llave.png" alt="" />
   
             <input
@@ -71,40 +81,40 @@
               formControlName="password"
             />
           </div>
-  
-          <div class="errors">
-            <div
-              *ngIf="
-                loginForm.get('email').errors &&
-                (loginForm.get('email').dirty || loginForm.get('email').touched)
-              "
-            >
-              <div *ngIf="loginForm.get('email').hasError('required')">
-                El email es requerido.
-              </div>
-              <div *ngIf="loginForm.get('email').hasError('email')">
-                El email no es válido.
-              </div>
-            </div>
-  
-            <div
-              *ngIf="
-                loginForm.get('password').errors &&
-                (loginForm.get('password').dirty ||
-                  loginForm.get('password').touched)
-              "
-            >
-              <div *ngIf="loginForm.get('password').hasError('required')">
-                La contraseña es requerida.
-              </div>
-              <div *ngIf="loginForm.get('password').hasError('minlength')">
-                La contraseña debe tener al menos 6 caracteres.
-              </div>
-            </div>
-            <div *ngIf="errorMsg">{{ errorMsg }}</div>
-          </div>
         </div>
+        
         <input type="button" class="button" type="submit" value="Ingresar" />
+        <div class="errors">
+          <div
+            *ngIf="
+              loginForm.get('email').errors &&
+              (loginForm.get('email').dirty || loginForm.get('email').touched)
+            "
+          >
+            <div *ngIf="loginForm.get('email').hasError('required')">
+              El email es requerido.
+            </div>
+            <div *ngIf="loginForm.get('email').hasError('email')">
+              El email no es válido.
+            </div>
+          </div>
+
+          <div
+            *ngIf="
+              loginForm.get('password').errors &&
+              (loginForm.get('password').dirty ||
+                loginForm.get('password').touched)
+            "
+          >
+            <div *ngIf="loginForm.get('password').hasError('required')">
+              La contraseña es requerida.
+            </div>
+            <div *ngIf="loginForm.get('password').hasError('minlength')">
+              La contraseña debe tener al menos 6 caracteres.
+            </div>
+          </div>
+          <div *ngIf="errorMsg">{{ errorMsg }}</div>
+        </div>
       </form>
   
     </ng-container>

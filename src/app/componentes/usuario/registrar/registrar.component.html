@@ -24,13 +24,17 @@
         <div class="pagina movPage" [ngStyle]="{ 'margin-left': marginLeft }">
           <h4>Informacion principal</h4>
 
-          <div class="input-container">
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('name').invalid &&
+              (usuarioForm.get('name').dirty ||
+                usuarioForm.get('name').touched)
+          }">
             <img
               src="../../../../assets/imgs/tarjeta-de-identificacion.png"
               class="img-diferent"
               alt=""
             />
-
             <input
               class="input_text_form"
               type="text"
@@ -40,22 +44,13 @@
               tabindex="-1"
             />
           </div>
-          <div class="errors">
-            <div
-              *ngIf="
-                usuarioForm.get('name').invalid &&
-                (usuarioForm.get('name').dirty ||
-                  usuarioForm.get('name').touched)
-              "
-              class="text-danger"
-            >
-              <div *ngIf="usuarioForm.get('name').hasError('required')">
-                Este campo es requerido
-              </div>
-            </div>
-          </div>
 
-          <div class="input-container">
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('lastname').invalid &&
+              (usuarioForm.get('lastname').dirty ||
+                usuarioForm.get('lastname').touched)
+          }">
             <img
               src="/assets/imgs/tarjeta-de-identificacion.png"
               class="img-diferent"
@@ -72,7 +67,23 @@
             />
           </div>
 
+          <div class="button siguiente-page2">
+            <button tabindex="-1" (click)="siguiente('2')">Siguiente</button>
+          </div>
           <div class="errors">
+            <div
+              *ngIf="
+                usuarioForm.get('name').invalid &&
+                (usuarioForm.get('name').dirty ||
+                  usuarioForm.get('name').touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="usuarioForm.get('name').hasError('required')">
+                El nombre es requerido
+              </div>
+            </div>
+
             <div
               *ngIf="
                 usuarioForm.get('lastname').invalid &&
@@ -82,13 +93,9 @@
               class="text-danger"
             >
               <div *ngIf="usuarioForm.get('lastname').hasError('required')">
-                Este campo es requerido
+                El apellido es requerido
               </div>
             </div>
-          </div>
-
-          <div class="button siguiente-page2">
-            <button tabindex="-1" (click)="siguiente('2')">Siguiente</button>
           </div>
         </div>
 
@@ -96,7 +103,12 @@
         <div class="pagina">
           <h4>Informacion Secundaria</h4>
 
-          <div class="input-container">
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('fecha_nacimiento').invalid &&
+              (usuarioForm.get('fecha_nacimiento').dirty ||
+                usuarioForm.get('fecha_nacimiento').touched)
+          }">
             <input
               class="input_text_form"
               type="date"
@@ -104,6 +116,38 @@
               formControlName="fecha_nacimiento"
               tabindex="-1"
             />
+          </div>
+
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('genero').invalid &&
+              (usuarioForm.get('genero').dirty ||
+                usuarioForm.get('genero').touched)
+          }">
+            <img src="../../../../assets/imgs/genero.png" alt="" />
+
+            <select id="sex" formControlName="genero" tabindex="-1">
+              <option value="" disabled selected>Genero</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </div>
+
+          <div class="buttons">
+            <button
+              tabindex="-1"
+              (click)="anterior('2')"
+              class="volver-page1 volver"
+            >
+              Atras
+            </button>
+            <button
+              tabindex="-1"
+              (click)="siguiente('3')"
+              class="siguiente-page3 siguiente"
+            >
+              Siguiente
+            </button>
           </div>
 
           <div class="errors">
@@ -118,22 +162,10 @@
               <div
                 *ngIf="usuarioForm.get('fecha_nacimiento').hasError('required')"
               >
-                Este campo es requerido
+                La fecha de nacimiento es requerida
               </div>
             </div>
-          </div>
 
-          <div class="input-container">
-            <img src="../../../../assets/imgs/genero.png" alt="" />
-
-            <select id="sex" formControlName="genero" tabindex="-1">
-              <option value="" disabled selected>Genero</option>
-              <option value="Masculino">Masculino</option>
-              <option value="Femenino">Femenino</option>
-            </select>
-          </div>
-
-          <div class="errors">
             <div
               *ngIf="
                 usuarioForm.get('genero').invalid &&
@@ -143,18 +175,9 @@
               class="text-danger"
             >
               <div *ngIf="usuarioForm.get('genero').hasError('required')">
-                Este campo es requerido
+                El genero es requerido
               </div>
             </div>
-          </div>
-
-          <div class="buttons">
-            <button tabindex="-1" (click)="anterior('2')" class="volver-page1 volver">
-              Atras
-            </button>
-            <button tabindex="-1" (click)="siguiente('3')" class="siguiente-page3 siguiente">
-              Siguiente
-            </button>
           </div>
         </div>
 
@@ -163,7 +186,12 @@
         <div class="pagina">
           <h4>Contacto</h4>
 
-          <div class="input-container">
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('email').invalid &&
+              (usuarioForm.get('email').dirty ||
+                usuarioForm.get('email').touched)
+          }">
             <img src="../../../../assets/imgs/correo-electronico.png" alt="" />
 
             <input
@@ -176,25 +204,14 @@
             />
           </div>
 
-          <div class="errros">
-            <div
-              *ngIf="
-                usuarioForm.get('email').invalid &&
-                (usuarioForm.get('email').dirty ||
-                  usuarioForm.get('email').touched)
-              "
-              class="text-danger"
-            >
-              <div *ngIf="usuarioForm.get('email').hasError('required')">
-                Este campo es requerido
-              </div>
-              <div *ngIf="usuarioForm.get('email').hasError('email')">
-                El correo electrónico no es válido
-              </div>
-            </div>
-          </div>
 
-          <div class="input-container">
+
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('cel').invalid &&
+              (usuarioForm.get('cel').dirty ||
+                usuarioForm.get('cel').touched)
+          }">
             <img src="../../../../assets/imgs/llamada-telefonica.png" alt="" />
 
             <input
@@ -207,27 +224,54 @@
             />
           </div>
 
+          <div class="buttons">
+            <button
+              tabindex="-1"
+              (click)="anterior('3')"
+              class="volver-page2 volver"
+            >
+              Atras
+            </button>
+            <button
+              tabindex="-1"
+              (click)="siguiente('4')"
+              class="siguiente-page4 siguiente"
+            >
+              Siguiente
+            </button>
+          </div>
+
           <div class="errors">
             <div
               *ngIf="
-                usuarioForm.get('cel').invalid &&
-                (usuarioForm.get('cel').dirty || usuarioForm.get('cel').touched)
+                usuarioForm.get('email').invalid &&
+                (usuarioForm.get('email').dirty ||
+                  usuarioForm.get('email').touched)
               "
               class="text-danger"
             >
-              <div *ngIf="usuarioForm.get('cel').hasError('required')">
-                Este campo es requerido
+              <div *ngIf="usuarioForm.get('email').hasError('required')">
+                El correo electrónico es requerido
+              </div>
+              <div *ngIf="usuarioForm.get('email').hasError('email')">
+                El correo electrónico no es válido
               </div>
             </div>
-          </div>
 
-          <div class="buttons">
-            <button tabindex="-1" (click)="anterior('3')" class="volver-page2 volver">
-              Atras
-            </button>
-            <button tabindex="-1" (click)="siguiente('4')" class="siguiente-page4 siguiente">
-              Siguiente
-            </button>
+            <div
+            *ngIf="
+              usuarioForm.get('cel').invalid &&
+              (usuarioForm.get('cel').dirty || usuarioForm.get('cel').touched)
+            "
+            class="text-danger"
+          >
+            <div *ngIf="usuarioForm.get('cel').hasError('required')">
+              El telefono celular es requerido
+            </div>
+            <div *ngIf="usuarioForm.get('cel').hasError('minlength') || usuarioForm.get('cel').hasError('maxlength')">
+              El telefono celular debe tener 10 digitos
+            </div>
+          </div>
           </div>
         </div>
 
@@ -236,7 +280,12 @@
         <div class="pagina">
           <h4>Contraseña</h4>
 
-          <div class="input-container">
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('password').invalid &&
+              (usuarioForm.get('password').dirty ||
+                usuarioForm.get('password').touched)
+          }">
             <img src="../../../../assets/imgs/candado.png" alt="" />
 
             <input
@@ -258,25 +307,12 @@
             </div>
           </div>
 
-          <div class="erros">
-            <div
-              *ngIf="
-                usuarioForm.get('password').invalid &&
-                (usuarioForm.get('password').dirty ||
-                  usuarioForm.get('password').touched)
-              "
-              class="text-danger"
-            >
-              <div *ngIf="usuarioForm.get('password').hasError('required')">
-                Este campo es requerido
-              </div>
-              <div *ngIf="usuarioForm.get('password').hasError('minlength')">
-                La contraseña debe tener al menos 8 caracteres
-              </div>
-            </div>
-          </div>
-
-          <div class="input-container">
+          <div class="input-container" [ngClass]="{
+            errorInput:
+              usuarioForm.get('confimar_password').invalid &&
+              (usuarioForm.get('confimar_password').dirty ||
+                usuarioForm.get('confimar_password').touched)
+          }">
             <img src="../../../../assets/imgs/recargar.png" alt="" />
             <input
               class="input_text_form"
@@ -288,17 +324,38 @@
             />
           </div>
 
+          <div class="buttons">
+            <button
+              tabindex="-1"
+              (click)="anterior('4')"
+              class="volver-page3 volver"
+            >
+              Atras
+            </button>
+            <button tabindex="-1" class="fin" (click)="finalizar()">
+              Finalizar
+            </button>
+          </div>
           <div class="errors">
+            <div
+              *ngIf="
+                usuarioForm.get('password').invalid &&
+                (usuarioForm.get('password').dirty ||
+                  usuarioForm.get('password').touched)
+              "
+              class="text-danger"
+            >
+              <div *ngIf="usuarioForm.get('password').hasError('required')">
+                La contraseña es requerida
+              </div>
+              <div *ngIf="usuarioForm.get('password').hasError('minlength')">
+                La contraseña debe tener al menos 8 caracteres
+              </div>
+            </div>
+
             <div *ngIf="usuarioForm.hasError('contrasenasNoCoinciden')">
               Las contraseñas no coinciden
             </div>
-          </div>
-
-          <div class="buttons">
-            <button tabindex="-1" (click)="anterior('4')" class="volver-page3 volver">
-              Atras
-            </button>
-            <button tabindex="-1" class="fin" (click)="finalizar()">Finalizar</button>
           </div>
         </div>
       </form>
