@@ -44,7 +44,7 @@ const routes: Routes = [
     {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
   // Enoresa
   {path: 'empresas' , component:CompaniesComponent},
-    { path: 'registro_lavadero', component:  RegisterCarwashComponent},
+    { path: 'empresas/registro_lavadero', component:  RegisterCarwashComponent},
 
   // Usuario
   {path:'perfil_usuario' , component: PerfilComponent, canActivate: [AuthGuard]},

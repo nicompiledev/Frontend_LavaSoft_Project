@@ -66,6 +66,17 @@
       }
     }
 
+    .ultima{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h4{
+        margin: 0 !important;
+      }
+    }
+
     .timeline-image {
       position: absolute;
       z-index: 100;
@@ -217,5 +228,12 @@
     &.timeline-inverted > .timeline-panel {
       padding: 0 100px 20px 20px;
     }
+  }
+}
+
+#about{
+  padding-top: 2rem !important;
+  h3{
+    margin-bottom: 5.2rem;
   }
 }
