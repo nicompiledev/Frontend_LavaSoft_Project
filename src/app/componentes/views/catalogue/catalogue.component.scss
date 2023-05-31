@@ -66,29 +66,43 @@
 
 // paginacion
 
-/* Estilos para el número de página */
-.page-number {
-  text-align: center;
-  font-size: 24px;
-}
-
 /* Estilos para los botones de paginación */
 .pagination-buttons {
   display: flex;
   justify-content: center;
 }
 
-.pagination-button {
-  border: none;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin: 0 10px;
-  background-color: #f1f1f1;
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 4px;
+}
+
+.page-link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #007bff;
   cursor: pointer;
 }
 
-.pagination-button:hover {
-  background-color: #ddd;
+.page-item.disabled .page-link,
+.page-item.active .page-link {
+  cursor: default;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  color: #fff;
 }
 
 

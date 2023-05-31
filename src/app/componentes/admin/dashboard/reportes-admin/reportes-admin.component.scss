@@ -11,7 +11,7 @@ padding: 20px;
   display: flex;
   flex-direction: column;
   width: 95%;
-  min-height: 750px;
+  min-height: calc(100vh - 100px);
   padding: 20px;
   font-family: Arial, sans-serif;
 
@@ -52,6 +52,8 @@ padding: 20px;
   background-color: #ffffff;
   border-bottom: 1px solid #ccc;
   cursor: pointer;
+  height: 50px; /* Fijamos una altura para el summary */
+  transition: background-color 0.3s ease-in-out; 
 }
 
 fa-icon{
@@ -162,9 +164,8 @@ fa-icon{
  /* Estilos para el símbolo de más o menos en el summary */
  .reporte > summary::after {
    content:"+"; /* Por defecto mostramos un más */
-   font-size:20px; 
-   color:#999; 
-   margin-left:10px; 
+   font-size:20px;
+   margin-left:10px;
  }
 
  /* Estilos para el input de selección */
@@ -222,3 +223,93 @@ fa-icon{
  .info-color-correccion {
    background-color:#28a745; /* Color verde */
  }
+
+
+ 
+.button {
+  border: none;
+  & i {
+        pointer-events: none;
+  }
+  &:disabled {
+        color: #b3b3b3;
+        pointer-events: none;
+  }
+}
+.button,
+.link {
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  color: #666666;
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+        color: white;
+        background: #2a2185
+  }
+  &.active {
+        color: white;
+        background: #2a2185
+  }
+}
+.links {
+  column-gap: 12px;
+}
+.link {
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 50%;
+}
+.paginacion,
+.button,
+.links,
+.link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+}
+.paginacion {
+      padding: 15px;
+      border-radius: 10px;
+      column-gap: 12px;
+      background: white;
+      margin-top: auto;
+      font-size: 12px;
+  button {
+    &.btn {
+          width: 5px;
+          height: 5px;
+          cursor: pointer;
+          background: transparent;
+          border: 0; //#91C9FF
+          outline: none;
+          transition: 1s ease-in-out;
+          & span {
+                color: white;
+                font-size: 17px;
+                font-weight: 500;
+          }
+    }
+    & svg {
+          position: absolute;
+          left: 0;
+          top: 0;
+          fill: none;
+          stroke: #2a2185;
+          stroke-dasharray: 150 480;
+          stroke-dashoffset: 150;
+          transition: 1s ease-in-out;
+    }
+    &.btn:hover {
+          transition: 1s ease-in-out;
+          //background: #4F95DA;
+    }
+    &.btn:hover svg {
+          stroke-dashoffset: -480;
+    }
+  }
+}

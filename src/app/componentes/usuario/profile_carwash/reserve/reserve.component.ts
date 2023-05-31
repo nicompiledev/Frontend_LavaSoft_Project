@@ -39,8 +39,8 @@ export class ReserveComponent implements OnInit {
                 this.loader.showLoader();
 
                 this.comunicacion.$servicioID.subscribe((servicio: any) => {
-                  this.loader.hideLoader();
                   this.idServicio = servicio;
+                  this.loader.hideLoader();
                 })
               }
 

@@ -27,7 +27,7 @@
         >
       </li>
     </ng-container>
-    <ng-container *ngIf="(auth.isLogin | async) && (auth.rol | async) == 'usuario'">
+    <ng-container *ngIf="(auth.isLogin | async)">
       <app-perfil-menu></app-perfil-menu>
     </ng-container>
   </ul>

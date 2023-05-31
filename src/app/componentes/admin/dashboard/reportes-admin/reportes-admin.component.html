@@ -1,7 +1,6 @@
 <div class="app">
   <!-- Lista de reportes -->
   <div class="reportes">
-
     <div class="cardHeader">
       <h2>Reportes Pendientes para revisar</h2>
     </div>
@@ -10,18 +9,14 @@
       <label for="selectInput" class="select-label"
         >Selecciona el tipo de reporte:</label
       >
-      <select
-        name="selectInput"
-        id="selectInput"
-        class="select-input"
-      >
+      <select name="selectInput" id="selectInput" class="select-input">
         <option value="todos">Todos</option>
         <option value="falsa">Información falsa</option>
         <option value="abuso">Abuso</option>
         <option value="correccion">Corrección</option>
       </select>
     </div>
-  
+
     <!-- Sección informativa -->
     <div class="info">
       <div class="info-item">
@@ -38,31 +33,35 @@
       </div>
     </div>
 
-
     <details class="reporte" data-tipo="falsa">
       <summary>
-
-        <div class="reporte-titulo"><fa-icon [icon]="mensaje"></fa-icon>La foto no tiene que ver con el lavadero</div>
+        <div class="reporte-titulo">
+          <fa-icon [icon]="mensaje"></fa-icon>La foto no tiene que ver con el
+          lavadero
+        </div>
 
         <div class="contenedor-tipoReporte">
-        <span class="reporte-tipo info-color-falsa">Información falsa</span>
+          <span class="reporte-tipo info-color-falsa">Información falsa</span>
         </div>
       </summary>
       <div class="reporte-contenido">
         <table class="reporte-tabla">
           <tr>
-          <th>Reportado:</th>
-          <td>Juan Pérez</td>
+            <th>Reportado:</th>
+            <td>Juan Pérez</td>
           </tr>
           <tr>
-          <th>Usuario:</th>
-          <td>María García</td>
+            <th>Usuario:</th>
+            <td>María García</td>
           </tr>
           <tr>
-          <th>Razón:</th>
-          <td>La foto que publicó María no corresponde al lavadero que ofrece en su anuncio.</td>
+            <th>Razón:</th>
+            <td>
+              La foto que publicó María no corresponde al lavadero que ofrece en
+              su anuncio.
+            </td>
           </tr>
-          </table>
+        </table>
         <div class="reporte-botones">
           <button class="reporte-boton reporte-boton-aceptar">
             Aceptar reporte
@@ -76,28 +75,29 @@
 
     <details class="reporte" data-tipo="abuso">
       <summary>
-
-        <div class="reporte-titulo"><fa-icon [icon]="mensaje"></fa-icon>El usuario no me ha pagado</div>
+        <div class="reporte-titulo">
+          <fa-icon [icon]="mensaje"></fa-icon>El usuario no me ha pagado
+        </div>
 
         <div class="contenedor-tipoReporte">
-        <span class="reporte-tipo info-color-abuso">Abuso</span>
+          <span class="reporte-tipo info-color-abuso">Abuso</span>
         </div>
       </summary>
       <div class="reporte-contenido">
         <table class="reporte-tabla">
           <tr>
-          <th>Reportado:</th>
-          <td>Juan Pérez</td>
+            <th>Reportado:</th>
+            <td>Juan Pérez</td>
           </tr>
           <tr>
-          <th>Usuario:</th>
-          <td>María García</td>
+            <th>Usuario:</th>
+            <td>María García</td>
           </tr>
           <tr>
-          <th>Razón:</th>
-          <td>María no me ha pagado por el lavado que le hice.</td>
+            <th>Razón:</th>
+            <td>María no me ha pagado por el lavado que le hice.</td>
           </tr>
-          </table>
+        </table>
         <div class="reporte-botones">
           <button class="reporte-boton reporte-boton-aceptar">
             Aceptar reporte
@@ -111,28 +111,29 @@
 
     <details class="reporte" data-tipo="Corrección">
       <summary>
-
-        <div class="reporte-titulo"><fa-icon [icon]="mensaje"></fa-icon>El usuario no me ha pagado</div>
+        <div class="reporte-titulo">
+          <fa-icon [icon]="mensaje"></fa-icon>El usuario no me ha pagado
+        </div>
 
         <div class="contenedor-tipoReporte">
-        <span class="reporte-tipo info-color-correccion">Corrección</span>
+          <span class="reporte-tipo info-color-correccion">Corrección</span>
         </div>
       </summary>
       <div class="reporte-contenido">
         <table class="reporte-tabla">
           <tr>
-          <th>Reportado:</th>
-          <td>Juan Pérez</td>
+            <th>Reportado:</th>
+            <td>Juan Pérez</td>
           </tr>
           <tr>
-          <th>Usuario:</th>
-          <td>María García</td>
+            <th>Usuario:</th>
+            <td>María García</td>
           </tr>
           <tr>
-          <th>Razón:</th>
-          <td>María no me ha pagado por el lavado que le hice.</td>
+            <th>Razón:</th>
+            <td>María no me ha pagado por el lavado que le hice.</td>
           </tr>
-          </table>
+        </table>
         <div class="reporte-botones">
           <button class="reporte-boton reporte-boton-aceptar">
             Aceptar reporte
@@ -143,5 +144,19 @@
         </div>
       </div>
     </details>
+    <div class="paginacion">
+      <!-- Paginación -->
+      <button class="button prevNext" id="prev" disabled="">
+        <i class="fa-solid fa-angle-left"></i>
+      </button>
+
+      <div class="links">
+        <a href="#" class="link active">1</a>
+      </div>
+
+      <button class="button prevNext" id="next">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
     </div>
+  </div>
 </div>

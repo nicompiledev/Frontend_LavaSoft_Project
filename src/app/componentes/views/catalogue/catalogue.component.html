@@ -16,16 +16,26 @@
       </div>
       <div *ngIf="loading" class="carta">Cargando lavaderos...</div>
       <!-- Mostrar el número de página -->
-      <p class="page-number">Página {{ page }}</p>
+      <!-- <p class="page-number">Página {{ page }}</p> -->
 
       <!-- Botones de paginación -->
       <div class="pagination-buttons">
-        <button class="pagination-button" [disabled]="!hasLessResults" (click)="previousPage()">
-          Anterior
-        </button>
-        <button class="pagination-button" [disabled]="!hasMoreResults" (click)="nextPage()">
-          Siguiente
-        </button>
+        <ul class="pagination">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="goToPreviousPage()"><</a>
+          </li>
+          <li class="page-item" *ngIf="totalPages > pagesToShow" [class.disabled]="currentPage === 1">
+            <a class="page-link" (click)="goToFirstPage()">1</a>
+          </li>
+          <li class="page-item" *ngIf="showEllipsisStart">...</li>
+          <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+            <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+          </li>
+          <li class="page-item" *ngIf="showEllipsisEnd">...</li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" (click)="goToNextPage()">></a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

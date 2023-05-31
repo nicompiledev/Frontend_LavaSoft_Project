@@ -8,14 +8,15 @@ $border-color_1: currentColor;
 	position: relative;
 	width: 100%;
 	padding: 20px;
-	display: grid;
-	grid-template-columns: 1fr;
-	justify-items: center;
-	grid-gap: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	.recentOrders {
 		position: relative;
-		display: grid;
-		min-height: 750px;
+		display: flex;
+		flex-direction: column;
+		min-height: calc(100vh - 100px);
 		background: var(--white);
 		padding: 20px;
 		box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -103,4 +104,14 @@ $border-color_1: currentColor;
 	.status.inProgress {
 		white-space: nowrap;
 	}
+}
+
+
+mat-paginator{
+	margin-top: auto;
+}
+
+table{
+	//Centrado
+	margin: 0 auto;
 }

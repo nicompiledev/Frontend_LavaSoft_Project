@@ -9,7 +9,7 @@ import { ViewportScroller } from '@angular/common';
   templateUrl: './catalogue.component.html',
   styleUrls: ['./catalogue.component.scss'],
 })
-export class CatalogueComponent implements OnInit {
+export class CatalogueComponent {
 
   isFixed = false;
 
@@ -36,63 +36,85 @@ export class CatalogueComponent implements OnInit {
 
   lavaderos: any = [];
   loading: boolean = true;
-  page: number = 1;
-  hasMoreResults: boolean = true;
-  hasLessResults: boolean = false;
+
+  currentPage: number = 1;
+  totalPages: number;
+  pagesToShow = 3;
+  pages: number[];
+  showEllipsisStart = false;
+  showEllipsisEnd = false;
 
   constructor(
     private anonimoService: anonimoService,
     private loader: LoaderService,
     private viewportScroller: ViewportScroller
   ) {
+    this.cambiarPagina();
   }
-
-  ngOnInit(): void {
-
-    // volver scroll arribba
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.paginacion();
-  }
-
-  // Botones de paginación
-  nextPage() {
-    this.page++;
-    this.paginacion();
-    this.hasLessResults = true;
-  }
-
-  previousPage() {
-    if (this.page == 2) {
-      this.hasLessResults = false;
-    }
-    this.page--;
-    this.paginacion();
-  }
-
-  paginacion() {
-    this.subirVentana()
-    this.loader.showLoader();
-    this.anonimoService
-      .getLavaderos(this.page)
-      .pipe(finalize(() => this.loader.hideLoader()))
-      .subscribe((res: any) => {
-        if (res.length > 0) {
-          this.lavaderos = res;
-          this.hasMoreResults = res.length === 10;
-        } else {
-          this.hasMoreResults = false;
-          if (this.page > 1) {
-            this.page--;
-          }
-        }
-        this.loading = false;
-      });
-  }
-
 
   subirVentana(){
     this.viewportScroller.scrollToPosition([0, 0]);
     this.isFixed = false;
   }
+
+
+  cambiarPagina() {
+    this.subirVentana();
+    this.loader.showLoader();
+    this.anonimoService
+      .getLavaderos(this.currentPage)
+      .pipe(finalize(() => this.loader.hideLoader()))
+      .subscribe((res: any) => {
+        console.log(res);
+        this.lavaderos = res.lavaderos;
+        this.totalPages = res.totalPages;
+        this.updatePages();
+        this.loading = false;
+      });
+  }
+
+
+  goToFirstPage() {
+    this.currentPage = 1;
+    this.cambiarPagina();
+  }
+
+  goToPreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.cambiarPagina();
+    }
+  }
+
+  goToPage(page: number) {
+    if(page == this.currentPage) return;
+    this.currentPage = page;
+    this.cambiarPagina();
+  }
+
+  goToNextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.cambiarPagina();
+    }
+  }
+
+  updatePages() {
+    if (this.totalPages <= this.pagesToShow) {
+      this.pages = [];
+      for (let i = 1; i <= this.totalPages; i++) {
+        this.pages.push(i);
+      }
+    } else {
+      const startPage = Math.max(2, this.currentPage - Math.floor(this.pagesToShow / 2));
+      const endPage = Math.min(this.totalPages - 1, startPage + this.pagesToShow - 1);
+      this.pages = [];
+      for (let i = startPage; i <= endPage; i++) {
+        this.pages.push(i);
+      }
+      this.showEllipsisStart = startPage > 2;
+      this.showEllipsisEnd = endPage < this.totalPages - 1;
+    }
+  }
 }
+
