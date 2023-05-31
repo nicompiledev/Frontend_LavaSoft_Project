@@ -61,6 +61,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
+import { DataCarwashComponent } from './componentes/usuario/profile_carwash/data-carwash/data-carwash.component';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/mod
     LavaderosPendientesComponent,
     LoginAdminComponent,
     ModalVehiclesComponent,
+    DataCarwashComponent,
   ],
   imports: [
     BrowserModule,

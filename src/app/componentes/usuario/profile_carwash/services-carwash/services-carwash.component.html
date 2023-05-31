@@ -1,35 +1,49 @@
 <div class="contenedor">
-  <h4>Escoge tu Servicio</h4>
+<div class="text-center">
+<h2>Servicios</h2>
+<p>Elige tu tipo de vehiculo y la categoria del servicio para poder filtrar tu buqueda.</p>
+</div>
+
   <div class="filter-services">
-    <select name="" id="" class="fa">
-      <option value="" disabled selected> <strong>Vehiculo:</strong></option>
-      <option value="motorcycle" class="fa">&#xf21c; moto</option>
-      <option value="car" class="fa">&#xf1b9; Carro</option>
-      <option value="truck_small" class="fa">&#xf63c; camioneta</option>
-      <option value="truck_big" class="fa">&#xf0d1; camion</option>
-      <option value="van" class="fa">&#xf5b6; Bus</option>
-      <option value="all" class="fa">&#xf03a; todos</option>
-    </select>
-
-    <div class="categoria">
-      <label class="categoria-contenedor">
-        <input type="radio" name="radio" checked="" />
-        <span class="name">Categoria</span>
-      </label>
-      <label class="categoria-contenedor">
-        <input type="radio" name="radio" />
-        <span class="name">Categoria</span>
-      </label>
-
-      <label class="categoria-contenedor">
-        <input type="radio" name="radio" />
-        <span class="name">Categoria</span>
-      </label>
-      <label class="categoria-contenedor">
-        <input type="radio" name="radio" />
-        <span class="name">Categoria</span>
-      </label>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicadores -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+    
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="carousel-content">
+            <h3>Slide 1</h3>
+            <p>Contenido del Slide 1</p>
+            <button type="button" class="btn btn-primary">Botón Slide 1</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-content">
+            <h3>Slide 2</h3>
+            <p>Contenido del Slide 2</p>
+            <form>
+              <input type="text" placeholder="Ingrese su correo electrónico">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Controles -->
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+      </a>
     </div>
+    
   </div>
   <!--
 
