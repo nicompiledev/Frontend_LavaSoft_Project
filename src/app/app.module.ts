@@ -63,6 +63,7 @@ import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin
 import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { DataCarwashComponent } from './componentes/usuario/profile_carwash/data-carwash/data-carwash.component';
+import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { DataCarwashComponent } from './componentes/usuario/profile_carwash/data
     ModalVehiclesComponent,
     ReportesAdminComponent,
     DataCarwashComponent,
+    PerfilUsuarioComponent,
   ],
   imports: [
     BrowserModule,

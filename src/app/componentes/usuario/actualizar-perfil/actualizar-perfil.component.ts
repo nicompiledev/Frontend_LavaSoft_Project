@@ -33,7 +33,7 @@ export class ActualizarPerfilComponent implements OnInit {
 
   actualizarPerfil() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.service.actualizarPerfil(id, this.usuario).subscribe(
+    this.service.actualizarPerfil(this.usuario).subscribe(
       (response: any) => {
         console.log(response);
       },

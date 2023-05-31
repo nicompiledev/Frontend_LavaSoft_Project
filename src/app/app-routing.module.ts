@@ -26,6 +26,7 @@ import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lava
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
+import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
 
 const routes: Routes = [
   // Inicio
@@ -50,7 +51,7 @@ const routes: Routes = [
     { path: 'empresas/registro_lavadero', component:  RegisterCarwashComponent},
 
   // Usuario
-  {path:'perfil_usuario' , component: PerfilComponent, canActivate: [AuthGuard]},
+  {path:'perfil_usuario' , component: PerfilUsuarioComponent, canActivate: [AuthGuard]},
   {path:'perfil_usuarios' , component: PerfilComponent},
 
   // ADMIN

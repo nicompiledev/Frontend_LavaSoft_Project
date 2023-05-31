@@ -1,6 +1,5 @@
 
 <!-- User Profile -->
-<app-header></app-header>
   <div class="container_all">
     <div class="content">
       <div class="col-lg-8">
@@ -31,21 +30,23 @@
             <thead>
               <tr class="table-active">
                 <th>Tipo</th>
-                <th>Nombre</th>
+                <th>Placa</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>Placa</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
 
-            <tbody>
-              <tr>
-                <th><i class="fa-solid fa-motorcycle"></i></th>
-                <td>NKD 125 cc</td>
-                <td>AKT</td>
-                <td>2023</td>
-                <td>PFF 000</td>
+            <tbody *ngIf="usuario">
+              <tr  *ngFor="let vehiculo of usuario.vehiculos">
+                <th *ngIf="vehiculo.tipo_vehiculo === 'Moto'"><i class="fa-solid fa-motorcycle"></i></th>
+                <th *ngIf="vehiculo.tipo_vehiculo === 'Carro'"><i class="fa-solid fa-car"></i></th>
+                <th *ngIf="vehiculo.tipo_vehiculo === 'Camion'" ><i class="fa-solid fa-truck"></i></th>
+                <th *ngIf="vehiculo.tipo_vehiculo === 'Camioneta'" ><i class="fa-solid fa-truck-pickup"></i></th>
+                <th *ngIf="vehiculo.tipo_vehiculo === 'Bus'" ><i class="fa-solid fa-bus"></i></th>
+                <td>{{vehiculo.placa}}</td>
+                <td>{{vehiculo.marca}}</td>
+                <td>{{vehiculo.modelo}}</td>
                 <td><button type="button" class="danger">-</button></td>
               </tr>
              </tbody>
@@ -55,8 +56,6 @@
             <table class="table table-bordered">
 
 
-            
-                
             </table>
           </div>
         </div>
@@ -67,7 +66,7 @@
                 <h3 class="mb-0"><i class="fa fas fa-user-circle"></i>Editar perfil</h3>
               </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample" #collapseOne>
               <div class="accordion-body">
                 <form [formGroup]="usuarioForm">
                   <!-- Pagina 1 -->
@@ -261,7 +260,7 @@
 
                     <div class="btn-group">
                       <button class="btn btn-dark" routerLink="/actualizar-password">Cambiar contraseña</button>
-                    <button class="btn btn-info" routerLink="/perfil/{usuario._id}">Actualizar perfil</button>
+                    <button class="btn btn-info" (click)="actualizar_Perfil()">Actualizar perfil</button>
                     </div>
                 </form>
               </div>
@@ -280,7 +279,6 @@
 <div *ngIf="!usuario">
   <p>No se encontró información del usuario.</p>
 </div>
-<app-footer></app-footer>
 <!-- /User Profile -->
 <!-- 
   <div *ngIf="usuario">

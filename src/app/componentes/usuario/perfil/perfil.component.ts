@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuarios.service';
 import { AuthService } from 'src/app/services/security/auth.service';
@@ -22,7 +22,6 @@ export class PerfilComponent implements OnInit {
   usuario: any;
 
   constructor(private service: UsuarioService,
-              private router: Router,
               public auth: AuthService,
               private modal: ModalReserveService,
               private loader: LoaderService,
@@ -65,14 +64,24 @@ export class PerfilComponent implements OnInit {
       })
     )
     .subscribe(
-      (usuario: any) => {
-        this.usuario = usuario;
-
-        console.log("usuario", usuario);
-
-        const fechaNacimiento = new Date('1990-01-01T00:00:00.000Z');
-        const fechaNacimientoString = fechaNacimiento.toISOString().substring(0, 10);
+      (res: any) => {
+        console.log(res);
         
+        this.usuario = res;
+        this.cambiarInformaciónFormulario();
+      },
+      (error) => {
+        console.error(error); // manejar el error
+      }
+    );
+  }
+
+  @ViewChild('collapseOne') collapseOne: any;
+
+  cambiarInformaciónFormulario(){
+    this.collapseOne.nativeElement.classList.remove('show');
+        const fechaNacimiento = new Date(this.usuario.fecha_nacimiento);
+        const fechaNacimientoString = fechaNacimiento.toISOString().substring(0, 10);
 
         this.usuarioForm.patchValue({
           nombre: this.usuario.nombre,
@@ -83,9 +92,29 @@ export class PerfilComponent implements OnInit {
           telefono: this.usuario.telefono,
           contrasena: this.usuario.contrasena
         });
+
+        // subir ventana
+        window.scrollTo(0, 0);
+  }
+
+
+  actualizar_Perfil() {
+
+    this.loader.showLoader();
+
+    this.service.actualizarPerfil(this.usuarioForm.value)
+    .pipe(
+      finalize(() => {
+        this.loader.hideLoader();
+      })
+    )
+    .subscribe(
+      (res: any) => {
+        this.usuario = res.usuario;
+        this.cambiarInformaciónFormulario();
       },
       (error) => {
-        console.error(error); // manejar el error
+        console.error(error);
       }
     );
   }

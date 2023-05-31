@@ -70,8 +70,12 @@ export class UsuarioService {
     return this.http.put(this.apiUrl + 'actualizar-password', body, this.httpOptions);
   }
 
-  actualizarPerfil(id: string, data: any) {
-    return this.http.put(this.apiUrl + "perfil/" + id, data, this.httpOptions);
+  actualizarPerfil(data: any) {
+    return this.http.put(this.apiUrl + "actualizar_perfil", data, this.httpOptions);
+  }
+
+  agregarVehiculo(data: any) {
+    return this.http.post(this.apiUrl + "agregar-vehiculo", data, this.httpOptions);
   }
 }
 

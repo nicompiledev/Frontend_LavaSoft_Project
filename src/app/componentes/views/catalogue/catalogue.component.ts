@@ -11,27 +11,57 @@ import { ViewportScroller } from '@angular/common';
 })
 export class CatalogueComponent {
 
-  isFixed = false;
+  isAbsolute = false;
+  scrollTop: number;
+  windowHeight: number;
+  documentHeight: number;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isFixed = false;
     this.checkScrollPosition();
   }
 
   checkScrollPosition() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
-    const documentHeight = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.clientHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
 
-    this.isFixed = scrollTop >= documentHeight - windowHeight - 300;
-    document.documentElement.style.setProperty('--top', documentHeight - windowHeight - 300 + 'px');
+    if(document.documentElement.style.getPropertyValue('--top') == '-158px'){
+      this.isAbsolute = false;
+      document.documentElement.style.setProperty('--top', 0 + 'px');
+      this.scrollTop = 0;
+      this.windowHeight = 0;
+      this.documentHeight = 0;
+    }
+    else{
+      this.scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      this.windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+      this.documentHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+      // documentHeight es el alto total de la página
+      this.isAbsolute = this.scrollTop >= this.documentHeight - this.windowHeight - 300;
+    }
+  }
+
+  actualizarTop() {
+    this.isAbsolute = false;
+    this.scrollTop = 0;
+    this.windowHeight = 0;
+    this.documentHeight = 0;
+  }
+
+  constructor(
+    private anonimoService: anonimoService,
+    private loader: LoaderService,
+    private viewportScroller: ViewportScroller
+  ) {
+    this.cambiarPagina();
+  }
+
+  subirVentana(){
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   lavaderos: any = [];
@@ -44,22 +74,8 @@ export class CatalogueComponent {
   showEllipsisStart = false;
   showEllipsisEnd = false;
 
-  constructor(
-    private anonimoService: anonimoService,
-    private loader: LoaderService,
-    private viewportScroller: ViewportScroller
-  ) {
-    this.cambiarPagina();
-  }
-
-  subirVentana(){
-    this.viewportScroller.scrollToPosition([0, 0]);
-    this.isFixed = false;
-  }
-
-
   cambiarPagina() {
-    this.subirVentana();
+
     this.loader.showLoader();
     this.anonimoService
       .getLavaderos(this.currentPage)
@@ -70,6 +86,8 @@ export class CatalogueComponent {
         this.totalPages = res.totalPages;
         this.updatePages();
         this.loading = false;
+        this.subirVentana();
+        this.actualizarTop()
       });
   }
 
@@ -100,9 +118,9 @@ export class CatalogueComponent {
   }
 
   updatePages() {
-    if (this.totalPages <= this.pagesToShow) {
+    if (this.totalPages <= this.pagesToShow) {  // Lo que hace
       this.pages = [];
-      for (let i = 1; i <= this.totalPages; i++) {
+      for (let i = 1; i <= (this.totalPages + 1); i++) {
         this.pages.push(i);
       }
     } else {

@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="vehicleForm">
+<form class="form" [formGroup]="vehiculoForm">
   <p class="title">
     <span class="ms-2">Registrar Vehiculo</span> <span (click)="closeModal(false , 'register_vehicle')" class="close">x</span>
   </p>
@@ -22,12 +22,12 @@
       <div class="errors">
         <div
           *ngIf="
-            vehicleForm.get('placa').invalid &&
-            (vehicleForm.get('placa').dirty || vehicleForm.get('placa').touched)
+            vehiculoForm.get('placa').invalid &&
+            (vehiculoForm.get('placa').dirty || vehiculoForm.get('placa').touched)
           "
           class="text-danger"
         >
-          <div *ngIf="vehicleForm.get('placa').hasError('required')">
+          <div *ngIf="vehiculoForm.get('placa').hasError('required')">
             Este campo es requerido
           </div>
         </div>
@@ -48,12 +48,12 @@
       <div class="errors">
         <div
           *ngIf="
-            vehicleForm.get('marca').invalid &&
-            (vehicleForm.get('marca').dirty || vehicleForm.get('marca').touched)
+            vehiculoForm.get('marca').invalid &&
+            (vehiculoForm.get('marca').dirty || vehiculoForm.get('marca').touched)
           "
           class="text-danger"
         >
-          <div *ngIf="vehicleForm.get('marca').hasError('required')">
+          <div *ngIf="vehiculoForm.get('marca').hasError('required')">
             Este campo es requerido
           </div>
         </div>
@@ -75,12 +75,12 @@
     <div class="errors">
       <div
         *ngIf="
-          vehicleForm.get('modelo').invalid &&
-          (vehicleForm.get('modelo').dirty || vehicleForm.get('modelo').touched)
+          vehiculoForm.get('modelo').invalid &&
+          (vehiculoForm.get('modelo').dirty || vehiculoForm.get('modelo').touched)
         "
         class="text-danger"
       >
-        <div *ngIf="vehicleForm.get('modelo').hasError('required')">
+        <div *ngIf="vehiculoForm.get('modelo').hasError('required')">
           Este campo es requerido
         </div>
       </div>
@@ -91,29 +91,28 @@
     <label>
       <select id="type-vehicle" formControlName="tipo_vehiculo">
         <option disabled selected value="">Tipo Vehículo</option>
-        <option value="motorcycle">moto</option>
-        <option value="car">Carro</option>
-        <option value="truck_small">camioneta</option>
-        <option value="truck_big">camion</option>
-        <option value="van">Bus</option>
-        <option value="all">todos</option>
+        <option value="Moto">Moto</option>
+        <option value="Carro">Carro</option>
+        <option value="Camioneta">Camioneta</option>
+        <option value="Camion">Camion</option>
+        <option value="Bus">Bus</option>
       </select>
     </label>
 
     <div class="errors">
       <div
         *ngIf="
-          vehicleForm.get('tipo_vehiculo').invalid &&
-          (vehicleForm.get('tipo_vehiculo').dirty ||
-            vehicleForm.get('tipo_vehiculo').touched)
+          vehiculoForm.get('tipo_vehiculo').invalid &&
+          (vehiculoForm.get('tipo_vehiculo').dirty ||
+            vehiculoForm.get('tipo_vehiculo').touched)
         "
         class="text-danger"
       >
-        <div *ngIf="vehicleForm.get('tipo_vehiculo').hasError('required')">
+        <div *ngIf="vehiculoForm.get('tipo_vehiculo').hasError('required')">
           Este campo es requerido
         </div>
       </div>
     </div>
   </div>
-  <button class="submit">Registrar</button>
+  <button class="submit" (click)="agregarVehiculo()">Agregar</button>
 </form>
