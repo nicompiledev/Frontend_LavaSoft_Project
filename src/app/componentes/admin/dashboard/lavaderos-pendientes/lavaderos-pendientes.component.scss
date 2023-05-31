@@ -10,11 +10,12 @@ $border-color_1: currentColor;
 	padding: 20px;
 	display: grid;
 	grid-template-columns: 1fr;
+	justify-items: center;
 	grid-gap: 30px;
 	.recentOrders {
 		position: relative;
 		display: grid;
-		min-height: 500px;
+		min-height: 750px;
 		background: var(--white);
 		padding: 20px;
 		box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -54,6 +55,7 @@ $border-color_1: currentColor;
 	}
 }
 .recentOrders {
+	width: 95%;
 	table {
 		width: 100%;
 		border-collapse: collapse;

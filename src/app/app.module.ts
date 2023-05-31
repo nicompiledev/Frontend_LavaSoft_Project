@@ -45,7 +45,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 // CHAT
 import { ChatComponent } from './componentes/usuario/chat/chat.component';
-import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.component';
+import { ChatAdminComponent } from './componentes/admin/dashboard/chat-admin/chat-admin.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -61,6 +61,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
+import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 
 
 @NgModule({
@@ -104,6 +105,7 @@ import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/mod
     LavaderosPendientesComponent,
     LoginAdminComponent,
     ModalVehiclesComponent,
+    ReportesAdminComponent,
   ],
   imports: [
     BrowserModule,

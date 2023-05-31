@@ -6,10 +6,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AdminService {
 
+
   private url = 'http://localhost:4000/api/admins/';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+
     }),
   };
   constructor(private http: HttpClient) {}
@@ -44,6 +47,18 @@ export class AdminService {
 
   deleteLavadero(id_lavadero: string) {
     return this.http.delete(`${this.url}lavaderos/${id_lavadero}`);
+  }
+
+  activarLavadero(id_lavadero: string) {
+    return this.http.post(`${this.url}lavaderos/activar`, { id_lavadero });
+  }
+
+  noActivarLavadero(id_lavadero: string) {
+    return this.http.post(`${this.url}lavaderos/no-activar`, { id_lavadero }, this.httpOptions);
+  }
+
+  getLavaderosNoConfirmados() {
+    return this.http.get(`${this.url}lavaderos/no-confirmados`, this.httpOptions);
   }
 
 }

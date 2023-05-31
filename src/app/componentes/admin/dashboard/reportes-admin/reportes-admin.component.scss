@@ -1,0 +1,224 @@
+.app {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 20px;
+}
+
+/* Estilos para la lista de reportes */
+.reportes {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  min-height: 750px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+
+  // Sombra
+
+  background: white;
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 20px;
+
+  h2 {
+		color: #2a2185;
+	}
+}
+
+/* Estilos para cada reporte */
+.reporte {
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+}
+
+/* Estilos para el summary de cada reporte */
+.reporte > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+fa-icon{
+  color: #2921859d;
+  padding-inline: 10px;
+  font-size: 20px;
+}
+
+/* Estilos para el título del reporte */
+.reporte-titulo {
+  font-size: 16px;
+  width: 70%;
+}
+
+.contenedor-tipoReporte{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+/* Estilos para el tipo del reporte */
+.reporte-tipo {
+  font-size: 14px;
+  color: white;
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin: 0;
+}
+
+/* Estilos para el contenido del reporte */
+.reporte-contenido {
+  background-color: #fff;
+  display: none; /* Ocultamos el contenido por defecto */
+}
+
+/* Estilos para la descripción del reporte */
+.reporte-tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reporte-tabla th {
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  padding: 5px;
+  border-bottom: 1px solid #cccccc9c;
+}
+
+.reporte-tabla td {
+  font-size: 14px;
+  color: #666;
+  padding: 5px;
+  border-bottom: 1px solid #cccccc3c;
+}
+/* Estilos para los botones del reporte */
+.reporte-botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.reporte-boton {
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+ .reporte-boton-aceptar {
+   background-color:#28a745; /* Color verde */
+ }
+
+ .reporte-boton-cancelar {
+   background-color:#dc3545; /* Color rojo */
+ }
+
+ /* Estilos para cuando el reporte está abierto */
+ .reporte[open] {
+    border-radius: 0px 0px 5px 5px; /* Redondeamos la esquina inferior */
+    border: 1px solid #ccc; /* Añadimos una línea inferior */
+ }
+
+ .reporte[open] > summary {
+    background-color: #2a2185 !important; /* Cambiamos el color de fondo */
+    color: #fff !important; /* Cambiamos el color del texto */
+    // Inicial Mayuscula de la primera palabra
+    font-weight: bold;
+ }
+
+ .reporte[open] > summary div fa-icon {
+    color: #fff !important;
+ }
+
+ .reporte[open] > summary::after {
+   content:"-"; /* Cambiamos el símbolo a menos */
+ }
+
+ .reporte[open] > .reporte-contenido {
+   display:block; /* Mostramos el contenido */
+ }
+
+ /* Estilos para el símbolo de más o menos en el summary */
+ .reporte > summary::after {
+   content:"+"; /* Por defecto mostramos un más */
+   font-size:20px; 
+   color:#999; 
+   margin-left:10px; 
+ }
+
+ /* Estilos para el input de selección */
+ .select {
+   display:flex; 
+   align-items:center; 
+   justify-content:flex-start; 
+   margin-bottom:10px; 
+ }
+
+ .select-label {
+   font-weight:bold; 
+   color:#333; 
+   margin-right:10px; 
+ }
+
+ .select-input {
+   width:200px; 
+   height:30px; 
+   border:1px solid #ccc; 
+   border-radius:5px; 
+   padding:5px; 
+ }
+
+ /* Estilos para la sección informativa */
+ .info {
+   display:flex; 
+   align-items:center; 
+   justify-content:flex-start; 
+   padding-bottom: 40px;
+ }
+
+ .info-item {
+   display:flex; 
+   align-items:center; 
+   margin-right:10px; 
+ }
+
+ .info-color {
+   width:20px; 
+   height:20px; 
+   border-radius:50%; 
+   margin-right:5px; 
+ }
+
+ /* Colores para cada tipo de reporte */
+ .info-color-falsa {
+   background-color:#dc3545; /* Color rojo */
+ }
+
+ .info-color-abuso {
+   background-color:#ffc107; /* Color amarillo */
+ }
+
+ .info-color-correccion {
+   background-color:#28a745; /* Color verde */
+ }

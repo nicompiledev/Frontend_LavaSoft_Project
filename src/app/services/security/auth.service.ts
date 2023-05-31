@@ -25,6 +25,7 @@ export class AuthService {
     localStorage.setItem('rol', rol);
     this.isLogin.next(true);
   }
+
   getToken() {
     if (this.checkToken()) {
       return localStorage.getItem('token');

@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
     map((isLoggedIn: boolean) => {
       if (isLoggedIn) {
         if (this.rol === 'admin' && (state.url === '/perfil_usuario' || state.url === '/login-admin')) {
-          this.router.navigate(['/inicio']);
+          this.router.navigate(['/dashboard-admin']);
           return false;
         }
         if (this.rol === 'usuario' && (state.url === '/dashboard-admin' || state.url === '/login-admin')) {

@@ -3,6 +3,9 @@ import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/security/auth.service';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
+import { finalize } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-admin',
@@ -16,7 +19,9 @@ export class LoginAdminComponent {
   constructor(
     private adminService: AdminService,
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    public loader: LoaderService,
+    private router: Router
   ) {
     this.loginForm = this.fb.group({
       correo_electronico: ['', [Validators.required, Validators.email]],
@@ -29,9 +34,17 @@ export class LoginAdminComponent {
     const contrasena = this.loginForm.get('contrasena').value;
 
     if (this.loginForm.valid) {
-      this.adminService.loginAdmin(correo_electronico, contrasena).subscribe(
+
+      this.loader.showLoader();
+
+      this.adminService.loginAdmin(correo_electronico, contrasena)
+      .pipe(
+        finalize(() => this.loader.hideLoader())
+      )
+      .subscribe(
         (response: any) => {
           this.auth.login(response.token, response.rol);
+          this.router.navigate(['/dashboard-admin']);
         },
         (error) => {
           console.log(error);

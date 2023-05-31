@@ -18,12 +18,13 @@ import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 
 // CHAT
-import { ChatAdminComponent } from './componentes/admin/chat-admin/chat-admin.component';
+import { ChatAdminComponent } from './componentes/admin/dashboard/chat-admin/chat-admin.component';
 
 // ADMIN
 import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/navegacion.component';
 import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
+import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 
 const routes: Routes = [
   // Inicio
@@ -54,11 +55,13 @@ const routes: Routes = [
   { path: 'dashboard-admin', component: NavegacionComponent, canActivate: [AuthGuard],
     children: [
       { path: 'peticion-empresa', component:  LavaderosPendientesComponent},
-      { path: 'reportes', component:  LavaderosPendientesComponent},
+      { path: 'reportes', component:  ReportesAdminComponent},
       { path: 'chat-asesor', component:  ChatAdminComponent},
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ]
   },
+
+  { path: 'prueba-reportes', component:  ReportesAdminComponent},
 ];
 
 @NgModule({

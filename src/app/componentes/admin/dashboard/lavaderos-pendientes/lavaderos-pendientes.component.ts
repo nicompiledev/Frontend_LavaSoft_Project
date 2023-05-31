@@ -28,8 +28,7 @@ export class LavaderosPendientesComponent implements AfterViewInit {
 
   constructor(private adminService: AdminService) {
 
-    this.adminService.getAllLavaderos().subscribe((response: any) => {
-
+    this.adminService.getLavaderosNoConfirmados().subscribe((response: any) => {
       this.lavaderos = response;
       this.dataSource = new MatTableDataSource(this.lavaderos);
 
