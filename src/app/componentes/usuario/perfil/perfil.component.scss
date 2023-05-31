@@ -55,6 +55,11 @@
           height: auto;
           margin: 0px 10px 0px 10px;
       }
+
+      // Tipo date:
+      input[type="date"] {
+        width: 100%;
+      }
 }
 .input_text_form{
   padding: 10px;
@@ -83,7 +88,7 @@ left: 5%;
 
   
     .container_all{
-      position: absolute;
+      padding-top: 5rem;
       width: 100%;
       height: 100%;
       display: flex;

@@ -5,7 +5,8 @@ import { UsuarioService } from '../../../services/usuarios.service';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
-import { log } from 'console';
+import { finalize } from 'rxjs';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 
 
 @Component({
@@ -23,7 +24,9 @@ export class PerfilComponent implements OnInit {
   constructor(private service: UsuarioService,
               private router: Router,
               public auth: AuthService,
-              private modal: ModalReserveService) { 
+              private modal: ModalReserveService,
+              private loader: LoaderService,
+              ) {
                 this.modal.$modal_reserve.subscribe((valor) =>{
                   this.active = valor;
                   console.log("valor", valor)
@@ -31,12 +34,12 @@ export class PerfilComponent implements OnInit {
 
                 this.usuarioForm = new FormGroup(
                   {
-                    name: new FormControl('', [Validators.required]),
-                    lastname: new FormControl('', [Validators.required]),
+                    nombre: new FormControl('', [Validators.required]),
+                    apellido: new FormControl('', [Validators.required]),
                     genero: new FormControl('', [Validators.required]),
                     fecha_nacimiento: new FormControl('', [Validators.required]),
-                    email: new FormControl('', [Validators.required, Validators.email]),
-                    password: new FormControl('', [
+                    correo_electronico: new FormControl('', [Validators.required, Validators.email]),
+                    contrasena: new FormControl('', [
                       Validators.required,
                       Validators.minLength(8),
                     ]),
@@ -44,7 +47,7 @@ export class PerfilComponent implements OnInit {
                       Validators.required,
                       Validators.minLength(8),
                     ]),
-                    cel: new FormControl('', [
+                    telefono: new FormControl('', [
                       Validators.required,
                       Validators.minLength(10),
                       Validators.maxLength(10),
@@ -53,11 +56,33 @@ export class PerfilComponent implements OnInit {
               }
 
   ngOnInit() {
+    this.loader.showLoader();
     // modal service
-    this.service.getPerfil().subscribe(
+    this.service.getPerfil()
+    .pipe(
+      finalize(() => {
+        this.loader.hideLoader();
+      })
+    )
+    .subscribe(
       (usuario: any) => {
-        console.log(usuario)
-          this.usuario = usuario;
+        this.usuario = usuario;
+
+        console.log("usuario", usuario);
+
+        const fechaNacimiento = new Date('1990-01-01T00:00:00.000Z');
+        const fechaNacimientoString = fechaNacimiento.toISOString().substring(0, 10);
+        
+
+        this.usuarioForm.patchValue({
+          nombre: this.usuario.nombre,
+          apellido: this.usuario.apellido,
+          genero: this.usuario.genero,
+          fecha_nacimiento: fechaNacimientoString,
+          correo_electronico: this.usuario.correo_electronico,
+          telefono: this.usuario.telefono,
+          contrasena: this.usuario.contrasena
+        });
       },
       (error) => {
         console.error(error); // manejar el error
@@ -65,10 +90,6 @@ export class PerfilComponent implements OnInit {
     );
   }
 
-  cerrarSesion(){
-    this.auth.logout()
-    this.router.navigate(['/']);
-  }
   openModal(statemodal:boolean , focus:string){
     this.modal.estadomodal(statemodal , focus)
   }

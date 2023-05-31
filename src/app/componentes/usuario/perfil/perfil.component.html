@@ -1,6 +1,6 @@
 
 <!-- User Profile -->
-
+<app-header></app-header>
   <div class="container_all">
     <div class="content">
       <div class="col-lg-8">
@@ -10,16 +10,13 @@
               <i class="fi fi-rs-circle-user"></i>
             </div>
           </div>
-          <div class="card-body">
+          <div class="card-body" *ngIf="usuario">
             <ul class="nav justify-content-center side-menu">
               <li class="nav-item">
-                <!-- <a href="#" class="nav-link"> <h3>{{ usuario.nombre }}</h3></a> -->
+                <a href="#" class="nav-link"> <h3>{{ usuario.nombre }}</h3></a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link"><h3>3104010625</h3> </a>
-              </li>
-              <li class="nav-item">
-                <button (click)="cerrarSesion()"  class="btn btn-dark">Cerrar Sesion</button>
               </li>
             </ul>
           </div>
@@ -31,7 +28,7 @@
             <h3 class="mb-0"> <i class="fi fi-rr-car-bus"></i>Vehiculos disponibles</h3>
             <button type="button" class="btn btn-success" (click)="openModal(true , 'register_vehicle')">+</button>
             <table class="table  table-hover">
-             <thead>
+            <thead>
               <tr class="table-active">
                 <th>Tipo</th>
                 <th>Nombre</th>
@@ -40,9 +37,9 @@
                 <th>Placa</th>
                 <th>Eliminar</th>
               </tr>
-             </thead>
+            </thead>
 
-             <tbody>
+            <tbody>
               <tr>
                 <th><i class="fa-solid fa-motorcycle"></i></th>
                 <td>NKD 125 cc</td>
@@ -89,20 +86,20 @@
                         type="text"
                         id="name"
                         placeholder="Nombres"
-                        formControlName="name"
+                        formControlName="nombre"
                         tabindex="-1"
                       />
                     </div>
                     <div class="errors">
                       <div
                         *ngIf="
-                          usuarioForm.get('name').invalid &&
-                          (usuarioForm.get('name').dirty ||
-                            usuarioForm.get('name').touched)
+                          usuarioForm.get('nombre').invalid &&
+                          (usuarioForm.get('nombre').dirty ||
+                            usuarioForm.get('nombre').touched)
                         "
                         class="text-danger"
                       >
-                        <div *ngIf="usuarioForm.get('name').hasError('required')">
+                        <div *ngIf="usuarioForm.get('nombre').hasError('required')">
                           Este campo es requerido
                         </div>
                       </div>
@@ -120,7 +117,7 @@
                         type="text"
                         id="lastname"
                         placeholder="Apellidos"
-                        formControlName="lastname"
+                        formControlName="apellido"
                         tabindex="-1"
                       />
                     </div>
@@ -128,13 +125,13 @@
                     <div class="errors">
                       <div
                         *ngIf="
-                          usuarioForm.get('lastname').invalid &&
-                          (usuarioForm.get('lastname').dirty ||
-                            usuarioForm.get('lastname').touched)
+                          usuarioForm.get('apellido').invalid &&
+                          (usuarioForm.get('apellido').dirty ||
+                            usuarioForm.get('apellido').touched)
                         "
                         class="text-danger"
                       >
-                        <div *ngIf="usuarioForm.get('lastname').hasError('required')">
+                        <div *ngIf="usuarioForm.get('apellido').hasError('required')">
                           Este campo es requerido
                         </div>
                       </div>
@@ -211,7 +208,7 @@
                         class="input_text_form"
                         type="text"
                         id="email"
-                        formControlName="email"
+                        formControlName="correo_electronico"
                         placeholder="Correo electronico"
                         tabindex="-1"
                       />
@@ -220,16 +217,16 @@
                     <div class="errors">
                       <div
                         *ngIf="
-                          usuarioForm.get('email').invalid &&
-                          (usuarioForm.get('email').dirty ||
-                            usuarioForm.get('email').touched)
+                          usuarioForm.get('correo_electronico').invalid &&
+                          (usuarioForm.get('correo_electronico').dirty ||
+                            usuarioForm.get('correo_electronico').touched)
                         "
                         class="text-danger"
                       >
-                        <div *ngIf="usuarioForm.get('email').hasError('required')">
+                        <div *ngIf="usuarioForm.get('correo_electronico').hasError('required')">
                           Este campo es requerido
                         </div>
-                        <div *ngIf="usuarioForm.get('email').hasError('email')">
+                        <div *ngIf="usuarioForm.get('correo_electronico').hasError('email')">
                           El correo electrónico no es válido
                         </div>
                       </div>
@@ -242,7 +239,7 @@
                         class="input_text_form"
                         type="text"
                         id="cel"
-                        formControlName="cel"
+                        formControlName="telefono"
                         placeholder="Telefono celular"
                         tabindex="-1"
                       />
@@ -251,24 +248,21 @@
                     <div class="errors">
                       <div
                         *ngIf="
-                          usuarioForm.get('cel').invalid &&
-                          (usuarioForm.get('cel').dirty || usuarioForm.get('cel').touched)
+                          usuarioForm.get('telefono').invalid &&
+                          (usuarioForm.get('telefono').dirty || usuarioForm.get('telefono').touched)
                         "
                         class="text-danger"
                       >
-                        <div *ngIf="usuarioForm.get('cel').hasError('required')">
+                        <div *ngIf="usuarioForm.get('telefono').hasError('required')">
                           Este campo es requerido
                         </div>
                       </div>
                     </div>
-    
+
                     <div class="btn-group">
                       <button class="btn btn-dark" routerLink="/actualizar-password">Cambiar contraseña</button>
                     <button class="btn btn-info" routerLink="/perfil/{usuario._id}">Actualizar perfil</button>
-                 
                     </div>
-
-                    
                 </form>
               </div>
             </div>
@@ -286,6 +280,7 @@
 <div *ngIf="!usuario">
   <p>No se encontró información del usuario.</p>
 </div>
+<app-footer></app-footer>
 <!-- /User Profile -->
 <!-- 
   <div *ngIf="usuario">

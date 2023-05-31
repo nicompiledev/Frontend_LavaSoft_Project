@@ -6,7 +6,7 @@
     <li>
       <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" class="profile" />
       <ul>
-        <li class="sub-item" *ngIf="(auth.rol | async) == 'usuario'">
+        <li class="sub-item" *ngIf="(auth.rol | async) == 'usuario'" routerLink="/perfil_usuario">
           <span class="material-icons-outlined"> <i class="fi fi-rs-user-gear"></i> </span>
           <p>Editar Perfil</p>
         </li>
