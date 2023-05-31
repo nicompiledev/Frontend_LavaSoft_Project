@@ -12,13 +12,19 @@ export class ModalReserveService {
   constructor() {}
 
   estadomodal(modal: any, focus: string, servicio?: any) {
-    if (focus == 'profile_carwash') {
-      this.$modal.next(modal);
-    } else if (focus == 'reserve') {
-      this.$modal_reserve.next({ estado: modal, servicio: servicio })
-    }else if (focus == 'register_vehicle'){
-      console.log(modal)
-      this.$modal_reserve.next(modal)
+
+    switch (focus) {
+      case 'profile_carwash':
+        this.$modal.next(modal);
+        break;
+      case 'reserve':
+        this.$modal_reserve.next({ estado: modal, servicio: servicio });
+        break;
+      case 'register_vehicle':
+        this.$modal_reserve.next(modal);
+        break;
+      default:
+        break;
     }
   }
 }
