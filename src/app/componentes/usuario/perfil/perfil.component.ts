@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuarios.service';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
+import { log } from 'console';
 
 
 @Component({
@@ -14,13 +16,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class PerfilComponent implements OnInit {
   usuarioForm: FormGroup;
 
- 
+ active: boolean ;
 
   usuario: any;
 
   constructor(private service: UsuarioService,
               private router: Router,
-              public auth: AuthService) { 
+              public auth: AuthService,
+              private modal: ModalReserveService) { 
+                this.modal.$modal_reserve.subscribe((valor) =>{
+                  console.log(valor)
+
+                  this.active = valor;
+                  console.log(this.active)
+                })
 
                 this.usuarioForm = new FormGroup(
                   {
@@ -46,6 +55,12 @@ export class PerfilComponent implements OnInit {
               }
 
   ngOnInit() {
+
+    // modal service
+
+   
+
+
     this.service.getPerfil().subscribe(
       (usuario: any) => {
         console.log(usuario)
@@ -57,9 +72,15 @@ export class PerfilComponent implements OnInit {
     );
   }
 
+
+  
+
   cerrarSesion(){
     this.auth.logout()
     this.router.navigate(['/']);
+  }
+  openModal(statemodal:boolean , focus:string){
+    this.modal.estadomodal(statemodal , focus)
   }
 }
 
