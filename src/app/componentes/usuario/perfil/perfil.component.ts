@@ -16,7 +16,7 @@ import { log } from 'console';
 export class PerfilComponent implements OnInit {
   usuarioForm: FormGroup;
 
- active: boolean ;
+  active: boolean = false;
 
   usuario: any;
 
@@ -25,10 +25,8 @@ export class PerfilComponent implements OnInit {
               public auth: AuthService,
               private modal: ModalReserveService) { 
                 this.modal.$modal_reserve.subscribe((valor) =>{
-                  console.log(valor)
-
                   this.active = valor;
-                  console.log(this.active)
+                  console.log("valor", valor)
                 })
 
                 this.usuarioForm = new FormGroup(
@@ -55,12 +53,7 @@ export class PerfilComponent implements OnInit {
               }
 
   ngOnInit() {
-
     // modal service
-
-   
-
-
     this.service.getPerfil().subscribe(
       (usuario: any) => {
         console.log(usuario)
@@ -71,9 +64,6 @@ export class PerfilComponent implements OnInit {
       }
     );
   }
-
-
-  
 
   cerrarSesion(){
     this.auth.logout()

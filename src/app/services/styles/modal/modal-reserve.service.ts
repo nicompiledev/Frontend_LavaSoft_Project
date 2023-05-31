@@ -18,8 +18,7 @@ export class ModalReserveService {
       this.$modal_reserve.next({ estado: modal, servicio: servicio })
     }else if (focus == 'register_vehicle'){
       console.log(modal)
-      this.$modal.next(modal)
-      
+      this.$modal_reserve.next(modal)
     }
   }
 }
