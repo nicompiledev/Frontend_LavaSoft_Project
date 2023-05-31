@@ -62,7 +62,7 @@ import {MatInputModule} from '@angular/material/input';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
-
+import { DataCarwashComponent } from './componentes/usuario/profile_carwash/data-carwash/data-carwash.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +106,7 @@ import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-a
     LoginAdminComponent,
     ModalVehiclesComponent,
     ReportesAdminComponent,
+    DataCarwashComponent,
   ],
   imports: [
     BrowserModule,

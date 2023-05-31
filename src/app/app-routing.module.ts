@@ -24,7 +24,9 @@ import { ChatAdminComponent } from './componentes/admin/dashboard/chat-admin/cha
 import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/navegacion.component';
 import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
+
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
+import { DataCarwashComponent } from './componentes/usuario/profile_carwash/data-carwash/data-carwash.component';
 
 const routes: Routes = [
   // Inicio
@@ -43,6 +45,7 @@ const routes: Routes = [
   // Catalogo
   { path: 'catalogue' ,component:CatalogueComponent},
     {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
+    {path: 'data' , component:ProfileCarwashComponent},
   // Enoresa
   {path: 'empresas' , component:CompaniesComponent},
     { path: 'empresas/registro_lavadero', component:  RegisterCarwashComponent},
