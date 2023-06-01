@@ -41,7 +41,7 @@ export class CatalogueComponent {
         document.documentElement.offsetHeight
       );
       // documentHeight es el alto total de la página
-      this.isAbsolute = this.scrollTop >= this.documentHeight - this.windowHeight - 300;
+      this.isAbsolute = this.scrollTop >= this.documentHeight - this.windowHeight - 80;
     }
   }
 
@@ -118,9 +118,11 @@ export class CatalogueComponent {
   }
 
   updatePages() {
-    if (this.totalPages <= this.pagesToShow) {  // Lo que hace
+    if (this.totalPages <= this.pagesToShow) {
       this.pages = [];
-      for (let i = 1; i <= (this.totalPages + 1); i++) {
+      console.log(this.totalPages);
+      
+      for (let i = 1; i <= (this.totalPages); i++) {
         this.pages.push(i);
       }
     } else {

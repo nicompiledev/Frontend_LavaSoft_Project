@@ -60,22 +60,25 @@ export class UsuarioService {
     }
   }
 
-  actualizarPassword(pwd_actual: string, pwd_nuevo: string) {
+  actualizarPerfil(data: any) {
+    return this.http.put(this.apiUrl + "actualizar_perfil", data, this.httpOptions);
+  }
 
+  actualizarContrasena(pwd_actual: string, pwd_nuevo: string) {
     const body = {
       pwd_actual: pwd_actual,
       pwd_nuevo: pwd_nuevo
     };
-
-    return this.http.put(this.apiUrl + 'actualizar-password', body, this.httpOptions);
-  }
-
-  actualizarPerfil(data: any) {
-    return this.http.put(this.apiUrl + "actualizar_perfil", data, this.httpOptions);
+    return this.http.put(this.apiUrl + 'actualizar-contrasena', body, this.httpOptions);
   }
 
   agregarVehiculo(data: any) {
     return this.http.post(this.apiUrl + "agregar-vehiculo", data, this.httpOptions);
   }
+
+  eliminarVehiculo(id_vehiculo: any){
+    return this.http.post(this.apiUrl + "eliminar-vehiculo", {id_vehiculo}, this.httpOptions);
+  }
+
 }
 

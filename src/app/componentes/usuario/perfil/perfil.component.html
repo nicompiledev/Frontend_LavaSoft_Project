@@ -15,7 +15,7 @@
                 <a href="#" class="nav-link"> <h3>{{ usuario.nombre }}</h3></a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link"><h3>3104010625</h3> </a>
+                <a href="#" class="nav-link"><h3>{{ usuario.apellido }}</h3> </a>
               </li>
             </ul>
           </div>
@@ -26,6 +26,7 @@
           <div class="card-header bg-transparent border-0">
             <h3 class="mb-0"> <i class="fi fi-rr-car-bus"></i>Vehiculos disponibles</h3>
             <button type="button" class="btn btn-success" (click)="openModal(true , 'register_vehicle')">+</button>
+            <ng-container *ngIf="usuario">
             <table class="table  table-hover">
             <thead>
               <tr class="table-active">
@@ -36,8 +37,7 @@
                 <th>Eliminar</th>
               </tr>
             </thead>
-
-            <tbody *ngIf="usuario">
+            <tbody>
               <tr  *ngFor="let vehiculo of usuario.vehiculos">
                 <th *ngIf="vehiculo.tipo_vehiculo === 'Moto'"><i class="fa-solid fa-motorcycle"></i></th>
                 <th *ngIf="vehiculo.tipo_vehiculo === 'Carro'"><i class="fa-solid fa-car"></i></th>
@@ -47,19 +47,15 @@
                 <td>{{vehiculo.placa}}</td>
                 <td>{{vehiculo.marca}}</td>
                 <td>{{vehiculo.modelo}}</td>
-                <td><button type="button" class="danger">-</button></td>
+                <td><button type="button" class="danger" (click)="eliminarVehiculo(vehiculo._id)">-</button></td>
               </tr>
              </tbody>
             </table>
-          </div>
-          <div class="card-body pt-0">
-            <table class="table table-bordered">
-
-
-            </table>
+            <div *ngIf="usuario.vehiculos.length <= 0" class="mensajeNohayVehiculos">No hay vehiculos registrados a su nombre</div>
+          </ng-container>
           </div>
         </div>
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="primerAcordeon">
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -83,7 +79,6 @@
                       <input
                         class="input_text_form"
                         type="text"
-                        id="name"
                         placeholder="Nombres"
                         formControlName="nombre"
                         tabindex="-1"
@@ -103,7 +98,6 @@
                         </div>
                       </div>
                     </div>
-          
                     <div class="input-container">
                       <img
                         src="/assets/imgs/tarjeta-de-identificacion.png"
@@ -114,7 +108,6 @@
                       <input
                         class="input_text_form"
                         type="text"
-                        id="lastname"
                         placeholder="Apellidos"
                         formControlName="apellido"
                         tabindex="-1"
@@ -139,14 +132,13 @@
                   
           
                   <!-- Pagina 2 -->
-                  
+                  <hr>
                     <h4>Informacion Secundaria</h4>
           
                     <div class="input-container">
                       <input
                         class="input_text_form"
                         type="date"
-                        id="date"
                         formControlName="fecha_nacimiento"
                         tabindex="-1"
                       />
@@ -196,8 +188,8 @@
           
           
                   <!-- Pagina 3 -->
-          
-    
+                  <hr>
+                  
                     <h4>Contacto</h4>
           
                     <div class="input-container">
@@ -206,7 +198,6 @@
                       <input
                         class="input_text_form"
                         type="text"
-                        id="email"
                         formControlName="correo_electronico"
                         placeholder="Correo electronico"
                         tabindex="-1"
@@ -237,7 +228,6 @@
                       <input
                         class="input_text_form"
                         type="text"
-                        id="cel"
                         formControlName="telefono"
                         placeholder="Telefono celular"
                         tabindex="-1"
@@ -257,9 +247,7 @@
                         </div>
                       </div>
                     </div>
-
                     <div class="btn-group">
-                      <button class="btn btn-dark" routerLink="/actualizar-password">Cambiar contraseña</button>
                     <button class="btn btn-info" (click)="actualizar_Perfil()">Actualizar perfil</button>
                     </div>
                 </form>
@@ -267,13 +255,132 @@
             </div>
           </div>
           </div>
-       
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <h3 class="mb-0"><i class="fa-solid fa-lock"></i>Cambiar contraseña</h3>
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" #collapseTwo>
+              <div class="accordion-body">
+                <form [formGroup]="contrasenaForm">
+                  <!-- Pagina 1 -->
+                  
+                    <h5>Contraseña actual</h5>
+          
+                    <div class="input-container">
+                      <img
+                        src="../../../../assets/imgs/llave.png"
+                        class="img-diferent"
+                        alt=""
+                      />
+          
+                      <input
+                        class="input_text_form"
+                        type="password"
+                        placeholder="Contraseña actual"
+                        formControlName="contrasena"
+                        tabindex="-1"
+                      />
+                    </div>
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                        contrasenaForm.get('contrasena').invalid &&
+                          (contrasenaForm.get('contrasena').dirty ||
+                          contrasenaForm.get('contrasena').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="contrasenaForm.get('contrasena').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr>
+                    <h5>Nueva contraseña</h5>
+          
+                    <div class="input-container">
+                      <img
+                        src="/assets/imgs/tarjeta-de-identificacion.png"
+                        class="img-diferent"
+                        alt=""
+                      />
+          
+                      <input
+                        class="input_text_form"
+                        type="password"
+                        placeholder="Nueva contraseña"
+                        formControlName="nueva_contrasena"
+                        tabindex="-1"
+                      />
+                    </div>
+          
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                        contrasenaForm.get('nueva_contrasena').invalid &&
+                          (contrasenaForm.get('nueva_contrasena').dirty ||
+                          contrasenaForm.get('nueva_contrasena').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="contrasenaForm.get('nueva_contrasena').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+                    <div class="input-container">
+                      <img
+                        src="/assets/imgs/tarjeta-de-identificacion.png"
+                        class="img-diferent"
+                        alt=""
+                      />
+          
+                      <input
+                        class="input_text_form"
+                        type="password"
+                        placeholder="Confirmar contraseña"
+                        formControlName="confirmar_contrasena"
+                        tabindex="-1"
+                      />
+                    </div>
+          
+                    <div class="errors">
+                      <div
+                        *ngIf="
+                        contrasenaForm.get('confirmar_contrasena').invalid &&
+                          (contrasenaForm.get('confirmar_contrasena').dirty ||
+                          contrasenaForm.get('confirmar_contrasena').touched)
+                        "
+                        class="text-danger"
+                      >
+                        <div *ngIf="contrasenaForm.get('confirmar_contrasena').hasError('required')">
+                          Este campo es requerido
+                        </div>
+                      </div>
+                    </div>
+        
+                    <div class="btn-group">
+                      <button class="btn btn-dark" (click)="cambiarContrasena()">Cambiar contraseña</button>
+                    </div>
+                    <div *ngIf="errorContrasena.length > 0" class="text-danger">
+                      {{errorContrasena}}
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
       </div>
     </div>
     <div class="modal" *ngIf="active" >
-      <app-modal-vehicles></app-modal-vehicles>
+      <app-modal-vehicles (usuarioConVehiculoNuevo)="recibeActualizarVehiculoAgregado($event)"></app-modal-vehicles>
     </div>
   </div>
+
 
 
 <div *ngIf="!usuario">

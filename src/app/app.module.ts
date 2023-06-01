@@ -14,7 +14,6 @@ import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-co
 import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
 import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
-import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
 import { FilterBasicComponent } from './componentes/usuario/catalogue/filter-basic/filter-basic.component';
 import { FilterCompleteComponent } from './componentes/usuario/catalogue/filter-complete/filter-complete.component';
 import { PreviewCarwashComponent } from './componentes/usuario/catalogue/preview-carwash/preview-carwash.component';
@@ -75,7 +74,6 @@ import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuar
     NuevaContrasenaComponent,
     PerfilComponent,
     ActualizarPerfilComponent,
-    ActualizarPasswordComponent,
     FilterBasicComponent,
     FilterCompleteComponent,
     PreviewCarwashComponent,

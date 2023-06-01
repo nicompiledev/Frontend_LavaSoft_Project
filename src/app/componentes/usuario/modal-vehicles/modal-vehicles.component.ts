@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import { UsuarioService } from 'src/app/services/usuarios.service';
@@ -11,6 +11,8 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
   styleUrls: ['./modal-vehicles.component.scss']
 })
 export class ModalVehiclesComponent {
+
+  @Output() usuarioConVehiculoNuevo = new EventEmitter<any>();
 
   vehiculoForm : FormGroup;
 
@@ -39,7 +41,8 @@ export class ModalVehiclesComponent {
       )
       .subscribe(
         (response: any) => {
-          console.log(response);
+          this.usuarioConVehiculoNuevo.emit(response.usuario)
+          this.closeModal(false , 'register_vehicle');
         },
         (error) => {
           console.log(error);

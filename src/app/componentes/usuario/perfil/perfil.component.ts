@@ -1,6 +1,5 @@
 
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { UsuarioService } from '../../../services/usuarios.service';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -16,10 +15,14 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 })
 export class PerfilComponent implements OnInit {
   usuarioForm: FormGroup;
+  contrasenaForm: FormGroup;
 
   active: boolean = false;
 
   usuario: any;
+
+  errorContrasena: string = '';
+  errorPerfil: string = '';
 
   constructor(private service: UsuarioService,
               public auth: AuthService,
@@ -28,7 +31,6 @@ export class PerfilComponent implements OnInit {
               ) {
                 this.modal.$modal_reserve.subscribe((valor) =>{
                   this.active = valor;
-                  console.log("valor", valor)
                 })
 
                 this.usuarioForm = new FormGroup(
@@ -38,20 +40,28 @@ export class PerfilComponent implements OnInit {
                     genero: new FormControl('', [Validators.required]),
                     fecha_nacimiento: new FormControl('', [Validators.required]),
                     correo_electronico: new FormControl('', [Validators.required, Validators.email]),
-                    contrasena: new FormControl('', [
-                      Validators.required,
-                      Validators.minLength(8),
-                    ]),
-                    confimar_password: new FormControl('', [
-                      Validators.required,
-                      Validators.minLength(8),
-                    ]),
                     telefono: new FormControl('', [
                       Validators.required,
                       Validators.minLength(10),
                       Validators.maxLength(10),
                     ]),
                   })
+
+                  this.contrasenaForm = new FormGroup(
+                    {
+                      contrasena: new FormControl('', [
+                        Validators.required,
+                      ]),
+                      nueva_contrasena: new FormControl('', [
+                        Validators.required,
+                        Validators.minLength(8),
+                      ]),
+                      confirmar_contrasena: new FormControl('', [
+                        Validators.required,
+                        Validators.minLength(8),
+                      ]),
+                    }
+                  )
               }
 
   ngOnInit() {
@@ -64,10 +74,10 @@ export class PerfilComponent implements OnInit {
       })
     )
     .subscribe(
-      (res: any) => {
-        console.log(res);
+      (usuario: any) => {
+        console.log(usuario);
         
-        this.usuario = res;
+        this.usuario = usuario;
         this.cambiarInformaciónFormulario();
       },
       (error) => {
@@ -99,10 +109,59 @@ export class PerfilComponent implements OnInit {
 
 
   actualizar_Perfil() {
+    if(this.usuarioForm.valid){
 
+      this.loader.showLoader();
+
+      this.service.actualizarPerfil(this.usuarioForm.value)
+      .pipe(
+        finalize(() => {
+          this.loader.hideLoader();
+        })
+      )
+      .subscribe(
+        (res: any) => {
+          this.usuario = res.usuario;
+          this.cambiarInformaciónFormulario();
+        },
+        (error) => {
+          this.errorPerfil = error.error.msg;
+        }
+      );
+    }
+  }
+
+  cambiarContrasena(){
+    if(this.contrasenaForm.valid){
+      this.loader.showLoader();
+      this.service.actualizarContrasena(this.contrasenaForm.get('contrasena').value, this.contrasenaForm.get('nueva_contrasena').value)
+      .pipe(
+        finalize(() => {
+          this.loader.hideLoader();
+        })
+      )
+      .subscribe(
+        (res: any) => {
+          console.log(res);
+          
+        },
+        (error) => {
+          this.errorContrasena =  error.error.msg;
+        }
+      );
+    }
+  }
+
+  // VEHICULO
+  //////////////
+  recibeActualizarVehiculoAgregado(nuevoVehiculo: any){  
+    this.usuario = nuevoVehiculo;
+  }
+
+  eliminarVehiculo(id_vehiculo: string){
     this.loader.showLoader();
 
-    this.service.actualizarPerfil(this.usuarioForm.value)
+    this.service.eliminarVehiculo(id_vehiculo)
     .pipe(
       finalize(() => {
         this.loader.hideLoader();
@@ -111,13 +170,14 @@ export class PerfilComponent implements OnInit {
     .subscribe(
       (res: any) => {
         this.usuario = res.usuario;
-        this.cambiarInformaciónFormulario();
       },
       (error) => {
         console.error(error);
       }
     );
+    
   }
+/////////////////
 
   openModal(statemodal:boolean , focus:string){
     this.modal.estadomodal(statemodal , focus)

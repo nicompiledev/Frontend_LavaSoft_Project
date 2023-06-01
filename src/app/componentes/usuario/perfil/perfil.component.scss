@@ -20,20 +20,34 @@
     }
 }
 
-.form{
+#primerAcordeon{
+  margin-bottom: 1rem;
+}
+
+.accordion-body{
+
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
   form{
+    padding-block: 25px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 500px;
+    width: 90%;
   }
+}
 
-}
+
+
 .table{
-  margin-top: 10px;
+  margin: 1.5rem auto;
+  width: 90%;
 }
+
+
 .danger{
   width: 50px;
   margin-left: 5px;
@@ -82,13 +96,18 @@ h3 {
   }
 }
 .btn-group{
-width: 500px;
-left: 5%;
+  width: 100%;
+
+  button{
+    width: 100%;
+    margin: 5px;
+  }
 }
 
   
     .container_all{
-      padding-top: 5rem;
+      padding-top: 8rem;
+      padding-bottom: 3rem;
       width: 100%;
       height: 100%;
       display: flex;
@@ -96,16 +115,20 @@ left: 5%;
       justify-content: center;
 
       .content{
-        overflow: auto;
-        width: 850px;
-        height: 90%;
+        padding-block: 1rem;
+        min-width: 90%;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 1.5rem;
         justify-content: center;
         align-items: center;
         background: $gris-claro;
         border-radius: 10px;
+
+        .col-lg-8{
+          min-width: 550px;
+          max-width: 900px;
+        }
       }
     }
     .card {
@@ -152,6 +175,11 @@ left: 5%;
       align-items: center;
     }
   
+
+    .mensajeNohayVehiculos{
+      text-align: center;
+      padding-bottom: 1rem;
+    }
 
 
 

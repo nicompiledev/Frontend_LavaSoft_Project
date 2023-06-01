@@ -1,6 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ActualizarPasswordComponent } from './componentes/usuario/actualizar-password/actualizar-password.component';
+import { RouterModule, Routes } from '@angular/router';;
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
 import { LoginComponent } from './componentes/usuario/login/login.component';
@@ -39,7 +38,6 @@ const routes: Routes = [
 
   // Pendiente ELIMINAR
   { path: 'perfil/:id', component: ActualizarPerfilComponent },
-  { path: 'actualizar-password', component: ActualizarPasswordComponent},
 
   // Prinicpales
   // Catalogo
