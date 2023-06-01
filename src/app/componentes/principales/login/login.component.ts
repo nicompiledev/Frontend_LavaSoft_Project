@@ -6,6 +6,7 @@ import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/security/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,6 @@ import { AuthService } from 'src/app/services/security/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  errorMsg: string;
   viewComponent: boolean = false;
 
   constructor(
@@ -41,35 +41,51 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required]],
+      opcion: ['usuario', [Validators.required]],
     });
   }
 
   onSubmit() {
-
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
 
     if (this.loginForm.valid) {
-      this.loader.showLoader();
-      this.service
-        .login(email, password)
-        .pipe(
-          finalize(() => {
-            this.loader.hideLoader();
-          })
-        )
-        .subscribe(
-          (response: any) => {
-            this.auth.login(response.token, response.rol);
-            this.modal_service.estadomodal(0, 'profile_carwash');
-          },
-          (error) => {
-            console.log(error);
-            this.errorMsg = error.error.msg;
-          }
-        );
-    }else{
+      if (this.loginForm.get('opcion').value == 'usuario') {
+        this.loader.showLoader();
+        this.service
+          .login(email, password)
+          .pipe(
+            finalize(() => {
+              this.loader.hideLoader();
+            })
+          )
+          .subscribe(
+            (response: any) => {
+              this.auth.login(response.token, response.rol);
+              Swal.fire({
+                icon: 'success',
+                showConfirmButton: false,
+                // cuando termine la animacion de chulo, cierre el modal
+                timer: 1000,
+                title: 'Bienvenido',
+              });
+
+              this.modal_service.estadomodal(0, 'profile_carwash');
+            },
+            (error) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.error.msg,
+              });
+            }
+          );
+      }else{
+        
+      }
+
+    } else {
       this.loginForm.markAllAsTouched();
     }
   }

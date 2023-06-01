@@ -16,7 +16,7 @@
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="inputs">
-          <div class="input-container relative" [ngClass]="{ 
+          <div class="input-container relative" [ngClass]="{
             errorInput:
             loginForm.get('email').invalid &&
             (loginForm.get('email').dirty || loginForm.get('email').touched)
@@ -34,7 +34,7 @@
               <div class="container_">
                 <div class="radio-tile-group">
                   <label for="user" class="input_container">
-                    <input id="user" class="radio-button" type="radio" name="radio" checked>
+                    <input id="user" class="radio-button" type="radio" name="opcion" formControlName="opcion" value="usuario">
                     <div class="radio-tile">
                       <div class="icon">
                         <i class="fi fi-ss-user"></i>
@@ -47,7 +47,7 @@
               <div class="container_">
                 <div class="radio-tile-group">
                   <label for="carwash" class="input_container">
-                    <input id="carwash" class="radio-button" type="radio" name="radio">
+                    <input id="carwash" class="radio-button" type="radio" name="opcion" formControlName="opcion" value="lavadero">
                     <div class="radio-tile">
                       <div class="icon">
                         <i class="fi fi-sr-garage-car"></i>
@@ -109,16 +109,11 @@
             <div *ngIf="loginForm.get('password').hasError('required')">
               La contraseña es requerida.
             </div>
-            <div *ngIf="loginForm.get('password').hasError('minlength')">
-              La contraseña debe tener al menos 6 caracteres.
-            </div>
           </div>
-          <div *ngIf="errorMsg">{{ errorMsg }}</div>
         </div>
       </form>
   
     </ng-container>
-
     <ng-container *ngIf="viewComponent == true">
       <div class="back">
         <div class="buttom_back" (click)="Component(false)"><i class="fi fi-br-arrow-small-left"></i> <span></span>Volver al login</div>

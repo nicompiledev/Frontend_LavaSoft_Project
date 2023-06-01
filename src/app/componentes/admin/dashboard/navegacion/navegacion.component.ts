@@ -10,6 +10,7 @@ import {
   faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navegacion',
@@ -17,8 +18,7 @@ import { AuthService } from 'src/app/services/security/auth.service';
   styleUrls: ['./navegacion.component.scss'],
 })
 export class NavegacionComponent {
-  constructor(public router: Router, private auth: AuthService) {
-  }
+  constructor(public router: Router, private auth: AuthService) {}
 
   ocultarMenu = false;
   seleccionado = 'dashboard';
@@ -32,7 +32,18 @@ export class NavegacionComponent {
   menu = faBars;
 
   cerrarSesion() {
-    this.auth.logout();
-    this.router.navigate(['/inicio']);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¿Estás seguro que deseas cerrar sesión?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, cerrar sesión',
+      cancelButtonText: 'No, cancelar',
+    }).then((result) => {
+      if (result.value) {
+        this.auth.logout();
+        this.router.navigate(['/inicio']);
+      }
+    });
   }
 }

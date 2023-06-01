@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/security/auth.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-admin',
@@ -44,11 +45,15 @@ export class LoginAdminComponent {
       .subscribe(
         (response: any) => {
           this.auth.login(response.token, response.rol);
-          this.router.navigate(['/dashboard-admin']);
+          this.router.navigate(['/inicio']);
         },
         (error) => {
-          console.log(error);
-          this.mensajeError = error.error.msg;
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.error.msg,
+            confirmButtonText: 'Aceptar',
+          });
         }
       );
     }

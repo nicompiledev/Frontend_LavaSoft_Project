@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,7 +17,7 @@ export interface LavaderoData {
   templateUrl: './lavaderos-pendientes.component.html',
   styleUrls: ['./lavaderos-pendientes.component.scss']
 })
-export class LavaderosPendientesComponent implements AfterViewInit {
+export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['NIT', 'nombreLavadero', 'ciudad', 'telefono'];
   dataSource: MatTableDataSource<LavaderoData>;
 
@@ -26,12 +26,12 @@ export class LavaderosPendientesComponent implements AfterViewInit {
 
   lavaderos: any[] = [];
 
-  constructor(private adminService: AdminService) {
+  constructor(private adminService: AdminService) {}
 
+  ngOnInit() {
     this.adminService.getLavaderosNoConfirmados().subscribe((response: any) => {
       this.lavaderos = response;
       this.dataSource = new MatTableDataSource(this.lavaderos);
-
     });
   }
 

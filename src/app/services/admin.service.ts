@@ -1,29 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './security/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
 
-
   private url = 'http://localhost:4000/api/admins/';
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + localStorage.getItem('token'),
+  private httpOptions: any = {};
 
-    }),
-  };
-  constructor(private http: HttpClient) {}
+  isLoggedIn: boolean;
+
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.auth.isLoggedIn().subscribe(
+      (isLoggedIn: boolean) => {
+        this.httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.auth.getToken()}`,
+          }),
+        };
+        this.isLoggedIn = isLoggedIn;
+      }
+    );
+  }
 
   loginAdmin(correo_electronico: string, contrasena: string) {
     const body = { correo_electronico, contrasena };
-    console.log(correo_electronico, contrasena);
-    
     return this.http.post(this.url + 'login', body, this.httpOptions);
-    // Cuando se haga el componete poner esto:
-    //  localStorage.setItem('token', response.token);
   }
 
   getAllLavaderos() {
@@ -58,7 +63,11 @@ export class AdminService {
   }
 
   getLavaderosNoConfirmados() {
+    if(this.isLoggedIn){
     return this.http.get(`${this.url}lavaderos/no-confirmados`, this.httpOptions);
+    }else{
+      return null;
+    }
   }
 
 }

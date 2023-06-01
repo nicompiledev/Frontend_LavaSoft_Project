@@ -9,23 +9,25 @@ import { AuthService } from './security/auth.service';
 export class UsuarioService {
 
   private apiUrl = 'http://localhost:4000/api/usuarios/';
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
-    })
-  };
+  private httpOptions: any = {};
 
   isLoggedIn: boolean;
 
   constructor(private http: HttpClient, private auth: AuthService) {
     this.auth.isLoggedIn().subscribe(
       (isLoggedIn: boolean) => {
+        this.httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this.auth.getToken()}`
+          })
+        };
         this.isLoggedIn = isLoggedIn;
       }
     );
   }
 
+  //-------------- AREA PUBLICA ------------------//
   registrarUsuario(usuario: object) {
     return this.http.post(this.apiUrl, usuario, this.httpOptions);
   }
@@ -44,9 +46,14 @@ export class UsuarioService {
   }
 
   nuevoPassword(token: string, contrasena: string) {
-      const url = `${this.apiUrl}nuevo-password/${token}`;
-      return this.http.post(url,  { contrasena }, this.httpOptions);
+      return this.http.post(`${this.apiUrl}nuevo-password/${token}`,  { contrasena }, this.httpOptions);
   }
+
+  // Falta router.post("/confirmar-correo/:token/:otroValor", confirmarCorreoElectronico);
+
+  // --------------------------------------------------
+
+  // -------------- AREA PRIVADA ---------------------//
 
   getPerfil() {
     if (this.isLoggedIn){
@@ -61,7 +68,11 @@ export class UsuarioService {
   }
 
   actualizarPerfil(data: any) {
-    return this.http.put(this.apiUrl + "actualizar_perfil", data, this.httpOptions);
+    if (this.isLoggedIn){
+      return this.http.put(this.apiUrl + "actualizar_perfil", data, this.httpOptions);
+    } else {
+      return null;
+    }
   }
 
   actualizarContrasena(pwd_actual: string, pwd_nuevo: string) {
@@ -69,15 +80,27 @@ export class UsuarioService {
       pwd_actual: pwd_actual,
       pwd_nuevo: pwd_nuevo
     };
-    return this.http.put(this.apiUrl + 'actualizar-contrasena', body, this.httpOptions);
+    if (this.isLoggedIn){
+      return this.http.put(this.apiUrl + 'actualizar-contrasena', body, this.httpOptions);
+    } else {
+      return null;
+    }
   }
 
   agregarVehiculo(data: any) {
-    return this.http.post(this.apiUrl + "agregar-vehiculo", data, this.httpOptions);
+    if (this.isLoggedIn){
+      return this.http.post(this.apiUrl + "agregar-vehiculo", data, this.httpOptions);
+    } else {
+      return null;
+    }
   }
 
   eliminarVehiculo(id_vehiculo: any){
-    return this.http.post(this.apiUrl + "eliminar-vehiculo", {id_vehiculo}, this.httpOptions);
+    if (this.isLoggedIn){
+      return this.http.post(this.apiUrl + "eliminar-vehiculo", {id_vehiculo}, this.httpOptions);
+    }else{
+      return null;
+    }
   }
 
 }

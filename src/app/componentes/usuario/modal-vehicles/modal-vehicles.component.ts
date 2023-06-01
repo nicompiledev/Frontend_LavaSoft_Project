@@ -41,7 +41,7 @@ export class ModalVehiclesComponent {
       )
       .subscribe(
         (response: any) => {
-          this.usuarioConVehiculoNuevo.emit(response.usuario)
+          this.usuarioConVehiculoNuevo.emit(response)
           this.closeModal(false , 'register_vehicle');
         },
         (error) => {

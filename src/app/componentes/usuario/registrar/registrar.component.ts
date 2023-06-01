@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar',
@@ -13,7 +14,6 @@ import { finalize } from 'rxjs/operators';
 })
 export class RegistrarComponent implements OnInit {
   usuarioForm: FormGroup;
-  mensajeError = '';
 
   constructor(
     private servicio: UsuarioService,
@@ -69,13 +69,23 @@ export class RegistrarComponent implements OnInit {
         finalize(() => this.loader.hideLoader())
       )
       .subscribe(
-        (response) => {
-          console.log(response);
+        (response: any) => {
+          Swal.fire({
+            title: '¡Registro exitoso!',
+            text: response.msg,
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+          });
           this.modal_service.estadomodal(0, 'profile_carwash');
         },
         (error) => {
           console.log(error);
-          this.mensajeError = error.error.msg;
+          Swal.fire({
+            title: '¡Error!',
+            text: error.error.msg,
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+          });
         }
       );
     }
