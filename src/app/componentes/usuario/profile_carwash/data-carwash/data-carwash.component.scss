@@ -2,7 +2,6 @@
 
 .container_all{
     width: 100%;
-    background: $negro-claro;
 }
 .text-center{
 color: $blanco;
@@ -22,6 +21,8 @@ h2{
         background: $blanco;
         box-shadow: -5px 6px 0px 2px $gris-oscuro;
         padding: 10px;
+        background: $negro-claro;
+        color: $blanco;
     }
     .svg{
         width:500px;

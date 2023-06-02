@@ -38,36 +38,7 @@
             color: $negro_claro;
         }     
 }
-input[type="date"] {
-    appearance: none; /* quita el icono */
-    border: none; /* quita el borde */
-    background-color: #fff; /* establece el color de fondo */
-    padding: 0.5em; /* agrega un poco de espacio alrededor del campo de entrada */
-    font-size: 1em; /* establece el tamaño de fuente */
-    color: #333; /* establece el color del texto */
-    /* Agrega cualquier otro estilo personalizado que desees */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    color: $gris-oscuro;
-    &::-webkit-calendar-picker-indicator {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
 
-      }
-      &:hover{
-        color: $negro_claro;
-      }
-      &:focus{
-        outline: none;
-      }
-  }
-  
 select{  
   -webkit-appearance:none; 
   -moz-appearance:none;

@@ -15,26 +15,28 @@
        <h3>Filtrar por </h3>
 
        <div class="price">
-          <strong> Precio de servicio</strong>
-
-           <div> <input type="radio"class="radio" name="price" id="price1"><label for="price1">$20,000 - $50,000</label></div>
-           <div><input type="radio" class="radio"name="price" id="price2"> <label for="price2">$50,000 - $90,000</label></div>
-           <div><input type="radio" class="radio"name="price" id="price3"> <label for="price3">$90,000 - $100,000</label></div>
-           <div><input type="radio" class="radio"name="price" id="price4"> <label for="price4">$100,000 - $150,000</label></div>
-           <div><input type="radio" class="radio"name="price" id="price5"><label for="price5">$150.000 - $200.000</label></div>
+        <div id="map" style="height: 200px;"></div>
        </div>
 
        
-       <div class="calification"> 
-           <strong>Por Calificacion de Lavadero</strong>
-           <div class="container-checkbox">
-            <div class="stars"><input type="checkbox"  name="" id="star1"> <label for="star1">1</label></div>
-            <div class="stars"><input type="checkbox"  name="" id="star2"> <label for="star2">2</label></div>
-            <div class="stars"><input type="checkbox"  name="" id="star3"> <label for="star3">3</label></div>
-            <div class="stars"><input type="checkbox"  name="" id="star4"> <label for="star4">4</label></div>
-            <div class="stars"><input type="checkbox"  name="" id="star5"> <label for="star5">5</label></div>
-           </div> 
-    
+       <div class="calification">
+        <strong>Calificaciones y mas populares</strong>
+        <div class="d-flex justify-content-between align-items-center">
+            <label for="best_califications"> <span>Mejor clificados</span></label>
+            <label class="switch">
+             <input type="checkbox" id="best_califications">
+             <span class="slider"></span>
+           </label>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <label for="best_califications"> <span>mas populares</span></label>
+            <label class="switch">
+             <input type="checkbox" id="best_califications">
+             <span class="slider"></span>
+           </label>
+        </div>
+
+         
        </div>
    </section>
   </form>

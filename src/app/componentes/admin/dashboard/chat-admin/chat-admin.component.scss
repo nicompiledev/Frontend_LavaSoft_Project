@@ -20,7 +20,7 @@
   --number-bg: #6895a3;
   --message-box-1: #fff;
   --message-box-2: #1a233b;
-  --chat-input: #060415;
+  --chat-input: black;
   --border-light: #8187a2;
   --info-box-color-1: #004dfc;
   --info-box-color-2: #00ba9d;
@@ -31,7 +31,7 @@
   --info-icon-bg-3: #d9d3ff;
   --info-icon-bg-4: #ffe1d4;
   --app-bg: #fff;
-  --box-color: #12172d;
+  --box-color: #1e1e1e;
   --box-border: #477eff;
   --button-bg: #477eff;
   --text-dark: #1a2f45;
@@ -117,7 +117,7 @@
   font-size: 16px;
   line-height: 24px;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #ffff;
   margin: 4px 0;
   display: flex;
   align-items: center;
@@ -213,7 +213,7 @@
   font-size: 14px;
   line-height: 16px;
   font-weight: 500;
-  color: var(--text-light);
+  color: var(--text-dark);
   padding-block: 10px;
 }
 .chat-list-header {
@@ -447,7 +447,7 @@
 .ultimo-mensaje {
   font-size: 14px;
   line-height: 16px;
-  color: var(--text-light);
+  color: var(--text-dark);
   margin: 0;
   padding-left: 8px;
   width: 275px;
@@ -489,7 +489,7 @@
 }
 
 .cicle-active{
-  background-color: green;
+  background-color: var(--info-box-color-1);
   box-shadow: 0 0 0 3px rgba(71, 126, 255, 0.2);
 }
 
