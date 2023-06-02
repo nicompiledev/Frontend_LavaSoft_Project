@@ -5,45 +5,113 @@
 </div>
 
   <div class="filter-services">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicadores -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-      </ol>
+  
+    <div class="pages" [ngStyle]="{ 'margin-top': topPage }" >
+      <div class="page" >
+         <!-- tipos vehiculos -->  
+         <div class="d-flex">
+          <div class="container_">
+            <div class="radio-tile-group">
+              <label for="motorcycle" class="input_container">
+                <input id="motorcycle" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Moto')"> 
+                <div class="radio-tile">
+                  <div class="icon">
+                    <i class="fa-solid fa-motorcycle"></i>
+                  </div>
+                  <label class="radio-tile-label">Moto</label>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="container_">
+            <div class="radio-tile-group">
+              <label for="car" class="input_container">
+                <input id="car" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Carro')">
+                <div class="radio-tile">
+                  <div class="icon">
+                    <i class="fa-solid fa-car-side"></i>
+                  </div>
+                  <label class="radio-tile-label">Carro</label>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="container_">
+            <div class="radio-tile-group">
+              <label for="truck_small" class="input_container">
+                <input id="truck_small" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Camioneta')">
+                <div class="radio-tile">
+                  <div class="icon">
+                    <i class="fa-solid fa-truck-pickup"></i>
+                  </div>
+                  <label class="radio-tile-label">Camioneta</label>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="container_">
+            <div class="radio-tile-group">
+              <label for="truck_big" class="input_container">
+                <input id="truck_big" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Camion')">
+                <div class="radio-tile">
+                  <div class="icon">
+                    <i class="fa-solid fa-truck"></i>
+                  </div>
+                  <label class="radio-tile-label">Camion</label>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="container_">
+            <div class="radio-tile-group">
+              <label for="van" class="input_container">
+                <input id="van" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Bus')">
+                <div class="radio-tile">
+                  <div class="icon">
+                    <i class="fa-solid fa-van-shuttle"></i>
+                  </div>
+                  <label class="radio-tile-label">Bus</label>
+                </div>
+              </label>
+            </div>
+          </div>
+         </div>
+  
+          <div class="buttons" (click)="topPage = '-70px'">
+            <div class="title"><h5>Categoria</h5></div>
+            <div class="icon_btn"><i class="fi fi-rr-arrow-circle-down"></i></div>
+          </div>
+      </div>
+      <div class="page" >
+
+        <!-- categoria -->
+        <div class="categoria">
+          <label class="categoria-contenedor">
+            <input type="radio" name="radio" checked="" />
+            <span class="name">Categoria</span>
+          </label>
+          <label class="categoria-contenedor">
+            <input type="radio" name="radio" />
+            <span class="name">Categoria</span>
+          </label>
     
-      <!-- Slides -->
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="carousel-content">
-            <h3>Slide 1</h3>
-            <p>Contenido del Slide 1</p>
-            <button type="button" class="btn btn-primary">Botón Slide 1</button>
-          </div>
+          <label class="categoria-contenedor">
+            <input type="radio" name="radio" />
+            <span class="name">Categoria</span>
+          </label>
+          <label class="categoria-contenedor">
+            <input type="radio" name="radio" />
+            <span class="name">Categoria</span>
+          </label>
         </div>
-        <div class="carousel-item">
-          <div class="carousel-content">
-            <h3>Slide 2</h3>
-            <p>Contenido del Slide 2</p>
-            <form>
-              <input type="text" placeholder="Ingrese su correo electrónico">
-              <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
-          </div>
+
+        <div class="buttons" (click)="topPage = '0px'">
+          <div class="title"><h5>Vehiculo</h5></div>
+          <div class="icon_btn"><i class="fi fi-rr-arrow-circle-up"></i></div>
         </div>
       </div>
-    
-      <!-- Controles -->
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Anterior</span>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Siguiente</span>
-      </a>
     </div>
-    
+   
   </div>
   <!--
 

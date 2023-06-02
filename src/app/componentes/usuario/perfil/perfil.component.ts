@@ -228,4 +228,5 @@ export class PerfilComponent implements OnInit {
   openModal(statemodal: boolean, focus: string) {
     this.modal.estadomodal(statemodal, focus);
   }
+
 }

@@ -12,6 +12,9 @@ export class ServicesCarwashComponent implements OnInit {
 
   servicios: any[] = [];
   login = false;
+  selectedVehicles: string[] = [];
+  topPage:string = '0%'
+
 
   constructor(
     private modal_service: ModalReserveService,
@@ -37,4 +40,22 @@ export class ServicesCarwashComponent implements OnInit {
       this.modal_service.estadomodal(1, "profile_carwash");
     }
   }
+
+
+
+    // Seleccionar vehiculos
+    onCheckboxChange(event: any, vehicle: string) {
+      const checked = event.target.checked;
+      if (checked) {
+        this.selectedVehicles.push(vehicle);
+      } else {
+        const index = this.selectedVehicles.indexOf(vehicle);
+        if (index > -1) {
+          this.selectedVehicles.splice(index, 1);
+        }
+      }
+    }
+
+  
+    
 }
