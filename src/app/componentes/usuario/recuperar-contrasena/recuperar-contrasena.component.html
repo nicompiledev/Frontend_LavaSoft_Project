@@ -13,13 +13,15 @@
         <input type="email" class="input" formControlName="email" id="email" placeholder="Ingresa tu correo electrónico">
 
       </div>
-      <div *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)" class="errors">
+    </div>
+    <div>
+      <button type="submit" class="buttom" [disabled]="!form.valid">Enviar correo electrónico</button>
+      <div class="errors">
+      <div *ngIf="form.get('email').invalid && (form.get('email').dirty || form.get('email').touched)" >
         <div *ngIf="form.get('email').hasError('required')">El correo electrónico es obligatorio</div>
         <div *ngIf="form.get('email').hasError('email')">Ingresa un correo electrónico válido</div>
       </div>
     </div>
-    <div>
-      <button type="submit" class="buttom" [disabled]="!form.valid">Enviar correo electrónico</button>
     </div>
   </form>
 </div>

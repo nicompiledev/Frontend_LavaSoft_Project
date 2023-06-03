@@ -3,7 +3,7 @@
 .container {
   form {
     width: 520px;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 20px;
     background-color: $blanco;
     overflow: hidden;
@@ -19,7 +19,7 @@
       input {
         width: 40px;
         height: 35px;
-        border-radius: 20px;
+        border-radius: 10px;
         border: 1px solid $gris-claro;
         color: $azul-oscuro;
         background-color: white;

@@ -243,6 +243,11 @@
           select {
             @include selectOption-buscador;
           }
+
+          p{
+            margin: 0;
+          }
+
           &.date {
             input[type="date"] {
               margin-top: 5px;

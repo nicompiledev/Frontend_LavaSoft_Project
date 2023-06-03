@@ -20,7 +20,7 @@ $border-color_1: currentColor;
 		background: var(--white);
 		padding: 20px;
 		box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-		border-radius: 20px;
+		border-radius: 10px;
 	}
 	.cardHeader {
 		display: flex;
@@ -52,7 +52,7 @@ $border-color_1: currentColor;
 		background: var(--blue);
 		text-decoration: none;
 		color: $color_1;
-		border-radius: 6px;
+		border-radius: 5px;
 	}
 }
 .recentOrders {
@@ -66,7 +66,7 @@ $border-color_1: currentColor;
 	padding: 2px 4px;
 	background: #8de02c;
 	color: $color_1;
-	border-radius: 4px;
+	border-radius: 5px;
 	font-size: 14px;
 	font-weight: 500;
 }
@@ -74,7 +74,7 @@ $border-color_1: currentColor;
 	padding: 2px 4px;
 	background: #e9b10a;
 	color: $color_1;
-	border-radius: 4px;
+	border-radius: 5px;
 	font-size: 14px;
 	font-weight: 500;
 }
@@ -82,7 +82,7 @@ $border-color_1: currentColor;
 	padding: 2px 4px;
 	background: #f00;
 	color: $color_1;
-	border-radius: 4px;
+	border-radius: 5px;
 	font-size: 14px;
 	font-weight: 500;
 }
@@ -90,7 +90,7 @@ $border-color_1: currentColor;
 	padding: 2px 4px;
 	background: #1795ce;
 	color: $color_1;
-	border-radius: 4px;
+	border-radius: 5px;
 	font-size: 14px;
 	font-weight: 500;
 }

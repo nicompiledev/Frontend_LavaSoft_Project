@@ -4,25 +4,27 @@
     width: 100%;
 }
 .text-center{
-color: $blanco;
-padding-block-start: 10px;
+
+    color: $negro-claro;
+    padding-block: 1rem;
 h2{
     margin: 0;
 }
 }
-.container-md{
+.contenedor{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 250px;
-    gap: 20px;
+    background: $negro-claro;
+    width: 100%;
 
     .data{
-        background: $blanco;
-        box-shadow: -5px 6px 0px 2px $gris-oscuro;
-        padding: 10px;
+        width: 70%;
+        padding: 15px;
         background: $negro-claro;
+        border-radius: 10px;
         color: $blanco;
+
     }
     .svg{
         width:500px;
@@ -52,6 +54,6 @@ gap: 10px;
 }
 
 .col{
-    border-bottom: solid $gris-claro;
+    border-bottom: 1px solid $gris-claro;
 
 }

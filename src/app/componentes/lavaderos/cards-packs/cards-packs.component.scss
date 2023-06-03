@@ -59,7 +59,7 @@
                 width: 100%;
                 text-align: center;
                 padding: 10px 10px 5px 10px;
-                background: #1e1e1e;
+                background: $negro-claro;
                 color: $blanco;    
             }
 
@@ -68,7 +68,7 @@
                 margin-block: 15px;
                 width: 100px;
                 height: 100px;
-                background-color: #1e1e1e;
+                background-color: $negro-claro;
                 position: relative;
                 color: white;
                 border-radius: 100%;
@@ -99,7 +99,7 @@
                     .icon_option{
                         justify-content: center;
                         height: 30px;
-                        background-color: #1e1e1e;
+                        background-color: $negro-claro;
                         color: #FFFFFF;
                         border-radius: 100%;
                         display: flex;
