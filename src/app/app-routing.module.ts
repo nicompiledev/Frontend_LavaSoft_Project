@@ -26,6 +26,9 @@ import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin
 
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
+import { DashboardComponent } from './componentes/lavaderos/dashboard/dashboard.component';
+import { ReservasComponent } from './componentes/lavaderos/reservas/reservas.component';
+import { TableComponent } from './componentes/lavaderos/table/table.component';
 import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
 
 const routes: Routes = [
@@ -33,8 +36,8 @@ const routes: Routes = [
   { path: 'reports', component: ReportesComponent},
 
   // Inicio
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
-  { path: 'inicio', component: PrincipalComponent},
+  { path: '', redirectTo: '/dashboard-lavadero', pathMatch: 'full' },
+  { path: 'inicio', component: PrincipalComponent },
 
   // Desde el correo
   { path: 'confirmar/:token', component: ConfirmarCuentaComponent },
@@ -61,6 +64,18 @@ const routes: Routes = [
   { path: 'dashboard-admin', component: NavegacionComponent, canActivate: [AuthGuard],
     children: [
       { path: 'peticion-empresa', component:  LavaderosPendientesComponent},
+      { path: 'reportes', component:  ReportesAdminComponent},
+      { path: 'chat-asesor', component:  ChatAdminComponent},
+      { path: '**', redirectTo: '', pathMatch: 'full' }
+    ]
+  },
+  { path: 'dashboard-lavadero', component: DashboardComponent,
+    children: [
+      { path: 'reservas', component:  ReservasComponent,
+        children: [
+          { path: 'reserva', component:  TableComponent},
+        ]
+      },
       { path: 'reportes', component:  ReportesAdminComponent},
       { path: 'chat-asesor', component:  ChatAdminComponent},
       { path: '**', redirectTo: '', pathMatch: 'full' }

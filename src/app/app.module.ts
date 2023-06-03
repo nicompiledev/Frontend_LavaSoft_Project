@@ -57,12 +57,19 @@ import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lava
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatButtonModule} from '@angular/material/button';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { DataCarwashComponent } from './componentes/usuario/profile_carwash/data-carwash/data-carwash.component';
 import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
+import { DashboardComponent } from './componentes/lavaderos/dashboard/dashboard.component';
+import { ReservasComponent } from './componentes/lavaderos/reservas/reservas.component';
+import { TableComponent } from './componentes/lavaderos/table/table.component';
+import { DatepickerComponent } from './componentes/lavaderos/datepicker/datepicker.component';
 import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
 
 @NgModule({
@@ -108,6 +115,12 @@ import { ReportesComponent } from './componentes/usuario/reportes/reportes.compo
     ReportesAdminComponent,
     DataCarwashComponent,
     PerfilUsuarioComponent,
+    DashboardComponent,
+    ReservasComponent,
+    TableComponent,
+
+
+
     ReportesComponent,
   ],
   imports: [
@@ -124,7 +137,10 @@ import { ReportesComponent } from './componentes/usuario/reportes/reportes.compo
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatInputModule
+    MatSortModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
