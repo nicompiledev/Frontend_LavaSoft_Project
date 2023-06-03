@@ -26,8 +26,12 @@ import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin
 
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
+import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
 
 const routes: Routes = [
+  //pruebas
+  { path: 'reports', component: ReportesComponent},
+
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent},

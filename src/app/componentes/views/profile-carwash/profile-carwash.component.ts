@@ -21,7 +21,7 @@ export class ProfileCarwashComponent implements OnInit {
     private modal_service: ModalReserveService,
     private loader: LoaderService,
   ) {}
-
+  modal: number = 0;
   active: boolean = false;
 
   ngOnInit(): void {

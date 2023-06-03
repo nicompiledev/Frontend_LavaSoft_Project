@@ -1,0 +1,36 @@
+<div class="">
+  <div class="container_all col-3 d-flex align-items-center flex-column row-gap-2">
+    <span (click)="closeModal(false , 'reports')" class="close">X</span>
+    <div class="text-center d-flex flex-column align-items-center  mt-2">
+      <div class="icon_report ">
+        <i class="fa-solid fa-triangle-exclamation fa-bounce"></i>
+      </div>
+      <div class="info">
+        <p>Escriba la razon apropiada para su reporte , su respectivo tipo y a continuacion  describa el por que de su reporte </p>
+      </div>
+    </div>
+    <div class="information d-flex flex-column align-items-center row-gap-3">
+      <input type="text" placeholder="Razon">
+      <select name="" id="">
+        <option value="" selected disabled>Tipo de reporte</option>
+        <option value="" class="type_report">Informacion falsa</option>
+        <option value="" class="type_report">Cambio de ubicacion</option>
+        <option value="" class="type_report">Cierre temporal o permanente</option>
+        <option value="" class="type_report">Mal servicio al cliente</option>
+        <option value="" class="type_report">Incumplimiento de normas de seguridad</option>
+      </select>
+
+      <div class="data_client">
+        <span>
+          Describe tu reporte
+        </span>
+        <textarea name="" id="" cols="30" rows="10">
+     
+        </textarea>
+      </div>
+    </div>
+    <div class="btn_report mb-2">
+    <input type="button" value="Reportar" class="btn btn-danger">
+    </div>
+  </div>
+</div>

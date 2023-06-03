@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service'; 
 import { InputService } from 'src/app/services/comunicación/input.service';
 
 @Component({
@@ -7,7 +8,8 @@ import { InputService } from 'src/app/services/comunicación/input.service';
   styleUrls: ['./data-carwash.component.scss']
 })
 export class DataCarwashComponent {
-
+  active: boolean = false;
+  
   nombreLavadero: string;
   ciudad: string;
   direccion: string;
@@ -15,16 +17,24 @@ export class DataCarwashComponent {
   hora_cierre: string;
   tipoVehiculos: string[] = []
 
-  constructor(private input: InputService) {
-    this.input.$informacion.subscribe((res: any) => {
+  constructor(private modal: ModalReserveService, private input: InputService){
+
+    this.modal.$modal_reserve.subscribe((valor)=>{
+      this.active = valor
+    })
+    
+      this.input.$informacion.subscribe((res: any) => {
       this.nombreLavadero = res.nombreLavadero;
       this.ciudad = res.ciudad;
       this.direccion = res.direccion;
       this.hora_apertura = res.hora_apertura;
       this.hora_cierre = res.hora_cierre;
       this.tipoVehiculos = res.tipoVehiculos;
-    });
+      })
   }
 
+  openModal(stateModal:boolean   , focus: string){
+    this.modal.estadomodal(stateModal , focus)
+  }
 
 }

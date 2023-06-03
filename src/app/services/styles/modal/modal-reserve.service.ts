@@ -23,6 +23,10 @@ export class ModalReserveService {
       case 'register_vehicle':
         this.$modal_reserve.next(modal);
         break;
+
+      case 'reports':
+        this.$modal_reserve.next(modal);
+        break;
       default:
         break;
     }
