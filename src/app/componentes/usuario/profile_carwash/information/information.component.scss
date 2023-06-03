@@ -2,13 +2,13 @@
 @import "../../../../../../src/app/app.component.scss";
 
 .contendor{
-    width: 80%;
+    width: 100%;
 
     .details{
+        padding: 1rem;
         background-color: $negro-claro;
         border-color: $blanco;
         color: $blanco;
-        padding-top: 1rem;
         details{
             summary{
                 border-color: $blanco;
@@ -22,7 +22,7 @@
     }
 
 .first{
-    border-radius: 10px 10px 0px 0px;
+    border-block-end: solid 1px $gris-claro;
   summary{
     &::before{
         font-family: "Font Awesome 5 Free"; 
@@ -34,8 +34,7 @@
 
 }
 .second{
-    padding-bottom: 20px;
-    border-radius:  0px 0px 10px 10px;
+    border-block-end: solid 1px $gris-claro;
   summary{
 
     &::after{
@@ -53,7 +52,6 @@
         summary{
             list-style: none;
             padding: 10px;
-            border-block-end: solid 1px $gris-claro;
             cursor: pointer;
           
             h4{

@@ -18,6 +18,10 @@ export class InputService {
   private servicioID = new BehaviorSubject<string>('');
   $servicioID = this.servicioID.asObservable();
 
+  // Componente Reserva
+  private informacion = new BehaviorSubject<any>('');
+  $informacion = this.informacion.asObservable();
+
   constructor() { }
 
   setImagenes(imagenes: any[]){
@@ -36,5 +40,9 @@ export class InputService {
 
   setServicioID(servicio: any){
     this.servicioID.next(servicio);
+  }
+
+  setInformacion(nombreLavadero: string, ciudad: string, direccion: string, hora_apertura: string, hora_cierre: string, tipoVehiculos: string){
+      this.informacion.next({nombreLavadero, ciudad, direccion, hora_apertura, hora_cierre, tipoVehiculos})
   }
 }
