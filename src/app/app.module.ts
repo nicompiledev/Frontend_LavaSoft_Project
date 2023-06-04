@@ -78,8 +78,6 @@ import { DatepickerComponent } from './componentes/lavaderos/dashboard-Lavadero/
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
 import { CompaniesComponent } from './componentes/views/companies/companies.component';
 
-
-
 // Admin
 import { ChatAdminComponent } from './componentes/admin/dashboard/chat-admin/chat-admin.component';
 import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/navegacion.component';
