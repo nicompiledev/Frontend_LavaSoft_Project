@@ -1,35 +1,37 @@
-import { Component, NgModule } from '@angular/core';
+
+// Modulo principal de la aplicacion
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';;
-import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
-import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
-import { LoginComponent } from './componentes/principales/login/login.component';
-import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
-import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
-import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
-import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
 import { AuthGuard } from './guard/auth.guard';
+
+// componentes anonimo
 import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
-import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
+import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';;
 
-import { CompaniesComponent } from './componentes/views/companies/companies.component';
-import { PrincipalComponent } from './componentes/views/principal/principal.component';
-import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/reserve.component';
+// USUARIO
+import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
+import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
+import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
+import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
+import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
+
+
+// LAVADEROS
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
+import { DashboardComponent } from './componentes/lavaderos/dashboard-Lavadero/dashboard/dashboard.component';
+import { ReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/reservas/reservas.component';
+import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/table/table.component';
+// Vistas
+import { PrincipalComponent } from './componentes/views/principal/principal.component';
+import { CompaniesComponent } from './componentes/views/companies/companies.component';
 
-// CHAT
+// Admin
 import { ChatAdminComponent } from './componentes/admin/dashboard/chat-admin/chat-admin.component';
-
-// ADMIN
 import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/navegacion.component';
 import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
-
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
-import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
-import { DashboardComponent } from './componentes/lavaderos/dashboard/dashboard.component';
-import { ReservasComponent } from './componentes/lavaderos/reservas/reservas.component';
-import { TableComponent } from './componentes/lavaderos/table/table.component';
-import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
+
 
 const routes: Routes = [
   //pruebas

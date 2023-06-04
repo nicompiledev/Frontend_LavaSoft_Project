@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service'; 
 import { InputService } from 'src/app/services/comunicación/input.service';
+import { AuthService } from 'src/app/services/security/auth.service';
 
 @Component({
   selector: 'app-data-carwash',
@@ -17,7 +18,7 @@ export class DataCarwashComponent {
   hora_cierre: string;
   tipoVehiculos: string[] = []
 
-  constructor(private modal: ModalReserveService, private input: InputService){
+  constructor(private modal: ModalReserveService, private input: InputService, public auth: AuthService){
 
     this.modal.$modal_reserve.subscribe((valor)=>{
       this.active = valor

@@ -1,59 +1,16 @@
+// Modulo principal de la aplicacion
 import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
-import { RegistrarComponent } from './componentes/usuario/registrar/registrar.component';
-import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
-import { LoginComponent } from './componentes/principales/login/login.component';
-import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
-import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
-import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
-import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
-import { FilterBasicComponent } from './componentes/usuario/catalogue/filter-basic/filter-basic.component';
-import { FilterCompleteComponent } from './componentes/usuario/catalogue/filter-complete/filter-complete.component';
-import { PreviewCarwashComponent } from './componentes/usuario/catalogue/preview-carwash/preview-carwash.component';
-import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
-import { ReserveComponent } from './componentes/usuario/profile_carwash/reserve/reserve.component';
-import { InformationComponent } from './componentes/usuario/profile_carwash/information/information.component';
-import { CarruselComponent } from './componentes/usuario/profile_carwash/carrusel/carrusel.component';
-import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
-import { ServicesCarwashComponent } from './componentes/usuario/profile_carwash/services-carwash/services-carwash.component';
-import { HeaderComponent } from './componentes/principales/header/header.component';
-import { FooterComponent } from './componentes/principales/footer/footer.component';
-import { MainComponent } from './componentes/principales/main/main.component';
-import { PrincipalComponent } from './componentes/views/principal/principal.component';
-import { TestimonialsComponent } from './componentes/principales/testimonials/testimonials.component';
-import { AboutComponent } from './componentes/principales/about/about.component';
-import { SponsorsComponent } from './componentes/principales/sponsors/sponsors.component';
-import { TeamComponent } from './componentes/principales/team/team.component';
-import { LoadersComponent } from './componentes/principales/loaders/loaders.component';
-import { CardsPacksComponent } from './componentes/lavaderos/cards-packs/cards-packs.component';
-import { BenefitsComponentComponent } from './componentes/lavaderos/benefits-component/benefits-component.component';
-import { WelcomeComponentComponent } from './componentes/lavaderos/welcome-component/welcome-component.component';
-import { PerfilMenuComponent } from './componentes/principales/perfil-menu/perfil-menu.component';
-import { CompaniesComponent } from './componentes/views/companies/companies.component';
-import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Leaflet
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
-// CHAT
-import { ChatComponent } from './componentes/usuario/chat/chat.component';
-import { ChatAdminComponent } from './componentes/admin/dashboard/chat-admin/chat-admin.component';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Diseño
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-// Dashboard
-import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/navegacion.component';
-import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
-
-// Angular Material
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -61,27 +18,93 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
-import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
+
+// Formulario
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
+// componente pagina principal
+import { MainComponent } from './componentes/anonimo/paginaPrincipal/main/main.component';
+import { TestimonialsComponent } from './componentes/anonimo/paginaPrincipal/testimonials/testimonials.component';
+import { AboutComponent } from './componentes/anonimo/paginaPrincipal/about/about.component';
+import { SponsorsComponent } from './componentes/anonimo/paginaPrincipal/sponsors/sponsors.component';
+import { TeamComponent } from './componentes/anonimo/paginaPrincipal/team/team.component';
+
+
+// componentes anonimo
+import { FilterBasicComponent } from './componentes/anonimo/catalogue/filter-basic/filter-basic.component';
+import { FilterCompleteComponent } from './componentes/anonimo/catalogue/filter-complete/filter-complete.component';
+import { PreviewCarwashComponent } from './componentes/anonimo/catalogue/preview-carwash/preview-carwash.component';
+import { CatalogueComponent } from './componentes/views/catalogue/catalogue.component';
+import { ReserveComponent } from './componentes/anonimo/profile_carwash/reserve/reserve.component';
+import { InformationComponent } from './componentes/anonimo/profile_carwash/information/information.component';
+import { CarruselComponent } from './componentes/anonimo/profile_carwash/carrusel/carrusel.component';
+import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';
+import { ServicesCarwashComponent } from './componentes/anonimo/profile_carwash/services-carwash/services-carwash.component';
+import { DataCarwashComponent } from './componentes/anonimo/profile_carwash/data-carwash/data-carwash.component';
+
+
+// Principales
+import { HeaderComponent } from './componentes/principales/header/header.component';
+import { FooterComponent } from './componentes/principales/footer/footer.component';
+import { LoadersComponent } from './componentes/principales/loaders/loaders.component';
+import { PerfilMenuComponent } from './componentes/principales/perfil-menu/perfil-menu.component';
+import { RegistrarComponent } from './componentes/principales/registrar/registrar.component';
+import { LoginComponent } from './componentes/principales/login/login.component';
+
+// USUARIO
+import { ChatComponent } from './componentes/principales/chat/chat.component';
+import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
+import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
+import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
+import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
+import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
-import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
-import { DataCarwashComponent } from './componentes/usuario/profile_carwash/data-carwash/data-carwash.component';
-import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
-import { DashboardComponent } from './componentes/lavaderos/dashboard/dashboard.component';
-import { ReservasComponent } from './componentes/lavaderos/reservas/reservas.component';
-import { TableComponent } from './componentes/lavaderos/table/table.component';
-import { DatepickerComponent } from './componentes/lavaderos/datepicker/datepicker.component';
 import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
+import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
+
+
+// LAVADEROS
+import { CardsPacksComponent } from './componentes/lavaderos/informacion-lavaderos/cards-packs/cards-packs.component';
+import { BenefitsComponentComponent } from './componentes/lavaderos/informacion-lavaderos/benefits-component/benefits-component.component';
+import { WelcomeComponentComponent } from './componentes/lavaderos/informacion-lavaderos/welcome-component/welcome-component.component';
+import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
+import { DashboardComponent } from './componentes/lavaderos/dashboard-Lavadero/dashboard/dashboard.component';
+import { ReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/reservas/reservas.component';
+import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/table/table.component';
+import { DatepickerComponent } from './componentes/lavaderos/dashboard-Lavadero/datepicker/datepicker.component';
+
+// Vistas
+import { PrincipalComponent } from './componentes/views/principal/principal.component';
+import { CompaniesComponent } from './componentes/views/companies/companies.component';
+
+
+
+// Admin
+import { ChatAdminComponent } from './componentes/admin/dashboard/chat-admin/chat-admin.component';
+import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/navegacion.component';
+import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
+import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
+import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
+
 
 @NgModule({
   declarations: [
+    // Principales
     AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    LoadersComponent,
+    PerfilMenuComponent,
     RegistrarComponent,
-    ConfirmarCuentaComponent,
     LoginComponent,
-    RecuperarContrasenaComponent,
-    NuevaContrasenaComponent,
-    PerfilComponent,
-    ActualizarPerfilComponent,
+    
+    // Anonimo
+    MainComponent,
+    TestimonialsComponent,
+    AboutComponent,
+    SponsorsComponent,
+    TeamComponent,
     FilterBasicComponent,
     FilterCompleteComponent,
     PreviewCarwashComponent,
@@ -91,37 +114,39 @@ import { ReportesComponent } from './componentes/usuario/reportes/reportes.compo
     CarruselComponent,
     ProfileCarwashComponent,
     ServicesCarwashComponent,
-    HeaderComponent,
-    FooterComponent,
-    MainComponent,
-    PrincipalComponent,
-    TestimonialsComponent,
-    AboutComponent,
-    SponsorsComponent,
-    TeamComponent,
-    LoadersComponent,
+    DataCarwashComponent,
+
+    // Usuario
+    ChatComponent,
+    ConfirmarCuentaComponent,
+    RecuperarContrasenaComponent,
+    NuevaContrasenaComponent,
+    PerfilComponent,
+    ActualizarPerfilComponent,
+    ModalVehiclesComponent,
+    ReportesComponent,
+    PerfilUsuarioComponent,
+
+    // Lavaderos
     CardsPacksComponent,
     BenefitsComponentComponent,
     WelcomeComponentComponent,
-    PerfilMenuComponent,
-    CompaniesComponent,
     RegisterCarwashComponent,
-    ChatComponent,
-    ChatAdminComponent,
-    NavegacionComponent,
-    LavaderosPendientesComponent,
-    LoginAdminComponent,
-    ModalVehiclesComponent,
-    ReportesAdminComponent,
-    DataCarwashComponent,
-    PerfilUsuarioComponent,
     DashboardComponent,
     ReservasComponent,
     TableComponent,
 
+    // Vistas
+    PrincipalComponent,
+    CompaniesComponent,
 
-
-    ReportesComponent,
+    // Admin
+    ChatAdminComponent,
+    NavegacionComponent,
+    LavaderosPendientesComponent,
+    LoginAdminComponent,
+    ReportesAdminComponent,
+    
   ],
   imports: [
     BrowserModule,
