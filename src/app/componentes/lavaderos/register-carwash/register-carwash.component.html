@@ -36,8 +36,7 @@
               <div class="input_double">
                 <div class="input-container">
                   <i class="fi fi-sr-fingerprint"></i>
-                  <input formControlName="nit" type="text" class="input_text_form" placeholder="NIT (000000000)"
-                    (keydown)="soloNumeros($event)" (paste)="bloquearPegado($event)" (input)="validarInput($event)">
+                  <input formControlName="nit" type="text" class="input_text_form" placeholder="NIT (000000000)" (paste)="bloquearPegado($event)" (input)="validarInput($event)">
 
                 </div>
                 <div class="errors">
@@ -354,7 +353,7 @@
                 <div class="input-container">
                   <i class="fi fi-br-time-check"></i>
 
-                  <input class="input_text_form" type="text" placeholder="Apertura (HH:MM AM/PM)"
+                  <input class="input_text_form" type="time" placeholder="Apertura (H:MM AM/PM)"
                     formControlName="hora_apertura" />
 
                 </div>
@@ -379,7 +378,7 @@
                 <div class="input-container">
                   <i class="fi fi-br-time-delete"></i>
 
-                  <input class="input_text_form" type="text" placeholder="Cierre (HH:MM AM/PM)"
+                  <input class="input_text_form" type="time" placeholder="Cierre (H:MM AM/PM)"
                     formControlName="hora_cierre" />
 
                 </div>

@@ -1,5 +1,5 @@
 
-<div class="contendor-cards" [routerLink]="['/profile_carwash', lavadero._id]">
+<div class="contendor-cards" [routerLink]="['/profile_carwash', lavadero._id]" *ngIf="lavadero">
     <div class="contendor">
         <div class="contendor-img">
             <img src="{{lavadero.imagenes[0]}}" alt="">
@@ -13,11 +13,12 @@
                 <div class="ubication-contendor"><i class="fi fi-sr-marker icono-ubication"></i> <span id="ubication">{{lavadero.ciudad}}</span></div>
                 <div class="contendor-iconos">
                     <p>Vehiculos que manejamos:</p>
-                    <i class="fi fi-ss-motorcycle icono"></i>
-                    <i class="fi fi-br-car icono"></i>
-                    <i class="fi fi-bs-truck-pickup icono"></i>
-                    <i class="fi fi-bs-truck-moving icono"></i>
-                    <i class="fi fi-rr-bus icono"></i>
+                    <i class="fi fi-ss-motorcycle icono" *ngIf="lavadero.tipoVehiculos.includes('Moto')"></i>
+                    <i class="fi fi-br-car icono" *ngIf="lavadero.tipoVehiculos.includes('Carro')"></i>
+                    <i class="fi fi-bs-truck-pickup icono" *ngIf="lavadero.tipoVehiculos.includes('Camioneta')"></i>
+                    <i class="fi fi-bs-truck-moving icono" *ngIf="lavadero.tipoVehiculos.includes('Camion')"></i>
+                    <i class="fi fi-rr-bus icono" *ngIf="lavadero.tipoVehiculos.includes('Bus')"></i>
+
                 </div>
             </div>
         </div>

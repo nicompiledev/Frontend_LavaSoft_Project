@@ -135,15 +135,6 @@ export class RegisterCarwashComponent  implements OnInit {
 
   //validar soloNumeros
 
-  soloNumeros(event: KeyboardEvent): boolean {
-    const tecla = event.keyCode;
-    if (tecla > 31 && (tecla < 48 || tecla > 57)) {
-      event.preventDefault();
-      return false;
-    }
-    return true;
-  }
-
   bloquearPegado(event: ClipboardEvent): void {
     event.preventDefault();
   }

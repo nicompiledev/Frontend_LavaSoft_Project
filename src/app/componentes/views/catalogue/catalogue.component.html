@@ -9,31 +9,34 @@
       <div class="filter-basic">
         <app-filter-basic></app-filter-basic>
       </div>
-      <div *ngIf="!loading" class="carta">
+      <div *ngIf="lavaderos.length > 0" class="carta">
         <ng-container *ngFor="let lavadero of lavaderos">
           <app-preview-carwash [lavadero]="lavadero"></app-preview-carwash>
         </ng-container>
       </div>
-      <div *ngIf="loading" class="carta">Cargando lavaderos...</div>
-      <!-- Mostrar el número de página -->
-      <!-- <p class="page-number">Página {{ page }}</p> -->
+      <div *ngIf="lavaderos.length === 0" class="carta2">
+        <div class="no-results">
+          <h2>No se encontraron resultados</h2>
+          <p>Intenta con otros filtros</p>
+        </div>
+      </div>
 
       <!-- Botones de paginación -->
       <div class="pagination-buttons">
-        <ul class="pagination">
+        <ul class="pagination" *ngIf="totalPages >= 1">
           <li class="page-item" [class.disabled]="currentPage === 1">
-            <a class="page-link" (click)="goToPreviousPage()"><</a>
+            <a class="page-link flecha" (click)="goToPreviousPage()"><</a>
           </li>
           <li class="page-item" *ngIf="totalPages > pagesToShow" [class.disabled]="currentPage === 1">
             <a class="page-link" (click)="goToFirstPage()">1</a>
           </li>
-          <li class="page-item" *ngIf="showEllipsisStart">...</li>
+          <li class="page-item puntos" *ngIf="showEllipsisStart && pages.length > 0 && pages[0] > 2">...</li>
           <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
             <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
           </li>
-          <li class="page-item" *ngIf="showEllipsisEnd">...</li>
+          <li class="page-item puntos" *ngIf="showEllipsisEnd && pages.length > 0 ">...</li>
           <li class="page-item" [class.disabled]="currentPage === totalPages">
-            <a class="page-link" (click)="goToNextPage()">></a>
+            <a class="page-link flecha" (click)="goToNextPage()">></a>
           </li>
         </ul>
       </div>

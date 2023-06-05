@@ -1,7 +1,7 @@
 <div class="container_all">
   <div class="text-center">
     <h2>{{ nombreLavadero }}</h2>
-    <button class="Btn" (click)="openModal(true, 'reports')" *ngIf="auth.isLogin | async">
+    <button class="Btn" (click)="openModal(true, 'reports')" *ngIf="(auth.isLogin | async) && (auth.rol | async) == 'usuario'">
       <div class="sign"><i class="fi fi-sr-engine-warning"></i></div>
 
       <div class="text">Reportar</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { anonimoService } from 'src/app/services/anonimo.service';
 import { InputService } from 'src/app/services/comunicación/input.service';
 import { finalize } from 'rxjs';
@@ -20,6 +20,7 @@ export class ProfileCarwashComponent implements OnInit {
     private input: InputService,
     private modal_service: ModalReserveService,
     private loader: LoaderService,
+    private router: Router
   ) {}
   modal: number = 0;
   active: boolean = false;
@@ -39,6 +40,12 @@ export class ProfileCarwashComponent implements OnInit {
       finalize(() => this.loader.hideLoader())
     )
     .subscribe((res: any) => {
+
+      if(res == null){
+        // volver a catalogo:
+        this.router.navigate(['/catalogue']);
+      }
+
       this.input.setImagenes(res.imagenes);
       this.input.setServicios(res.servicios);
       this.input.setInformacion(res.nombreLavadero, res.ciudad, res.direccion, res.hora_apertura, res.hora_cierre, res.tipoVehiculos)

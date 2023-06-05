@@ -3,6 +3,7 @@ import { anonimoService } from 'src/app/services/anonimo.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs/operators';
 import { ViewportScroller } from '@angular/common';
+import { FilterService } from 'src/app/services/filtro/filter.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -44,28 +45,39 @@ export class CatalogueComponent {
       this.isAbsolute = this.scrollTop >= this.documentHeight - this.windowHeight - 80;
     }
   }
+  constructor(
+    private anonimoService: anonimoService,
+    private loader: LoaderService,
+    private viewportScroller: ViewportScroller,
+    private filterService: FilterService
+  ) {
+    this.cambiarPagina();
 
-  actualizarTop() {
+    this.filterService.filters$.subscribe(([ciudad, tipoVehiculo, orderByPopularity, nombre]) => {
+      // Realiza la lógica de filtrado y muestra los lavaderos actualizados
+      this.loader.showLoader();
+      this.anonimoService
+        .getLavaderos(this.currentPage, ciudad, tipoVehiculo, orderByPopularity, nombre)
+        .pipe(finalize(() => this.loader.hideLoader()))
+        .subscribe((res: any) => {
+          this.lavaderos = res.lavaderos;
+          this.totalPages = res.totalPages;
+          this.updatePages();
+          this.subirVentana();
+        }
+      );
+    });
+  }
+
+  subirVentana(){
     this.isAbsolute = false;
     this.scrollTop = 0;
     this.windowHeight = 0;
     this.documentHeight = 0;
-  }
-
-  constructor(
-    private anonimoService: anonimoService,
-    private loader: LoaderService,
-    private viewportScroller: ViewportScroller
-  ) {
-    this.cambiarPagina();
-  }
-
-  subirVentana(){
     this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   lavaderos: any = [];
-  loading: boolean = true;
 
   currentPage: number = 1;
   totalPages: number;
@@ -75,19 +87,15 @@ export class CatalogueComponent {
   showEllipsisEnd = false;
 
   cambiarPagina() {
-
     this.loader.showLoader();
     this.anonimoService
       .getLavaderos(this.currentPage)
       .pipe(finalize(() => this.loader.hideLoader()))
       .subscribe((res: any) => {
-        console.log(res);
         this.lavaderos = res.lavaderos;
         this.totalPages = res.totalPages;
         this.updatePages();
-        this.loading = false;
         this.subirVentana();
-        this.actualizarTop()
       });
   }
 
@@ -120,20 +128,19 @@ export class CatalogueComponent {
   updatePages() {
     if (this.totalPages <= this.pagesToShow) {
       this.pages = [];
-      console.log(this.totalPages);
-      
       for (let i = 1; i <= (this.totalPages); i++) {
         this.pages.push(i);
       }
     } else {
       const startPage = Math.max(2, this.currentPage - Math.floor(this.pagesToShow / 2));
-      const endPage = Math.min(this.totalPages - 1, startPage + this.pagesToShow - 1);
+      const endPage = Math.min(this.totalPages, startPage + this.pagesToShow - 1);
       this.pages = [];
       for (let i = startPage; i <= endPage; i++) {
         this.pages.push(i);
       }
       this.showEllipsisStart = startPage > 2;
-      this.showEllipsisEnd = endPage < this.totalPages - 1;
+      // cuando la pagina actual falta 2 para llegar al final:
+      this.showEllipsisEnd = endPage < this.totalPages;
     }
   }
 }

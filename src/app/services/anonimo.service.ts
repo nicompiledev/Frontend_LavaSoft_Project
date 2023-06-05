@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,16 +10,40 @@ export class anonimoService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-  })};
+    }),
+  };
 
   constructor(private http: HttpClient) {}
 
-  getLavaderos(page: number = 1){
-    return this.http.get(`${this.apiUrl}lavaderos`, { params: { page: page.toString() } });
+  getLavaderos(
+    page: number = 1,
+    ciudad?: string,
+    tipoVehiculo?: string,
+    orderByPopularity?: boolean,
+    nombre?: string
+  ) {
+    let params = new HttpParams().set('page', page.toString());
+
+    if (ciudad) {
+      params = params.set('ciudad', ciudad);
+    }
+
+    if (tipoVehiculo) {
+      params = params.set('tipoVehiculo', tipoVehiculo);
+    }
+
+    if (orderByPopularity) {
+      params = params.set('orderByPopularity', orderByPopularity.toString());
+    }
+
+    if (nombre) {
+      params = params.set('nombre', nombre);
+    }
+
+    return this.http.get(`${this.apiUrl}lavaderos`, { params });
   }
 
-  getLavadero(id: string){
+  getLavadero(id: string) {
     return this.http.get(`${this.apiUrl}lavadero/${id}`, this.httpOptions);
   }
-
 }

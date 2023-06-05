@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'reports', component: ReportesComponent},
 
   // Inicio
-  { path: '', redirectTo: '/dashboard-lavadero', pathMatch: 'full' },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent },
 
   // Desde el correo
@@ -53,7 +53,7 @@ const routes: Routes = [
   { path: 'catalogue' ,component:CatalogueComponent},
     {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
     {path: 'data' , component:ProfileCarwashComponent},
-  // Enoresa
+  // Empresa
   {path: 'empresas' , component:CompaniesComponent},
     { path: 'empresas/registro_lavadero', component:  RegisterCarwashComponent},
 
