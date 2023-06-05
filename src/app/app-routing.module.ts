@@ -31,12 +31,11 @@ import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/na
 import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
-
+import { AceptarLavaderosComponent } from './componentes/admin/dashboard/aceptar-lavaderos/aceptar-lavaderos.component';
 
 const routes: Routes = [
   //pruebas
-  { path: 'reports', component: ReportesComponent},
-
+  { path: 'aceptar' , component:AceptarLavaderosComponent},
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent },
@@ -53,7 +52,7 @@ const routes: Routes = [
   { path: 'catalogue' ,component:CatalogueComponent},
     {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
     {path: 'data' , component:ProfileCarwashComponent},
-  // Empresa
+  // Enoresa
   {path: 'empresas' , component:CompaniesComponent},
     { path: 'empresas/registro_lavadero', component:  RegisterCarwashComponent},
 

@@ -1,0 +1,55 @@
+@import "../../../../app.component.scss";
+
+.container_all{
+    border-radius: 10px;  
+    overflow: hidden;
+    border: solid 2px $negro-claro;
+
+    .header{
+        position: relative;
+        background: $gris-claro;
+    
+        .close{
+            position: absolute;
+            bottom: 8px;
+            right: -90%;
+        }
+        .col{
+            border:none !important;
+        }
+        h4{
+            margin: 0;
+            margin-top: 5px;
+        }
+    }
+
+    .content{
+        padding:20px;
+    }
+    
+}
+
+
+.types {
+  padding-top: 5px;
+  i {
+    font-size: 25px;
+    color: $gris-claro;
+  }
+}
+.row {
+  padding: 10px;
+  gap: 10px;
+}
+
+.col {
+  border-bottom: 1px solid $gris-claro;
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+  justify-content: space-between;
+}
+
+h5 {
+  margin-bottom: 0;
+}
