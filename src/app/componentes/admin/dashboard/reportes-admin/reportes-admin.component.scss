@@ -300,3 +300,52 @@ fa-icon{
     }
   }
 }
+
+
+/*     <!-- Aquí tienes la categorización de los diferentes casos según su gravedad:
+
+      Color para grave, muy grave y leve (No verde):
+
+      Muy grave:
+      #FF0000
+      grave:
+      #FFA500
+      leve:
+      #FFFF00
+
+1. Información falsa: Grave
+2. Cambio de ubicación: Leve
+3. Cierre temporal o permanente: Leve
+4. Mal servicio al cliente: Grave
+5. Incumplimiento de normas de seguridad: Muy grave
+
+Explicación de la categorización:
+
+1. Información falsa: Este caso se considera grave porque proporcionar información engañosa o falsa puede afectar la decisión de los clientes al elegir un lavadero de vehículos. Puede generar confusión y llevar a transacciones injustas o insatisfactorias.
+
+2. Cambio de ubicación: Este caso se considera leve, ya que aunque puede generar cierta confusión a los usuarios, se trata de un problema fácilmente solucionable. Una vez actualizada la información de ubicación, el problema se resuelve y no tiene un impacto significativo en la experiencia del cliente.
+
+3. Cierre temporal o permanente: También se considera un caso leve, ya que los lavaderos de vehículos pueden cerrar temporal o permanentemente por diversas razones. Aunque es importante tener información precisa, este problema no afecta directamente la calidad del servicio ni la seguridad del cliente.
+
+4. Mal servicio al cliente: Este caso se considera grave debido a que una mala experiencia en el servicio al cliente puede afectar la satisfacción general del cliente y su percepción del lavadero de vehículos. El trato grosero o la falta de atención adecuada pueden generar una mala reputación y disminuir la confianza de los clientes en el negocio.
+
+5. Incumplimiento de normas de seguridad: Este caso se considera muy grave, ya que pone en riesgo la seguridad de los clientes y del personal del lavadero de vehículos. El manejo inadecuado de productos químicos o la presencia de equipos defectuosos pueden causar accidentes o lesiones graves. Es fundamental reportar este tipo de situaciones para garantizar la seguridad de todos los involucrados.
+
+Debe cambiar el color el tipo de reporte según su gravedad:
+
+              <span class="reporte-tipo"  [ngClass]="{'info-color-muygraves': reporte.tipo === 'Incumplimiento de normas de seguridad', 'info-color-graves': reporte.tipo === 'Mal servicio al cliente', 'info-color-leves': reporte.tipo === 'Cierre temporal o permanente' || reporte.tipo === 'Cambio de ubicación' || reporte.tipo === 'Información falsa'}">{{ reporte.tipo }}</span>
+--> */
+
+
+.info-color-muygraves {
+  background-color: #FF0000;
+}
+
+.info-color-graves {
+  background-color: #FFA500;
+}
+
+.info-color-leves {
+  background-color: #FFFF00;
+  color: #333;
+}

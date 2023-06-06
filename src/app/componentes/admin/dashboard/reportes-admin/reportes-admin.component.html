@@ -81,8 +81,7 @@ Debe cambiar el color el tipo de reporte según su gravedad:
             </div>
 
             <div class="contenedor-tipoReporte">
-              <span class="reporte-tipo"  [ngClass]="{'info-color-muygraves': reporte.tipo === 'incumplimiento-de-normas-de-seguridad', 'info-color-graves': reporte.tipo === 'mal-servicio-al-cliente', 'info-color-leves': reporte.tipo === 'cierre-temporal-o-permanente' || reporte.tipo === 'cambio-de-ubicacion' || reporte.tipo === 'informacion-falsa'}"
-              >{{reporte.tipo}}</span>
+              <span class="reporte-tipo"  [ngClass]="{'info-color-muygraves': reporte.tipo === 'Incumplimiento de normas de seguridad', 'info-color-graves': reporte.tipo === 'Mal servicio al cliente', 'info-color-leves': reporte.tipo === 'Cierre temporal o permanente' || reporte.tipo === 'Cambio de ubicacion' || reporte.tipo === 'Informacion falsa'}">{{ reporte.tipo }}</span>
             </div>
           </summary>
           <div class="reporte-contenido">
