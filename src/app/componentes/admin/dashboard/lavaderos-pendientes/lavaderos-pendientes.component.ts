@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from 'src/app/services/admin.service';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 export interface LavaderoData {
   id: number;
@@ -25,8 +26,13 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   lavaderos: any[] = [];
+  active: boolean;
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService , private modal: ModalReserveService) {
+    this.modal.$modal_reserve.subscribe((valor)=>{
+      this.active = valor
+    })
+  }
 
   ngOnInit() {
     this.adminService.getLavaderosNoConfirmados().subscribe((response: any) => {
@@ -51,7 +57,7 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
     }
   }
 
-  openDialog(row: any) {
-    console.log(row);
+  openDialog(stateModal:boolean , focus:string) {
+    this.modal.estadomodal(stateModal , focus)
   }
 }

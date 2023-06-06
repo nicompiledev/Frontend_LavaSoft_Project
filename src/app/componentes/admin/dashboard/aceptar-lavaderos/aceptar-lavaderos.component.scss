@@ -3,24 +3,21 @@
 .container_all{
     border-radius: 10px;  
     overflow: hidden;
-    border: solid 2px $negro-claro;
+    border: solid 2px $azul-oscuro;
 
     .header{
         position: relative;
-        background: $gris-claro;
-        height: auto !important;
+        color: $blanco;
+        background: $azul-oscuro;
+
         .text-center{
           height: auto;
         }
-        .close{ 
-            position: absolute;
-            bottom: 8px;
-            right: -90%;
-        }
+  
         .col{
             border:none !important;
         }
-        h4{
+        h2{
             margin: 0;
             margin-top: 5px;
         }
@@ -34,7 +31,8 @@
 
 .imgs{
 overflow-x: auto;
-height: 200px !important;
+gap: 10px;
+height: 180px !important;
 }
 .types {
   padding-top: 5px;
@@ -58,4 +56,47 @@ height: 200px !important;
 
 h5 {
   margin-bottom: 0;
+}
+
+.aceptar{
+    background-color: $azul-oscuro;
+    color: $blanco;
+    
+
+    &:hover{
+        background-color: $azul-claro;
+    }
+}
+
+.close{
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    font-size: 20px;
+    padding: 0px 0px 5px;
+    background: transparent;
+    border-radius: 10px;
+    border: none;
+    color: #ffff;
+    transition: all 450ms;
+  
+    &:hover{
+      background: $negro-claro ;
+      color: $blanco;
+      box-shadow: 0px 0px 0px 4px $negro;
+    }
+  
+  }
+
+.cancelar{
+    background-color: $negro-claro;
+    color: $blanco;
+
+    &:hover{
+        background-color: $negro;
+    }
 }

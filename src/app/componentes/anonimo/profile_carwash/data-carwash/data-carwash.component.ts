@@ -20,7 +20,7 @@ export class DataCarwashComponent {
 
   constructor(private modal: ModalReserveService, private input: InputService, public auth: AuthService){
 
-    this.modal.$modal_reserve.subscribe((valor)=>{
+    this.modal.$modal_report.subscribe((valor)=>{
       this.active = valor
     })
     

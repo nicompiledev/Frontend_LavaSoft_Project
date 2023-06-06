@@ -1,12 +1,12 @@
-<div class="col-6 container_all">
+<div class="col-7 container_all">
     <div class="row header">
         <div class="col text-center">
-        <h4>
+        <h2>
             Nombre del lavadero
-        </h4>
+        </h2>
         </div>
-        <div class="close">
-            <button class="btn btn-danger">X</button>
+        <div>
+            <button class="close" (click)="closeModal(false , 'acceptance')">X</button>
         </div>
     </div>
    <div class="content">
@@ -16,24 +16,14 @@
             <h5 class="description">000000000</h5>
             </div>
 
-            <div class="col col-3">
-                <span class="title">°N de espacios</span>
+            <div class="col col-auto">
+                <span class="title">°N espacios</span>
                 <h5 class="description">35</h5>
             </div>  
 
-            <div class="col">
-            <span class="title">Nombre del lavadero</span>
-            <h5 class="description">Nombre del lavadero</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <span class="title">Ciudad</span>
-                <h5 class="description"></h5>
-            </div>
-            <div class="col">
-                <span class="title">Direccion</span>
-                <h5 class="description"></h5>
+            <div class="col col-4">
+                <span class="title">Correo electronico</span>
+                <h5 class="description">lavadero@gmail.com</h5>
             </div>
             <div class="col">
                 <span class="title">Telefono</span>
@@ -41,18 +31,38 @@
             </div>
         </div>
         <div class="row">
+
             <div class="col">
+                <span class="title">Departamento</span>
+                <h5 class="description"></h5>
+            </div>
+
+            <div class="col">
+                <span class="title">Ciudad</span>
+                <h5 class="description"></h5>
+            </div>
+          
+            <div class="col col-auto">
+                <span class="title">Sector</span>
+                <h5 class="description">este</h5>
+            </div>
+
+            <div class="col">
+                <span class="title">Direccion</span>
+                <h5 class="description"></h5>
+            </div>
+        
+        </div>
+        <div class="row">
+            <div class="col col-auto">
             <span class="title">Hora abertura</span>
             <h5 class="description">sd</h5>
             </div>
 
-            <div class="col">
+            <div class="col col-auto">
             <span class="title">Hora salida</span>
             <h5 class="description">sad</h5>
             </div>
-        </div>
-
-        <div class="row">
             <div class="col">
                 <span class="title">Vehiculos que manejamos</span>
                 <div class="types d-flex justify-content-around">
@@ -67,29 +77,31 @@
                 <i class="fa-solid fa-van-shuttle"></i>
                 </div>
             </div>
-    
-            
-            <div class="col">
-                <span class="title">Correo electronico</span>
-                <h5 class="description">lavadero@gmail.com</h5>
-            </div>
-
-       </div>
+        </div>
 
        <div class="row">
 
-        <span class="title">Imagenes del lavadero</span>
-        <div class="col flex-row  imgs">
-           <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="">
-           <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="">
-           <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="">
-           <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="">
-           
+            <span class="title">Imagenes del lavadero</span>
+            <div class="col flex-row  imgs">
+            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="">
+            <img src="https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="">
+            <img src="https://img.autobytel.com/chrome/multiview/white/640/2022hyc03_640/2022hyc030017_640_01.jpg" alt="">
+            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2022/08_22_monterey/cover.jpg" alt="">
+            
 
-          </div>
+            </div>
 
 
-   </div>
+        </div>
+
+        <div class="row">
+            <div class="btn-group">
+                <button class="btn aceptar" >Aceptar</button>
+                <button class="btn cancelar" >Cancelar</button>
+              </div>
+
+
+        </div>
    </div>
 
    

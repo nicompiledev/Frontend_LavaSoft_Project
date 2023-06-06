@@ -39,7 +39,7 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <!-- Evento click -->
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(row)"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openDialog(true , 'acceptance')"></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
@@ -48,4 +48,7 @@
     </table>
     <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
+</div>
+<div class="modal" *ngIf="active">
+  <app-aceptar-lavaderos></app-aceptar-lavaderos>
 </div>

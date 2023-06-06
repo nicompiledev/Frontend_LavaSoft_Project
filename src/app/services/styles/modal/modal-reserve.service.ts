@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ModalReserveService {
+  $modal_report = new BehaviorSubject<boolean>(false)
   $modal_reserve = new BehaviorSubject<any>(false);
   $modal = new BehaviorSubject<number>(0);
 
@@ -25,8 +26,13 @@ export class ModalReserveService {
         break;
 
       case 'reports':
-        this.$modal_reserve.next(modal);
+        this.$modal_report.next(modal);
         break;
+
+      case 'acceptance':
+      this.$modal_reserve.next(modal);
+      break;
+      
       default:
         break;
     }
