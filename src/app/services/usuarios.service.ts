@@ -103,5 +103,12 @@ export class UsuarioService {
     }
   }
 
+  reportarLavadero(id_lavadero: string, razon: string, tipo: string, descripcion: string) {
+    if (this.isLoggedIn){
+      return this.http.post(`${this.apiUrl}reportar-lavadero/${id_lavadero}`, {razon, tipo, descripcion}, this.httpOptions);
+    }else{
+      return null;
+    }
+  }
 }
 

@@ -26,12 +26,8 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   lavaderos: any[] = [];
-  active: boolean;
-
   constructor(private adminService: AdminService , private modal: ModalReserveService) {
-    this.modal.$modal_reserve.subscribe((valor)=>{
-      this.active = valor
-    })
+
   }
 
   ngOnInit() {

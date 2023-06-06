@@ -1,36 +1,60 @@
 <div class="">
-  <div class="container_all col-3 d-flex align-items-center flex-column row-gap-2">
-    <span (click)="closeModal(false , 'reports')" class="close">X</span>
-    <div class="text-center d-flex flex-column align-items-center  mt-2">
-      <div class="icon_report ">
+  <div
+    class="container_all col-3 d-flex align-items-center flex-column row-gap-2"
+  >
+    <span (click)="closeModal(false, 'reports')" class="close">X</span>
+    <div class="text-center d-flex flex-column align-items-center mt-2">
+      <div class="icon_report">
         <i class="fa-solid fa-triangle-exclamation fa-bounce"></i>
       </div>
       <div class="info">
-        <p>Escriba la razon apropiada para su reporte , su respectivo tipo y a continuacion  describa el por que de su reporte </p>
+        <p>
+          Escriba la razon apropiada para su reporte , su respectivo tipo y a
+          continuacion describa el por que de su reporte
+        </p>
       </div>
     </div>
-    <div class="information d-flex flex-column align-items-center row-gap-3">
-      <input type="text" placeholder="Razon">
-      <select name="" id="">
-        <option value="" selected disabled>Tipo de reporte</option>
-        <option value="" class="type_report">Informacion falsa</option>
-        <option value="" class="type_report">Cambio de ubicacion</option>
-        <option value="" class="type_report">Cierre temporal o permanente</option>
-        <option value="" class="type_report">Mal servicio al cliente</option>
-        <option value="" class="type_report">Incumplimiento de normas de seguridad</option>
-      </select>
+      <form  [formGroup]="ReportForm" class="information d-flex flex-column align-items-center">
+        <input type="text" placeholder="Razon" formControlName="razon" [ngClass]="{errorInput: ReportForm.get('razon').invalid && (ReportForm.get('razon').dirty || ReportForm.get('razon').touched)}" />
+        <select name="" id="" formControlName="tipo_reporte" [ngClass]="{errorInput: ReportForm.get('tipo_reporte').invalid && (ReportForm.get('tipo_reporte').dirty || ReportForm.get('tipo_reporte').touched)}">
+          <option value="" selected disabled>Tipo de reporte</option>
+          <option value="Informacion falsa" class="type_report">
+            Informacion falsa
+          </option>
+          <option value="Cambio de ubicacion" class="type_report">
+            Cambio de ubicacion
+          </option>
+          <option value="Cierre temporal o permanente" class="type_report">
+            Cierre temporal o permanente
+          </option>
+          <option value="Mal servicio al cliente" class="type_report">
+            Mal servicio al cliente
+          </option>
+          <option
+            value="Incumplimiento de normas de seguridad"
+            class="type_report"
+          >
+            Incumplimiento de normas de seguridad
+          </option>
+        </select>
 
-      <div class="data_client">
-        <span>
-          Describe tu reporte
-        </span>
-        <textarea name="" id="" cols="30" rows="10">
-     
-        </textarea>
-      </div>
-    </div>
+        <div class="data_client">
+          <span> Describe tu reporte </span>
+          <textarea name="" id="" cols="30" rows="10" formControlName="descripcion" [ngClass]="{errorInput: ReportForm.get('descripcion').invalid && (ReportForm.get('descripcion').dirty || ReportForm.get('descripcion').touched)}"></textarea>
+        </div>
+        <div class="errors">
+          <div class="error" *ngIf="(ReportForm.get('razon').invalid && (ReportForm.get('razon').dirty || ReportForm.get('razon').touched)) || (ReportForm.get('tipo_reporte').invalid && (ReportForm.get('tipo_reporte').dirty || ReportForm.get('tipo_reporte').touched)) || (ReportForm.get('descripcion').invalid && (ReportForm.get('descripcion').dirty || ReportForm.get('descripcion').touched))">
+            <p>Todos los campos son obligatorios</p>
+          </div>
+        </div>
+      </form>
     <div class="btn_report mb-2">
-    <input type="button" value="Reportar" class="btn btn-danger">
+      <input
+        type="button"
+        value="Reportar"
+        class="btn btn-danger"
+        (click)="enviarReporte()"
+      />
     </div>
   </div>
 </div>

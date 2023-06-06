@@ -10,6 +10,7 @@ import {
   faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./navegacion.component.scss'],
 })
 export class NavegacionComponent {
-  constructor(public router: Router, private auth: AuthService) {}
+
+  active = false;
+
+  constructor(public router: Router, private auth: AuthService, private modal: ModalReserveService) {
+    this.modal.$modal_reserve.subscribe((valor)=>{
+      this.active = valor
+    })
+  }
 
   ocultarMenu = false;
   seleccionado = 'dashboard';
