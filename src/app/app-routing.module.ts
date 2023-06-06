@@ -62,7 +62,7 @@ const routes: Routes = [
 
   // ADMIN
   { path: 'login-admin', component: LoginAdminComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard-admin', component: NavegacionComponent, canActivate: [AuthGuard],
+  { path: 'dashboard-admin', component: NavegacionComponent,
     children: [
       { path: 'peticion-empresa', component:  LavaderosPendientesComponent},
       { path: 'reportes', component:  ReportesAdminComponent},

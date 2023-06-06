@@ -120,6 +120,8 @@
           .container-time-name {
             display: flex;
             justify-content: space-around;
+            height: 200px;
+            overflow-y: auto;
             .name {
               width: 100px;
               text-align: center;

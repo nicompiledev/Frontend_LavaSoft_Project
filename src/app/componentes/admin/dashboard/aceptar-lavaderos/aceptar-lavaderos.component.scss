@@ -8,8 +8,11 @@
     .header{
         position: relative;
         background: $gris-claro;
-    
-        .close{
+        height: auto !important;
+        .text-center{
+          height: auto;
+        }
+        .close{ 
             position: absolute;
             bottom: 8px;
             right: -90%;
@@ -29,7 +32,10 @@
     
 }
 
-
+.imgs{
+overflow-x: auto;
+height: 200px !important;
+}
 .types {
   padding-top: 5px;
   i {

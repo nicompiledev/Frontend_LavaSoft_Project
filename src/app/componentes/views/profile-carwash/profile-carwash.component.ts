@@ -43,7 +43,7 @@ export class ProfileCarwashComponent implements OnInit {
 
       if(res == null){
         // volver a catalogo:
-        this.router.navigate(['/catalogue']);
+        //this.router.navigate(['/catalogue']);
       }
 
       this.input.setImagenes(res.imagenes);
