@@ -65,11 +65,11 @@ fa-icon{
 /* Estilos para el título del reporte */
 .reporte-titulo {
   font-size: 16px;
-  width: 70%;
 }
 
 .contenedor-tipoReporte{
   display: flex;
+  margin-left: auto;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0;
@@ -209,19 +209,6 @@ fa-icon{
    height:20px; 
    border-radius:50%; 
    margin-right:5px; 
- }
-
- /* Colores para cada tipo de reporte */
- .info-color-falsa {
-   background-color:#dc3545; /* Color rojo */
- }
-
- .info-color-abuso {
-   background-color:#ffc107; /* Color amarillo */
- }
-
- .info-color-correccion {
-   background-color:#28a745; /* Color verde */
  }
 
 

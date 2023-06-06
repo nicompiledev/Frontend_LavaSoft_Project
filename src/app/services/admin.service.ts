@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AuthService } from './security/auth.service';
 
 @Injectable({
@@ -69,5 +69,15 @@ export class AdminService {
       return null;
     }
   }
+
+  getReportes(page: number = 1,) {
+    let params = new HttpParams().set('page', page.toString());
+    return this.http.get(`${this.url}reportes`, { params , headers: this.httpOptions.headers});
+  }
+
+  aceptarReporte(id_reporte: string) {
+    return this.http.post(`${this.url}reportes/aceptar`, { id_reporte }, this.httpOptions);
+  }
+
 
 }

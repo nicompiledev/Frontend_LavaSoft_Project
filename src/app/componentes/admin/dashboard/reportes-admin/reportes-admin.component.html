@@ -11,152 +11,144 @@
       >
       <select name="selectInput" id="selectInput" class="select-input">
         <option value="todos">Todos</option>
-        <option value="falsa">Información falsa</option>
-        <option value="abuso">Abuso</option>
-        <option value="correccion">Corrección</option>
+        <option value="informacion-falsa">Información falsa</option>
+        <option value="cambio-de-ubicacion">Cambio de ubicación</option>
+        <option value="cierre-temporal-o-permanente">
+          Cierre temporal o permanente
+        </option>
+        <option value="mal-servicio-al-cliente">
+          Mal servicio al cliente
+        </option>
+        <option value="incumplimiento-de-normas-de-seguridad">
+          Incumplimiento de normas de seguridad
+        </option>
       </select>
     </div>
 
     <!-- Sección informativa -->
     <div class="info">
       <div class="info-item">
-        <div class="info-color info-color-falsa"></div>
+        <div class="info-color info-color-muygraves"></div>
         <span>Muy graves</span>
       </div>
       <div class="info-item">
-        <div class="info-color info-color-abuso"></div>
+        <div class="info-color info-color-graves"></div>
         <span>Graves</span>
       </div>
       <div class="info-item">
-        <div class="info-color info-color-correccion"></div>
+        <div class="info-color info-color-leves"></div>
         <span>Leves</span>
       </div>
     </div>
+    <!-- Aquí tienes la categorización de los diferentes casos según su gravedad:
 
-    <details class="reporte" data-tipo="falsa">
-      <summary>
-        <div class="reporte-titulo">
-          <fa-icon [icon]="mensaje"></fa-icon>La foto no tiene que ver con el
-          lavadero
-        </div>
+      Color para grave, muy grave y leve (No verde):
 
-        <div class="contenedor-tipoReporte">
-          <span class="reporte-tipo info-color-falsa">Información falsa</span>
-        </div>
-      </summary>
-      <div class="reporte-contenido">
-        <table class="reporte-tabla">
-          <tr>
-            <th>Reportado:</th>
-            <td>Juan Pérez</td>
-          </tr>
-          <tr>
-            <th>Usuario:</th>
-            <td>María García</td>
-          </tr>
-          <tr>
-            <th>Razón:</th>
-            <td>
-              La foto que publicó María no corresponde al lavadero que ofrece en
-              su anuncio.
-            </td>
-          </tr>
-        </table>
-        <div class="reporte-botones">
-          <button class="reporte-boton reporte-boton-aceptar">
-            Aceptar reporte
-          </button>
-          <button class="reporte-boton reporte-boton-cancelar">
-            Cancelar reporte
-          </button>
-        </div>
-      </div>
-    </details>
+      Muy grave:
+      #FF0000
+      grave:
+      #FFA500
+      leve:
+      #FFFF00
 
-    <details class="reporte" data-tipo="abuso">
-      <summary>
-        <div class="reporte-titulo">
-          <fa-icon [icon]="mensaje"></fa-icon>El usuario no me ha pagado
-        </div>
+1. Información falsa: Grave
+2. Cambio de ubicación: Leve
+3. Cierre temporal o permanente: Leve
+4. Mal servicio al cliente: Grave
+5. Incumplimiento de normas de seguridad: Muy grave
 
-        <div class="contenedor-tipoReporte">
-          <span class="reporte-tipo info-color-abuso">Abuso</span>
-        </div>
-      </summary>
-      <div class="reporte-contenido">
-        <table class="reporte-tabla">
-          <tr>
-            <th>Reportado:</th>
-            <td>Juan Pérez</td>
-          </tr>
-          <tr>
-            <th>Usuario:</th>
-            <td>María García</td>
-          </tr>
-          <tr>
-            <th>Razón:</th>
-            <td>María no me ha pagado por el lavado que le hice.</td>
-          </tr>
-        </table>
-        <div class="reporte-botones">
-          <button class="reporte-boton reporte-boton-aceptar">
-            Aceptar reporte
-          </button>
-          <button class="reporte-boton reporte-boton-cancelar">
-            Cancelar reporte
-          </button>
-        </div>
-      </div>
-    </details>
+Explicación de la categorización:
 
-    <details class="reporte" data-tipo="Corrección">
-      <summary>
-        <div class="reporte-titulo">
-          <fa-icon [icon]="mensaje"></fa-icon>El usuario no me ha pagado
-        </div>
+1. Información falsa: Este caso se considera grave porque proporcionar información engañosa o falsa puede afectar la decisión de los clientes al elegir un lavadero de vehículos. Puede generar confusión y llevar a transacciones injustas o insatisfactorias.
 
-        <div class="contenedor-tipoReporte">
-          <span class="reporte-tipo info-color-correccion">Corrección</span>
-        </div>
-      </summary>
-      <div class="reporte-contenido">
-        <table class="reporte-tabla">
-          <tr>
-            <th>Reportado:</th>
-            <td>Juan Pérez</td>
-          </tr>
-          <tr>
-            <th>Usuario:</th>
-            <td>María García</td>
-          </tr>
-          <tr>
-            <th>Razón:</th>
-            <td>María no me ha pagado por el lavado que le hice.</td>
-          </tr>
-        </table>
-        <div class="reporte-botones">
-          <button class="reporte-boton reporte-boton-aceptar">
-            Aceptar reporte
-          </button>
-          <button class="reporte-boton reporte-boton-cancelar">
-            Cancelar reporte
-          </button>
-        </div>
-      </div>
-    </details>
-    <div class="paginacion">
-      <!-- Paginación -->
-      <button class="button prevNext" id="prev" disabled="">
-        <i class="fa-solid fa-angle-left"></i>
-      </button>
+2. Cambio de ubicación: Este caso se considera leve, ya que aunque puede generar cierta confusión a los usuarios, se trata de un problema fácilmente solucionable. Una vez actualizada la información de ubicación, el problema se resuelve y no tiene un impacto significativo en la experiencia del cliente.
 
-      <div class="links">
-        <a href="#" class="link active">1</a>
-      </div>
+3. Cierre temporal o permanente: También se considera un caso leve, ya que los lavaderos de vehículos pueden cerrar temporal o permanentemente por diversas razones. Aunque es importante tener información precisa, este problema no afecta directamente la calidad del servicio ni la seguridad del cliente.
 
-      <button class="button prevNext" id="next">
-        <i class="fa-solid fa-angle-right"></i>
-      </button>
+4. Mal servicio al cliente: Este caso se considera grave debido a que una mala experiencia en el servicio al cliente puede afectar la satisfacción general del cliente y su percepción del lavadero de vehículos. El trato grosero o la falta de atención adecuada pueden generar una mala reputación y disminuir la confianza de los clientes en el negocio.
+
+5. Incumplimiento de normas de seguridad: Este caso se considera muy grave, ya que pone en riesgo la seguridad de los clientes y del personal del lavadero de vehículos. El manejo inadecuado de productos químicos o la presencia de equipos defectuosos pueden causar accidentes o lesiones graves. Es fundamental reportar este tipo de situaciones para garantizar la seguridad de todos los involucrados.
+
+Debe cambiar el color el tipo de reporte según su gravedad:
+-->
+
+    <ng-container *ngIf="reportes.length > 0">
+      <ng-container *ngFor="let reporte of reportes">
+        <details class="reporte" data-tipo="abuso">
+          <summary>
+            <div class="reporte-titulo">
+              <fa-icon [icon]="mensaje"></fa-icon>{{ reporte.razon }}
+            </div>
+
+            <div class="contenedor-tipoReporte">
+              <span class="reporte-tipo"  [ngClass]="{'info-color-muygraves': reporte.tipo === 'incumplimiento-de-normas-de-seguridad', 'info-color-graves': reporte.tipo === 'mal-servicio-al-cliente', 'info-color-leves': reporte.tipo === 'cierre-temporal-o-permanente' || reporte.tipo === 'cambio-de-ubicacion' || reporte.tipo === 'informacion-falsa'}"
+              >{{reporte.tipo}}</span>
+            </div>
+          </summary>
+          <div class="reporte-contenido">
+            <table class="reporte-tabla">
+              <tr>
+                <th>Reportado:</th>
+                <td>{{ reporte.nombre_lavadero }}</td>
+                <td><a href="http://localhost:4200/profile_carwash/{{reporte.id_lavadero}}">Ir lavadero</a></td>
+              </tr>
+              <tr>
+                <th>Usuario:</th>
+                <td>{{ reporte.nombre_usuario }}</td>
+                <td>{{ reporte.id_usuario }}</td>
+              </tr>
+              <tr>
+                <th>Descripción:</th>
+                <td>{{ reporte.descripcion }}</td>
+              </tr>
+            </table>
+            <div class="reporte-botones">
+              <button class="reporte-boton reporte-boton-aceptar" (click)="aceptarReporte(reporte.id_reporte)">
+                Aceptar reporte
+              </button>
+              <button class="reporte-boton reporte-boton-cancelar">
+                Cancelar reporte
+              </button>
+            </div>
+          </div>
+        </details>
+      </ng-container>
+    </ng-container>
+    <div class="pagination-buttons">
+      <ul class="pagination" *ngIf="totalPages >= 1">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <a class="page-link flecha" (click)="goToPreviousPage()"><</a>
+        </li>
+        <li
+          class="page-item"
+          *ngIf="totalPages > pagesToShow"
+          [class.disabled]="currentPage === 1"
+        >
+          <a class="page-link" (click)="goToFirstPage()">1</a>
+        </li>
+        <li
+          class="page-item puntos"
+          *ngIf="showEllipsisStart && pages.length > 0 && pages[0] > 2"
+        >
+          ...
+        </li>
+        <li
+          class="page-item"
+          *ngFor="let page of pages"
+          [class.active]="page === currentPage"
+        >
+          <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
+        </li>
+        <li
+          class="page-item puntos"
+          *ngIf="showEllipsisEnd && pages.length > 0"
+        >
+          ...
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages">
+          <a class="page-link flecha" (click)="goToNextPage()">></a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
