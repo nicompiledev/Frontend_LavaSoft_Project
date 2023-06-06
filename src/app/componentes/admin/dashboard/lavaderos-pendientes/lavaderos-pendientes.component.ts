@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from 'src/app/services/admin.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 export interface LavaderoData {
   id: number;
@@ -34,6 +35,8 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
     this.adminService.getLavaderosNoConfirmados().subscribe((response: any) => {
       this.lavaderos = response;
       this.dataSource = new MatTableDataSource(this.lavaderos);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
