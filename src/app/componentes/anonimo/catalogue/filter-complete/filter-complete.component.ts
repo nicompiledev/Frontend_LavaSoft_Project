@@ -14,6 +14,10 @@ export class FilterCompleteComponent implements OnInit {
   latitud: string;
   logintud: string;
 
+
+  selectedVehicles: string[] = [];
+  
+
   ngOnInit(): void {
     (mapboxgl as any).accessToken =
       'pk.eyJ1Ijoia2V2aW5vcnRlZ2EiLCJhIjoiY2xocWg3M3I3MDJ4OTNwbmtjaHNqeGg5ZCJ9.r8eGnQZEtKmjEpKtAVoopA';
@@ -49,6 +53,19 @@ export class FilterCompleteComponent implements OnInit {
     // En el centro arriba:
     this.map.addControl(buscarLavaderosControl, 'top-left');
   }
+
+     // Seleccionar vehiculos
+     onCheckboxChange(event: any, vehicle: string) {
+      const checked = event.target.checked;
+      if (checked) {
+        this.selectedVehicles.push(vehicle);
+      } else {
+        const index = this.selectedVehicles.indexOf(vehicle);
+        if (index > -1) {
+          this.selectedVehicles.splice(index, 1);
+        }
+      }
+    }
 }
 
 
@@ -56,6 +73,7 @@ class BuscarLavaderosControl {
   map: mapboxgl.Map;
   container: HTMLDivElement;
   button: HTMLButtonElement;
+ 
 
   onAdd(map) {
     this.map = map;
@@ -86,4 +104,8 @@ class BuscarLavaderosControl {
     this.container.parentNode.removeChild(this.container);
     this.map = undefined;
   }
+
+
+   
+  
 }

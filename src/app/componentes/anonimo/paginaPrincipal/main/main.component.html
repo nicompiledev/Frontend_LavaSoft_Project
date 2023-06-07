@@ -29,9 +29,9 @@
         </div>
 
         <div class="filtro">
-          <p>Tipo de Vehiculo</p>
+          <p>ciudad</p>
          <select id="ciudad" >
-          <option value="" selected disabled>ciudad</option>
+          <option value="">Seleccione una opción&nbsp;&nbsp;</option>
           <!-- Ciudades de Colombia -->
 
           <option *ngFor="let ciudad of ciudadesFiltradas" [value]="ciudad.municipio">{{ ciudad.municipio }}</option>

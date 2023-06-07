@@ -31,11 +31,10 @@ import { NavegacionComponent } from './componentes/admin/dashboard/navegacion/na
 import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lavaderos-pendientes/lavaderos-pendientes.component';
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
-import { AceptarLavaderosComponent } from './componentes/admin/dashboard/aceptar-lavaderos/aceptar-lavaderos.component';
-
+import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profile-carwash/edit-profile-carwash.component';
 const routes: Routes = [
   //pruebas
-  { path: 'aceptar' , component:AceptarLavaderosComponent},
+  {path: 'editarPerfil', component: EditProfileCarwashComponent},
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent },
