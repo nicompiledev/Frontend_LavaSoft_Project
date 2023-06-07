@@ -144,3 +144,52 @@ strong{
   margin-block: 10px;
 }
 
+/* 
+  onAdd(map: mapboxgl.Map) {
+    this.map = map;
+    this.container = document.createElement('div');
+    this.container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
+
+    this.button = document.createElement('button');
+    this.button.className = 'mapboxgl-ctrl-icon mapboxgl-ctrl-buscar-lavaderos';
+    this.button.type = 'button';
+    this.button['aria-label'] = 'Buscar lavaderos';
+    this.button.onclick = () => {
+      console.log('Buscar lavaderos');
+    };
+    this.container.appendChild(this.button);
+
+    return this.container;
+  }
+
+  onRemove() {
+    this.container.parentNode?.removeChild(this.container);
+    this.map = undefined!;
+  } */
+
+  .mapboxgl-ctrl-buscar-lavaderos {
+    background-image: url(https://i.imgur.com/MK4NUzI.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .mapboxgl-ctrl-buscar-lavaderos:hover {
+    transform: scale(1.1);
+  }
+
+  .mapboxgl-ctrl-buscar-lavaderos:focus {
+    outline: none;
+  }
+
+  .mapboxgl-ctrl-buscar-lavaderos:active {
+    transform: scale(0.9);
+  }
+
+  
