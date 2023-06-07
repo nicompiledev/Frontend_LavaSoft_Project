@@ -46,6 +46,16 @@
           </a>
         </li>
 
+<!--         <li routerLink="/inicio" [routerLinkActive]="['hovered']">
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="chatAsesor"></fa-icon>
+            </span>
+            <span class="title">Chat Asesor</span>
+          </a>
+        </li> -->
+
+
         <li (click)="cerrarSesion()">
           <a >
             <span class="icon">
@@ -78,9 +88,8 @@
     </div>
   </div>
 </div>
-
-
-// Modales:
+<app-loaders *ngIf="loader.isLoading$ | async"></app-loaders>
 <div class="modal" *ngIf="active">
   <app-aceptar-lavaderos></app-aceptar-lavaderos>
 </div>
+

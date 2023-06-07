@@ -2,7 +2,7 @@
     <div class="row header">
         <div class="col text-center">
         <h2>
-            Nombre del lavadero
+            {{lavadero.nombreLavadero}}
         </h2>
         </div>
         <div>
@@ -13,68 +13,64 @@
         <div class="row">
             <div class="col col-3">
             <span class="title">Nit</span>
-            <h5 class="description">000000000</h5>
+            <h5 class="description">{{lavadero.NIT}}</h5>
             </div>
 
             <div class="col col-auto">
                 <span class="title">°N espacios</span>
-                <h5 class="description">35</h5>
+                <h5 class="description">{{lavadero.espacios_de_trabajo}}</h5>
             </div>  
 
             <div class="col col-4">
                 <span class="title">Correo electronico</span>
-                <h5 class="description">lavadero@gmail.com</h5>
+                <h5 class="description">{{lavadero.correo_electronico}}</h5>
             </div>
             <div class="col">
                 <span class="title">Telefono</span>
-                <h5 class="description">+57 3104010625</h5>
+                <h5 class="description">{{lavadero.telefono}}</h5>
             </div>
         </div>
         <div class="row">
 
             <div class="col">
                 <span class="title">Departamento</span>
-                <h5 class="description"></h5>
+                <h5 class="description">{{lavadero.departamento}}</h5>
             </div>
 
             <div class="col">
                 <span class="title">Ciudad</span>
-                <h5 class="description"></h5>
+                <h5 class="description">{{lavadero.ciudad}}</h5>
             </div>
           
             <div class="col col-auto">
                 <span class="title">Sector</span>
-                <h5 class="description">este</h5>
+                <h5 class="description">{{lavadero.sector}}</h5>
             </div>
 
             <div class="col">
                 <span class="title">Direccion</span>
-                <h5 class="description"></h5>
+                <h5 class="description">{{lavadero.direccion}}</h5>
             </div>
         
         </div>
         <div class="row">
             <div class="col col-auto">
-            <span class="title">Hora abertura</span>
-            <h5 class="description">sd</h5>
+            <span class="title">Hora apertura</span>
+            <h5 class="description">{{lavadero.hora_apertura}}</h5>
             </div>
 
             <div class="col col-auto">
-            <span class="title">Hora salida</span>
-            <h5 class="description">sad</h5>
+            <span class="title">Hora cierre</span>
+            <h5 class="description">{{lavadero.hora_cierre}}</h5>
             </div>
             <div class="col">
                 <span class="title">Vehiculos que manejamos</span>
                 <div class="types d-flex justify-content-around">
-                <i class="fa-solid fa-motorcycle"></i>
-                <i>-</i>
-                <i class="fa-solid fa-car-side"></i>
-                <i>-</i>
-                <i class="fa-solid fa-truck-pickup"></i>
-                <i>-</i>
-                <i class="fa-solid fa-truck"></i>
-                <i>-</i>
-                <i class="fa-solid fa-van-shuttle"></i>
+                    <i class="fi fi-ss-motorcycle icono" *ngIf="lavadero.tipoVehiculos.includes('Moto')"></i>
+                    <i class="fi fi-br-car icono" *ngIf="lavadero.tipoVehiculos.includes('Carro')"></i>
+                    <i class="fi fi-bs-truck-pickup icono" *ngIf="lavadero.tipoVehiculos.includes('Camioneta')"></i>
+                    <i class="fi fi-bs-truck-moving icono" *ngIf="lavadero.tipoVehiculos.includes('Camion')"></i>
+                    <i class="fi fi-rr-bus icono" *ngIf="lavadero.tipoVehiculos.includes('Bus')"></i>
                 </div>
             </div>
         </div>
@@ -83,12 +79,10 @@
 
             <span class="title">Imagenes del lavadero</span>
             <div class="col flex-row  imgs">
-            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="">
-            <img src="https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1666008987698.jpg" alt="">
-            <img src="https://img.autobytel.com/chrome/multiview/white/640/2022hyc03_640/2022hyc030017_640_01.jpg" alt="">
-            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2022/08_22_monterey/cover.jpg" alt="">
-            
-
+                <ng-container
+                 *ngFor="let img of lavadero.imagenes">
+                    <img [src]="img" alt="">
+                </ng-container>
             </div>
 
 

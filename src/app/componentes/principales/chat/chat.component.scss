@@ -75,7 +75,7 @@
 .chat-send-btn {
   height: 32px;
   color: #fff;
-  background-color: #477eff;
+  background-color: $azul-oscuro;
   border: none;
   border-radius: 4px;
   padding: 0 32px 0 10px;
@@ -170,7 +170,7 @@
   padding: 0 16px;
   height: 50px;
   background-color: #060415;
-  border-bottom: 1px solid #477eff;
+  border-bottom: 1px solid $azul-oscuro;
 
   /* radius arriba: */
   border-radius: 10px 10px 0 0;

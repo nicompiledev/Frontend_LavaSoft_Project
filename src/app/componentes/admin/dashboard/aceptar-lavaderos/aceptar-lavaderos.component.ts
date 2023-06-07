@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Modal } from 'bootstrap';
+import { PeticionLavaderoModalService } from 'src/app/services/comunicación/peticion-lavadero-modal.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
@@ -9,8 +10,14 @@ import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve
 })
 export class AceptarLavaderosComponent {
 
-  constructor( private modal: ModalReserveService){
+  lavadero: any;
 
+  constructor( private modal: ModalReserveService, private peticionLavadero: PeticionLavaderoModalService){
+    this.peticionLavadero.$lavadero.subscribe( lavadero => {
+      console.log(lavadero);
+      
+      this.lavadero = lavadero;
+    })
   }
 
   closeModal(stateModal:boolean , focus:string){

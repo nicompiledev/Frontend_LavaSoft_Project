@@ -33,9 +33,9 @@ export class ServicesCarwashComponent implements OnInit {
 
   }
 
-  openModal(stateModal: boolean, focus: string, id: string ) {
+  openModal(stateModal: boolean, focus: string, servicio: string ) {
     if(this.login){
-    this.modal_service.estadomodal(stateModal, focus, id);
+    this.modal_service.estadomodal(stateModal, focus, servicio);
     }else{
       this.modal_service.estadomodal(1, "profile_carwash");
     }

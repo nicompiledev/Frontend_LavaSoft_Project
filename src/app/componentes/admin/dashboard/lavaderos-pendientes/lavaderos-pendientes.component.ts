@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AdminService } from 'src/app/services/admin.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { PeticionLavaderoModalService } from 'src/app/services/comunicación/peticion-lavadero-modal.service';
 
 export interface LavaderoData {
   id: number;
@@ -27,7 +28,7 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   lavaderos: any[] = [];
-  constructor(private adminService: AdminService , private modal: ModalReserveService) {
+  constructor(private adminService: AdminService , private modal: ModalReserveService, private peticionLavaderoModal: PeticionLavaderoModalService) {
 
   }
 
@@ -56,7 +57,10 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
     }
   }
 
-  openDialog(stateModal:boolean , focus:string) {
-    this.modal.estadomodal(stateModal , focus)
+  openDialog(stateModal:boolean , focus:string, row: any) {
+    this.modal.estadomodal(stateModal , focus);
+
+    this.peticionLavaderoModal.setLavadero(row);
+
   }
 }

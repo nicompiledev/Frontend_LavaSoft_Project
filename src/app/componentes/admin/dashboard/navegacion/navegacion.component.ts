@@ -10,6 +10,7 @@ import {
   faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import Swal from 'sweetalert2';
 
@@ -22,7 +23,7 @@ export class NavegacionComponent {
 
   active = false;
 
-  constructor(public router: Router, private auth: AuthService, private modal: ModalReserveService) {
+  constructor(public router: Router, private auth: AuthService, private modal: ModalReserveService, public loader: LoaderService) {
     this.modal.$modal_reserve.subscribe((valor)=>{
       this.active = valor
     })

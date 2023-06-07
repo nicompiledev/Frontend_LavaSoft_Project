@@ -314,3 +314,57 @@ fa-icon{
   background-color: #FFFF00;
   color: #333;
 }
+
+
+/* Estilos para los botones de paginación */
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1rem;
+}
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-item {
+  margin: 0 4px;
+}
+
+.puntos {
+  margin: 0 4px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.page-link {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.flecha{
+  font-weight: 600;
+}
+
+.page-item.disabled .page-link,
+.page-item.active .page-link {
+  cursor: default;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  color: #fff;
+}

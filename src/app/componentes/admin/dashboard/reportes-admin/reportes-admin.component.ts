@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {
   faEnvelope
 } from '@fortawesome/free-solid-svg-icons';
+import { finalize } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 
@@ -13,9 +14,10 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 export class ReportesAdminComponent {
   // fontawesome
   mensaje = faEnvelope;
-  
+
   // reportes:
   reportes: any[] = [];
+  tipo: string = '';
 
   // Paginacion
   currentPage: number = 1;
@@ -25,18 +27,24 @@ export class ReportesAdminComponent {
   showEllipsisStart = false;
   showEllipsisEnd = false;
 
-  constructor( private loader: LoaderService, private adminService: AdminService) {
+  constructor(private loader: LoaderService, private adminService: AdminService) {
+    this.cambiarPagina();
+  }
+
+  filtrarReportes(event: any) {
+    this.tipo = event.target.value;
+    this.currentPage = 1;
     this.cambiarPagina();
   }
 
   cambiarPagina() {
-
-        //this.totalPages = res.totalPages;
-        this.updatePages();
         this.loader.showLoader();
-        this.adminService.getReportes(this.currentPage).subscribe((res: any) => {
-          this.loader.hideLoader();
+        this.adminService.getReportes(this.currentPage, this.tipo)
+        .pipe(finalize(() => this.loader.hideLoader()))
+        .subscribe((res: any) => {
+          this.totalPages = res.totalPages;
           this.reportes = res.reportes;
+          this.updatePages();
         }
       );
   }

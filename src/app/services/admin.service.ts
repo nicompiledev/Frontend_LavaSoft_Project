@@ -70,8 +70,13 @@ export class AdminService {
     }
   }
 
-  getReportes(page: number = 1,) {
+  getReportes(page: number = 1, filtro?: string) {
     let params = new HttpParams().set('page', page.toString());
+
+    if (filtro) {
+      params = params.set('tipo', filtro);
+    }
+
     return this.http.get(`${this.url}reportes`, { params , headers: this.httpOptions.headers});
   }
 
