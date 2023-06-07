@@ -309,23 +309,35 @@ h4{
     }
 }
 
-select{
-    // se le pone boreder radius para que se pueda eliminar el borde seguidamente 
-    border-radius: 10px;
-    border: 0px;
-    margin: 5px;
-    width: 90%;
-    padding: 10px;
+select{  
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(https://cdn-icons-png.flaticon.com/512/32/32195.png) no-repeat 95% 50%;
+    background-size: 10px;
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+    font-size: 15px;
     color:dimgray;
-
-    &::-ms-expand{
-        display: none;
-    }
-        
-    &:focus{
-        outline: none !important;
-    }
-}
+    font-weight: 300;
+    height: 54px;
+    cursor: pointer;
+    margin-left: 15px;
+    
+  
+      &:hover{
+          color: $negro_claro;
+      }
+          
+      &:focus{
+          outline: none !important;
+      }
+  }
+  
+  select::-ms-expand {
+      display: none;
+   }
+  
 .errors{
     color:$errores;
     font-size: 10px;

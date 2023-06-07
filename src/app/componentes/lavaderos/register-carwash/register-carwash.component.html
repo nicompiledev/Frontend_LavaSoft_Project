@@ -80,26 +80,6 @@
             </div>
 
             <div class="input-container">
-              <textarea placeholder="Descripcion breve de su Empresa" formControlName="descripcion" class="long_text"
-                cols="30" rows="10"></textarea>
-            </div>
-
-            <div class="errors">
-              <div *ngIf="
-                  lavaderoForm.get('descripcion').invalid &&
-                  (lavaderoForm.get('descripcion').dirty ||
-                    lavaderoForm.get('descripcion').touched)
-                " class="text-danger">
-                <div *ngIf="lavaderoForm.get('descripcion').hasError('required')">
-                  Este campo es requerido
-                </div>
-                <div *ngIf="lavaderoForm.get('descripcion').hasError('minlength')">
-                  la descripcion debe tener al menos 100 letras </div>
-              </div>
-            </div>
-
-
-            <div class="input-container">
               <textarea placeholder="¿Que pasa si no recojen un carro a tiempo ?" formControlName="siNoLoRecogen"
                 class="long_text" cols="30" rows="10"></textarea>
             </div>
@@ -115,58 +95,6 @@
                 </div>
                 <div *ngIf="lavaderoForm.get('siNoLoRecogen').hasError('minlength')">
                   el Texto debe tener al menos 80 letras </div>
-              </div>
-            </div>
-          </div>
-          <div class="button siguiente-page2">
-            <button tabindex="-1" (click)="siguiente('2')">Siguiente</button>
-          </div>
-        </div>
-
-        <!-- Pagina 2 -->
-        <div class="pagina">
-          <h4>Informacion Secundaria</h4>
-          <div class="conjunto_inputs">
-            <div class="double">
-              <div class="input_double">
-                <div class="input-container">
-                  <i class="fi fi-rs-house-building"></i>
-
-                  <input class="input_text_form" type="text" placeholder="Ciudad" formControlName="ciudad" />
-
-                </div>
-
-                <div class="errors">
-                  <div *ngIf="
-                    lavaderoForm.get('ciudad').invalid &&
-                    (lavaderoForm.get('ciudad').dirty ||
-                      lavaderoForm.get('ciudad').touched)
-                  " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('ciudad').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="input_double">
-                <div class="input-container">
-                  <i class="fi fi-br-map-marker-home"></i>
-
-                  <input class="input_text_form" type="text" placeholder="Direccion" formControlName="direccion" />
-
-                </div>
-
-                <div class="errors">
-                  <div *ngIf="
-                      lavaderoForm.get('direccion').invalid &&
-                      (lavaderoForm.get('direccion').dirty ||
-                        lavaderoForm.get('direccion').touched)
-                    " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('direccion').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -187,6 +115,122 @@
                   Este campo es requerido
                 </div>
               </div>
+            </div>
+
+       
+          </div>
+          <div class="button siguiente-page2">
+            <button tabindex="-1" (click)="siguiente('2')">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Pagina 2 -->
+        <div class="pagina">
+          <h4>Informacion Secundaria</h4>
+          <div class="conjunto_inputs">
+            <div class="double">
+              <div class="input_double">
+                <div class="input-container">
+                  <i class="fi fi-rr-map"></i>
+
+                  <select id="departamento" formControlName="departamento" (change)="filtrarCiudades() ">
+                    <option value="" selected disabled >Departamento</option>
+                    <!-- Ciudades de Colombia -->
+            
+                      <option *ngFor="let departamento of departamentos" [value]="departamento">{{ departamento }}</option>            
+                  </select>
+                  
+                </div>
+
+                <div class="errors">
+                  <div *ngIf="
+                      lavaderoForm.get('departamento').invalid &&
+                      (lavaderoForm.get('departamento').dirty ||
+                        lavaderoForm.get('departamento').touched)
+                    " class="text-danger">
+                    <div *ngIf="lavaderoForm.get('departamento').hasError('required')">
+                      Este campo es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="input_double">
+                <div class="input-container">
+                  <i class="fi fi-rs-house-building"></i>
+
+                  <select id="ciudad" formControlName="ciudad">
+                    <option value="" selected disabled >ciudad</option>
+                    <!-- Ciudades de Colombia -->
+            
+                    <option *ngFor="let ciudad of ciudadesFiltradas" [value]="ciudad.municipio">{{ ciudad.municipio }}</option>
+            
+                  </select>
+                </div>
+
+                <div class="errors">
+                  <div *ngIf="
+                    lavaderoForm.get('ciudad').invalid &&
+                    (lavaderoForm.get('ciudad').dirty ||
+                      lavaderoForm.get('ciudad').touched)
+                  " class="text-danger">
+                    <div *ngIf="lavaderoForm.get('ciudad').hasError('required')">
+                      Este campo es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="double">
+
+              <div class="input_double">
+                <div class="input-container">
+                  <i class="fi fi-br-map-marker-home"></i>
+
+                  <input class="input_text_form" type="text" placeholder="Direccion" formControlName="direccion" />
+
+                </div>
+
+                <div class="errors">
+                  <div *ngIf="
+                      lavaderoForm.get('direccion').invalid &&
+                      (lavaderoForm.get('direccion').dirty ||
+                        lavaderoForm.get('direccion').touched)
+                    " class="text-danger">
+                    <div *ngIf="lavaderoForm.get('direccion').hasError('required')">
+                      Este campo es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="input_double">
+
+               <div class="input-container">
+                <i class="fa-regular fa-compass"></i>
+                <select id="type-vehicle" formControlName="sector">
+                  <option value="">Sectores</option>
+                  <option value="sur">Sur</option>
+                  <option value="centro">Centro</option>
+                  <option value="norte">Norte</option>
+                  <option value="todos">Todos</option>
+                </select>
+
+               </div>
+
+                <div class="errors">
+                  <div *ngIf="
+                    lavaderoForm.get('sector').invalid &&
+                    (lavaderoForm.get('sector').dirty ||
+                      lavaderoForm.get('sector').touched)
+                  " class="text-danger">
+                    <div *ngIf="lavaderoForm.get('sector').hasError('required')">
+                      Este campo es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
             </div>
 
             <div class="types">
@@ -261,6 +305,7 @@
 
             </div>
           </div>
+          
           <div class="buttons">
             <button tabindex="-1" (click)="anterior('2')" class="volver-page1 volver">
               Atras
@@ -418,6 +463,7 @@
           <h5>Busca tu direccion</h5>
           <div class="conjunto_inputs">
             <div class="input_buscar_direccion">
+
               <input type="text" id="city" formControlName="mapa" placeholder="Ej: Armenia, Quindio" />
               <button (click)="searchCity()">Buscar</button>
             </div>

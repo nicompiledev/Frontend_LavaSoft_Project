@@ -240,6 +240,7 @@
         transition: 0.3s;
 
         .filtro {
+          width: 250px;
           select {
             @include selectOption-buscador;
           }

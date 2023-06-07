@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FilterService } from 'src/app/services/filtro/filter.service';
+import { DeparatamentosService } from '../../../../services/departamentos/deparatamentos.service';
 
 @Component({
   selector: 'app-filter-basic',
@@ -8,11 +9,37 @@ import { FilterService } from 'src/app/services/filtro/filter.service';
 })
 export class FilterBasicComponent {
 
-  constructor(private filterService: FilterService) { }
-
   ciudadSeleccionada: string = '';
   tipoVehicleSeleccionado: string = '';
+//  departamentos y ciudades
+ depJson:any[] = [];
+ departamentos:any[] = [];
+ ciudadesFiltradas:any[] = [];
+ departamentoSeleccionado: string  = "";
 
+
+  constructor(private filterService: FilterService , private departamentosService: DeparatamentosService) {
+
+    this.departamentosService.getDepartamento().subscribe((object:any)=>{
+      this.depJson = object;
+      console.log(this.depJson)
+       this.departamentos = this.obtenerDepartamentos();
+    })
+
+   }
+
+ 
+ obtenerDepartamentos() {
+    const departamentos = this.depJson.map(item => item.departamento);
+    // Filtrar los departamentos únicos
+    return departamentos.filter((value, index, self) => self.indexOf(value) === index);
+  }
+
+  filtrarCiudades() {
+    this.ciudadesFiltradas = this.depJson.filter(item => item.departamento === this.departamentoSeleccionado);
+  }
+
+  
   onChangeCiudad(event: any) {
     this.ciudadSeleccionada = event.target.value;
   }

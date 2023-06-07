@@ -21,28 +21,32 @@
     <div class="buscador">
       <div class="secciones-input">
         <div class="filtro">
-          <p>Tipo de Vehiculo</p>
-          <select name="" id="" value>
+          <p>Departamento</p>
+          <select id="Departamento" [(ngModel)]="departamentoSeleccionado" (ngModelChange)="filtrarCiudades()">
             <option value="">Seleccione una opción&nbsp;&nbsp;</option>
-            <!-- Bucle *ngFor para recorrer array de .json de angular translate -->
-            <option *ngFor="let tipo of tipos">
-              {{tipo}}
-            </option>
+            <option *ngFor="let departamento of departamentos" [value]="departamento">{{ departamento }}</option>
           </select>
         </div>
+
         <div class="filtro">
-          <p>Ubicación</p>
-          <select name="" id="" value>
-            <option value="">Seleccione una opción&nbsp;&nbsp;</option>
-            <option value="">Bogotá</option>
-            <option value="">Medellín</option>
-            <option value="">Cali</option>
-          </select>
+          <p>Tipo de Vehiculo</p>
+         <select id="ciudad" >
+          <option value="" selected disabled>ciudad</option>
+          <!-- Ciudades de Colombia -->
+
+          <option *ngFor="let ciudad of ciudadesFiltradas" [value]="ciudad.municipio">{{ ciudad.municipio }}</option>
+
+         </select>
         </div>
+        
         <div class="filtro">
           <p>Sector</p>
           <select name="" id="" value>
             <option value="">Seleccione una opción&nbsp;&nbsp;</option>
+            <option value="sur">Sur</option>
+            <option value="centro">Centro</option>
+            <option value="norte">Norte</option>
+            <option value="todos">Todos</option>
           </select>
         </div>
      
@@ -64,18 +68,19 @@
         <div class="paso">
           <div class="icon-paso"></div>
           <h4>Paso 1</h4>
-          <p>Busca tu lavadero de referencia</p>
+          <p>Busca y selecciona tu lavadero de preferencia</p>
         </div>
         <div class="paso">
           <div class="icon-paso"></div>
           <h4>Paso 2</h4>
-          <p>Agenda el servicio y la hora que desee</p>
+          <p>Busca tu servicio y agendalo a la hora que desees</p>
         </div>
         <div class="paso">
           <div class="icon-paso"></div>
           <h4>Paso 3</h4>
-          <p>El lavadero te estará esperando</p>
+          <p>Y listo!! el lavadero te estará esperando</p>
         </div>
+        
       </div>
     </div>
   </div>

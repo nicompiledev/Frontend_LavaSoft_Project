@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
+import { DeparatamentosService } from 'src/app/services/departamentos/deparatamentos.service';
 
 import * as mapboxgl from 'mapbox-gl';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
@@ -24,7 +25,19 @@ export class RegisterCarwashComponent  implements OnInit {
   latitud: string;
   logintud: string;
 
-  constructor(private fb: FormBuilder, private lavadero: LavaderoService, private http: HttpClient, private loader: LoaderService) {
+ //  departamentos y ciudades
+  
+ depJson:any[] = [];
+ departamentos:any[] = [];
+ ciudadesFiltradas:any[] = [];
+ departamentoSeleccionado: string  = "";
+
+  
+
+  constructor(private fb: FormBuilder, private lavadero: LavaderoService, private http: HttpClient, private loader: LoaderService , private departamentosService:DeparatamentosService) {
+        
+
+
     this.lavaderoForm = this.fb.group({
       nit: new FormControl ('' ,[Validators.required, Validators.minLength(8)]),
       nombreLavadero: new FormControl ('' ,[Validators.required]),
@@ -40,11 +53,34 @@ export class RegisterCarwashComponent  implements OnInit {
       siNoLoRecogen: new FormControl ('' ,[Validators.required ,Validators.minLength(80)]),
       imagenes: new FormControl ('' ,[Validators.required]),
       ubicacion: new FormControl ('' ,[Validators.required]),
-      mapa: new FormControl ('')
+      mapa: new FormControl (''),
+      departamento: new FormControl ('',[Validators.required]),
+      sector: new FormControl ('', [Validators.required])
     });
+
+
+
+  }
+
+  obtenerDepartamentos() {
+    const departamentos = this.depJson.map(item => item.departamento);
+    // Filtrar los departamentos únicos
+    return departamentos.filter((value, index, self) => self.indexOf(value) === index);
+  }
+
+  filtrarCiudades() {
+    const departamentoSeleccionado = this.lavaderoForm.get('departamento').value;
+    this.ciudadesFiltradas = this.depJson.filter(item => item.departamento === departamentoSeleccionado);
   }
 
   ngOnInit() {
+
+    this.departamentosService.getDepartamento().subscribe((object:any)=>{
+      this.depJson = object;
+      console.log(this.depJson)
+       this.departamentos = this.obtenerDepartamentos();
+    });
+
     (mapboxgl as any).accessToken = "pk.eyJ1Ijoia2V2aW5vcnRlZ2EiLCJhIjoiY2xocWg3M3I3MDJ4OTNwbmtjaHNqeGg5ZCJ9.r8eGnQZEtKmjEpKtAVoopA"
 
     const latitudInicial = 4.53073602194441;
