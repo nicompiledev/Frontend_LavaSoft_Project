@@ -71,7 +71,7 @@ import { WelcomeComponentComponent } from './componentes/lavaderos/informacion-l
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 import { DashboardComponent } from './componentes/lavaderos/dashboard-Lavadero/dashboard/dashboard.component';
 import { ReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/reservas/reservas.component';
-import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/table/table.component';
+import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/table/table.component';
 import { DatepickerComponent } from './componentes/lavaderos/dashboard-Lavadero/datepicker/datepicker.component';
 
 // Vistas
@@ -86,6 +86,10 @@ import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { AceptarLavaderosComponent } from './componentes/admin/dashboard/aceptar-lavaderos/aceptar-lavaderos.component';
 import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profile-carwash/edit-profile-carwash.component';
+import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/pending-table/pending-table.component';
+import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
+import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
+
 
 
 @NgModule({
@@ -98,7 +102,7 @@ import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profil
     PerfilMenuComponent,
     RegistrarComponent,
     LoginComponent,
-    
+
     // Anonimo
     MainComponent,
     TestimonialsComponent,
@@ -148,7 +152,11 @@ import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profil
     ReportesAdminComponent,
     AceptarLavaderosComponent,
     EditProfileCarwashComponent,
-    
+    PendingTableComponent,
+    InProgressTableComponent,
+    CompletedTableComponent
+
+
   ],
   imports: [
     BrowserModule,

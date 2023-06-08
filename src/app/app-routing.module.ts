@@ -20,7 +20,7 @@ import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuar
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 import { DashboardComponent } from './componentes/lavaderos/dashboard-Lavadero/dashboard/dashboard.component';
 import { ReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/reservas/reservas.component';
-import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/table/table.component';
+import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/table/table.component';
 // Vistas
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
 import { CompaniesComponent } from './componentes/views/companies/companies.component';
@@ -32,6 +32,9 @@ import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lava
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profile-carwash/edit-profile-carwash.component';
+import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/pending-table/pending-table.component';
+import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
+import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
 const routes: Routes = [
   //pruebas
   {path: 'editarPerfil', component: EditProfileCarwashComponent},
@@ -74,6 +77,9 @@ const routes: Routes = [
       { path: 'reservas', component:  ReservasComponent,
         children: [
           { path: 'reserva', component:  TableComponent},
+          { path: 'pendientes', component:  PendingTableComponent},
+          { path: 'en-progreso', component:  InProgressTableComponent},
+          { path: 'completadas', component:  CompletedTableComponent},
         ]
       },
       { path: 'reportes', component:  ReportesAdminComponent},
