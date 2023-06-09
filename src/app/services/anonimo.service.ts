@@ -15,17 +15,34 @@ export class anonimoService {
 
   constructor(private http: HttpClient) {}
 
+  /*   filters$ = combineLatest([
+    this.departamentoFilter$,
+    this.ciudadFilter$,
+    this.sectorFilter$,
+    this.tipoVehiculoFilter$,
+    this.orderByPopularityFilter$,
+  ]); */
   getLavaderos(
     page: number = 1,
-    ciudad?: string,
-    tipoVehiculo?: string,
-    orderByPopularity?: boolean,
-    nombre?: string
+    departamento: string = null,
+    ciudad: string = null,
+    sector: string = null,
+    tipoVehiculo: string = null,
+    orderByPopularity: boolean = false
   ) {
+
     let params = new HttpParams().set('page', page.toString());
+
+    if (departamento) {
+      params = params.set('departamento', departamento);
+    }
 
     if (ciudad) {
       params = params.set('ciudad', ciudad);
+    }
+
+    if (sector) {
+      params = params.set('sector', sector);
     }
 
     if (tipoVehiculo) {
@@ -36,9 +53,7 @@ export class anonimoService {
       params = params.set('orderByPopularity', orderByPopularity.toString());
     }
 
-    if (nombre) {
-      params = params.set('nombre', nombre);
-    }
+    console.log(params);
 
     return this.http.get(`${this.apiUrl}lavaderos`, { params });
   }

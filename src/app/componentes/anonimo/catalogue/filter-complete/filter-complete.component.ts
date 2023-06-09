@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
+import { FilterService } from 'src/app/services/filtro/filter.service';
 
 @Component({
   selector: 'app-filter-complete',
@@ -8,6 +9,10 @@ import * as mapboxgl from 'mapbox-gl';
 })
 
 export class FilterCompleteComponent implements OnInit {
+
+
+  constructor(private filterService: FilterService) {}
+
   //MAP
   map!: mapboxgl.Map;
   zoomInicial = 13;
@@ -15,8 +20,8 @@ export class FilterCompleteComponent implements OnInit {
   logintud: string;
 
 
-  selectedVehicles: string[] = [];
-  
+  vehiculoSeleccionado: string = '';
+  mejorCalificados: boolean = false;
 
   ngOnInit(): void {
     (mapboxgl as any).accessToken =
@@ -42,11 +47,9 @@ export class FilterCompleteComponent implements OnInit {
       const { lng, lat } = this.map.getCenter();
       this.latitud = lat.toFixed(4);
       this.logintud = lng.toFixed(4);
-      console.log(this.latitud, this.logintud);
     });
     this.map.on('zoom', () => {
       const zoom = this.map.getZoom();
-      console.log(zoom);
     });
 
     const buscarLavaderosControl = new BuscarLavaderosControl();
@@ -55,16 +58,14 @@ export class FilterCompleteComponent implements OnInit {
   }
 
      // Seleccionar vehiculos
-     onCheckboxChange(event: any, vehicle: string) {
-      const checked = event.target.checked;
-      if (checked) {
-        this.selectedVehicles.push(vehicle);
-      } else {
-        const index = this.selectedVehicles.indexOf(vehicle);
-        if (index > -1) {
-          this.selectedVehicles.splice(index, 1);
-        }
-      }
+    onRadioChange(vehicle: string) {
+      this.vehiculoSeleccionado = vehicle;
+      this.filterService.setTipoVehiculoFilter(this.vehiculoSeleccionado);
+    }
+
+    Mejor_Calificados(){
+      this.mejorCalificados = !this.mejorCalificados;
+      this.filterService.setOrderByPopularityFilter(this.mejorCalificados);
     }
 }
 
@@ -73,9 +74,8 @@ class BuscarLavaderosControl {
   map: mapboxgl.Map;
   container: HTMLDivElement;
   button: HTMLButtonElement;
- 
 
-  onAdd(map) {
+  onAdd(map : mapboxgl.Map) {
     this.map = map;
 
     this.container = document.createElement('div');
@@ -93,7 +93,6 @@ class BuscarLavaderosControl {
     this.button.style.borderRadius = '5px';
     this.button.addEventListener('click', () => {
       console.log(this.map.getCenter());
-      
     });
 
     this.container.appendChild(this.button);
@@ -105,7 +104,4 @@ class BuscarLavaderosControl {
     this.map = undefined;
   }
 
-
-   
-  
 }

@@ -51,13 +51,12 @@ export class CatalogueComponent {
     private viewportScroller: ViewportScroller,
     private filterService: FilterService
   ) {
-    this.cambiarPagina();
 
-    this.filterService.filters$.subscribe(([ciudad, tipoVehiculo, orderByPopularity, nombre]) => {
+    this.filterService.filters$.subscribe(([departamento, ciudad, sector, tipoVehiculo, orderByPopularity]) => {
       // Realiza la lógica de filtrado y muestra los lavaderos actualizados
       this.loader.showLoader();
       this.anonimoService
-        .getLavaderos(this.currentPage, ciudad, tipoVehiculo, orderByPopularity, nombre)
+        .getLavaderos(this.currentPage, departamento, ciudad, sector, tipoVehiculo, orderByPopularity)
         .pipe(finalize(() => this.loader.hideLoader()))
         .subscribe((res: any) => {
           this.lavaderos = res.lavaderos;
