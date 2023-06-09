@@ -1,23 +1,28 @@
-
 <div class="contenedor">
   <form action="">
-   <div class="line"></div>
-   <section class="search">
-       <h2>Filtra tu busqueda</h2>
-   </section>
-   <div class="line"></div>
-   <section>
-       <h5>Ubicación</h5>
-       <div class="price">
-        <div id="map" style="height: 200px;"></div>
-       </div>
+    <div class="line"></div>
+    <section class="search">
+      <h2>Filtra tu busqueda</h2>
+    </section>
+    <div class="line"></div>
+    <section>
+      <h5>Ubicación</h5>
+      <div class="price">
+        <div id="map" style="height: 200px"></div>
+      </div>
 
-       <h5 class="mt-2">filtrar por Vehiculos</h5>
-       <div class="row">
+      <h5 class="mt-2">filtrar por Vehiculos</h5>
+      <div class="row">
         <div class="container_ col mt-2">
           <div class="radio-tile-group">
             <label for="motorcycle" class="input_container">
-              <input id="motorcycle" class="radio-button" type="radio" name="radio" (change)="onRadioChange('Moto')"> 
+              <input
+                id="motorcycle"
+                class="radio-button"
+                type="radio"
+                name="radio"
+                (change)="onRadioChange('Moto')"
+              />
               <div class="radio-tile">
                 <div class="icon">
                   <i class="fa-solid fa-motorcycle"></i>
@@ -30,7 +35,13 @@
         <div class="container_ col mt-2">
           <div class="radio-tile-group">
             <label for="car" class="input_container">
-              <input id="car" class="radio-button" type="radio" name="radio" (change)="onRadioChange('Carro')">
+              <input
+                id="car"
+                class="radio-button"
+                type="radio"
+                name="radio"
+                (change)="onRadioChange('Carro')"
+              />
               <div class="radio-tile">
                 <div class="icon">
                   <i class="fa-solid fa-car-side"></i>
@@ -43,7 +54,13 @@
         <div class="container_ col mt-2">
           <div class="radio-tile-group">
             <label for="truck_small" class="input_container">
-              <input id="truck_small" class="radio-button" type="radio" name="radio" (change)="onRadioChange('Camioneta')">
+              <input
+                id="truck_small"
+                class="radio-button"
+                type="radio"
+                name="radio"
+                (change)="onRadioChange('Camioneta')"
+              />
               <div class="radio-tile">
                 <div class="icon">
                   <i class="fa-solid fa-truck-pickup"></i>
@@ -56,7 +73,13 @@
         <div class="container_ col mt-2">
           <div class="radio-tile-group">
             <label for="truck_big" class="input_container">
-              <input id="truck_big" class="radio-button" type="radio" name="radio" (change)="onRadioChange('Camion')">
+              <input
+                id="truck_big"
+                class="radio-button"
+                type="radio"
+                name="radio"
+                (change)="onRadioChange('Camion')"
+              />
               <div class="radio-tile">
                 <div class="icon">
                   <i class="fa-solid fa-truck"></i>
@@ -69,7 +92,13 @@
         <div class="container_ col mt-2">
           <div class="radio-tile-group">
             <label for="van" class="input_container">
-              <input id="van" class="radio-button" type="radio" name="radio" (change)="onRadioChange('Bus')">
+              <input
+                id="van"
+                class="radio-button"
+                type="radio"
+                name="radio"
+                (change)="onRadioChange('Bus')"
+              />
               <div class="radio-tile">
                 <div class="icon">
                   <i class="fa-solid fa-van-shuttle"></i>
@@ -83,7 +112,14 @@
         <div class="container_ col mt-2">
           <div class="radio-tile-group">
             <label for="van" class="input_container">
-              <input id="van" class="radio-button" type="radio" name="radio" (change)="onRadioChange('')" checked>
+              <input
+                id="van"
+                class="radio-button"
+                type="radio"
+                name="radio"
+                (change)="onRadioChange('')"
+                checked
+              />
               <div class="radio-tile">
                 <div class="icon">
                   <i class="fa-solid fa-van-shuttle"></i>
@@ -95,26 +131,29 @@
         </div>
       </div>
 
-       
-       <div class="calification">
+      <div class="calification">
         <strong>Calificaciones y mas populares</strong>
         <div class="d-flex justify-content-between align-items-center">
-            <label for="best_califications"> <span>Mejor calificados</span></label>
-            <label class="switch">
-             <input type="checkbox" id="best_califications" (change)="Mejor_Calificados()">
-             <span class="slider"></span>
-           </label>
+          <label for="best_califications">
+            <span>Mejor calificados</span></label
+          >
+          <label class="switch">
+            <input
+              type="checkbox"
+              id="best_califications"
+              (change)="Mejor_Calificados()"
+            />
+            <span class="slider"></span>
+          </label>
         </div>
         <div class="d-flex justify-content-between align-items-center">
-            <label for="best_califications"> <span>Más populares</span></label>
-            <label class="switch">
-             <input type="checkbox" id="best_califications">
-             <span class="slider"></span>
-           </label>
+          <label for="best_califications"> <span>Más populares</span></label>
+          <label class="switch">
+            <input type="checkbox" id="best_califications" />
+            <span class="slider"></span>
+          </label>
         </div>
-
-         
-       </div>
-   </section>
+      </div>
+    </section>
   </form>
 </div>

@@ -37,7 +37,7 @@
         <h1>Chat de Asesores</h1>
       </div>
       <div class="app-profile-box">
-        <div class="app-profile-box-name">Kevin Ortega</div>
+        <div class="app-profile-box-name">En linea</div>
         <p class="app-profile-box-title">Staff</p>
       </div>
       <div class="chat-list-wrapper">
@@ -62,7 +62,7 @@
     </div>
     <div class="app-main">
       <div class="header-chat">
-        <div class="header-chat-name">Dwight Schrute</div>
+        <div class="header-chat-name">{{roomElegido ? roomElegido : 'Nombre Room'}}</div>
       </div>
       <div class="chat-wrapper">
         <ng-container *ngFor="let mensaje of mensajes">

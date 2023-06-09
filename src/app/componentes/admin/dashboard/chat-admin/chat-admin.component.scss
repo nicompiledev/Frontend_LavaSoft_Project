@@ -33,20 +33,20 @@
   --info-icon-bg-3: #d9d3ff;
   --info-icon-bg-4: #ffe1d4;
   --app-bg: #fff;
-  --box-color: #001f3c;
-  --box-border: #477eff;
-  --button-bg: #477eff;
+  --box-color: #12172d;
+  --box-border: #1E90FF;
+  --button-bg: #1E90FF;
   --text-dark: #1a2f45;
   --text-light: rgba(255, 255, 255, 0.6);
   --info-box-1: rgba(160, 186, 242, 0.5);
   --info-box-2: rgba(168, 240, 229, 0.55);
   --info-box-3: rgba(194, 168, 240, 0.34);
   --info-box-4: rgba(240, 185, 168, 0.34);
-  --toggle-bg: #477eff;
+  --toggle-bg: #1E90FF;
   --toggle-bg-off: #6895a3;
-  --message-box-2: #477eff;
+  --message-box-2: #1E90FF;
   --message-box-1: #576c99;
-  --logo-path-1: #477eff;
+  --logo-path-1: #1E90FF;
   --logo-path-2: #576c99;
   --box-shadow: rgba(18, 23, 45, 0.6) 0px 8px 24px;
   --scrollbar-thumb: linear-gradient(
@@ -276,7 +276,7 @@
   flex: 1;
   margin-right: 4px;
   background-color: var(--chat-input);
-  color: var(--text-dark);
+  color: #fff;
 }
 .chat-input:placeholder {
   color: var(--text-light);

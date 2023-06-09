@@ -8,6 +8,7 @@ import {
   faInbox,
   faArrowRightFromBracket,
   faBars,
+  faHome
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
@@ -39,6 +40,7 @@ export class NavegacionComponent {
   chatAsesor = faInbox;
   salir = faArrowRightFromBracket;
   menu = faBars;
+  inicio = faHome;
 
   cerrarSesion() {
     Swal.fire({
