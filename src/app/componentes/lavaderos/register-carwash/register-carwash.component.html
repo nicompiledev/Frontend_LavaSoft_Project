@@ -39,21 +39,7 @@
                   <input formControlName="nit" type="text" class="input_text_form" placeholder="NIT (000000000)" (paste)="bloquearPegado($event)" (input)="validarInput($event)">
 
                 </div>
-                <div class="errors">
-                  <div *ngIf="
-                        lavaderoForm.get('nit').invalid &&
-                        (lavaderoForm.get('nit').dirty ||
-                          lavaderoForm.get('nit').touched)
-                      " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('nit').hasError('required')">
-                      Este campo es requerido
-                    </div>
-
-                    <div *ngIf="lavaderoForm.get('nit').hasError('minlength')">
-                      El NIT tiene un minimo de 8
-                    </div>
-                  </div>
-                </div>
+                
               </div>
 
 
@@ -65,17 +51,7 @@
                     formControlName="nombreLavadero" />
 
                 </div>
-                <div class="errors">
-                  <div *ngIf="
-                      lavaderoForm.get('nombreLavadero').invalid &&
-                      (lavaderoForm.get('nombreLavadero').dirty ||
-                        lavaderoForm.get('nombreLavadero').touched)
-                    " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('nombreLavadero').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                  </div>
-                </div>
+             
               </div>
             </div>
 
@@ -84,19 +60,6 @@
                 class="long_text" cols="30" rows="10"></textarea>
             </div>
 
-            <div class="errors">
-              <div *ngIf="
-                  lavaderoForm.get('siNoLoRecogen').invalid &&
-                  (lavaderoForm.get('siNoLoRecogen').dirty ||
-                    lavaderoForm.get('siNoLoRecogen').touched)
-                " class="text-danger">
-                <div *ngIf="lavaderoForm.get('siNoLoRecogen').hasError('required')">
-                  Este campo es requerido
-                </div>
-                <div *ngIf="lavaderoForm.get('siNoLoRecogen').hasError('minlength')">
-                  el Texto debe tener al menos 80 letras </div>
-              </div>
-            </div>
 
             <div class="input-container">
               <i class="fi fi-rr-picture"></i>
@@ -105,19 +68,59 @@
 
             </div>
 
-            <div class="errors">
-              <div *ngIf="
-                  lavaderoForm.get('imagenes').invalid &&
-                  (lavaderoForm.get('imagenes').dirty ||
-                    lavaderoForm.get('imagenes').touched)
-                " class="text-danger">
-                <div *ngIf="lavaderoForm.get('imagenes').hasError('required')">
-                  Este campo es requerido
-                </div>
-              </div>
+    
+        <div class="errors">
+          <div *ngIf="
+                lavaderoForm.get('nit').invalid &&
+                (lavaderoForm.get('nit').dirty ||
+                  lavaderoForm.get('nit').touched)
+              " class="text-danger">
+            <div *ngIf="lavaderoForm.get('nit').hasError('required')">
+              Este campo es requerido
             </div>
 
-       
+            <div *ngIf="lavaderoForm.get('nit').hasError('minlength')">
+              El NIT tiene un minimo de 8
+            </div>
+          </div>
+        </div>
+        <div class="errors">
+          <div *ngIf="
+              lavaderoForm.get('nombreLavadero').invalid &&
+              (lavaderoForm.get('nombreLavadero').dirty ||
+                lavaderoForm.get('nombreLavadero').touched)
+            " class="text-danger">
+            <div *ngIf="lavaderoForm.get('nombreLavadero').hasError('required')">
+              Este campo es requerido
+            </div>
+          </div>
+        </div>
+        
+        <div class="errors">
+          <div *ngIf="
+              lavaderoForm.get('siNoLoRecogen').invalid &&
+              (lavaderoForm.get('siNoLoRecogen').dirty ||
+                lavaderoForm.get('siNoLoRecogen').touched)
+            " class="text-danger">
+            <div *ngIf="lavaderoForm.get('siNoLoRecogen').hasError('required')">
+              Este campo es requerido
+            </div>
+            <div *ngIf="lavaderoForm.get('siNoLoRecogen').hasError('minlength')">
+              el Texto debe tener al menos 80 letras </div>
+          </div>
+        </div>
+        <div class="errors">
+          <div *ngIf="
+              lavaderoForm.get('imagenes').invalid &&
+              (lavaderoForm.get('imagenes').dirty ||
+                lavaderoForm.get('imagenes').touched)
+            " class="text-danger">
+            <div *ngIf="lavaderoForm.get('imagenes').hasError('required')">
+              Este campo es requerido
+            </div>
+          </div>
+        </div>
+
           </div>
           <div class="button siguiente-page2">
             <button tabindex="-1" (click)="siguiente('2')">Siguiente</button>
@@ -135,24 +138,13 @@
 
                   <select id="departamento" formControlName="departamento" (change)="filtrarCiudades() ">
                     <option value="" selected disabled >Departamento</option>
-                    <!-- Ciudades de Colombia -->
+                    <!-- departamentos de Colombia -->
             
                       <option *ngFor="let departamento of departamentos" [value]="departamento">{{ departamento }}</option>            
                   </select>
                   
                 </div>
 
-                <div class="errors">
-                  <div *ngIf="
-                      lavaderoForm.get('departamento').invalid &&
-                      (lavaderoForm.get('departamento').dirty ||
-                        lavaderoForm.get('departamento').touched)
-                    " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('departamento').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                  </div>
-                </div>
               </div>
               <div class="input_double">
                 <div class="input-container">
@@ -167,17 +159,7 @@
                   </select>
                 </div>
 
-                <div class="errors">
-                  <div *ngIf="
-                    lavaderoForm.get('ciudad').invalid &&
-                    (lavaderoForm.get('ciudad').dirty ||
-                      lavaderoForm.get('ciudad').touched)
-                  " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('ciudad').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                  </div>
-                </div>
+           
               </div>
             </div>
 
@@ -191,17 +173,6 @@
 
                 </div>
 
-                <div class="errors">
-                  <div *ngIf="
-                      lavaderoForm.get('direccion').invalid &&
-                      (lavaderoForm.get('direccion').dirty ||
-                        lavaderoForm.get('direccion').touched)
-                    " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('direccion').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <div class="input_double">
@@ -218,17 +189,7 @@
 
                </div>
 
-                <div class="errors">
-                  <div *ngIf="
-                    lavaderoForm.get('sector').invalid &&
-                    (lavaderoForm.get('sector').dirty ||
-                      lavaderoForm.get('sector').touched)
-                  " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('sector').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                  </div>
-                </div>
+          
               </div>
              
             </div>
@@ -304,6 +265,57 @@
 
 
             </div>
+
+
+            
+            <div class="errors">
+              <div *ngIf="
+                  lavaderoForm.get('departamento').invalid &&
+                  (lavaderoForm.get('departamento').dirty ||
+                    lavaderoForm.get('departamento').touched)
+                " class="text-danger">
+                <div *ngIf="lavaderoForm.get('departamento').hasError('required')">
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="errors">
+              <div *ngIf="
+                lavaderoForm.get('ciudad').invalid &&
+                (lavaderoForm.get('ciudad').dirty ||
+                  lavaderoForm.get('ciudad').touched)
+              " class="text-danger">
+                <div *ngIf="lavaderoForm.get('ciudad').hasError('required')">
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+            <div class="errors">
+              <div *ngIf="
+                lavaderoForm.get('sector').invalid &&
+                (lavaderoForm.get('sector').dirty ||
+                  lavaderoForm.get('sector').touched)
+              " class="text-danger">
+                <div *ngIf="lavaderoForm.get('sector').hasError('required')">
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="errors">
+              <div *ngIf="
+                  lavaderoForm.get('direccion').invalid &&
+                  (lavaderoForm.get('direccion').dirty ||
+                    lavaderoForm.get('direccion').touched)
+                " class="text-danger">
+                <div *ngIf="lavaderoForm.get('direccion').hasError('required')">
+                  Este campo es requerido
+                </div>
+              </div>
+            </div>
+
           </div>
           
           <div class="buttons">
@@ -329,6 +341,61 @@
 
             </div>
 
+ 
+            <div class="double">
+              <div class="input_double">
+                <div class="input-container">
+                  <i class="fi fi-br-square-phone-hangup"></i>
+
+                  <input class="input_text_form" type="text" placeholder="Telefono" formControlName="telefono" />
+
+                </div>
+
+              </div>
+
+              <div class="input_double">
+                <div class="input-container ">
+                  <i>N°</i>
+
+                  <input class="input_text_form" type="number" min="0" placeholder="espacios de trabajo"
+                    formControlName="espacios_de_trabajo" />
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="double">
+              <div class="input_double flex-row align-items-center">
+                <span class="w-50">Hora Abertura</span>
+                <div class="input-container w-50">
+                  <i class="fi fi-br-time-check"></i>
+
+                  <input class="input_text_form" type="time" placeholder="Apertura (H:MM AM/PM)"
+                    formControlName="hora_apertura" />
+
+                </div>
+
+           
+
+              </div>
+
+
+              <div class="input_double flex-row align-items-center">
+                <span class="w-50">Hora Cierre</span>
+                <div class="input-container w-50">
+                  <i class="fi fi-br-time-delete"></i>
+
+                  <input class="input_text_form" type="time" placeholder="Cierre (H:MM AM/PM)"
+                    formControlName="hora_cierre" />
+
+                </div>
+
+             
+              </div>
+            </div>
+
             <div class="errors">
               <div *ngIf="
                   lavaderoForm.get('correo_electronico').invalid &&
@@ -343,105 +410,60 @@
                 </div>
               </div>
             </div>
-            <div class="double">
-              <div class="input_double">
-                <div class="input-container">
-                  <i class="fi fi-br-square-phone-hangup"></i>
-
-                  <input class="input_text_form" type="text" placeholder="Telefono" formControlName="telefono" />
-
+            
+            <div class="errors">
+              <div *ngIf="
+                lavaderoForm.get('telefono').invalid &&
+                (lavaderoForm.get('telefono').dirty ||
+                  lavaderoForm.get('telefono').touched)
+              " class="text-danger">
+                <div *ngIf="lavaderoForm.get('telefono').hasError('required')">
+                  Este campo es requerido
                 </div>
-
-                <div class="errors">
-                  <div *ngIf="
-                    lavaderoForm.get('telefono').invalid &&
-                    (lavaderoForm.get('telefono').dirty ||
-                      lavaderoForm.get('telefono').touched)
-                  " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('telefono').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                    <div *ngIf="lavaderoForm.get('telefono').hasError('minlength')">
-                      el telefono debe tener al menos 10 numeros </div>
-                  </div>
-                </div>
+                <div *ngIf="lavaderoForm.get('telefono').hasError('minlength')">
+                  el telefono debe tener al menos 10 numeros </div>
               </div>
-
-              <div class="input_double">
-                <div class="input-container">
-                  <i>N°</i>
-
-                  <input class="input_text_form" type="number" min="0" placeholder="espacios de trabajo"
-                    formControlName="espacios_de_trabajo" />
-
+            </div>
+      
+            <div class="errors">
+              <div *ngIf="
+                lavaderoForm.get('espacios_de_trabajo').invalid &&
+                (lavaderoForm.get('espacios_de_trabajo').dirty ||
+                  lavaderoForm.get('espacios_de_trabajo').touched)
+              " class="text-danger">
+                <div *ngIf="lavaderoForm.get('espacios_de_trabajo').hasError('required')">
+                  Este campo es requerido
                 </div>
-
-                <div class="errors">
-                  <div *ngIf="
-                    lavaderoForm.get('espacios_de_trabajo').invalid &&
-                    (lavaderoForm.get('espacios_de_trabajo').dirty ||
-                      lavaderoForm.get('espacios_de_trabajo').touched)
-                  " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('espacios_de_trabajo').hasError('required')">
-                      Este campo es requerido
-                    </div>
-                    <div *ngIf="lavaderoForm.get('telefono').hasError('minlength')">
-                      el telefono debe tener al menos 10 numeros </div>
-                  </div>
-                </div>
+                <div *ngIf="lavaderoForm.get('telefono').hasError('minlength')">
+                  el telefono debe tener al menos 10 numeros </div>
               </div>
-
             </div>
 
-            <div class="double">
-              <div class="input_double">
-                <div class="input-container">
-                  <i class="fi fi-br-time-check"></i>
-
-                  <input class="input_text_form" type="time" placeholder="Apertura (H:MM AM/PM)"
-                    formControlName="hora_apertura" />
-
-                </div>
-
-                <div class="errors">
-                  <div *ngIf="
-                      lavaderoForm.get('hora_apertura').invalid &&
-                      (lavaderoForm.get('hora_apertura').dirty ||
-                        lavaderoForm.get('hora_apertura').touched)
-                    " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('hora_apertura').hasError('required')">
-                      Este campo es requerido
-                    </div>
-
-                  </div>
-                </div>
-
-              </div>
-
-
-              <div class="input_double">
-                <div class="input-container">
-                  <i class="fi fi-br-time-delete"></i>
-
-                  <input class="input_text_form" type="time" placeholder="Cierre (H:MM AM/PM)"
-                    formControlName="hora_cierre" />
-
-                </div>
-
-                <div class="errors">
-                  <div *ngIf="
-                  lavaderoForm.get('hora_cierre').invalid &&
-                  (lavaderoForm.get('hora_cierre').dirty ||
-                    lavaderoForm.get('hora_cierre').touched)
+            <div class="errors">
+              <div *ngIf="
+                  lavaderoForm.get('hora_apertura').invalid &&
+                  (lavaderoForm.get('hora_apertura').dirty ||
+                    lavaderoForm.get('hora_apertura').touched)
                 " class="text-danger">
-                    <div *ngIf="lavaderoForm.get('hora_cierre').hasError('required')">
-                      Este campo es requerido
-                    </div>
-
-                  </div>
+                <div *ngIf="lavaderoForm.get('hora_apertura').hasError('required')">
+                  Este campo es requerido
                 </div>
+
               </div>
             </div>
+            <div class="errors">
+              <div *ngIf="
+              lavaderoForm.get('hora_cierre').invalid &&
+              (lavaderoForm.get('hora_cierre').dirty ||
+                lavaderoForm.get('hora_cierre').touched)
+            " class="text-danger">
+                <div *ngIf="lavaderoForm.get('hora_cierre').hasError('required')">
+                  Este campo es requerido
+                </div>
+
+              </div>
+            </div>
+
           </div>
 
 
