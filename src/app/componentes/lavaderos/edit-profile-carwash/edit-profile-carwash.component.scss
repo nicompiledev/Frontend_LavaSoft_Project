@@ -86,7 +86,6 @@
     overflow: hidden;
     form{
         display: flex;
-        width: 400%;
         .pagina{
             display: flex;
             flex-direction: column;
@@ -192,7 +191,7 @@ select{
         display: flex;
         flex-direction: column;
         div{
-            width: 95%;
+            width: 97%;
            
 
         }
@@ -201,6 +200,27 @@ select{
         }
     }
 
+}
+.accordion-button{
+    background-color: $blanco;
+    color: $negro_claro;
+}
+
+.danger{
+    border: none;
+    background-color: rgb(230, 0, 0);
+    color: white;
+    height: 28px;
+    width: 80px;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    font-weight: 900;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgb(200, 0, 0);
+    }
 }
 
 

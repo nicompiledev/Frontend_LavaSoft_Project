@@ -8,7 +8,7 @@
         <div class="card-header mb-4">
             <h3 class="mb-0"> <i class="fi fi-br-file-spreadsheet"></i>Servicios</h3>
             <button type="button" class="btn btn-success mas"  >+</button>
-            <table class="table  table-hover mb-0 mt-2">
+            <table class="table  table-hover mb-0 mt-2 ">
             <thead>
             <tr class="table-active">
                 <th>Nombre</th>
@@ -24,10 +24,10 @@
             <tr>
                 <th>Encerado basico</th>
                 <td>Encerado</td>
-                <td><i class="fa-solid fa-bus"></i></td>
+                <td ><i class="fa-solid fa-bus"></i></td>
                 <td>$100.000</td>
                 <td>60 Min</td>
-                <td><button type="button" class="danger">-</button></td>
+                <td><div  class="danger"><i class="fi fi-br-window-minimize"></i></div></td>
             </tr>
             </tbody>
 
@@ -489,7 +489,71 @@
                 </div>
               </div>
             </div>
+        </div>
+    
+        <div class="accordion mt-4">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"  aria-controls="collapseTwo">
+                  <h3 class="mb-0"><i class="fi fi-sr-fingerprint"></i>Cambiar contraseña</h3>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" #collapseTwo>
+                <div class="accordion-body p-4">
+                  <form>
+               <!-- Pagina 1 -->
+                  
+                    <h5>Contraseña actual</h5>
+          
+                    <div class="input-container">
+                        <i class="fi fi-br-key"></i>
+          
+                      <input
+                        class="input_text_form"
+                        type="password"
+                        placeholder="Contraseña actual"
+                        tabindex="-1"
+                      />
+                    </div>
+
+                    <hr>
+                    <h5>Nueva contraseña</h5>
+          
+                    <div class="input-container">
+                      <i class="fi fi-rr-unlock"></i>
+          
+                      <input
+                        class="input_text_form"
+                        type="password"
+                        placeholder="Nueva contraseña"
+                   tabindex="-1"
+                      />
+                    </div>
+
+                    <div class="input-container">
+                        <i class="fi fi-rr-lock"></i>
+            
+                        <input
+                          class="input_text_form"
+                          type="password"
+                          placeholder="Confirmar contraseña"
+                          tabindex="-1"
+                        />
+                      </div>
+
+                      
+                    <div class="d-grid mt-4">
+                        <button class="btn btn-dark">Cambiar contraseña</button>
+                    </div>
+                 
+                  </form>
+                </div>
+              </div>
             </div>
+        </div>
+
+
+
     </div>
 
    

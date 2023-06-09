@@ -89,6 +89,7 @@ import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profil
 import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/pending-table/pending-table.component';
 import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
 import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
+import { RegisterReserveComponent } from './componentes/lavaderos/register-reserve/register-reserve.component';
 
 
 
@@ -154,7 +155,8 @@ import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavad
     EditProfileCarwashComponent,
     PendingTableComponent,
     InProgressTableComponent,
-    CompletedTableComponent
+    CompletedTableComponent,
+    RegisterReserveComponent
 
 
   ],
