@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./register-reserve.component.scss']
 })
 export class RegisterReserveComponent {
+  validarInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input && input instanceof HTMLInputElement) {
+      input.value = input.value.replace(/\D/g, '');
+    }
+  }
 
 }

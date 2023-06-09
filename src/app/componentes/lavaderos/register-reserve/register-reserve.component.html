@@ -1,36 +1,37 @@
 <div class="col-6">
-    <div class="row header">
-        <div class="icon">
-            
+    <div class="d-flex header align-items-center justify-content-between">
+        <div class="title d-flex ">
+            <div class="icon">
+                <i class="fi fi-br-file-spreadsheet"></i>
+            </div>
+           <div class="ms-2"> <h2 class="mb-0">Nuevo Servicio</h2></div>
         </div>
-        <h2>Nuevo Servicio</h2>
+    <button class="btn btn-light">x</button>
     </div>
 
-    <div class="content d-flex flex-column  ">
+    <div class="content d-flex flex-column p-4">
         <form action="">
 
             <div class="input-container">
-                <i></i>
+                <i class="fi fi-br-file-spreadsheet"></i>
                 <input placeholder="Nombre del Servicio" type="text" class="input_text_form">
             </div>
 
             <!-- Doble casilla -->
           <div class="row">
-
-            <div class="col">
+            <div class="col pe-0">
                 
                 <div class="input-container">
-                    <i></i>
+                    <i class="fi fi-rr-list"></i>
                     <select name="" id="">
                         <option value="" selected disabled>Categoria</option>
                     </select>
                 </div>
             </div>
 
-            <div class="col">
+            <div class="col ps-0">
                 <div class="input-container">
-                    <i></i>
-                    <input type="text" class="input_text_form">
+                    <i class="fi fi-rr-car-bus"></i>
                     <select name="" id="">
                         <option value="" selected disabled>Tipo Vehiculo</option>
                     </select>
@@ -41,30 +42,33 @@
                 <!-- Doble casilla -->
           <div class="row">
 
-
-            <div class="col"> 
+            <div class="col pe-0"> 
                 <div class="input-container">
-                    <i></i>
-                    <input placeholder="Costo" type="text" class="input_text_form">
+                    <i class="fi fi-br-usd-circle"></i>
+                    <input placeholder="Costo" type="text" class="input_text_form"  (input)="validarInput($event)">
                 </div>
             </div>
 
-            <div class="col"> 
-                <div class="input-container">
-                    <i></i>
-                    <input  type="time" class="input_text_form">
+            <div class="col ps-0"> 
+                <div class="input-container position-relative overflow-hidden">
+                    <i class="fi fi-rs-time-quarter-to"></i>
+                    <input placeholder="Duracion servivio"  type="text" class="input_text_form"  (input)="validarInput($event)">
+                    <div class="w-25 min">
+                        Min
+                    </div>
                 </div>
             </div>
           </div>
 
           
-
-       
-
-            <div class="input-container">
+            <div class="input-container flex-column align-items-start p-3">
                 <h4>Descripcion del servicio</h4>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea id="" cols="30" rows="10"></textarea>
             </div> 
+
+            <div class="d-grid">
+                <button class="btn btn-info">Registrar</button>
+            </div>
         </form>
     </div>
 </div>
