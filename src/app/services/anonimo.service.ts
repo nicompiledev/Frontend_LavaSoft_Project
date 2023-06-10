@@ -15,13 +15,6 @@ export class anonimoService {
 
   constructor(private http: HttpClient) {}
 
-  /*   filters$ = combineLatest([
-    this.departamentoFilter$,
-    this.ciudadFilter$,
-    this.sectorFilter$,
-    this.tipoVehiculoFilter$,
-    this.orderByPopularityFilter$,
-  ]); */
   getLavaderos(
     page: number = 1,
     departamento: string = null,
@@ -60,5 +53,9 @@ export class anonimoService {
 
   getLavadero(id: string) {
     return this.http.get(`${this.apiUrl}lavadero/${id}`, this.httpOptions);
+  }
+
+  getLavaderosRadio(longitud:number, latitud: number){    
+    return this.http.post(`${this.apiUrl}lavaderosRadio`, {longitud, latitud}, this.httpOptions);
   }
 }
