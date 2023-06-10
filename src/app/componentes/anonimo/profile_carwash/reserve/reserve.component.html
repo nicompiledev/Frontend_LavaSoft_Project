@@ -6,20 +6,12 @@
     </div>
     <div class="content" [ngStyle]="{ 'margin-left': margin }">
       <div class="page">
-        <div class="input-container">
-          <i class="fa-solid fa-user"></i>
-          <input
-            class="inputs"
-            id="responsible"
-            type="text"
-            placeholder="Nombre responsable"
-          />
-        </div>
+        <button (click)="openModal(true ,'vehicle_reserve')">+</button>
         <div class="input-container">
           <i class="fa-solid fa-car"></i>
           <select class="inputs">
             <option value="" selected disabled>seleciona tu vehiculo</option>
-            <option value=""></option>
+            <option value="" > Agregar nuevo vehiculo</option>
           </select>
         </div>
         <div class="description">
@@ -101,4 +93,8 @@
       </div>
     </div>
   </form>
+
+  <div class="modal" *ngIf="active">
+    <app-modal-vehicles></app-modal-vehicles>
+  </div>
 </div>

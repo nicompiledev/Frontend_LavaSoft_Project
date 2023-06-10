@@ -9,6 +9,7 @@ export class ModalReserveService {
   $modal_report = new BehaviorSubject<boolean>(false)
   $modal_reserve = new BehaviorSubject<any>(false);
   $modal = new BehaviorSubject<number>(0);
+  $modal_vehicle = new BehaviorSubject<boolean>(false)
 
   constructor() {}
 
@@ -32,6 +33,16 @@ export class ModalReserveService {
       case 'acceptance':
       this.$modal_reserve.next(modal);
       break;
+
+      case 'register_reserve':
+        this.$modal_reserve.next(modal);
+        break;
+
+
+      case 'vehicle_reserve':
+        this.$modal_vehicle.next(modal);
+        console.log("modal vehicle")
+        break;
       
       default:
         break;

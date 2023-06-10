@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DeparatamentosService } from 'src/app/services/departamentos/deparatamentos.service';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
+
 @Component({
   selector: 'app-edit-profile-carwash',
   templateUrl: './edit-profile-carwash.component.html',
@@ -16,9 +18,17 @@ export class EditProfileCarwashComponent implements OnInit {
  ciudadesFiltradas:any[] = [];
  departamentoSeleccionado: string  = "";
 
+
+//modal 
+
+active:boolean;
   
-  constructor(private fb: FormBuilder,  private departamentosService:DeparatamentosService) {
+  constructor(private fb: FormBuilder,  private departamentosService:DeparatamentosService , private modal: ModalReserveService) {
         
+
+    this.modal.$modal_reserve.subscribe((valor)=>{
+     this.active = valor;
+    })
 
 
     this.lavaderoForm = this.fb.group({
@@ -53,6 +63,13 @@ export class EditProfileCarwashComponent implements OnInit {
     const departamentoSeleccionado = this.lavaderoForm.get('departamento').value;
     this.ciudadesFiltradas = this.depJson.filter(item => item.departamento === departamentoSeleccionado);
   }
+
+  //modal
+  openModal(stateModal: boolean , focus:string){
+    this.modal.estadomodal(stateModal, focus);
+  }
+
+
 
   //validar soloNumeros
 

@@ -1,4 +1,4 @@
-<div class="col-6">
+<div class="container_all">
     <div class="d-flex header align-items-center justify-content-between">
         <div class="title d-flex ">
             <div class="icon">
@@ -6,7 +6,7 @@
             </div>
            <div class="ms-2"> <h2 class="mb-0">Nuevo Servicio</h2></div>
         </div>
-    <button class="btn btn-light">x</button>
+    <button class="btn btn-light" (click)="closeModal(false, 'register_reserve')">x</button>
     </div>
 
     <div class="content d-flex flex-column p-4">
@@ -52,10 +52,21 @@
             <div class="col ps-0"> 
                 <div class="input-container position-relative overflow-hidden">
                     <i class="fi fi-rs-time-quarter-to"></i>
-                    <input placeholder="Duracion servivio"  type="text" class="input_text_form"  (input)="validarInput($event)">
-                    <div class="w-25 min">
-                        Min
-                    </div>
+               <select value="minutos">
+
+                        <option value="30">30 minutos</option>
+                        <option value="60">1 hora</option>
+                        <option value="90">1 hora y 30 minutos</option>
+                        <option value="120">2 horas</option>
+                        <option value="150">2 horas y 30 minutos</option>
+                        <option value="180">3 horas</option>
+                        <option value="210">3 horas y 30 minutos</option>
+                        <option value="240">4 horas</option>
+                        <option value="270">4 horas y 30 minutos</option>
+                        <option value="300">5 horas</option>
+                      </select>
+                      
+                
                 </div>
             </div>
           </div>

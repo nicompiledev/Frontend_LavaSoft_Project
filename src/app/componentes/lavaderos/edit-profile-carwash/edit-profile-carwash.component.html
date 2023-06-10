@@ -7,7 +7,7 @@
     <div class="col-8 body mt-4 p-5">
         <div class="card-header mb-4">
             <h3 class="mb-0"> <i class="fi fi-br-file-spreadsheet"></i>Servicios</h3>
-            <button type="button" class="btn btn-success mas"  >+</button>
+            <button type="button" class="btn btn-success mas" (click)="openModal(true , 'register_reserve')" >+</button>
             <table class="table  table-hover mb-0 mt-2 ">
             <thead>
             <tr class="table-active">
@@ -556,5 +556,8 @@
 
     </div>
 
+    <div class="modal" *ngIf="active">
+      <app-register-reserve></app-register-reserve>
+    </div>
    
 </div>

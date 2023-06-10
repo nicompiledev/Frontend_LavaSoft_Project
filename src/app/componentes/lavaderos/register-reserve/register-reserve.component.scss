@@ -1,5 +1,10 @@
 @import '../../../app.component.scss';
-
+.container_all{
+    overflow: hidden;
+    border-radius: 10px;
+    width: 600px;
+    background-color: $blanco;
+}
 
 .header{
     width: 100%;

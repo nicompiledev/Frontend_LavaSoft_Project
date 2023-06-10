@@ -1,6 +1,7 @@
 import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { log } from 'console';
 import { InputService } from 'src/app/services/comunicación/input.service';
 import { HorarioService } from 'src/app/services/reserva/horario.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
@@ -30,6 +31,9 @@ export class ReserveComponent implements OnInit {
   // ID servicio
   idServicio: any;
 
+  //modal
+active:boolean = false;
+
   constructor(private modal_service: ModalReserveService,
               private horarioService: HorarioService,
               private route: ActivatedRoute,
@@ -37,6 +41,12 @@ export class ReserveComponent implements OnInit {
               private loader: LoaderService) {
 
                 this.loader.showLoader();
+
+                //modal 
+                this.modal_service.$modal_vehicle.subscribe((valor)=>{
+                  this.active = valor;
+                  console.log('valor actual modal ' + this.active)
+                });
 
                 this.comunicacion.$servicioID.subscribe((servicio: any) => {
                   this.idServicio = servicio;
@@ -95,6 +105,16 @@ export class ReserveComponent implements OnInit {
   scrollNext() {
     const container = document.getElementById('container');
     container.scrollBy({ left: 80, behavior: 'smooth' });
+  }
+
+
+  //modal
+
+  openModal(stateModal: Boolean , focus:string ){
+    this.modal_service.estadomodal(stateModal , focus)
+    console.log(stateModal)
+
+    
   }
 
   closeModal(stateModal:boolean , focus:string){
