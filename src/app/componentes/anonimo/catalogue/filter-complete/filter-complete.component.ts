@@ -83,7 +83,7 @@ export class FilterCompleteComponent implements OnInit {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [item.ubicacion.coordinates[1], item.ubicacion.coordinates[0]],
+                coordinates: [item.ubicacion.coordinates[0], item.ubicacion.coordinates[1]];
               },
               properties: {
                 title: item.nombreLavadero,
@@ -134,8 +134,8 @@ export class FilterCompleteComponent implements OnInit {
             const nombre = e.features[0].properties.title;
             const description = e.features[0].properties.description;
     
-            while (Math.abs(lng - coordinates[0]) > 180) { // Esto es para que el popup no se salga del mapa
-              coordinates[0] += lng > coordinates[0] ? 360 : -360;
+            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) { // Esto es para que el popup no se salga del mapa
+              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
             }
             // Nombre y descripción del popup
             popup.setLngLat(coordinates).setHTML('<p>' + nombre + '</p><p>' + description + '</p>').addTo(this.map);
