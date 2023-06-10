@@ -45,20 +45,17 @@ export class FilterBasicComponent {
 
   onChangeDepartamento(event: any) {
     this.departamentoSeleccionado = event.target.value;
+    this.filterService.setDepartamentoFilter(this.departamentoSeleccionado);
     this.filtrarCiudades();
   }
 
   onChangeCiudad(event: any) {
     this.ciudadSeleccionada = event.target.value;
+    this.filterService.setCiudadFilter(this.ciudadSeleccionada);
   }
 
   onChangeSector(event: any) {
     this.sectorSeleccionado = event.target.value;
-  }
-
-  onSearch() {
-    this.filterService.setDepartamentoFilter(this.departamentoSeleccionado);
-    this.filterService.setCiudadFilter(this.ciudadSeleccionada);
     this.filterService.setSectorFilter(this.sectorSeleccionado);
   }
 }
