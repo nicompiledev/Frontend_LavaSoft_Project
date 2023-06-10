@@ -1,6 +1,9 @@
 @import "../../../../../../src/app/app.component.scss";
 
 .container {
+
+
+
   form {
     width: 520px;
     border-radius: 10px;
@@ -36,6 +39,11 @@
       }
     }
 
+    .btn-success{
+      position: absolute;
+      top: 5%;
+      right: -25%;
+    }
     .content {
       width: 200%;
       display: flex;
@@ -149,7 +157,7 @@
         gap: 20px;
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(3, minmax(50px, auto));
+        grid-template-rows: 50px auto;
 
         .date-container::after {
           content: "fecha de reserva";

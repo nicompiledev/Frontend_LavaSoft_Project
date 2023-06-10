@@ -31,7 +31,15 @@
     position: relative;
     border-radius: 10px;
 }
-
+.title_service{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    background: $negro_claro;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: $blanco;
+}
 .types{
     display: flex;
     margin: 10px;

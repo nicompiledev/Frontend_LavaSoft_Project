@@ -39,7 +39,8 @@ import { RegisterReserveComponent } from './componentes/lavaderos/register-reser
 import { ReserveComponent } from './componentes/anonimo/profile_carwash/reserve/reserve.component';
 const routes: Routes = [
   //pruebas
-  {path: 'modal', component:ReserveComponent},
+  {path: 'reserve', component:ReserveComponent},
+  {path: 'per', component:ProfileCarwashComponent},
   {path: 'editarPerfil', component: EditProfileCarwashComponent},
   {path: 'registrar_reserva' , component: RegisterReserveComponent},
   // Inicio

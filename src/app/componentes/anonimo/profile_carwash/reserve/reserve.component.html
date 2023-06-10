@@ -6,13 +6,15 @@
     </div>
     <div class="content" [ngStyle]="{ 'margin-left': margin }">
       <div class="page">
-        <button (click)="openModal(true ,'vehicle_reserve')">+</button>
-        <div class="input-container">
+        
+        <div class="input-container position-relative w-75"  >
           <i class="fa-solid fa-car"></i>
           <select class="inputs">
-            <option value="" selected disabled>seleciona tu vehiculo</option>
-            <option value="" > Agregar nuevo vehiculo</option>
+            <option value="" selected disabled>Seleciona tu vehiculo</option>
+            <option value="">Agregar nuevo vehiculo</option>
           </select>
+
+          <button class="btn btn-success">+ nuevo</button>
         </div>
         <div class="description">
           <strong>Description servicio</strong>

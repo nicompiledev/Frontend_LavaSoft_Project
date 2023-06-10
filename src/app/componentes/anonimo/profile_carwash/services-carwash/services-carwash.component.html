@@ -1,15 +1,16 @@
 <div class="contenedor">
-<div class="text-center">
+<div class="text-center d-flex flex-column align-items-center">
 <h2>Servicios</h2>
-<p>Elige tu tipo de vehiculo y la categoria del servicio para poder filtrar tu buqueda.</p>
+<p class="w-50 mb-0">Elige tu tipo de vehiculo para poder filtrar tu buqueda. Y a continuacion eligue los servicios que vas a reservar.</p>
+
 </div>
 
   <div class="filter-services">
   
-    <div class="pages" [ngStyle]="{ 'margin-top': topPage }" >
+    <div class="pages"  >
       <div class="page" >
          <!-- tipos vehiculos -->  
-         <div class="d-flex">
+         <div class="w-100 d-flex  justify-content-between">
           <div class="container_">
             <div class="radio-tile-group">
               <label for="motorcycle" class="input_container">
@@ -77,46 +78,51 @@
           </div>
          </div>
   
-          <div class="buttons" (click)="topPage = '-70px'">
-            <div class="title"><h5>Categoria</h5></div>
-            <div class="icon_btn"><i class="fi fi-rr-arrow-circle-down"></i></div>
-          </div>
       </div>
-      <div class="page" >
-
-        <!-- categoria -->
-        <div class="categoria">
-          <label class="categoria-contenedor">
-            <input type="radio" name="radio" checked="" />
-            <span class="name">Categoria</span>
-          </label>
-          <label class="categoria-contenedor">
-            <input type="radio" name="radio" />
-            <span class="name">Categoria</span>
-          </label>
-    
-          <label class="categoria-contenedor">
-            <input type="radio" name="radio" />
-            <span class="name">Categoria</span>
-          </label>
-          <label class="categoria-contenedor">
-            <input type="radio" name="radio" />
-            <span class="name">Categoria</span>
-          </label>
-        </div>
-
-        <div class="buttons" (click)="topPage = '0px'">
-          <div class="title"><h5>Vehiculo</h5></div>
-          <div class="icon_btn"><i class="fi fi-rr-arrow-circle-up"></i></div>
-        </div>
-      </div>
+  
     </div>
    
   </div>
-  <!--
+  <!-- servicios-->
 
--->
-  <div class="services-contenedor">
+  <div class="services_container">
+
+    <button class="mb-2 w-25">
+      <p>Reservar </p>
+      <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 mt-1 d-block" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
+    </svg>
+      <i class="fa-solid fa-calendar-day"></i>
+  </button>
+     
+<ng-container *ngFor=" let servicio of servicios">
+  <details>
+    <summary> 
+      <!-- nombre del servidor -->
+      <h5 class="mb-0 mt-1"><i class="fa-solid fa-car me-2"></i>{{ servicio.nombre }}</h5>
+      <!-- precio --> 
+      <span><i class="fa-solid fa-dollar-sign me-1"></i>{{servicio.costo}}</span>
+      <!-- hora --> 
+      <span><i class="fa-regular fa-clock me-1"></i> {{servicio.duracion }}</span>
+      <!-- checkbox --> 
+      <label class="container_check">
+        <input  type="checkbox">
+        <div class="checkmark"></div>
+      </label> 
+    </summary>
+
+
+    <div class="description">
+      <h5 class="mb-0">Descripcion</h5>
+      <p> {{ servicio.descripcion }}</p>
+    </div>
+  </details>
+</ng-container>
+
+    
+  </div>
+
+<!--   <div class="services-contenedor">
     <div class="service" *ngFor="let servicio of servicios">
       <div class="name_service">
         <h4><i class="fa-solid fa-car-side"></i> {{ servicio.nombre }}</h4>
@@ -132,5 +138,5 @@
         />
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

@@ -308,9 +308,31 @@ h4{
     
     }
 }
+.container_btn{
+    position: absolute;
+    top: 8%;
+    left: 40px;
+    button{
+        border-radius: 50%;
+        background-color: $blanco;
+        color: $azul-oscuro;
+        width: 80px;
+        height: 80px;
+        font-size: 50px;
+        transition: all 0.5s;
+        padding-top: 5px;
+        border: solid 1px $azul-oscuro;
+       
+        &:hover{
+            background-color: $azul-oscuro;
+            color: $blanco;
+        }
+    }
 
+
+}
 .time{
-    width: 65%;
+    width: 65% !important;
 
 
 }
