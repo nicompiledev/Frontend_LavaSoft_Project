@@ -83,7 +83,7 @@ export class FilterCompleteComponent implements OnInit {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [item.ubicacion.coordinates[0], item.ubicacion.coordinates[1]];
+                coordinates: [item.ubicacion.coordinates[0], item.ubicacion.coordinates[1]],
               },
               properties: {
                 title: item.nombreLavadero,
