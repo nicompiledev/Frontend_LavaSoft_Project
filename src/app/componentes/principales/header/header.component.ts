@@ -12,6 +12,8 @@ import { ViewportScroller } from '@angular/common';
 })
 export class HeaderComponent {
 
+ condicion = false
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.checkScrollPosition();

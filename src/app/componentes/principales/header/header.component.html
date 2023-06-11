@@ -64,6 +64,15 @@
       >
     </li>
   </ul>
+  <div class="banner" *ngIf="condicion; else otroMensaje">Por favor completa tu perfil al 100%, y accede a los beneficios que tenemos para tu negocio.  <a [routerLink]="'/editarPerfil'" class="btn"> Actualizar perfil.</a></div>
+<ng-template #otroMensaje>
+  <div class="banner">Adquiere un paquete para tu negocio y accede a los beneficios que tenemos para ti. <a [routerLink]="'/dashboard-lavadero/subscripcion'"> Elegir plan</a>
+  </div>
+
+
+</ng-template>
+
+
 </nav>
 
 <!-- ----------------------------  -->

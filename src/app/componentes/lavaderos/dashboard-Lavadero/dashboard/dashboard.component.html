@@ -19,7 +19,7 @@
           </a>
         </li> -->
 
-        <li routerLink="/dashboard-admin/perfil" [routerLinkActive]="['hovered']">
+        <li routerLink="/dashboard-lavadero/perfil" [routerLinkActive]="['hovered']">
           <a >
             <span class="icon">
               <fa-icon [icon]="reportes"></fa-icon>
@@ -38,12 +38,29 @@
         </li>
 
 
-        <li routerLink="/dashboard-admin/historial" [routerLinkActive]="['hovered']">
+        <li routerLink="/dashboard-lavadero/historial" [routerLinkActive]="['hovered']">
           <a >
             <span class="icon">
               <fa-icon [icon]="reportes"></fa-icon>
             </span>
             <span class="title">Historial - Estadisticas</span>
+          </a>
+        </li>
+        <li routerLink="/dashboard-lavadero/subscripcion" [routerLinkActive]="['hovered']">
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="reportes"></fa-icon>
+            </span>
+            <span class="title">Subscripcion</span>
+          </a>
+        </li>
+        <!-- Volver al inicio -->
+        <li routerLink="/inicio" [routerLinkActive]="['hovered']">
+          <a >
+            <span class="icon">
+              <fa-icon [icon]="inicio"></fa-icon>
+            </span>
+            <span class="title">Volver al Inicio</span>
           </a>
         </li>
 

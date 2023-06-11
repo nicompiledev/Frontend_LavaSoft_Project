@@ -9,6 +9,7 @@ import {
   faInbox,
   faArrowRightFromBracket,
   faBars,
+  faHome
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
 
@@ -31,6 +32,7 @@ export class DashboardComponent {
   chatAsesor = faInbox;
   salir = faArrowRightFromBracket;
   menu = faBars;
+  inicio = faHome;
 
   cerrarSesion() {
     this.auth.logout();

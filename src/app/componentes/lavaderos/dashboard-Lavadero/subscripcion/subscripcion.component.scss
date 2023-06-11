@@ -1,0 +1,46 @@
+.subscription-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card ul {
+  list-style-type: disc;
+  margin-left: 5px;
+}
+
+.card p.price {
+  font-weight: bold;
+}
+
+.card p.availability {
+  font-weight: bold;
+  color: #ccc;
+}
+
+.card.unavailable {
+  background-color: #f8f8f8;
+}
+
+
+.custom-star {
+  font-size: 30px; /* Ajusta el tamaño según tus preferencias */
+  margin-left: 3px;
+  color: #ffcc00; /* Color personalizado */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra de texto */
+}
+

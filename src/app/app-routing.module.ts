@@ -37,6 +37,7 @@ import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lava
 import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
 import { RegisterReserveComponent } from './componentes/lavaderos/register-reserve/register-reserve.component';
 import { ReserveComponent } from './componentes/anonimo/profile_carwash/reserve/reserve.component';
+import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
 const routes: Routes = [
   //pruebas
   {path: 'reserve', component:ReserveComponent},
@@ -87,6 +88,7 @@ const routes: Routes = [
           { path: 'completadas', component:  CompletedTableComponent},
         ]
       },
+      { path: 'subscripcion', component: SubscripcionComponent},
       { path: 'reportes', component:  ReportesAdminComponent},
       { path: 'chat-asesor', component:  ChatAdminComponent},
       { path: '**', redirectTo: '', pathMatch: 'full' }

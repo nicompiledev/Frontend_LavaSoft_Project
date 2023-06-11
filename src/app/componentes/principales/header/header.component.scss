@@ -77,7 +77,7 @@
 
   /* button styling */
   .button {
- 
+
     letter-spacing: 3px;
     text-decoration: none;
     position: relative;
@@ -147,6 +147,35 @@
     }
   }
 }
+
+.banner {
+  background-color: #fdebeb; /* Rosa claro */
+  color: #cc0000; /* Rojo oscuro */
+  padding: 10px;
+  border: 1px solid #cc0000;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.banner a {
+  display: inline-block;
+  background-color: #1E90FF; /* Azul claro */
+  color: #fff; /* Letra blanca */
+  padding: 8px 16px;
+  margin-left: 5px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.banner a:hover {
+  text-decoration: none;
+  background-color: #fff;
+  color: #1E90FF;
+}
+
+
+
 
 
 
@@ -242,3 +271,7 @@ app-perfil-menu{
 app-chat {
   z-index: 50;
 }
+
+
+
+

@@ -90,6 +90,7 @@ import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavader
 import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
 import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
 import { RegisterReserveComponent } from './componentes/lavaderos/register-reserve/register-reserve.component';
+import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
 
 
 
@@ -156,7 +157,8 @@ import { RegisterReserveComponent } from './componentes/lavaderos/register-reser
     PendingTableComponent,
     InProgressTableComponent,
     CompletedTableComponent,
-    RegisterReserveComponent
+    RegisterReserveComponent,
+    SubscripcionComponent
 
 
   ],
