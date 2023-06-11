@@ -22,35 +22,32 @@
       <div class="secciones-input">
         <div class="filtro">
           <p>Departamento</p>
-          <select id="Departamento" [(ngModel)]="departamentoSeleccionado" (ngModelChange)="filtrarCiudades()">
-            <option value="">Seleccione una opción&nbsp;&nbsp;</option>
+          <select id="Departamento" (change)="onChangeDepartamento($event)">
+            <option value="departamento" selected disabled>Seleccione una opción&nbsp;&nbsp;</option>
             <option *ngFor="let departamento of departamentos" [value]="departamento">{{ departamento }}</option>
           </select>
         </div>
 
         <div class="filtro">
           <p>ciudad</p>
-         <select id="ciudad" >
-          <option value="">Seleccione una opción&nbsp;&nbsp;</option>
+         <select id="ciudad" (change)="onChangeCiudad($event)">
+          <option value="ciudad" selected disabled>Seleccione una opción&nbsp;&nbsp;</option>
           <!-- Ciudades de Colombia -->
 
           <option *ngFor="let ciudad of ciudadesFiltradas" [value]="ciudad.municipio">{{ ciudad.municipio }}</option>
 
-         </select>
+        </select>
         </div>
-        
         <div class="filtro">
           <p>Sector</p>
-          <select name="" id="" value>
-            <option value="">Seleccione una opción&nbsp;&nbsp;</option>
+          <select name="" id="" (change)="onChangeSector($event)">
+            <option value="sectores" selected disabled>Seleccione una opción&nbsp;&nbsp;</option>
             <option value="sur">Sur</option>
             <option value="centro">Centro</option>
             <option value="norte">Norte</option>
-            <option value="todos">Todos</option>
           </select>
         </div>
-     
-        <input type="submit" value="Buscar Lavadero" />
+        <input type="submit" value="Buscar Lavadero" (click)="buscarLavadero()" routerLink="/catalogue">
       </div>
     </div>
   </div>

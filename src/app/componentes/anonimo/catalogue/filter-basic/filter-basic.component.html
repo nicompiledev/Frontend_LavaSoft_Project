@@ -1,42 +1,36 @@
 <div class="contenedor-padre">
   <div class="contenedor">
-
     <div class="input_container">
       <i class="fi fi-rr-map"></i>
-
-      <select id="Departamento" (change)="onChangeDepartamento($event)">
-        <option value="" selected disabled>Departamento</option>
+      <select id="Departamento" [(ngModel)]="departamentoSeleccionado" (ngModelChange)="onChangeDepartamento($event)">
+        <option value="departamento" selected disabled>Departamento</option>
         <!-- Seleccionar todas: -->
         <option value="">Todas</option>
-        <option *ngFor="let departamento of departamentos">{{ departamento }}</option>
+        <option *ngFor="let departamento of departamentos" [value]="departamento">{{ departamento }}</option>
       </select>
     </div>
 
     <div class="input_container">
       <i class="fa-solid fa-city"></i>
-      <select id="ciudad" (change)="onChangeCiudad($event)">
-        <option value="" selected disabled>ciudad</option>
+      <select id="ciudad" [(ngModel)]="ciudadSeleccionada" (ngModelChange)="onChangeCiudad($event)">
+        <option value="ciudad" selected disabled>ciudad</option>
         <!-- Seleccionar todas: -->
         <option value="">Todas</option>
         <!-- Ciudades de Colombia -->
-
         <option *ngFor="let ciudad of ciudadesFiltradas" [value]="ciudad.municipio">{{ ciudad.municipio }}</option>
-
       </select>
     </div>
 
     <div class="input_container">
       <i class="fa-regular fa-compass"></i>
-      <select id="type-vehicle" (change)="onChangeSector($event)">
-        <option value="" selected disabled>Sectores</option>
+      <select id="type-vehicle" [(ngModel)]="sectorSeleccionado" (ngModelChange)="onChangeSector($event)">
+        <option value="sectores" selected disabled>Sectores</option>
         <!-- Seleccionar todas: -->
         <option value="">Todos</option>
-        <option value="">Sectores</option>
         <option value="sur">Sur</option>
         <option value="centro">Centro</option>
         <option value="norte">Norte</option>
       </select>
-
     </div>
   </div>
 </div>

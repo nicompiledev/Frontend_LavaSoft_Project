@@ -15,17 +15,34 @@ export class FilterBasicComponent {
   ciudadesFiltradas: any[] = [];
 
   //  filtros
-  departamentoSeleccionado: string = '';
-  sectorSeleccionado: string = '';
-  ciudadSeleccionada: string = '';
+  departamentoSeleccionado: string = 'departamento';
+  ciudadSeleccionada: string = 'ciudad';
+  sectorSeleccionado: string = 'sectores';
 
   constructor(
     private filterService: FilterService,
     private departamentosService: DeparatamentosService
   ) {
+
     this.departamentosService.getDepartamento().subscribe((object: any) => {
       this.depJson = object;
       this.departamentos = this.obtenerDepartamentos();
+
+
+      const {departamento, ciudad, sector} = this.filterService.getDatosFiltro();
+
+      if(departamento != null && departamento != ""){
+        this.departamentoSeleccionado = departamento;
+        this.filtrarCiudades();
+      }
+
+      if(ciudad != null && ciudad != ""){
+        this.ciudadSeleccionada = ciudad;
+      }
+
+      if(sector != null && sector != ""){
+        this.sectorSeleccionado = sector;
+      }
     });
   }
 
@@ -44,18 +61,27 @@ export class FilterBasicComponent {
   }
 
   onChangeDepartamento(event: any) {
-    this.departamentoSeleccionado = event.target.value;
-    this.filterService.setDepartamentoFilter(this.departamentoSeleccionado);
+    let departamentoEnviar = this.departamentoSeleccionado;
+    if(departamentoEnviar == 'departamento'){
+      departamentoEnviar = "";
+    }
+    this.filterService.setDepartamentoFilter(departamentoEnviar);
     this.filtrarCiudades();
   }
 
   onChangeCiudad(event: any) {
-    this.ciudadSeleccionada = event.target.value;
-    this.filterService.setCiudadFilter(this.ciudadSeleccionada);
+    let ciudadEnviar = this.ciudadSeleccionada;
+    if(ciudadEnviar == 'ciudad'){
+      ciudadEnviar = "";
+    }
+    this.filterService.setCiudadFilter(ciudadEnviar);
   }
 
   onChangeSector(event: any) {
-    this.sectorSeleccionado = event.target.value;
-    this.filterService.setSectorFilter(this.sectorSeleccionado);
+    let sectorEnviar = this.sectorSeleccionado;
+    if(sectorEnviar == 'sectores'){
+      sectorEnviar = "";
+    }
+    this.filterService.setSectorFilter(sectorEnviar);
   }
 }

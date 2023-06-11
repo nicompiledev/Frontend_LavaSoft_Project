@@ -10,7 +10,6 @@ export class FilterService {
   private sectorFilterSubject = new BehaviorSubject<string>(null);
   private tipoVehiculoFilterSubject = new BehaviorSubject<string>(null);
   private orderByPopularityFilterSubject = new BehaviorSubject<boolean>(false);
-  private nombreFilterSubject = new BehaviorSubject<string>(null);
 
   departamentoFilter$ = this.departamentoFilterSubject.asObservable();
   ciudadFilter$ = this.ciudadFilterSubject.asObservable();
@@ -46,6 +45,17 @@ export class FilterService {
 
   setOrderByPopularityFilter(orderByPopularity: boolean) {
     this.orderByPopularityFilterSubject.next(orderByPopularity);
+  }
+
+
+  // Mandar informacion actual de departamento, ciudad y sector
+  getDatosFiltro() {
+    const datosFiltro = {
+      departamento: this.departamentoFilterSubject.value,
+      ciudad: this.ciudadFilterSubject.value,
+      sector: this.sectorFilterSubject.value,
+    };
+    return datosFiltro;
   }
 
 }

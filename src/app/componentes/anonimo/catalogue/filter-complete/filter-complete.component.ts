@@ -5,6 +5,7 @@ import { FilterService } from 'src/app/services/filtro/filter.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs';
 import { anonimoService } from 'src/app/services/anonimo.service';
+import { canvas } from 'leaflet';
 
 @Component({
   selector: 'app-filter-complete',
@@ -32,9 +33,8 @@ export class FilterCompleteComponent implements OnInit {
         this.ciudad = ciudad;
 
         let ubicacion = `Colombia, ${departamento}, ${ciudad}`;
-
-        this.loader.showLoader();
         try {
+          this.loader.showLoader();
           this.http
             .get(
               'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
@@ -47,10 +47,12 @@ export class FilterCompleteComponent implements OnInit {
               })
             )
             .subscribe(async (res: any) => {
-
               // Obtener los puntos de la base de datos y agregarlos a la fuente
-              this.obtenerPuntosDesdeBaseDeDatos(res.features[0].center[0], res.features[0].center[1]); // Aquí debes implementar la lógica para obtener los puntos desde la base de datos
-              
+              this.obtenerPuntosDesdeBaseDeDatos(
+                res.features[0].center[0],
+                res.features[0].center[1]
+              ); // Aquí debes implementar la lógica para obtener los puntos desde la base de datos
+
               this.map.flyTo({
                 center: res.features[0].center,
                 zoom: this.zoomInicial,
@@ -66,42 +68,42 @@ export class FilterCompleteComponent implements OnInit {
 
   obtenerPuntosDesdeBaseDeDatos(lng: number, lat: number) {
     const features = []; // Array para almacenar los puntos
-  
+
     // Llamada a la API y procesamiento de la respuesta
-    this.anonimoService.getLavaderosRadio(lng, lat)
-      .pipe(finalize(() => {
-        this.loader.hideLoader();
-      }))
+    this.loader.showLoader();
+    this.anonimoService
+      .getLavaderosRadio(lng, lat)
+      .pipe(
+        finalize(() => {
+          this.loader.hideLoader();
+        })
+      )
       .subscribe(
         (response: any) => {
           // Procesar la respuesta de la API y agregar los puntos al arra
-          console.log(response);
-          
-          
           response.forEach((item: any) => {
+            let longitud: number = item.ubicacion.coordinates[0];
+            let latitud: number = item.ubicacion.coordinates[1];
             const feature = {
               type: 'Feature',
               geometry: {
                 type: 'Point',
-                coordinates: [item.ubicacion.coordinates[0], item.ubicacion.coordinates[1]],
+                coordinates: [longitud, latitud],
               },
               properties: {
                 title: item.nombreLavadero,
-                description: item.description,
               },
             };
             features.push(feature);
           });
-  
           // Remover la capa y fuente existente
           if (this.map.getLayer('lavaderos')) {
             this.map.removeLayer('lavaderos');
           }
-          
           if (this.map.getSource('lavaderos')) {
             this.map.removeSource('lavaderos');
-          }          
-  
+          }
+
           // Agregar la nueva fuente y capa con los puntos actualizados
           this.map.addSource('lavaderos', {
             type: 'geojson',
@@ -110,50 +112,28 @@ export class FilterCompleteComponent implements OnInit {
               features: features,
             },
           });
-  
+
           this.map.addLayer({
             id: 'lavaderos',
-            type: 'circle',
+            type: 'symbol',
             source: 'lavaderos',
-            paint: {
-              'circle-color': '#1E90FF',
-              'circle-radius': 6,
-              'circle-stroke-width': 2,
-              'circle-stroke-color': '#fff',
+            layout: {
+              'icon-image': 'car-wash',
+              'icon-size': 0.04,
+              'icon-allow-overlap': true,
+              'text-field': ['get', 'title'],
+              'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+              'text-offset': [0, 1.25],
+              'text-size': 10,
+              'text-anchor': 'top',
             },
           });
-    
-          const popup = new mapboxgl.Popup({
-            closeButton:false,
-            closeOnClick:false
-            });
-    
-          this.map.on('mouseenter', 'lavaderos', (e:any) => {           
-    
-            const coordinates = e.features[0].geometry.coordinates.slice();
-            const nombre = e.features[0].properties.title;
-            const description = e.features[0].properties.description;
-    
-            while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) { // Esto es para que el popup no se salga del mapa
-              coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-            }
-            // Nombre y descripción del popup
-            popup.setLngLat(coordinates).setHTML('<p>' + nombre + '</p><p>' + description + '</p>').addTo(this.map);
-          });
-    
-          this.map.on('mouseleave', 'lavaderos', () => {
-            this.map.getCanvas().style.cursor = '';
-            popup.remove();
-          });
-          
         },
         (error) => {
           // Manejar el error de alguna manera
         }
       );
   }
-  
-  
 
   //MAP
   map!: mapboxgl.Map;
@@ -172,7 +152,7 @@ export class FilterCompleteComponent implements OnInit {
     const longitudInicial = -75.6926135253908;
     this.map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v12',
+      style: 'mapbox://styles/kevinortega/clirpewpz01oi01qg6lso5p7x',
       center: [longitudInicial, latitudInicial],
       zoom: this.zoomInicial,
       maxZoom: 15, // Limita el zoom in
@@ -191,11 +171,14 @@ export class FilterCompleteComponent implements OnInit {
     this.map.on('zoom', () => {
       const zoom = this.map.getZoom();
     });
-  
 
-    const buscarLavaderosControl = new BuscarLavaderosControl();
+    const buscarLavaderosControl = new BuscarLavaderosControl(this);
     // En el centro arriba:
     this.map.addControl(buscarLavaderosControl, 'top-left');
+
+
+      this.obtenerPuntosDesdeBaseDeDatos(longitudInicial, latitudInicial);
+
   }
 
   // Seleccionar vehiculos
@@ -214,6 +197,12 @@ class BuscarLavaderosControl {
   map: mapboxgl.Map;
   container: HTMLDivElement;
   button: HTMLButtonElement;
+  filterCompleteComponent: FilterCompleteComponent;
+
+  constructor(filterCompleteComponent: FilterCompleteComponent) {
+    this.filterCompleteComponent = filterCompleteComponent;
+  }
+
 
   onAdd(map: mapboxgl.Map) {
     this.map = map;
@@ -231,8 +220,17 @@ class BuscarLavaderosControl {
     this.button.style.width = '100%';
     this.button.style.fontSize = '.7rem';
     this.button.style.borderRadius = '5px';
+    this.button.style.border = 'none';
+    this.button.style.cursor = 'pointer';
+    //click
     this.button.addEventListener('click', () => {
-      console.log(this.map.getCenter());
+      const { lng, lat } = this.map.getCenter();
+      this.map.flyTo({
+        center: [lng, lat],
+        zoom: 12,
+      });
+
+      this.filterCompleteComponent.obtenerPuntosDesdeBaseDeDatos(lng, lat);
     });
 
     this.container.appendChild(this.button);

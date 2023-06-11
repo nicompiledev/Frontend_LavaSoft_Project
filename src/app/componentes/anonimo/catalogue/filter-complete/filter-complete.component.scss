@@ -236,17 +236,3 @@ strong{
     cursor: pointer;
     transition: all 0.2s ease-in-out;
   }
-
-  .mapboxgl-ctrl-buscar-lavaderos:hover {
-    transform: scale(1.1);
-  }
-
-  .mapboxgl-ctrl-buscar-lavaderos:focus {
-    outline: none;
-  }
-
-  .mapboxgl-ctrl-buscar-lavaderos:active {
-    transform: scale(0.9);
-  }
-
-  
