@@ -41,7 +41,6 @@ import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavader
 const routes: Routes = [
   //pruebas
   {path: 'reserve', component:ReserveComponent},
-  {path: 'per', component:ProfileCarwashComponent},
   {path: 'editarPerfil', component: EditProfileCarwashComponent},
   {path: 'registrar_reserva' , component: RegisterReserveComponent},
   // Inicio
