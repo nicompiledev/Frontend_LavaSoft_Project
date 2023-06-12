@@ -46,8 +46,6 @@ export class anonimoService {
       params = params.set('orderByPopularity', orderByPopularity.toString());
     }
 
-    console.log(params);
-
     return this.http.get(`${this.apiUrl}lavaderos`, { params });
   }
 
