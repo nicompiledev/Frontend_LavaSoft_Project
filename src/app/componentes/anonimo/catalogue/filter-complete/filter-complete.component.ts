@@ -24,6 +24,7 @@ export class FilterCompleteComponent implements OnInit {
     private http: HttpClient,
     private router: Router
   ) {
+
     this.filterService.filters$.subscribe(([departamento, ciudad]) => {
       // Realiza la lógica de filtrado y muestra los lavaderos actualizados
 
@@ -36,6 +37,7 @@ export class FilterCompleteComponent implements OnInit {
 
         let ubicacion = `Colombia, ${departamento}, ${ciudad}`;
         try {
+
           this.loadingMap = true;
 
           this.http
@@ -96,6 +98,7 @@ export class FilterCompleteComponent implements OnInit {
               properties: {
                 id: item._id,
                 title: item.nombreLavadero,
+
               },
             };
             features.push(feature);
@@ -108,49 +111,44 @@ export class FilterCompleteComponent implements OnInit {
             this.map.removeSource('lavaderos');
           }
 
-          this.map.on('style.load', () => {
-            // Agregar la nueva fuente y capa con los puntos actualizados
-            this.map.addSource('lavaderos', {
-              type: 'geojson',
-              data: {
-                type: 'FeatureCollection',
-                features: features,
-              },
-            });
+          // Agregar la nueva fuente y capa con los puntos actualizados
+          this.map.addSource('lavaderos', {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: features,
+            },
+          });
 
-            this.map.addLayer({
-              id: 'lavaderos',
-              type: 'symbol',
-              source: 'lavaderos',
-              layout: {
-                'icon-image': 'car-wash',
-                'icon-size': 0.04,
-                'icon-allow-overlap': true,
-                'text-field': ['get', 'title'],
-                'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-                'text-offset': [0, 1.25],
-                'text-size': 10,
-                'text-anchor': 'top',
-              },
-            });
+          this.map.addLayer({
+            id: 'lavaderos',
+            type: 'symbol',
+            source: 'lavaderos',
+            layout: {
+              'icon-image': 'car-wash',
+              'icon-size': 0.04,
+              'icon-allow-overlap': true,
+              'text-field': ['get', 'title'],
+              'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
+              'text-offset': [0, 1.25],
+              'text-size': 10,
+              'text-anchor': 'top',
+            },
+          });
 
-            // Agregar el popup
-            this.map.on('click', 'lavaderos', (e: any) => {
-              this.router.navigate([
-                '/profile_carwash',
-                e.features[0].properties.id,
-              ]);
-            });
+          // Agregar el popup
+          this.map.on('click', 'lavaderos', (e: any) => {
+            this.router.navigate(['/profile_carwash', e.features[0].properties.id]);
+          });
 
-            // Cambiar el cursor cuando se pase sobre un punto
-            this.map.on('mouseenter', 'lavaderos', () => {
-              this.map.getCanvas().style.cursor = 'pointer';
-            });
+          // Cambiar el cursor cuando se pase sobre un punto
+          this.map.on('mouseenter', 'lavaderos', () => {
+            this.map.getCanvas().style.cursor = 'pointer';
+          });
 
-            // Cambiar el cursor cuando se deje de pasar sobre un punto
-            this.map.on('mouseleave', 'lavaderos', () => {
-              this.map.getCanvas().style.cursor = '';
-            });
+          // Cambiar el cursor cuando se deje de pasar sobre un punto
+          this.map.on('mouseleave', 'lavaderos', () => {
+            this.map.getCanvas().style.cursor = '';
           });
         },
         (error) => {
@@ -200,7 +198,11 @@ export class FilterCompleteComponent implements OnInit {
     // En el centro arriba:
     this.map.addControl(buscarLavaderosControl, 'top-left');
 
-    this.obtenerPuntosDesdeBaseDeDatos(longitudInicial, latitudInicial);
+
+    this.map.on('style.load', () => {
+      this.obtenerPuntosDesdeBaseDeDatos(longitudInicial, latitudInicial);
+    });
+
   }
 
   // Seleccionar vehiculos
@@ -224,6 +226,7 @@ class BuscarLavaderosControl {
   constructor(filterCompleteComponent: FilterCompleteComponent) {
     this.filterCompleteComponent = filterCompleteComponent;
   }
+
 
   onAdd(map: mapboxgl.Map) {
     this.map = map;
