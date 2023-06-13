@@ -22,7 +22,6 @@ export class SocketService {
             polling: {
               extraHeaders: {
                 Authorization: `Bearer ${this.auth.getToken()}`,
-                Rol: this.rol,
               },
             },
           },

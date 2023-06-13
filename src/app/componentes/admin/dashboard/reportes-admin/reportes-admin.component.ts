@@ -5,6 +5,7 @@ import {
 import { finalize } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reportes-admin',
@@ -97,8 +98,48 @@ export class ReportesAdminComponent {
 
   // reportes:
   aceptarReporte(id: string) {
-    this.adminService.aceptarReporte(id).subscribe((res: any) => {
+    this.loader.showLoader();
+    this.adminService.aceptarReporte(id)
+    .pipe(finalize(() => this.loader.hideLoader()))
+    .subscribe((res: any) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Reporte aceptado',
+        text: res.msg,
+        confirmButtonText: 'Aceptar'
+      });
+
       this.cambiarPagina();
+    }, err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: err.error.msg,
+        confirmButtonText: 'Aceptar'
+      });
+    });
+  }
+
+  rechazarReporte(id: string) {
+    this.loader.showLoader();
+    this.adminService.rechazarReporte(id)
+    .pipe(finalize(() => this.loader.hideLoader()))
+    .subscribe((res: any) => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Reporte rechazado',
+        text: res.msg,
+        confirmButtonText: 'Aceptar'
+      });
+
+      this.cambiarPagina();
+    }, err => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: err.error.msg,
+        confirmButtonText: 'Aceptar'
+      });
     });
   }
 }

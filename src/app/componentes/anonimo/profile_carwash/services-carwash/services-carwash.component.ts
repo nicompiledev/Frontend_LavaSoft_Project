@@ -65,6 +65,6 @@ export class ServicesCarwashComponent implements OnInit {
       this.serviciosMostrados = this.servicios.filter(
         (servicio) => servicio.tipoVehiculo === vehicle
       );
-
+      this.serviciosSeleccionados = [];
     }
 }

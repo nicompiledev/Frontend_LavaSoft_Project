@@ -26,7 +26,7 @@ export class AuthService {
     if (this.checkToken()) {
       return localStorage.getItem('token');
     }
-    return 'No hay token';
+    return null;
   }
 
   private getRol() {
@@ -35,7 +35,7 @@ export class AuthService {
       const decoded: any = jwt_decode(token);
       return decoded.rol;
     }
-    return 'No hay rol';
+    return null;
   }
 
   private checkHasPaid(): boolean {

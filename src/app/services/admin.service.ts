@@ -84,5 +84,7 @@ export class AdminService {
     return this.http.post(`${this.url}reportes/aceptar`, { id_reporte }, this.httpOptions);
   }
 
-
+  rechazarReporte(id_reporte: string) {
+    return this.http.post(`${this.url}reportes/rechazar`, { id_reporte }, this.httpOptions);
+  }
 }

@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div *ngIf="reportes.length > 0">
+    <div *ngIf="reportes.length > 0; else noReportes">
       <ng-container *ngFor="let reporte of reportes">
         <details class="reporte" data-tipo="abuso">
           <summary>
@@ -76,17 +76,24 @@
               </tr>
             </table>
             <div class="reporte-botones">
-              <button class="reporte-boton reporte-boton-aceptar" (click)="aceptarReporte(reporte.id_reporte)">
+              <button class="reporte-boton reporte-boton-aceptar" (click)="aceptarReporte(reporte._id)">
                 Aceptar reporte
               </button>
-              <button class="reporte-boton reporte-boton-cancelar">
-                Cancelar reporte
+              <button class="reporte-boton reporte-boton-cancelar" (click)="rechazarReporte(reporte._id)">
+                Rechazar reporte
               </button>
             </div>
           </div>
         </details>
       </ng-container>
     </div>
+
+    <ng-template #noReportes>
+      <div class="noReportes">
+        <h3>No hay reportes pendientes</h3>
+      </div>
+    </ng-template>
+
     <div class="pagination-buttons">
       <ul class="pagination" *ngIf="totalPages >= 1">
         <li class="page-item" [class.disabled]="currentPage === 1">

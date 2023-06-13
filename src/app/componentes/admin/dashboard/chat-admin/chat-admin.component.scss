@@ -192,14 +192,20 @@
   flex-direction: column;
   border: 1px rgba(128, 128, 128, 0.26) solid;
 }
+
+.chat-list-item span {
+  overflow: hidden;
+}
+
 .chat-list-item.active {
+  color: white !important;
   background-color: var(--box-color);
   border: none;
 }
 .chat-list-item.active span {
-  color: var(--text-dark);
-  font-weight: 700;
+  color: white !important;
 }
+
 .chat-list-item img {
   width: 40px;
   height: 40px;
@@ -208,8 +214,15 @@
   margin-right: 8px;
 }
 .chat-list-item:hover {
+  color: white !important;
   background-color: var(--box-color);
 }
+
+.chat-list-item:hover span {
+  color: white !important;
+}
+
+
 .chat-list-name {
   display: inline-block;
   font-size: 14px;
@@ -218,6 +231,11 @@
   color: var(--text-dark);
   padding-block: 10px;
 }
+
+.chat-list-name:hover{
+  color: white !important;
+}
+
 .chat-list-header {
   font-weight: 700;
   line-height: 24px;
@@ -365,7 +383,7 @@
   font-size: 12px;
   line-height: 16px;
   width: auto;
-  color: var(--text-dark);
+  color: white;
 }
 .message-box-wrapper {
   margin: 0 12px;
@@ -477,6 +495,8 @@
   align-items: center;
   color: white;
   font-weight: 700;
+  overflow: hidden;
+  width: 500px;
 }
 
 .circulo{
@@ -491,7 +511,7 @@
 }
 
 .cicle-active{
-  background-color: var(--info-box-color-1);
+  background-color: #009400;
   box-shadow: 0 0 0 3px rgba(71, 126, 255, 0.2);
 }
 
