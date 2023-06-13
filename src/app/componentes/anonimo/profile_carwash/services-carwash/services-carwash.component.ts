@@ -11,8 +11,8 @@ import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve
 export class ServicesCarwashComponent implements OnInit {
 
   servicios: any[] = [];
+  serviciosMostrados: any[] = [];
   login = false;
-  selectedVehicles: string[] = [];
   topPage:string = '0%'
 
   serviciosSeleccionados: any[] = [];
@@ -26,11 +26,13 @@ export class ServicesCarwashComponent implements OnInit {
   ngOnInit(): void {
     this.input.$servicios.subscribe((servicios) => {
       this.servicios = servicios;
+      this.onCheckboxChange('Carro');
     });
 
     this.auth.isLogin.subscribe((login) => {
       this.login = login;
     });
+
 
   }
 
@@ -59,18 +61,10 @@ export class ServicesCarwashComponent implements OnInit {
   }
 
     // Seleccionar vehiculos
-    onCheckboxChange(event: any, vehicle: string) {
-      const checked = event.target.checked;
-      if (checked) {
-        this.selectedVehicles.push(vehicle);
-      } else {
-        const index = this.selectedVehicles.indexOf(vehicle);
-        if (index > -1) {
-          this.selectedVehicles.splice(index, 1);
-        }
-      }
-    }
+    onCheckboxChange(vehicle: string) {
+      this.serviciosMostrados = this.servicios.filter(
+        (servicio) => servicio.tipoVehiculo === vehicle
+      );
 
-  
-    
+    }
 }

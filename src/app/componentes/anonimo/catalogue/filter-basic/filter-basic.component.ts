@@ -65,6 +65,7 @@ export class FilterBasicComponent {
       departamentoEnviar = "";
     }
     this.filterService.setDepartamentoFilter(departamentoEnviar);
+    this.filterService.setCiudadFilter("");
     this.filtrarCiudades();
   }
 

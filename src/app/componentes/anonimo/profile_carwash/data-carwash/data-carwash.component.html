@@ -28,15 +28,18 @@
         <div class="col col-5">
           <span class="title">Vehiculos que manejamos</span>
           <div class="types d-flex justify-content-around">
-            <i class="fa-solid fa-motorcycle"></i>
-            <i>-</i>
-            <i class="fa-solid fa-car-side"></i>
-            <i>-</i>
-            <i class="fa-solid fa-truck-pickup"></i>
-            <i>-</i>
-            <i class="fa-solid fa-truck"></i>
-            <i>-</i>
-            <i class="fa-solid fa-van-shuttle"></i>
+            <ng-container *ngFor="let vehiculo of tipoVehiculos">
+              <ng-container [ngSwitch]="vehiculo">
+                <i class="fa-solid fa-motorcycle" *ngSwitchCase="'Moto'"></i>
+                <i class="fa-solid fa-car-side" *ngSwitchCase="'Carro'"></i>
+                <i class="fa-solid fa-truck-pickup" *ngSwitchCase="'Camioneta'"></i>
+                <i class="fa-solid fa-truck" *ngSwitchCase="'Camion'"></i>
+                <i class="fa-solid fa-van-shuttle" *ngSwitchCase="'Bus'"></i>
+              </ng-container>
+              <ng-container *ngIf="!(tipoVehiculos[tipoVehiculos.length - 1] == vehiculo)">
+                <span>-</span>
+                </ng-container>
+            </ng-container>
           </div>
         </div>
 

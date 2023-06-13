@@ -1,10 +1,10 @@
 @import "../../../../../../src/app/app.component.scss";
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
-.contenedor{
+.contenedor {
   display: flex;
   flex-direction: column;
   width: 220px;
@@ -12,17 +12,16 @@
   padding-right: 10px;
 }
 
-.tipoVehiculos{
+.tipoVehiculos {
   width: 90%;
 }
 
-.row{
- 
-  span{
-      padding-top: 10px;
-      width: 180px;
-      height: 18px;
-      text-align: start;
+.row {
+  span {
+    padding-top: 10px;
+    width: 180px;
+    height: 18px;
+    text-align: start;
   }
 
   .container_ {
@@ -30,20 +29,20 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .radio-tile-group {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
   .radio-tile-group .input_container {
     position: relative;
     height: 40px;
     width: 40px;
     margin: 0px 10px 10px 10px;
   }
-  
+
   .radio-tile-group .input_container .radio-button {
     opacity: 0;
     position: absolute;
@@ -54,7 +53,7 @@
     margin: 0;
     cursor: pointer;
   }
-  
+
   .radio-tile-group .input_container .radio-tile {
     display: flex;
     flex-direction: column;
@@ -67,14 +66,13 @@
     padding: 1rem;
     transition: transform 300ms ease;
   }
-  
 
   .radio-tile-group .input_container .icon i {
     margin: 0;
-    font-weight:900;
+    font-weight: 900;
     color: $gris-claro;
   }
-  
+
   .radio-tile-group .input_container .radio-tile-label {
     text-align: center;
     font-size: 0.75rem;
@@ -84,155 +82,206 @@
     color: $gris-claro;
     top: 39px;
   }
-  
+
   .radio-tile-group .input_container .radio-button:checked + .radio-tile {
     background-color: $azul-oscuro;
     border: 2px solid $blanco;
     color: white;
-
   }
-  
-  
-  .radio-tile-group .input_container .radio-button:checked + .radio-tile .icon i {
+
+  .radio-tile-group
+    .input_container
+    .radio-button:checked
+    + .radio-tile
+    .icon
+    i {
     color: white;
   }
-  
- 
-  .radio-tile-group .input_container .radio-button:checked + .radio-tile .radio-tile-label {
+
+  .radio-tile-group
+    .input_container
+    .radio-button:checked
+    + .radio-tile
+    .radio-tile-label {
     color: $negro_claro;
   }
-  
-  
 }
-.line{
+.line {
   width: 200px;
   height: 0.5px;
-  background:$gris-claro;
+  background: $gris-claro;
   margin: 15px 0px 15px 0px;
 }
-h2{
+h2 {
   margin-block-end: 20px;
   font-size: 30px;
 }
-.price{
-  display: flex;
-  flex-direction: column;
 
-
-
-      div{
-          margin-block: 5px;
-          display: flex;
-          align-items: center;
-          .radio{
-              width: 20px;
-              height: 20px;
-              margin-right:10px;
-
-              &:checked{
-                  appearance: none;
-                  border: solid 2px $azul-oscuro !important;
-                  border-radius: 10px;
-                  background: radial-gradient($azul-oscuro, $blanco);
-              }
-          }
-      }
-}
-
-.calification{
+.calification {
   margin-top: 10px;
   width: 170px;
   display: flex;
   flex-direction: column;
   gap: 10px;
- 
+
   /* The switch - the box around the slider */
-.switch {
-  --sizeVar: 1.3em;
-  --color-primary: #dedede;
-  --color-secondary: #aaaaaa;
-  --color-primary-on: #1d9bf0;
-  --color-secondary-on: #ffffff;
- 
-  width: calc(var(--sizeVar) * 2);
-  height: var(--sizeVar);
-  background-color: var(--color-primary);
-  border-radius: var(--sizeVar);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
-  cursor: pointer;
+  .switch {
+    --sizeVar: 1.3em;
+    --color-primary: #dedede;
+    --color-secondary: #aaaaaa;
+    --color-primary-on: #1d9bf0;
+    --color-secondary-on: #ffffff;
 
-  transition: background-color 150ms ease-out;
-}
+    width: calc(var(--sizeVar) * 2);
+    height: var(--sizeVar);
+    background-color: var(--color-primary);
+    border-radius: var(--sizeVar);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset;
+    cursor: pointer;
 
-.switch::after {
-  content: "";
-  position: absolute;
-  margin: calc(var(--sizeVar) / 10);
-  height: calc(var(--sizeVar) - calc(var(--sizeVar) / 5));
-  width: calc(var(--sizeVar) - calc(var(--sizeVar) / 5));
-  background-color: var(--color-secondary);
-  border-radius: var(--sizeVar);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset, 0 2px 4px rgba(0, 0, 0, 0.3);
-  transition: transform 150ms ease-out, background-color 150ms ease-out;
-}
-
-.switch:has(input:checked)::after {
-  transform: translateX(var(--sizeVar));
-  background-color: var(--color-secondary-on);
-}
-
-.switch:has(input:checked) {
-  background-color: var(--color-primary-on);
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
- 
+    transition: background-color 150ms ease-out;
   }
 
+  .switch::after {
+    content: "";
+    position: absolute;
+    margin: calc(var(--sizeVar) / 10);
+    height: calc(var(--sizeVar) - calc(var(--sizeVar) / 5));
+    width: calc(var(--sizeVar) - calc(var(--sizeVar) / 5));
+    background-color: var(--color-secondary);
+    border-radius: var(--sizeVar);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05) inset,
+      0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 150ms ease-out, background-color 150ms ease-out;
+  }
 
+  .switch:has(input:checked)::after {
+    transform: translateX(var(--sizeVar));
+    background-color: var(--color-secondary-on);
+  }
 
+  .switch:has(input:checked) {
+    background-color: var(--color-primary-on);
+  }
 
-strong{
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 0;
+
+  .loaderContainer {
+    background-color: rgba(0, 0, 0, 0.5);
+    // CENTRAR LOADER
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // TAMAÑO DEL LOADER
+    height: 100%;
+    width: 100%;
+    // POSICION FIJA
+    position: absolute;
+    top: 0;
+    left: 0;
+    // Z-INDEX PARA QUE ESTE POR ENCIMA DE TODO
+    z-index: 9999;
+
+   .loader {
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 78px;
+    height: 78px;
+    color: #fff;
+  }
+    .loader:before,
+    .loader:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      transform: rotateX(70deg);
+      animation: 1s spin linear infinite;
+    }
+    .loader:after {
+      color: $azul-oscuro;
+      transform: rotateY(70deg);
+      animation-delay: .4s;
+    }
+
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotateccw {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
+  @keyframes spin {
+    0%,
+    100% {
+      box-shadow: .5em 0px 0 0px currentcolor;
+    }
+    12% {
+      box-shadow: .5em .5em 0 0 currentcolor;
+    }
+    25% {
+      box-shadow: 0 .5em 0 0px currentcolor;
+    }
+    37% {
+      box-shadow: -.5em .5em 0 0 currentcolor;
+    }
+    50% {
+      box-shadow: -.5em 0 0 0 currentcolor;
+    }
+    62% {
+      box-shadow: -.5em -.5em 0 0 currentcolor;
+    }
+    75% {
+      box-shadow: 0px -.5em 0 0 currentcolor;
+    }
+    87% {
+      box-shadow: .5em -.5em 0 0 currentcolor;
+    }
+  }
+  }
+}
+
+strong {
   margin-block: 10px;
 }
 
-/* 
-  onAdd(map: mapboxgl.Map) {
-    this.map = map;
-    this.container = document.createElement('div');
-    this.container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
-
-    this.button = document.createElement('button');
-    this.button.className = 'mapboxgl-ctrl-icon mapboxgl-ctrl-buscar-lavaderos';
-    this.button.type = 'button';
-    this.button['aria-label'] = 'Buscar lavaderos';
-    this.button.onclick = () => {
-      console.log('Buscar lavaderos');
-    };
-    this.container.appendChild(this.button);
-
-    return this.container;
-  }
-
-  onRemove() {
-    this.container.parentNode?.removeChild(this.container);
-    this.map = undefined!;
-  } */
-
-  .mapboxgl-ctrl-buscar-lavaderos {
-    background-image: url(https://i.imgur.com/MK4NUzI.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
+.mapboxgl-ctrl-buscar-lavaderos {
+  background-image: url(https://i.imgur.com/MK4NUzI.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}

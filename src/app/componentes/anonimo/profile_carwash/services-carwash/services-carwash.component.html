@@ -14,7 +14,7 @@
           <div class="container_">
             <div class="radio-tile-group">
               <label for="motorcycle" class="input_container">
-                <input id="motorcycle" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange($event, 'Moto')"> 
+                <input id="motorcycle" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange('Moto')"> 
                 <div class="radio-tile">
                   <div class="icon">
                     <i class="fa-solid fa-motorcycle"></i>
@@ -27,7 +27,7 @@
           <div class="container_">
             <div class="radio-tile-group">
               <label for="car" class="input_container">
-                <input id="car" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange($event, 'Carro')">
+                <input id="car" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange('Carro')"  checked>
                 <div class="radio-tile">
                   <div class="icon">
                     <i class="fa-solid fa-car-side"></i>
@@ -40,7 +40,7 @@
           <div class="container_">
             <div class="radio-tile-group">
               <label for="truck_small" class="input_container">
-                <input id="truck_small" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange($event, 'Camioneta')">
+                <input id="truck_small" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange('Camioneta')">
                 <div class="radio-tile">
                   <div class="icon">
                     <i class="fa-solid fa-truck-pickup"></i>
@@ -53,7 +53,7 @@
           <div class="container_">
             <div class="radio-tile-group">
               <label for="truck_big" class="input_container">
-                <input id="truck_big" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange($event, 'Camion')">
+                <input id="truck_big" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange('Camion')">
                 <div class="radio-tile">
                   <div class="icon">
                     <i class="fa-solid fa-truck"></i>
@@ -66,7 +66,7 @@
           <div class="container_">
             <div class="radio-tile-group">
               <label for="van" class="input_container">
-                <input id="van" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange($event, 'Bus')">
+                <input id="van" class="radio-button" type="radio" name="radio" (change)="onCheckboxChange('Bus')">
                 <div class="radio-tile">
                   <div class="icon">
                     <i class="fa-solid fa-van-shuttle"></i>
@@ -85,6 +85,8 @@
   </div>
   <!-- servicios-->
 
+  <ng-container *ngIf="serviciosMostrados.length > 0 ; else noServicios">
+  
   <div class="services_container">
 
     <button class="mb-2 w-25" (click)="abrirModal()">
@@ -94,11 +96,19 @@
     </svg>
       <i class="fa-solid fa-calendar-day"></i>
   </button>
-<ng-container *ngFor=" let servicio of servicios">
+<ng-container *ngFor=" let servicio of serviciosMostrados">
   <details>
     <summary> 
       <!-- nombre del servidor -->
-      <h5 class="mb-0 mt-1"><i class="fa-solid fa-car me-2"></i>{{ servicio.nombre }}</h5>
+      <h5 class="mb-0 mt-1">  <ng-container [ngSwitch]="servicio.tipoVehiculo">
+        <i class="fa-solid fa-car me-2" *ngSwitchCase="'Carro'"></i>
+        <i class="fa-solid fa-motorcycle me-2" *ngSwitchCase="'Moto'"></i>
+        <i class="fa-solid fa-truck-pickup me-2" *ngSwitchCase="'Camioneta'"></i>
+        <i class="fa-solid fa-truck me-2" *ngSwitchCase="'Camion'"></i>
+        <i class="fa-solid fa-van-shuttle me-2" *ngSwitchCase="'Bus'"></i>
+      </ng-container>
+
+      {{ servicio.nombre }}</h5>
       <!-- precio --> 
       <span><i class="fa-solid fa-dollar-sign me-1"></i>{{servicio.costo}}</span>
       <!-- hora --> 
@@ -120,6 +130,13 @@
 
     
   </div>
+</ng-container>
+
+<ng-template #noServicios>
+  <div class="no_services">
+    <h4>No hay servicios disponibles</h4>
+  </div>
+</ng-template>
 
 <!--   <div class="services-contenedor">
     <div class="service" *ngFor="let servicio of servicios">
