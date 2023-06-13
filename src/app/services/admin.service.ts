@@ -55,7 +55,7 @@ export class AdminService {
   }
 
   activarLavadero(id_lavadero: string) {
-    return this.http.post(`${this.url}lavaderos/activar`, { id_lavadero });
+    return this.http.post(`${this.url}lavaderos/activar`, { id_lavadero }, this.httpOptions);
   }
 
   noActivarLavadero(id_lavadero: string) {

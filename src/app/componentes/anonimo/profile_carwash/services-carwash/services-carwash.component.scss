@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-block: 1rem;
+  padding-block: 3rem;
   gap: 20px;
   .filter-services {
     width: 800px;
@@ -92,7 +92,7 @@
     }
     
     .radio-tile-group .input_container .radio-button:checked + .radio-tile {
-      background-color: $azul-claro;
+      background-color: $azul-oscuro;
       border: 2px solid $blanco;
       color: white;
   

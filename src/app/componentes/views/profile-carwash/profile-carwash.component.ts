@@ -49,6 +49,7 @@ export class ProfileCarwashComponent implements OnInit {
       this.input.setImagenes(res.imagenes);
       this.input.setServicios(res.servicios);
       this.input.setInformacion(res.nombreLavadero, res.ciudad, res.direccion, res.hora_apertura, res.hora_cierre, res.tipoVehiculos)
+      this.input.setInformacionBasica(res.descripcion, res.siNoLoRecogen)
       console.log(res);
       
     });

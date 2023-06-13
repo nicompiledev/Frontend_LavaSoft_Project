@@ -6,7 +6,6 @@
     </div>
     <div class="content" [ngStyle]="{ 'margin-left': margin }">
       <div class="page">
-        
         <div class="input-container position-relative w-75"  >
           <i class="fa-solid fa-car"></i>
           <select class="inputs">
@@ -17,10 +16,25 @@
           <button class="btn btn-success">+ nuevo</button>
         </div>
         <div class="description">
-          <strong>Description servicio</strong>
-          <p>
-            {{idServicio.detalle}}
-          </p>
+          <h4>Servicios a reservar</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Duración</th>
+                <th>Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let service of ServiciosSeleccionados">
+                <td>{{ service.nombre }}</td>
+                <!-- Duracion son minutos, deseo verlos algo asi 00:30min -->
+                <td>{{ service.duracion }}</td>
+                <td>{{ service.costo | currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>TOTAL: {{ sumaTotal() | currency }}</p>
         </div>
       </div>
       <div class="page p2">
@@ -69,7 +83,6 @@
       </div>
     </div>
     <div class="container-bottom">
-      <div><strong>Total:</strong><span>${{idServicio.costo}}</span></div>
       <div class="buttons">
         <input
           *ngIf="page2 == true"

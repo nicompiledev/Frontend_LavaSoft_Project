@@ -128,7 +128,7 @@
           .container-time-name {
             display: flex;
             justify-content: space-around;
-            height: 200px;
+            height: 250px;
             overflow-y: auto;
             .name {
               width: 100px;
@@ -222,9 +222,35 @@
           padding: 5px;
           border-radius: 5px;
           width: 100%;
-          color: $gris-claro;
-          grid-column: 1 / -1;
-          grid-row: 2 / 4;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+
+          table {
+            width: 95%;
+            border-collapse: collapse;
+          }
+
+          th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+          }
+
+          th {
+            background-color: #f2f2f2;
+          }
+
+          p {
+            margin:0;
+            font-weight: bold;
+          }
+          
+          h4 {
+            margin:0;
+            font-weight: bold;
+          }
         }
       }
     }

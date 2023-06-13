@@ -32,4 +32,8 @@ export class LavaderoService {
   loginLavadero(correo_electronico: string, contrasena: string) {
     return this.http.post(`${this.url}login`,{correo_electronico, contrasena}, this.httpOptions);
   }
+
+  crearSesionPago(item: string){
+    return this.http.post(`${this.url}irapagar`, {item}, this.httpOptions);
+  }
 }

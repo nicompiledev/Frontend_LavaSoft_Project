@@ -15,6 +15,7 @@ export class ServicesCarwashComponent implements OnInit {
   selectedVehicles: string[] = [];
   topPage:string = '0%'
 
+  serviciosSeleccionados: any[] = [];
 
   constructor(
     private modal_service: ModalReserveService,
@@ -33,7 +34,7 @@ export class ServicesCarwashComponent implements OnInit {
 
   }
 
-  openModal(stateModal: boolean, focus: string, servicio: string ) {
+  openModal(stateModal: boolean, focus: string, servicio: any) {
     if(this.login){
     this.modal_service.estadomodal(stateModal, focus, servicio);
     }else{
@@ -41,7 +42,21 @@ export class ServicesCarwashComponent implements OnInit {
     }
   }
 
+  abrirModal(){
+    this.openModal(true, 'reserve', this.serviciosSeleccionados)
+  }
 
+  servicioSeleccionado($event: any, servicio: any){
+    const checked = $event.target.checked;
+    if (checked) {
+      this.serviciosSeleccionados.push(servicio);
+    } else {
+      const index = this.serviciosSeleccionados.indexOf(servicio);
+      if (index > -1) {
+        this.serviciosSeleccionados.splice(index, 1);
+      }
+    }
+  }
 
     // Seleccionar vehiculos
     onCheckboxChange(event: any, vehicle: string) {

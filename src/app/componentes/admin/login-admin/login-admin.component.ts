@@ -44,7 +44,7 @@ export class LoginAdminComponent {
       )
       .subscribe(
         (response: any) => {
-          this.auth.login(response.token, response.rol);
+          this.auth.login(response.token);
           this.router.navigate(['/inicio']);
         },
         (error) => {

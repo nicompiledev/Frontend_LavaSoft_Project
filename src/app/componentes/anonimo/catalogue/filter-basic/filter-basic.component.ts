@@ -28,7 +28,6 @@ export class FilterBasicComponent {
       this.depJson = object;
       this.departamentos = this.obtenerDepartamentos();
 
-
       const {departamento, ciudad, sector} = this.filterService.getDatosFiltro();
 
       if(departamento != null && departamento != ""){

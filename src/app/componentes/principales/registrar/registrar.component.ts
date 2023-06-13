@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuarios.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { finalize } from 'rxjs/operators';
@@ -17,7 +16,6 @@ export class RegistrarComponent implements OnInit {
 
   constructor(
     private servicio: UsuarioService,
-    private router: Router,
     private modal_service: ModalReserveService,
     private loader: LoaderService
   ) {

@@ -153,9 +153,7 @@
   color: #cc0000; /* Rojo oscuro */
   padding: 10px;
   border: 1px solid #cc0000;
-  border-radius: 5px;
   text-align: center;
-  margin-bottom: 10px;
 }
 
 .banner a {
@@ -174,10 +172,9 @@
   color: #1E90FF;
 }
 
-
-
-
-
+.rellenoBanner{
+  height: 62px;
+}
 
 .container.all {
   position: relative;

@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
     )
     .subscribe(
       (response: any) => {
-        this.auth.login(response.token, response.rol);
+        this.auth.login(response.token);
         Swal.fire({
           icon: 'success',
           showConfirmButton: false,
@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       (response: any) => {
         console.log(response);
-        this.auth.login(response.token, response.rol);
+        this.auth.login(response.token);
         Swal.fire({
           icon: 'success',
           showConfirmButton: false,

@@ -7,11 +7,13 @@
         <div class="data-carwash">
             <div class="data">
                 <h2>{{lavadero.nombreLavadero}}</h2>
-                <div id="stars">★★★★★</div>
             </div>
+            <div id="stars">★★★★★</div>
             <div class="data">
-                <div class="ubication-contendor"><i class="fi fi-sr-marker icono-ubication"></i> <span id="ubication">{{lavadero.ciudad}}</span></div>
+
+                <div class="ubication-contendor"><i class="fi fi-sr-marker icono-ubication"></i> <span id="ubication">{{lavadero.departamento}}, {{lavadero.ciudad}}, {{lavadero.sector}}</span></div>
                 <div class="contendor-iconos">
+
                     <p>Vehiculos que manejamos:</p>
                     <i class="fi fi-ss-motorcycle icono" *ngIf="lavadero.tipoVehiculos.includes('Moto')"></i>
                     <i class="fi fi-br-car icono" *ngIf="lavadero.tipoVehiculos.includes('Carro')"></i>

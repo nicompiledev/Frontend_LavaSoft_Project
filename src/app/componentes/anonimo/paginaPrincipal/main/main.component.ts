@@ -24,7 +24,6 @@ export class MainComponent {
   ) {
     this.departamentosService.getDepartamento().subscribe((object: any) => {
       this.depJson = object;
-      console.log(this.depJson);
       this.departamentos = this.obtenerDepartamentos();
     });
   }

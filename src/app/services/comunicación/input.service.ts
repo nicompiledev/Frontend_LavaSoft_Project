@@ -22,6 +22,10 @@ export class InputService {
   private informacion = new BehaviorSubject<any>('');
   $informacion = this.informacion.asObservable();
 
+  // Compoente Informacion
+  private informacionBasica = new BehaviorSubject<any>('');
+  $informacionBasica = this.informacionBasica.asObservable();
+
   constructor() { }
 
   setImagenes(imagenes: any[]){
@@ -44,5 +48,9 @@ export class InputService {
 
   setInformacion(nombreLavadero: string, ciudad: string, direccion: string, hora_apertura: string, hora_cierre: string, tipoVehiculos: string){
       this.informacion.next({nombreLavadero, ciudad, direccion, hora_apertura, hora_cierre, tipoVehiculos})
+  }
+
+  setInformacionBasica(descripcion: string, siNoLoRecogen: string){
+    this.informacionBasica.next({descripcion, siNoLoRecogen})
   }
 }

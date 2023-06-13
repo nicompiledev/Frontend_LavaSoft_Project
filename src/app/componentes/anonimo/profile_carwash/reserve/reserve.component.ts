@@ -29,7 +29,7 @@ export class ReserveComponent implements OnInit {
   fechaSeleccionada: any;
 
   // ID servicio
-  idServicio: any;
+  ServiciosSeleccionados: any;
 
   //modal
 active:boolean = false;
@@ -42,14 +42,13 @@ active:boolean = false;
 
                 this.loader.showLoader();
 
-                //modal 
+                //modal
                 this.modal_service.$modal_vehicle.subscribe((valor)=>{
                   this.active = valor;
-                  console.log('valor actual modal ' + this.active)
                 });
 
-                this.comunicacion.$servicioID.subscribe((servicio: any) => {
-                  this.idServicio = servicio;
+                this.comunicacion.$servicioID.subscribe((servicios: any) => {
+                  this.ServiciosSeleccionados = servicios;
                   this.loader.hideLoader();
                 })
               }
@@ -113,8 +112,6 @@ active:boolean = false;
   openModal(stateModal: Boolean , focus:string ){
     this.modal_service.estadomodal(stateModal , focus)
     console.log(stateModal)
-
-    
   }
 
   closeModal(stateModal:boolean , focus:string){
@@ -128,21 +125,33 @@ active:boolean = false;
   }
 
   actualizarHorario(fecha: string){
-    console.log(fecha);
+    let id_servicios = this.ServiciosSeleccionados.map(servicio => servicio._id);
     let id_lavadero = this.route.snapshot.paramMap.get('id');
-    let object = {id_lavadero, fecha, id_servicio: this.idServicio._id}
+    let object = {id_lavadero, fecha, id_servicios};
     this.horarioService.listarHorario(object);
   }
 
   reservar(){
+    if(this.horaSeleccionada == ''){
+      return;
+    }
 
+    let id_servicios = this.ServiciosSeleccionados.map(servicio => servicio._id);
     let parametro = this.route.snapshot.paramMap.get('id');
     let object = {
       id_lavadero : parametro,
-      id_servicio: this.idServicio._id,
+      id_servicios : id_servicios,
       fecha : this.fechaSeleccionada,
       hora_agendada: this.horaSeleccionada,
     }
     this.horarioService.reservar(object);
+  }
+
+  sumaTotal(){
+    let total = 0;
+    this.ServiciosSeleccionados.forEach(servicio => {
+      total += servicio.costo;
+    });
+    return total;
   }
 }
