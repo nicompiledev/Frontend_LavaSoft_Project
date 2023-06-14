@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -27,9 +28,24 @@ export class TableComponent implements OnInit {
   dates: Date[] = [];
 
   selectedDate: Date;
+  
+   // modal
+   active:boolean;
 
-  constructor(private lavaderoService: LavaderoService) {
+  constructor(private modalService:ModalReserveService, private lavaderoService: LavaderoService){
     this.selectedDate = this.currentDate;
+    this.modalService.$modal_cancel.subscribe((valor)=>{
+      this.active = valor;
+    })
+  }
+
+
+  openModal(){
+    this.modalService.estadomodal(true , 'cancel_reserve')
+  }
+
+  selectDate(date: Date) {
+    this.selectedDate = date;
   }
 
   ngOnInit() {

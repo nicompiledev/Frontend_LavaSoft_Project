@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 @Component({
   selector: 'app-cancelar-reservas',
   templateUrl: './cancelar-reservas.component.html',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class CancelarReservasComponent {
 
+  constructor(private modalSerrvice: ModalReserveService){}
+  
+  
+  closeModal(){
+
+    this.modalSerrvice.estadomodal( false , 'cancel_reserve')
+  }
 }

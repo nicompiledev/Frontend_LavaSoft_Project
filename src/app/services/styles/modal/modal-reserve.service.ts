@@ -1,5 +1,4 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { log } from 'console';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -10,6 +9,7 @@ export class ModalReserveService {
   $modal_reserve = new BehaviorSubject<any>(false);
   $modal = new BehaviorSubject<number>(0);
   $modal_vehicle = new BehaviorSubject<boolean>(false)
+  $modal_cancel = new BehaviorSubject<boolean>(false)
 
   constructor() {}
 
@@ -23,7 +23,7 @@ export class ModalReserveService {
         this.$modal_reserve.next({ estado: modal, servicio: servicio });
         break;
       case 'register_vehicle':
-        this.$modal_reserve.next(modal);
+        this.$modal_vehicle.next(modal);
         break;
 
       case 'reports':
@@ -43,7 +43,11 @@ export class ModalReserveService {
         this.$modal_vehicle.next(modal);
         console.log("modal vehicle")
         break;
-      
+
+      case 'cancel_reserve':
+        this.$modal_cancel.next(modal);
+        break;
+        
       default:
         break;
     }
