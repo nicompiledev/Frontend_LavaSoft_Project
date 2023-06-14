@@ -6,6 +6,7 @@ import { AdminService } from 'src/app/services/admin.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PeticionLavaderoModalService } from 'src/app/services/comunicación/peticion-lavadero-modal.service';
+import { LavaderosNoActivosService } from 'src/app/services/admin/lavaderosNoActivos/lavaderosNoActivos';
 
 export interface LavaderoData {
   id: number;
@@ -28,17 +29,21 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   lavaderos: any[] = [];
-  constructor(private adminService: AdminService , private modal: ModalReserveService, private peticionLavaderoModal: PeticionLavaderoModalService) {
-
-  }
-
-  ngOnInit() {
-    this.adminService.getLavaderosNoConfirmados().subscribe((response: any) => {
+  constructor(private modal: ModalReserveService, private peticionLavaderoModal: PeticionLavaderoModalService, private pendientes: LavaderosNoActivosService) {
+    pendientes.$lavaderosNoActivos.subscribe((response: any) => {
       this.lavaderos = response;
       this.dataSource = new MatTableDataSource(this.lavaderos);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  ngOnInit() {
+    this.traerLavaderos();
+  }
+
+  traerLavaderos() {
+    this.pendientes.lavaderosNoActivos();
   }
 
   ngAfterViewInit() {
@@ -59,8 +64,6 @@ export class LavaderosPendientesComponent implements AfterViewInit, OnInit {
 
   openDialog(stateModal:boolean , focus:string, row: any) {
     this.modal.estadomodal(stateModal , focus);
-
     this.peticionLavaderoModal.setLavadero(row);
-
   }
 }

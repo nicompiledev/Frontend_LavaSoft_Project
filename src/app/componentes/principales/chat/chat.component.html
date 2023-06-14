@@ -8,25 +8,12 @@
 >
   <div class="header-chat" (click)="toggleChat()">
     <div class="header-chat-name">Chat de Soporte</div>
-    <!-- Boton cerrar -->
-    <div class="header-chat-close">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        color="#fff"
-        width="24"
-        height="24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="feather feather-x-circle"
-        viewBox="0 0 24 24"
-      >
-        <defs></defs>
-        <circle cx="12" cy="12" r="10"></circle>
-        <path d="M15 9l-6 6M9 9l6 6"></path>
-      </svg>
+    <!-- icono fontawesome -->
+    <div class="header-chat-icon">
+      <i
+        class="fas fa-comment-alt"
+        [ngStyle]="{ color: isChatVisible ? '#fff' : '#1E90FF' }"
+      ></i>
     </div>
   </div>
   <div
@@ -61,7 +48,7 @@
       </div>
     </ng-container>
   </div>
-  <div
+  <div *ngIf="!bloquearChat"
     class="chat-input-wrapper"
     id="chatInputWrapper"
     [ngClass]="{ hidden: !isChatVisible }"
@@ -76,5 +63,10 @@
       />
     </div>
     <button class="chat-send-btn" (click)="sendMessage()">Enviar</button>
+  </div>
+  <!-- bootstrap, mensaje informativo -->
+  <div *ngIf="bloquearChat" class="alert alert-info" role="alert">
+    <span class="mb-0"
+    >El chat se encuentra bloqueado, por favor, espera a que un asesor te atienda.</span>
   </div>
 </div>

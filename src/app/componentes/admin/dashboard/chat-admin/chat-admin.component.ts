@@ -57,7 +57,7 @@ export class ChatAdminComponent {
   }
 
   public disconnectUser(): void {
-    this.chatAdmin.disconnectUser(this.room, 'asesor');
+    this.chatAdmin.disconnectAdmin(this.room);
   }
 
   public verChat(token: string) {

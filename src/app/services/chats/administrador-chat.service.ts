@@ -20,8 +20,6 @@ export class AdministradorChatService {
     });
 
     this.socket.io.on('actualizarRooms', (data) => {
-      console.log('actualizarRooms', data);
-      
       this.roomsListSubject.next(data);
     });
   }
@@ -38,8 +36,7 @@ export class AdministradorChatService {
     this.socket.io.emit('loadRooms');
   }
 
-  public disconnectUser(room: string, tipo: string): void {
-    console.log('usuario', tipo);
-    this.socket.io.emit('disconnectUser', { room, tipo });
+  public disconnectAdmin(room: string): void {
+    this.socket.io.emit('disconnectAdmin', { room });
   }
 }
