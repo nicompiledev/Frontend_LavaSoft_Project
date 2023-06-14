@@ -26,7 +26,7 @@ export class PerfilComponent implements OnInit {
     private modal: ModalReserveService,
     private loader: LoaderService
   ) {
-    this.modal.$modal_reserve.subscribe((valor) => {
+    this.modal.$modal_vehicle.subscribe((valor) => {
       this.active = valor;
     });
 

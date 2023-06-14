@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
   selector: 'app-principal',
