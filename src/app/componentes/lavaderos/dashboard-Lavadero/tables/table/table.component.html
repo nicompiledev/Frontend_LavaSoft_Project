@@ -3,7 +3,7 @@
     <label for="startDate">Seleccionar fecha: </label>
     <input id="startDate" class="form-control" type="date" [min]="getCurrentDate()" value="{{ getCurrentDate() }}" (change)="onDateChange($event)">
   </div>
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 shadow">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0 shadow">
     <!-- Note that these columns can be defined in any order.
     The actual rendered columns are set as a property on the row definition -->
     <!-- Position Column -->

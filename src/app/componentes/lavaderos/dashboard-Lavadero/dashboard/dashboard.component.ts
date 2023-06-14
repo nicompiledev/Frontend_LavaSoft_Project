@@ -9,7 +9,8 @@ import {
   faInbox,
   faArrowRightFromBracket,
   faBars,
-  faHome
+  faHome,
+  faReceipt
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
@@ -34,6 +35,7 @@ export class DashboardComponent {
   salir = faArrowRightFromBracket;
   menu = faBars;
   inicio = faHome;
+  membresia = faReceipt;
 
   cerrarSesion() {
     this.auth.logout();

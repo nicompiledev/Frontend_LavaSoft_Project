@@ -162,26 +162,56 @@
 </div>
 <!-- Ya pago entonces algo como actualmente tiene el paquete premium, etc -->
 <ng-template #paid>
-  <div class="container">
-    <h2 class="my-3">Información de tu paquete:</h2>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">Paquete Premium</h5>
-        <p class="card-text">Detalles del paquete:</p>
-        <ul class="list-group">
-          <li class="list-group-item">Perfil avanzado: Los administradores podrán personalizar su perfil con información adicional, imágenes y detalles destacados.</li>
-          <li class="list-group-item">Gestión de servicios: La posibilidad de configurar y administrar diferentes tipos de servicios de lavado, detallado, pulido, entre otros.</li>
-          <li class="list-group-item">Agenda completa: Acceso a una agenda completa que muestra todos los turnos disponibles, ocupados y reservados.</li>
-          <li class="list-group-item">Notificaciones personalizadas: Posibilidad de enviar notificaciones personalizadas a los usuarios, como promociones o descuentos.</li>
-          <li class="list-group-item">Soporte prioritario: Acceso a un servicio de soporte más rápido y prioritario para resolver cualquier problema o consulta.</li>
-          <li class="list-group-item">Estadísticas detalladas: Informes y análisis más profundos sobre las reservas, incluyendo gráficos y métricas más precisas.</li>
-        </ul>
+  <div class="container payment-info">
+    <h2 class="my-3">Información de la suscripción:</h2>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="card">
+          <h2>Paquete actual: Plan Premium <i class="bi bi-star-fill custom-star"></i></h2>
+          <p>Detalles del paquete:</p>
+          <ul>
+            <li>Perfil avanzado: Los administradores pueden personalizar su perfil con información adicional, imágenes y detalles destacados.</li>
+            <li>Gestión de servicios: Configura y administra diferentes tipos de servicios de lavado, detallado, pulido, entre otros.</li>
+            <li>Agenda completa: Accede a una agenda que muestra todos los turnos disponibles, ocupados y reservados.</li>
+            <li>Notificaciones personalizadas: Envía notificaciones personalizadas a los usuarios, como promociones o descuentos.</li>
+            <li>Soporte prioritario: Acceso a un servicio de soporte más rápido y prioritario para resolver problemas o consultas.</li>
+            <li>Estadísticas detalladas: Informes y análisis más profundos sobre las reservas, incluyendo gráficos y métricas precisas.</li>
+          </ul>
+          <p class="price mt-3">Precio: $49,900/mes</p>
+          <p class="package-status">Estado de la suscripción: Activa</p>
+          <div class="change-package">
+            <h3>¿Deseas cambiar de paquete?</h3>
+            <p>Selecciona uno de los paquetes disponibles:</p>
+      
+            <div class="row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card" style="width: 18rem;">
+                  <h4 style="height: 36px;">Plan Básico</h4>
+                  <p class="price">Precio: $29,900/mes</p>
+                  <div>NO DISPONIBLE</div>
+                  <button type="button" class="btn btn-check" disabled>Cambiar a este plan</button>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card" style="width: 18rem;">
+                  <h4>Plan Premium <i class="bi bi-star-fill custom-star"></i></h4>
+                  <p class="price">Precio: $49,900/mes</p>
+                  <button type="button" class="btn btn-primary" disabled>Seleccionado</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="cancel-package">
+            <h3>¿Deseas cancelar tu suscripción?</h3>
+            <p>Una vez cancelada, perderás los beneficios del paquete actual.</p>
+            <button type="button" class="btn btn-danger">Cancelar suscripción</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <!-- Información adicional del paquete, como estadísticas, etc. -->
       </div>
     </div>
-    <div class="text-center">
-      <p class="mb-3">¿Deseas realizar algún cambio en tu paquete?</p>
-      <a class="btn btn-primary">Cambiar paquete</a>
-      <a class="btn btn-danger">Cancelar paquete</a>
-    </div>
   </div>
-  </ng-template>
+</ng-template>

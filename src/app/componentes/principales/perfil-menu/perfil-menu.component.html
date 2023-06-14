@@ -14,6 +14,10 @@
           <span class="material-icons-outlined"> <i class="fa-solid fa-table-columns"></i> </span>
           <p>Dashboard</p>
         </li>
+        <li class="sub-item" *ngIf="(auth.rol | async) == 'lavadero'" routerLink="/dashboard-lavadero">
+          <span class="material-icons-outlined"> <i class="fa-solid fa-table-columns"></i> </span>
+          <p>Panel Administrativo</p>
+        </li>
         <li class="sub-item" (click)="logout()">
           <span class="material-icons-outlined"> <i class="fi fi-br-exit"></i> </span>
           <p>Cerrar Sesión</p>
