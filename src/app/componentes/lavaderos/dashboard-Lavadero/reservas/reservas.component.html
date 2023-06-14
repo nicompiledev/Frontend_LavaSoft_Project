@@ -8,7 +8,7 @@
       <a class="nav-link " aria-current="page" href="#">Active</a>
     </li> -->
     <li class="nav-item">
-      <a class="nav-link" routerLink="/dashboard-lavadero/reservas/pendientes" [routerLinkActive]="['active']">Pendientes</a>
+      <a class="nav-link" routerLink="/dashboard-lavadero/reservas" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Pendientes</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" routerLink="/dashboard-lavadero/reservas/en-progreso" [routerLinkActive]="['active']">En proceso</a>

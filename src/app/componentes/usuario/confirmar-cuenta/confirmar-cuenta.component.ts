@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UsuarioService } from '../../../services/usuarios.service';
+import { UsuarioService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-confirmar-cuenta',

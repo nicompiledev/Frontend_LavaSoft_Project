@@ -1,11 +1,12 @@
-import { query } from '@angular/animations';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { log } from 'console';
 import { InputService } from 'src/app/services/comunicación/input.service';
 import { HorarioService } from 'src/app/services/reserva/horario.service';
+import { SocketService } from 'src/app/services/socket/socket.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reserve',
@@ -38,7 +39,8 @@ active:boolean = false;
               private horarioService: HorarioService,
               private route: ActivatedRoute,
               private comunicacion: InputService,
-              private loader: LoaderService) {
+              private loader: LoaderService,
+              private socket: SocketService) {
 
                 this.loader.showLoader();
 
@@ -51,6 +53,19 @@ active:boolean = false;
                   this.ServiciosSeleccionados = servicios;
                   this.loader.hideLoader();
                 })
+
+                this.socket.io.on('reservaCreada', (mensaje: any) => {
+                  this.loader.hideLoader();
+                  Swal.fire({
+                    title: mensaje.mensaje,
+                    icon: mensaje.tipo,
+                    confirmButtonText: 'Aceptar'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      this.closeModal(false, 'reserve')
+                    }
+                  })
+                });
               }
 
   ngOnInit(): void {
@@ -92,7 +107,6 @@ active:boolean = false;
 
   cambiar(index: any): void {
     this.index = index.index;
-
     this.fechaSeleccionada = index.dateISO;
     this.actualizarHorario(this.fechaSeleccionada);
   }
@@ -145,6 +159,7 @@ active:boolean = false;
       hora_agendada: this.horaSeleccionada,
     }
     this.horarioService.reservar(object);
+    this.loader.showLoader();
   }
 
   sumaTotal(){

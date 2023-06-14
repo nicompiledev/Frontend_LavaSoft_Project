@@ -9,7 +9,7 @@ import { CatalogueComponent } from './componentes/views/catalogue/catalogue.comp
 import { ProfileCarwashComponent } from './componentes/views/profile-carwash/profile-carwash.component';;
 
 // USUARIO
-import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
+import { ConfirmarCuentaComponent } from './componentes/usuario/modal-vehicles/confirmar-cuenta/confirmar-cuenta.component';
 import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
 import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
@@ -81,7 +81,7 @@ const routes: Routes = [
     children: [
       { path: 'reservas', component:  ReservasComponent,
         children: [
-          { path: 'reserva', component:  TableComponent},
+          { path: '', component:  TableComponent},
           { path: 'pendientes', component:  PendingTableComponent},
           { path: 'en-progreso', component:  InProgressTableComponent},
           { path: 'completadas', component:  CompletedTableComponent},

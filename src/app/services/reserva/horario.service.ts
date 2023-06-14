@@ -12,7 +12,6 @@ export class HorarioService {
 
   constructor(private socket: SocketService) {
     this.socket.io.on('horasLibres', (horas: string[]) => {
-      console.log("horas libres:", horas)
       this.horasDSubject.next(horas);
     })
   }
@@ -22,8 +21,6 @@ export class HorarioService {
   }
 
   reservar(datos: object){
-    console.log("reservar:", datos);
-    
     this.socket.io.emit('reservar', datos)
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InputService } from 'src/app/services/comunicación/input.service';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-services-carwash',
@@ -45,6 +46,15 @@ export class ServicesCarwashComponent implements OnInit {
   }
 
   abrirModal(){
+    if(this.serviciosSeleccionados.length === 0){
+      Swal.fire({
+        title: 'Seleccione un servicio',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#0096d2',
+      });
+      return;
+    }
     this.openModal(true, 'reserve', this.serviciosSeleccionados)
   }
 
