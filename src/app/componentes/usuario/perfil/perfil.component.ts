@@ -71,7 +71,6 @@ export class PerfilComponent implements OnInit {
       )
       .subscribe(
         (usuario: any) => {
-          console.log(usuario);
           this.usuario = usuario;
           this.cambiarInformaciónFormulario();
         },

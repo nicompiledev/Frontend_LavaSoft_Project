@@ -1,4 +1,4 @@
-<div class="container subscription-cards">
+<div class="container subscription-cards" *ngIf="!(auth.hasPaid | async) ; else paid">
   <h2 class="my-3">Selecciona el paquete que mejor se adapte a tus necesidades: </h2>
   <div class="row">
     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -160,3 +160,28 @@
     </div>
   </div>
 </div>
+<!-- Ya pago entonces algo como actualmente tiene el paquete premium, etc -->
+<ng-template #paid>
+  <div class="container">
+    <h2 class="my-3">Información de tu paquete:</h2>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Paquete Premium</h5>
+        <p class="card-text">Detalles del paquete:</p>
+        <ul class="list-group">
+          <li class="list-group-item">Perfil avanzado: Los administradores podrán personalizar su perfil con información adicional, imágenes y detalles destacados.</li>
+          <li class="list-group-item">Gestión de servicios: La posibilidad de configurar y administrar diferentes tipos de servicios de lavado, detallado, pulido, entre otros.</li>
+          <li class="list-group-item">Agenda completa: Acceso a una agenda completa que muestra todos los turnos disponibles, ocupados y reservados.</li>
+          <li class="list-group-item">Notificaciones personalizadas: Posibilidad de enviar notificaciones personalizadas a los usuarios, como promociones o descuentos.</li>
+          <li class="list-group-item">Soporte prioritario: Acceso a un servicio de soporte más rápido y prioritario para resolver cualquier problema o consulta.</li>
+          <li class="list-group-item">Estadísticas detalladas: Informes y análisis más profundos sobre las reservas, incluyendo gráficos y métricas más precisas.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center">
+      <p class="mb-3">¿Deseas realizar algún cambio en tu paquete?</p>
+      <a class="btn btn-primary">Cambiar paquete</a>
+      <a class="btn btn-danger">Cancelar paquete</a>
+    </div>
+  </div>
+  </ng-template>

@@ -36,4 +36,8 @@ export class LavaderoService {
   crearSesionPago(item: string){
     return this.http.post(`${this.url}irapagar`, {item}, this.httpOptions);
   }
+
+  getReservasNoAtendidas(fecha: string){
+    return this.http.post(`${this.url}reservas`, {fecha}, this.httpOptions);
+  }
 }

@@ -8,6 +8,7 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import { UsuarioService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-reserve',
@@ -32,6 +33,7 @@ export class ReserveComponent implements OnInit {
 
   // ID servicio
   ServiciosSeleccionados: any;
+  vehiculoSeleccionado: any;
 
   //modal
   active:boolean = false;
@@ -96,10 +98,13 @@ export class ReserveComponent implements OnInit {
     this.actualizarHorario(this.fechaSeleccionada);
 
     // Vehiculos del usuario
-    this.usuarioService.getPerfil().subscribe((usuario: any) => {
+    this.loader.showLoader();
+    this.usuarioService.getPerfil()
+    .pipe(finalize(() => {
+      this.loader.hideLoader();
+    }))
+    .subscribe((usuario: any) => {
       this.vehiculos = usuario.vehiculos;
-      console.log(usuario);
-      
     });
 
   }
@@ -160,6 +165,20 @@ export class ReserveComponent implements OnInit {
 
   reservar(){
     if(this.horaSeleccionada == ''){
+      Swal.fire({
+        title: 'Seleccione una hora',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar'
+      })
+      return;
+    }
+
+    if(this.vehiculos.length == 0){
+      Swal.fire({
+        title: 'Debes seleccionar un vehiculo',
+        icon: 'warning',
+        confirmButtonText: 'Aceptar'
+      })
       return;
     }
 
@@ -170,9 +189,21 @@ export class ReserveComponent implements OnInit {
       id_servicios : id_servicios,
       fecha : this.fechaSeleccionada,
       hora_agendada: this.horaSeleccionada,
+      vehiculo: this.vehiculoSeleccionado
     }
+
+    console.log(object);
+    
+
     this.horarioService.reservar(object);
     this.loader.showLoader();
+  }
+
+  // Vehiculos del usuario
+  onSelectVehiculo(vehiculo: any){
+    let id_vehiculo = vehiculo.target.value;
+    // traer todos los datos del vehiculo
+    this.vehiculoSeleccionado = this.vehiculos.find(vehiculo => vehiculo._id == id_vehiculo);
   }
 
   sumaTotal(){

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LavaderoService } from 'src/app/services/lavadero.service';
 import { finalize } from 'rxjs';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
+import { AuthService } from 'src/app/services/security/auth.service';
 
 @Component({
   selector: 'app-subscripcion',
@@ -12,7 +13,7 @@ export class SubscripcionComponent {
   item: string = "price_1NI122AzE9bVeUHybCHKYaeq"
 
 
-  constructor(private lavaderoService: LavaderoService, private loader: LoaderService) { }
+  constructor(private lavaderoService: LavaderoService, private loader: LoaderService, public auth: AuthService) { }
 
   irAPagar(){
     this.loader.showLoader();

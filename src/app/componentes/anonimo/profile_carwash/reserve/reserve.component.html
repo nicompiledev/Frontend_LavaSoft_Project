@@ -8,12 +8,17 @@
       <div class="page">
         <div class="input-container position-relative w-75"  >
           <i class="fa-solid fa-car"></i>
-          <select class="inputs">
+          <select class="inputs" name="vehiculo" id="vehiculo" (change)="onSelectVehiculo($event)">
             <option value="" selected disabled>Seleciona tu vehiculo</option>
-            <option value="">Agregar nuevo vehiculo</option>
+            <option *ngIf="vehiculos.length <= 0" disabled>
+              No tienes vehiculos registrados
+            </option>
+            <option *ngFor="let vehiculo of vehiculos" value="{{ vehiculo._id }}">
+              {{ vehiculo.placa }}  |  {{ vehiculo.tipo_vehiculo }}
+            </option>
           </select>
 
-          <button class="btn btn-success">+ nuevo</button>
+          <button class="btn btn-success">+ Agregar</button>
         </div>
         <div class="description">
           <h4>Servicios a reservar</h4>
