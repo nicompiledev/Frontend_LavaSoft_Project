@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { LavaderoService } from 'src/app/services/lavadero.service';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
   selector: 'app-table',
