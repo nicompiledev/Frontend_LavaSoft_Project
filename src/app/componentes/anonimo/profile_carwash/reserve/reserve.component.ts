@@ -6,6 +6,7 @@ import { HorarioService } from 'src/app/services/reserva/horario.service';
 import { SocketService } from 'src/app/services/socket/socket.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
+import { UsuarioService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -33,13 +34,17 @@ export class ReserveComponent implements OnInit {
   ServiciosSeleccionados: any;
 
   //modal
-active:boolean = false;
+  active:boolean = false;
+
+  // Vehiculos del usuario
+  vehiculos: any[] = [];
 
   constructor(private modal_service: ModalReserveService,
               private horarioService: HorarioService,
               private route: ActivatedRoute,
               private comunicacion: InputService,
               private loader: LoaderService,
+              private usuarioService: UsuarioService,
               private socket: SocketService) {
 
                 this.loader.showLoader();
@@ -89,6 +94,14 @@ active:boolean = false;
     this.fechaSeleccionada = today.toISOString().slice(0, 10);
 
     this.actualizarHorario(this.fechaSeleccionada);
+
+    // Vehiculos del usuario
+    this.usuarioService.getPerfil().subscribe((usuario: any) => {
+      this.vehiculos = usuario.vehiculos;
+      console.log(usuario);
+      
+    });
+
   }
 
   ngAfterViewInit(): void {
