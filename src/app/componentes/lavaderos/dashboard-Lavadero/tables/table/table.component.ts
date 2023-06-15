@@ -38,9 +38,11 @@ export class TableComponent implements OnInit {
 
 
   openModal(btn:string){
-    if(btn = 'cancelar'){
+    if(btn === 'cancelar'){
       this.modalService.estadomodal(true , 'cancel_reserve');
-    }else{
+    }
+
+    if(btn === 'confirmar'){
       this.modalService.estadomodal(true , 'add_employee');
     }
   }
