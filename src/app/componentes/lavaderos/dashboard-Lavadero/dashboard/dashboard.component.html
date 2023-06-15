@@ -163,3 +163,7 @@
 <div class="modal" *ngIf="(modalService.$modal_cancel | async)">
   <app-cancelar-reservas ></app-cancelar-reservas>
 </div>
+
+<div class="modal" *ngIf="(modalService.$modal_employee | async)">
+  <app-add-employee></app-add-employee>
+</div>

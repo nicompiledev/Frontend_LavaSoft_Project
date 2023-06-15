@@ -29,22 +29,7 @@ export class TableComponent implements OnInit {
   dates: Date[] = [];
 
   selectedDate: Date;
-  
-   // modal
-   /*
-   activeA:boolean;
-   activeC:boolean;
 
-  constructor(private modalService:ModalReserveService, private lavaderoService: LavaderoService){
-    this.selectedDate = this.currentDate;
-    this.modalService.$modal_cancel.subscribe((valor)=>{
-      this.activeC = valor;
-    })
-
-    this.modalService.$modal_employee.subscribe((valor)=>{
-      this.activeA = valor;
-    })
-   */
   active:boolean;
 
   constructor(private modalService:ModalReserveService, private lavaderoService: LavaderoService){
@@ -55,22 +40,16 @@ export class TableComponent implements OnInit {
   openModal(btn:string){
     if(btn = 'cancelar'){
       this.modalService.estadomodal(true , 'cancel_reserve');
+    }else{
+      this.modalService.estadomodal(true , 'add_employee');
     }
-    this.modalService.estadomodal(true , 'add_employee');
-
-    
   }
 
-
-  
-  selectDate(date: Date) {
-    this.selectedDate = date;
-  }
 
   ngOnInit() {
     this.fillDatesArray();
 
-    let fecha = this.selectedDate.toISOString().slice(0, 10);
+    let fecha = this.getCurrentDate();
     this.getData(fecha);
   }
 
