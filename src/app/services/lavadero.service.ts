@@ -40,4 +40,24 @@ export class LavaderoService {
   getReservasNoAtendidas(fecha: string){
     return this.http.post(`${this.url}reservas`, {fecha}, this.httpOptions);
   }
+
+  confirmarReserva(id_reserva: string, id_usuario: string, nombre_servicio: string, nombreEmpleado: string) {
+    return this.http.put(`${this.url}reservas/confirmar`, {id_reserva, id_usuario, nombre_servicio, nombreEmpleado}, this.httpOptions);
+  }
+
+  getReservarProceso(){
+    return this.http.get(`${this.url}reservas/proceso`, this.httpOptions);
+  }
+
+  terminarReserva(id_reserva: string, id_usuario: string) {
+    return this.http.put(`${this.url}reservas/terminar`, {id_reserva, id_usuario}, this.httpOptions);
+  }
+
+  getReservasTerminadas(fecha: string){
+    return this.http.post(`${this.url}reservas/terminadas`, {fecha}, this.httpOptions);
+  }
+
+  refreshToken(){
+    return this.http.get(`${this.url}refreshToken`, this.httpOptions);
+  }
 }

@@ -71,8 +71,17 @@ import { WelcomeComponentComponent } from './componentes/lavaderos/informacion-l
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 import { DashboardComponent } from './componentes/lavaderos/dashboard-Lavadero/dashboard/dashboard.component';
 import { ReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/reservas/reservas.component';
-import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/table/table.component';
+import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/pending-table/pending-table.component';
+import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
+import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
+import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profile-carwash/edit-profile-carwash.component';
 import { DatepickerComponent } from './componentes/lavaderos/dashboard-Lavadero/datepicker/datepicker.component';
+import { RegisterReserveComponent } from './componentes/lavaderos/register-reserve/register-reserve.component';
+import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
+import { CancelarReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/cancelar-reservas/cancelar-reservas.component';
+import { AgradecimientoComponent } from './componentes/lavaderos/agradecimiento/agradecimiento.component';
+import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/add-employee/add-employee.component';
+
 
 // Vistas
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
@@ -85,15 +94,6 @@ import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lava
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { AceptarLavaderosComponent } from './componentes/admin/dashboard/aceptar-lavaderos/aceptar-lavaderos.component';
-import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profile-carwash/edit-profile-carwash.component';
-import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/pending-table/pending-table.component';
-import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
-import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
-import { RegisterReserveComponent } from './componentes/lavaderos/register-reserve/register-reserve.component';
-import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
-import { CancelarReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/cancelar-reservas/cancelar-reservas.component';
-import { AgradecimientoComponent } from './componentes/lavaderos/agradecimiento/agradecimiento.component';
-import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/add-employee/add-employee.component';
 
 
 
@@ -143,7 +143,12 @@ import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero
     RegisterCarwashComponent,
     DashboardComponent,
     ReservasComponent,
-    TableComponent,
+    EditProfileCarwashComponent,
+    PendingTableComponent,
+    InProgressTableComponent,
+    CompletedTableComponent,
+    RegisterReserveComponent,
+    SubscripcionComponent,
 
     // Vistas
     PrincipalComponent,
@@ -156,14 +161,8 @@ import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero
     LoginAdminComponent,
     ReportesAdminComponent,
     AceptarLavaderosComponent,
-    EditProfileCarwashComponent,
-    PendingTableComponent,
-    InProgressTableComponent,
-    CompletedTableComponent,
-    RegisterReserveComponent,
-    SubscripcionComponent,
     CancelarReservasComponent,
-    AgradecimientoComponent
+    AgradecimientoComponent,
     AddEmployeeComponent
 
 

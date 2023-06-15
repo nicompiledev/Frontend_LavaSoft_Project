@@ -20,7 +20,7 @@ import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuar
 import { RegisterCarwashComponent } from './componentes/lavaderos/register-carwash/register-carwash.component';
 import { DashboardComponent } from './componentes/lavaderos/dashboard-Lavadero/dashboard/dashboard.component';
 import { ReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/reservas/reservas.component';
-import { TableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/table/table.component';
+
 // Vistas
 import { PrincipalComponent } from './componentes/views/principal/principal.component';
 import { CompaniesComponent } from './componentes/views/companies/companies.component';
@@ -37,17 +37,18 @@ import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lava
 import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
 import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
 import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/add-employee/add-employee.component';
+import { AgradecimientoComponent } from './componentes/lavaderos/agradecimiento/agradecimiento.component';
+import { RedireccionGuard } from './guard/redireccion.guard';
 const routes: Routes = [
   //pruebas
   {path: 'editarPerfil', component: EditProfileCarwashComponent},
-  {path: 'agregar_empleado' , component: AddEmployeeComponent},
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent },
 
   // Desde el correo
-  { path: 'confirmar/:token', component: ConfirmarCuentaComponent },
-  { path: 'nuevo-password/:token', component: NuevaContrasenaComponent },
+  { path: 'confirmar/:token', component: ConfirmarCuentaComponent, canActivate: [RedireccionGuard] },
+  { path: 'nueva-contrasena/:token', component: NuevaContrasenaComponent, canActivate: [RedireccionGuard] },
 
   // Pendiente ELIMINAR
   { path: 'perfil/:id', component: ActualizarPerfilComponent },
@@ -77,10 +78,10 @@ const routes: Routes = [
   },
   { path: 'dashboard-lavadero', component: DashboardComponent,
     children: [
+      { path: 'editarPerfil', component:  EditProfileCarwashComponent},
       { path: 'reservas', component:  ReservasComponent,
         children: [
-          { path: '', component:  TableComponent},
-          { path: 'pendientes', component:  PendingTableComponent},
+          { path: '', component:  PendingTableComponent},
           { path: 'en-progreso', component:  InProgressTableComponent},
           { path: 'completadas', component:  CompletedTableComponent},
         ]
@@ -91,8 +92,7 @@ const routes: Routes = [
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ]
   },
-
-  { path: 'prueba-reportes', component:  ReportesAdminComponent},
+  { path: 'agradecimiento', component:  AgradecimientoComponent, canActivate: [RedireccionGuard]},
 ];
 
 @NgModule({

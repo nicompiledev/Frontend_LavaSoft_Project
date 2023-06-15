@@ -1,60 +1,47 @@
-
-
-
-
-
 <div class="container">
-
   <div class="datepicker-container pt-2">
     <label for="startDate">Seleccionar fecha: </label>
-    <input id="startDate" class="form-control" type="date" min="{{ getCurrentDate() }}" />
+    <input id="startDate" class="form-control" type="date" [min]="getCurrentDate()" value="{{ getCurrentDate() }}" (change)="onDateChange($event)">
   </div>
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8" class="!shadow">
-
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0 shadow">
+    <!-- Note that these columns can be defined in any order.
+    The actual rendered columns are set as a property on the row definition -->
     <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <ng-container matColumnDef="Nombre">
+      <th mat-header-cell *matHeaderCellDef >Nombre</th>
+      <td mat-cell *matCellDef="let element">{{ element.Nombre }}</td>
     </ng-container>
-
     <!-- Name Column -->
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    <ng-container matColumnDef="Placa">
+      <th mat-header-cell *matHeaderCellDef >Placa</th>
+      <td mat-cell *matCellDef="let element">{{ element.Placa }}</td>
     </ng-container>
-
     <!-- Weight Column -->
-    <ng-container matColumnDef="direccion">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Direccion </th>
-      <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
-    </ng-container>
-
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="telefono">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
-      <td mat-cell *matCellDef="let element">
-        {{element.telefono}}
-
+    <ng-container matColumnDef="Tipo">
+      <th mat-header-cell *matHeaderCellDef >Tipo</th>
+      <td mat-cell *matCellDef="let element">{{ element.Tipo }}</td>
     </ng-container>
     <!-- Symbol Column -->
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Accion</th>
-      <td mat-cell *matCellDef="let element">
-
-        <button mat-raised-button color="primary" class="m-1">Confirmar</button>
-        <button mat-raised-button color="warn">Rechazar</button></td>
+    <ng-container matColumnDef="Hora">
+      <th mat-header-cell *matHeaderCellDef >Hora</th>
+      <td mat-cell *matCellDef="let element">{{ element.Hora }}</td>
     </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" mat-sort-header-row></tr>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Servicio">
+      <th mat-header-cell *matHeaderCellDef >Servicio</th>
+      <td mat-cell *matCellDef="let element">{{ element.Servicio }}</td>
+    </ng-container>
+    <ng-container matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef >Accion</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" class="m-1" (click)="openModal('confirmar', element)">Confirmar</button>
+        <button mat-raised-button color="warn" (click)="openModal('cancelar', element)">Cancelar</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" mat-sort-header-row></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
   </table>
   <mat-paginator #paginator [length]="100" [pageSizeOptions]="[5,10,20]" aria-label="select page"></mat-paginator>
+</div>
 
 
-  </div>
