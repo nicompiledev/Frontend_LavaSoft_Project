@@ -10,6 +10,7 @@ export class ModalReserveService {
   $modal = new BehaviorSubject<number>(0);
   $modal_vehicle = new BehaviorSubject<boolean>(false)
   $modal_cancel = new BehaviorSubject<boolean>(false)
+  $modal_employee = new BehaviorSubject<boolean>(false)
 
   constructor() {}
 
@@ -47,6 +48,10 @@ export class ModalReserveService {
         this.$modal_cancel.next(modal);
         break;
         
+      case 'add_employee':
+        this.$modal_employee.next(modal);
+        break;
+          
       default:
         break;
     }

@@ -92,6 +92,7 @@ import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavad
 import { RegisterReserveComponent } from './componentes/lavaderos/register-reserve/register-reserve.component';
 import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
 import { CancelarReservasComponent } from './componentes/lavaderos/dashboard-Lavadero/cancelar-reservas/cancelar-reservas.component';
+import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/add-employee/add-employee.component';
 
 
 
@@ -160,7 +161,8 @@ import { CancelarReservasComponent } from './componentes/lavaderos/dashboard-Lav
     CompletedTableComponent,
     RegisterReserveComponent,
     SubscripcionComponent,
-    CancelarReservasComponent
+    CancelarReservasComponent,
+    AddEmployeeComponent
 
 
   ],

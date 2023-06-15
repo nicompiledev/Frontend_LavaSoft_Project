@@ -31,6 +31,20 @@ export class TableComponent implements OnInit {
   selectedDate: Date;
   
    // modal
+   /*
+   activeA:boolean;
+   activeC:boolean;
+
+  constructor(private modalService:ModalReserveService, private lavaderoService: LavaderoService){
+    this.selectedDate = this.currentDate;
+    this.modalService.$modal_cancel.subscribe((valor)=>{
+      this.activeC = valor;
+    })
+
+    this.modalService.$modal_employee.subscribe((valor)=>{
+      this.activeA = valor;
+    })
+   */
   active:boolean;
 
   constructor(private modalService:ModalReserveService, private lavaderoService: LavaderoService){
@@ -38,10 +52,17 @@ export class TableComponent implements OnInit {
   }
 
 
-  openModal(){
-    this.modalService.estadomodal(true , 'cancel_reserve')
+  openModal(btn:string){
+    if(btn = 'cancelar'){
+      this.modalService.estadomodal(true , 'cancel_reserve');
+    }
+    this.modalService.estadomodal(true , 'add_employee');
+
+    
   }
 
+
+  
   selectDate(date: Date) {
     this.selectedDate = date;
   }

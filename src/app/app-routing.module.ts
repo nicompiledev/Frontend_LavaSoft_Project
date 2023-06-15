@@ -35,14 +35,12 @@ import { EditProfileCarwashComponent } from './componentes/lavaderos/edit-profil
 import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/pending-table/pending-table.component';
 import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
 import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
-import { RegisterReserveComponent } from './componentes/lavaderos/register-reserve/register-reserve.component';
-import { ReserveComponent } from './componentes/anonimo/profile_carwash/reserve/reserve.component';
 import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
+import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/add-employee/add-employee.component';
 const routes: Routes = [
   //pruebas
-  {path: 'reserve', component:ReserveComponent},
   {path: 'editarPerfil', component: EditProfileCarwashComponent},
-  {path: 'registrar_reserva' , component: RegisterReserveComponent},
+  {path: 'agregar_empleado' , component: AddEmployeeComponent},
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent },
