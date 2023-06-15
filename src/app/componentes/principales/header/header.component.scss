@@ -148,29 +148,6 @@
   }
 }
 
-.banner {
-  background-color: #fdebeb; /* Rosa claro */
-  color: #cc0000; /* Rojo oscuro */
-  padding: 10px;
-  border: 1px solid #cc0000;
-  text-align: center;
-}
-
-.banner a {
-  display: inline-block;
-  background-color: #1E90FF; /* Azul claro */
-  color: #fff; /* Letra blanca */
-  padding: 8px 16px;
-  margin-left: 5px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.banner a:hover {
-  text-decoration: none;
-  background-color: #fff;
-  color: #1E90FF;
-}
 
 .rellenoBanner{
   height: 62px;
