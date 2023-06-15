@@ -7,6 +7,9 @@ import {
   FormControl,
 } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuarios.service';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
+import { finalize } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nueva-contrasena',
@@ -17,13 +20,13 @@ export class NuevaContrasenaComponent {
 
   usuarioForm: FormGroup;
 
-  mensajeError = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private service: UsuarioService,
     private route: ActivatedRoute,
     private router: Router,
+    public loader: LoaderService
   ) {
 
     this.usuarioForm = this.formBuilder.group({
@@ -38,12 +41,28 @@ export class NuevaContrasenaComponent {
       const token = this.route.snapshot.paramMap.get('token');
       const password = this.usuarioForm.value.password;
       this.service.nuevoPassword(token, password).subscribe(
-        (response) => {
-          this.router.navigate(['/login']);
+        (response: any) => {
+          // Swal si le da okay lo redireccione
+          Swal.fire({
+            title: 'Contraseña actualizada',
+            text: response.msg,
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#0096d2'
+          }).then((result) => {
+            if (result.value) {
+              this.router.navigate(['/inicio']);
+            }
+          }
+          );
         },
         (error) => {
-          console.log(error);
-          this.mensajeError = error.error.msg;
+          Swal.fire({
+            title: 'Error',
+            text: error.error.msg,
+            icon: 'error',
+            confirmButtonText: 'Aceptar',
+          });
         }
       );
     }

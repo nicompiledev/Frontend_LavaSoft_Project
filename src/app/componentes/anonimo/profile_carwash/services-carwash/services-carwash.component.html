@@ -89,6 +89,7 @@
   
   <div class="services_container">
 
+    <div class="header_botones">
     <button class="mb-2 w-25" (click)="abrirModal()">
       <p>Reservar </p>
       <svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6 mt-1 d-block" xmlns="http://www.w3.org/2000/svg">
@@ -96,11 +97,18 @@
     </svg>
       <i class="fa-solid fa-calendar-day"></i>
   </button>
+
+  <div class="elegir">
+    <p>Seleccionados</p>
+    <span>{{serviciosSeleccionados.length}}</span>
+  </div>
+</div>
 <ng-container *ngFor=" let servicio of serviciosMostrados">
   <details>
     <summary> 
       <!-- nombre del servidor -->
-      <h5 class="mb-0 mt-1">  <ng-container [ngSwitch]="servicio.tipoVehiculo">
+      <h5 class="mb-0 mt-1">  
+        <ng-container [ngSwitch]="servicio.tipoVehiculo">
         <i class="fa-solid fa-car me-2" *ngSwitchCase="'Carro'"></i>
         <i class="fa-solid fa-motorcycle me-2" *ngSwitchCase="'Moto'"></i>
         <i class="fa-solid fa-truck-pickup me-2" *ngSwitchCase="'Camioneta'"></i>
@@ -108,7 +116,8 @@
         <i class="fa-solid fa-van-shuttle me-2" *ngSwitchCase="'Bus'"></i>
       </ng-container>
 
-      {{ servicio.nombre }}</h5>
+      <span>{{ servicio.nombre }}</span>
+    </h5>
       <!-- precio --> 
       <span><i class="fa-solid fa-dollar-sign me-1"></i>{{servicio.costo}}</span>
       <!-- hora --> 

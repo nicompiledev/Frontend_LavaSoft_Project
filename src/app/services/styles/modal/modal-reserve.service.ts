@@ -38,7 +38,6 @@ export class ModalReserveService {
         this.$modal_reserve.next(modal);
         break;
 
-
       case 'vehicle_reserve':
         this.$modal_vehicle.next(modal);
         console.log("modal vehicle")

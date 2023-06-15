@@ -6,6 +6,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border-radius:  10px 0 0 10px ;
 }
 
 
@@ -15,4 +16,26 @@
   align-items: center;
   height: 100vh;
   width: 100%;
+}
+
+.errors{
+  width: 100%;
+  height: 40px;
+  color:$errores;
+  padding: 5px;
+  font-size: 11px;
+  margin-block-start: -5px;
+  margin-top: 8px;
+}
+
+.formulario{
+  padding-block: 20px;
+}
+
+.titulo{
+  margin-bottom: 10px
+}
+
+.boton{
+  margin-top: 10px;
 }

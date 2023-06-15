@@ -128,7 +128,8 @@ export class PerfilComponent implements OnInit {
                 title: res.resultado,
                 text: res.msg,
                 icon: 'success'
-              });
+              });  
+              this.auth.logout();
             }else{
               Swal.fire({
                 title: '¡Éxito!',

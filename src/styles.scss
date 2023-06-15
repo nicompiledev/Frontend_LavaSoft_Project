@@ -1,37 +1,6 @@
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
+@import './styles/variables.scss';
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$htppclient-primary: mat.define-palette(mat.$indigo-palette);
-$htppclient-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$htppclient-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$htppclient-theme: mat.define-light-theme((
-  color: (
-    primary: $htppclient-primary,
-    accent: $htppclient-accent,
-    warn: $htppclient-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($htppclient-theme);
 
 html{
   min-height: 100vh;
@@ -56,11 +25,11 @@ app-principal, app-catalogue, app-profile-carwash, app-companies, app-perfil-usu
 
 /* Cambiar scroll-bar */
 ::-webkit-scrollbar {
-  width: 13px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #D3D3D3;
+  background: $negro-claro;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -77,17 +46,39 @@ app-principal, app-catalogue, app-profile-carwash, app-companies, app-perfil-usu
   /* Boxshadow izquierda */
   background: #4fa5fa;
 }
-::-webkit-scrollbar-thumb:hover::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-thumb:hover::-webkit-scrollbar-track {
   background: #ff0000;
-}
+} */
 ::-webkit-scrollbar-thumb:active {
-  background-color: #ffff;
+  background-color: $azul-oscuro;
+}
+// scroll de los select
+select::-webkit-scrollbar {
+  width: 3px !important;
 }
 
-::-webkit-scrollbar-track:active {
-  background: #1E90FF;
-
+select::-webkit-scrollbar-track {
+  background: transparent !important
 }
+
+select::-webkit-scrollbar-thumb {
+  background: $azul-oscuro !important;
+  border-radius: 5px !important;
+}
+
+// diseño options de los select, centrar texto, padding, etc
+select option {
+  text-align: center;
+  margin: 10px !important;
+  font-size: 15px !important;
+  font-weight: 400;
+}
+
+// quitar bordes negros al dar click en los select: 
+select:focus {
+  outline: none !important
+}
+
 
 
 html, body { height: 100%; }

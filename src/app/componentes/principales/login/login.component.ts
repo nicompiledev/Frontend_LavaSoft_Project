@@ -102,7 +102,6 @@ export class LoginComponent implements OnInit {
     )
     .subscribe(
       (response: any) => {
-        console.log(response);
         this.auth.login(response.token);
         Swal.fire({
           icon: 'success',

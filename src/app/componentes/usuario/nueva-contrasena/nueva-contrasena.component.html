@@ -6,102 +6,51 @@
         <div class="card o-hidden border-0 shadow-lg my-5">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
-            <div class="row">
+            <!-- 10px de border radius -->
+            <div class="row justify-content-center" style="border-radius: 10px;">
               <div class="col-lg-6 d-none d-lg-block password-image"></div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="container">
                     <h1 class="h4 text-gray-900 mb-3">Cambio de contraseña.</h1>
                     <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
-                      <div class="form-group py-3">
-                        <label for="password">Nueva contraseña:</label>
-                        <input
-                          type="password"
-                          class="form-control"
-                          id="password"
-                          formControlName="password"
-                          placeholder="Ingrese la nueva contraseña..."
-                        />
-                        <div
-                          *ngIf="
-                            usuarioForm.get('password').invalid &&
-                            (usuarioForm.get('password').dirty ||
-                              usuarioForm.get('password').touched)
-                          "
-                          class="alert alert-danger"
-                        >
-                          <div
-                            *ngIf="
-                              usuarioForm.get('password').errors['required']
-                            "
-                          >
-                            La nueva contraseña es requerida.
-                          </div>
-                          <div
-                            *ngIf="
-                              usuarioForm.get('password').errors['minlength']
-                            "
-                          >
-                            La nueva contraseña debe tener al menos 8
-                            caracteres.
-                          </div>
+                      <div class="formulario">
+                        <label for="password"  class="titulo">Nueva contraseña:</label>
+                        <input type="password" class="form-control" id="password" formControlName="password"
+                          placeholder="Ingrese la nueva contraseña..." />
+                      </div>
+                      <div class="formulario2">
+                        <label for="confirmPass" class="titulo">Confirmar nueva contraseña:</label>
+                        <input type="password" class="form-control" id="confirmPass" formControlName="confirmPass"
+                          placeholder="Confirme la nueva contraseña..." />
+                        <div class="errors">
+                          <ng-container *ngIf="
+                          (usuarioForm.get('confirmPass').invalid &&
+                          (usuarioForm.get('confirmPass').dirty ||
+                          usuarioForm.get('confirmPass').touched)) ||
+                          (usuarioForm.get('password').invalid &&
+                          (usuarioForm.get('password').dirty ||
+                          usuarioForm.get('password').touched))
+                        ">
+
+                            <div
+                              *ngIf="usuarioForm.get('confirmPass').errors['required'] || usuarioForm.get('password').errors['required']">
+                              Los campos son obligatorios.
+                            </div>
+                            <div
+                              *ngIf="usuarioForm.get('confirmPass').errors['minlength'] || usuarioForm.get('password').errors['minlength']">
+                              La contraseña debe tener al menos 8 caracteres.
+                            </div>
+                            <div *ngIf="usuarioForm.get('confirmPass').errors['pattern']">
+                              La contraseña debe tener al menos una letra mayúscula, una minúscula y un número.
+                            </div>
+                          </ng-container>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label for="confirmPass"
-                          >Confirmar nueva contraseña:</label
-                        >
-                        <input
-                          type="password"
-                          class="form-control"
-                          id="confirmPass"
-                          formControlName="confirmPass"
-                          placeholder="Confirme la nueva contraseña..."
-                        />
-                        <div
-                          *ngIf="
-                            usuarioForm.get('confirmPass').invalid &&
-                            (usuarioForm.get('confirmPass').dirty ||
-                              usuarioForm.get('confirmPass').touched)
-                          "
-                          class="alert alert-danger"
-                        >
-                          <div
-                            *ngIf="
-                              usuarioForm.get('confirmPass').errors['required']
-                            "
-                          >
-                            La confirmación de la nueva contraseña es requerida.
-                          </div>
-                          <div
-                            *ngIf="
-                              usuarioForm.get('confirmPass').errors['minlength']
-                            "
-                          >
-                            La confirmación de la nueva contraseña debe tener al
-                            menos 8 caracteres.
-                          </div>
-                          <div
-                            *ngIf="
-                              usuarioForm.get('confirmPass').errors['pattern']
-                            "
-                          >
-                            La confirmación de la nueva contraseña debe ser
-                            igual a la nueva contraseña.
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <button
-                          type="submit"
-                          class="btn btn-primary mt-5"
-                          [disabled]="!usuarioForm.valid"
-                        >
+                      <div class="boton">
+                        <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.valid">
                           Cambiar contraseña
                         </button>
-                      </div>
-                      <div *ngIf="mensajeError" class="alert alert-danger">
-                        {{ mensajeError }}
                       </div>
                     </form>
                   </div>
@@ -114,3 +63,5 @@
     </div>
   </div>
 </div>
+
+<app-loaders *ngIf="loader.isLoading$ | async"></app-loaders>

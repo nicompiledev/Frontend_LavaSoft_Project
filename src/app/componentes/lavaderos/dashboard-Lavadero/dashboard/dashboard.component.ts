@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,7 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  constructor(public router: Router, private auth: AuthService, public loader: LoaderService) {
+  constructor(public router: Router, private auth: AuthService, public loader: LoaderService, public modalService: ModalReserveService) {
   }
 
   ocultarMenu = false;

@@ -31,13 +31,10 @@ export class TableComponent implements OnInit {
   selectedDate: Date;
   
    // modal
-   active:boolean;
+  active:boolean;
 
   constructor(private modalService:ModalReserveService, private lavaderoService: LavaderoService){
     this.selectedDate = this.currentDate;
-    this.modalService.$modal_cancel.subscribe((valor)=>{
-      this.active = valor;
-    })
   }
 
 

@@ -160,3 +160,6 @@
 
 </div>
 <app-loaders *ngIf="loader.isLoading$ | async"></app-loaders>
+<div class="modal" *ngIf="(modalService.$modal_cancel | async)">
+  <app-cancelar-reservas ></app-cancelar-reservas>
+</div>
