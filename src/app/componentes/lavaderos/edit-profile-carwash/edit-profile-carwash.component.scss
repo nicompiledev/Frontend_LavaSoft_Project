@@ -1,6 +1,8 @@
 @import '../../../app.component.scss';
 
 .container_all{
+    border-radius: 10px;
+    overflow: hidden;
     width: 100%;
     min-height: 100%;
     max-height: auto;

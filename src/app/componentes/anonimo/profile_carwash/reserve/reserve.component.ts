@@ -143,9 +143,8 @@ export class ReserveComponent implements OnInit {
 
   //modal
 
-  openModal(stateModal: Boolean , focus:string ){
-    this.modal_service.estadomodal(stateModal , focus)
-    console.log(stateModal)
+  openModal(){
+this.modal_service.estadomodal(true , 'vehicle_reserve')
   }
 
   closeModal(stateModal:boolean , focus:string){

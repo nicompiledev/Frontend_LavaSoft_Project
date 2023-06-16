@@ -1,14 +1,15 @@
 <div class="container">
-  <div class="datepicker-container pt-2">
+  <div class="datepicker-container pt-3">
     <label for="startDate">Seleccionar fecha: </label>
     <input id="startDate" class="form-control" type="date" [min]="getCurrentDate()" value="{{ getCurrentDate() }}" (change)="onDateChange($event)">
   </div>
-  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0 shadow">
+<div class="container_table">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z0  ">
     <!-- Note that these columns can be defined in any order.
     The actual rendered columns are set as a property on the row definition -->
     <!-- Position Column -->
     <ng-container matColumnDef="Nombre">
-      <th mat-header-cell *matHeaderCellDef >Nombre</th>
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
       <td mat-cell *matCellDef="let element">{{ element.Nombre }}</td>
     </ng-container>
     <!-- Name Column -->
@@ -41,7 +42,9 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" mat-sort-header-row></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  
   <mat-paginator #paginator [length]="100" [pageSizeOptions]="[5,10,20]" aria-label="select page"></mat-paginator>
+</div>
 </div>
 
 

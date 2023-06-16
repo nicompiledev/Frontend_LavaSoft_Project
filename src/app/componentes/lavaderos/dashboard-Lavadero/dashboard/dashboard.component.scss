@@ -1,5 +1,5 @@
 .contenedor-padre {
-  min-height: 100vh;
+  min-height: 100%;
   overflow-x: hidden;
   --blue:#2a2185;
   --white:#fff;
@@ -8,13 +8,8 @@
   --black2:#999;
 }
 
-.contenedor {
-  position: relative;
-  width: 100%;
-}
 
 /* =============== navegacion ================ */
-
 
 .navegacion {
   position: fixed;
@@ -146,7 +141,7 @@
   position: absolute;
   width: calc(100% - 300px);
   left: 300px;
-  min-height: 100vh;
+  height: 100%;
   background: var(--white);
   transition: 0.5s;
 
@@ -267,4 +262,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.sub_secction{
+  padding: 30px;
+  width: 100%;
+  height: calc(100% - 85px);
 }
