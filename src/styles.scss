@@ -106,6 +106,10 @@ select option {
   font-weight: 400;
 }
 
+select option:checked{
+  text-align:initial;
+}
+
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

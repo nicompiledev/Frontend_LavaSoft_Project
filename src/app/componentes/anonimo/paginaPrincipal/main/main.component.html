@@ -24,7 +24,9 @@
           <p>Departamento</p>
           <select id="Departamento" (change)="onChangeDepartamento($event)">
             <option value="departamento" selected disabled>Seleccione una opción&nbsp;&nbsp;</option>
-            <option *ngFor="let departamento of departamentos" [value]="departamento">{{ departamento }}</option>
+            <ng-container *ngFor="let departamento of departamentos">
+              <option [value]="departamento" *ngIf="departamento != 'Archipiélago de San Andrés, Providencia y Santa Catalina'">{{ departamento }}</option>
+            </ng-container>
           </select>
         </div>
 

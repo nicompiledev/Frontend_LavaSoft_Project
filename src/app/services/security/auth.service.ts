@@ -20,6 +20,7 @@ export class AuthService {
     this.isLogin.next(true);
     this.rol.next(this.getRol());
     this.hasPaid.next(this.checkHasPaid());
+    this.visualizado.next(this.checkVisualizado());
   }
 
   getToken() {
@@ -39,6 +40,8 @@ export class AuthService {
   }
 
   private checkHasPaid(): boolean {
+    console.log("checkHasPaid");
+    
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwt_decode(token);
@@ -48,6 +51,8 @@ export class AuthService {
   }
 
   private checkVisualizado(): boolean {
+    console.log("checkVisualizado");
+    
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwt_decode(token);

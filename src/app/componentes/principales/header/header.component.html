@@ -64,19 +64,19 @@
       >
     </li>
   </ul>
-  <div class="notification-banner" *ngIf="(!(auth.hasPaid | async) || !(auth.visualizado | async)) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero'">
-    <div class="banner" *ngIf="!(auth.hasPaid | async) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero'">
+  <div class="notification-banner" *ngIf="(!(Pago) || !(Visualizado)) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero'">
+    <div class="banner" *ngIf="!(Pago) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero'">
       Adquiere un paquete para tu negocio y accede a los beneficios que tenemos para ti. Si no pagas, no serás visible para los clientes.
       <a [routerLink]="'/dashboard-lavadero/subscripcion'">Elegir plan</a>
     </div>
-    <div class="banner" *ngIf="(!(auth.visualizado | async) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero') && (auth.hasPaid | async)">
+    <div class="banner" *ngIf="(!(Visualizado) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero') && (Pago)">
       Por favor completa tu perfil al 100% y accede a los beneficios que tenemos para tu negocio. Aún no serás visible hasta que tu perfil esté completo.
       <a [routerLink]="'/dashboard-lavadero/editarPerfil'" class="btn">Actualizar perfil</a>
     </div>
   </div>
 </nav>
 
-<div class="rellenoBanner" *ngIf="(!(auth.hasPaid | async) || !(auth.visualizado | async)) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero'"></div>
+<div class="rellenoBanner" *ngIf="(!(Pago) || !(Visualizado)) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero'"></div>
 
 <!-- ----------------------------  -->
 

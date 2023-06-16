@@ -104,7 +104,9 @@ export class ReserveComponent implements OnInit {
       this.loader.hideLoader();
     }))
     .subscribe((usuario: any) => {
-      this.vehiculos = usuario.vehiculos;
+      if(usuario){
+        this.vehiculos = usuario.vehiculos;
+      }
     });
 
   }
@@ -173,7 +175,9 @@ export class ReserveComponent implements OnInit {
       return;
     }
 
-    if(this.vehiculos.length == 0){
+    console.log(this.vehiculoSeleccionado);
+    
+    if(this.vehiculoSeleccionado === undefined){
       Swal.fire({
         title: 'Debes seleccionar un vehiculo',
         icon: 'warning',

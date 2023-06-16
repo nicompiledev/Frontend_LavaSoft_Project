@@ -36,7 +36,6 @@ import { PendingTableComponent } from './componentes/lavaderos/dashboard-Lavader
 import { InProgressTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/in-progress-table/in-progress-table.component';
 import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/completed-table/completed-table.component';
 import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
-import { AddEmployeeComponent } from './componentes/lavaderos/dashboard-Lavadero/tables/add-employee/add-employee.component';
 import { AgradecimientoComponent } from './componentes/lavaderos/agradecimiento/agradecimiento.component';
 import { RedireccionGuard } from './guard/redireccion.guard';
 const routes: Routes = [
@@ -65,7 +64,6 @@ const routes: Routes = [
   // Usuario
   {path:'perfil_usuario' , component: PerfilUsuarioComponent, canActivate: [AuthGuard]},
 
-
   // ADMIN
   { path: 'login-admin', component: LoginAdminComponent, canActivate: [AuthGuard] },
   { path: 'dashboard-admin', component: NavegacionComponent,
@@ -92,7 +90,8 @@ const routes: Routes = [
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ]
   },
-  { path: 'agradecimiento', component:  AgradecimientoComponent, canActivate: [RedireccionGuard]},
+  { path: 'agradecimiento', component:  AgradecimientoComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '/inicio', pathMatch: 'full' }
 ];
 
 @NgModule({

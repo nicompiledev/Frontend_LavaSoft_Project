@@ -34,12 +34,23 @@ export class HeaderComponent {
 
   activeModal: number = 0;
 
+  Pago: boolean = false;
+  Visualizado: boolean = false;
+
   constructor(
     private modal_service: ModalReserveService,
     public loaderService: LoaderService,
     public auth: AuthService,
     private viewportScroller: ViewportScroller
-  ) {}
+  ) {
+    this.auth.hasPaid.subscribe((response: any) => {
+      this.Pago = response;
+    });
+    this.auth.visualizado.subscribe((response: any) => {
+      this.Visualizado = response;
+    });
+
+  }
 
   openModal(stateModal: number, focus: string) {
     this.modal_service.estadomodal(stateModal, focus);

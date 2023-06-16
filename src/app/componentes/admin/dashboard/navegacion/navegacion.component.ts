@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  faCar,
   faGauge,
   faClipboardCheck,
   faFlag,
   faInbox,
   faArrowRightFromBracket,
   faBars,
-  faHome
+  faHome,
+  faUserShield
 } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/security/auth.service';
 import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
@@ -33,7 +33,7 @@ export class NavegacionComponent {
   ocultarMenu = false;
   seleccionado = 'dashboard';
   // fontawesome
-  titulo = faCar;
+  titulo = faUserShield;
   dashboard = faGauge;
   peticionEmpresa = faClipboardCheck;
   reportes = faFlag;
