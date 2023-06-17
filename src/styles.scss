@@ -100,14 +100,10 @@ select::-webkit-scrollbar-thumb {
 
 // diseño options de los select, centrar texto, padding, etc
 select option {
-  text-align: center;
   margin: 10px !important;
   font-size: 15px !important;
   font-weight: 400;
-}
-
-select option:checked{
-  text-align:initial;
+  padding-left: 10px;
 }
 
 

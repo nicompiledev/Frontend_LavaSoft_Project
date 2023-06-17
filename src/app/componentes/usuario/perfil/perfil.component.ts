@@ -56,8 +56,23 @@ export class PerfilComponent implements OnInit {
         Validators.required,
         Validators.minLength(8),
       ]),
-    });
+    },
+    { validators: this.validarContrasenasIguales }
+    );
   }
+
+  validarContrasenasIguales(group: FormGroup) {
+    const password = group.get('nueva_contrasena').value;
+    const confirmPassword = group.get('confirmar_contrasena').value;
+    console.log(confirmPassword);
+    console.log(password);
+    
+    
+    return password === confirmPassword
+      ? null
+      : { contrasenasNoCoinciden: true };
+  }
+
 
   ngOnInit() {
     this.loader.showLoader();

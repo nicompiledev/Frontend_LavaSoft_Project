@@ -115,6 +115,6 @@
   </form>
 
   <div class="modal" *ngIf="active">
-    <app-modal-vehicles></app-modal-vehicles>
+    <app-modal-vehicles (usuarioConVehiculoNuevo)="recibeActualizarVehiculoAgregado($event)"></app-modal-vehicles>
   </div>
 </div>

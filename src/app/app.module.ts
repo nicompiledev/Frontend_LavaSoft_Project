@@ -58,7 +58,6 @@ import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta
 import { RecuperarContrasenaComponent } from './componentes/usuario/recuperar-contrasena/recuperar-contrasena.component';
 import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
 import { PerfilComponent } from './componentes/usuario/perfil/perfil.component';
-import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ModalVehiclesComponent } from './componentes/usuario/modal-vehicles/modal-vehicles.component';
 import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
 import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
@@ -131,7 +130,6 @@ import { AceptarLavaderosComponent } from './componentes/admin/dashboard/aceptar
     RecuperarContrasenaComponent,
     NuevaContrasenaComponent,
     PerfilComponent,
-    ActualizarPerfilComponent,
     ModalVehiclesComponent,
     ReportesComponent,
     PerfilUsuarioComponent,

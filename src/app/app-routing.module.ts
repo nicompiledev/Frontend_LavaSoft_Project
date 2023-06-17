@@ -11,7 +11,6 @@ import { ProfileCarwashComponent } from './componentes/views/profile-carwash/pro
 // USUARIO
 import { ConfirmarCuentaComponent } from './componentes/usuario/confirmar-cuenta/confirmar-cuenta.component';
 import { NuevaContrasenaComponent } from './componentes/usuario/nueva-contrasena/nueva-contrasena.component';
-import { ActualizarPerfilComponent } from './componentes/usuario/actualizar-perfil/actualizar-perfil.component';
 import { ReportesComponent } from './componentes/usuario/reportes/reportes.component';
 import { PerfilUsuarioComponent } from './componentes/views/usuario/perfil-usuario/perfil-usuario.component';
 
@@ -48,9 +47,6 @@ const routes: Routes = [
   // Desde el correo
   { path: 'confirmar/:token', component: ConfirmarCuentaComponent, canActivate: [RedireccionGuard] },
   { path: 'nueva-contrasena/:token', component: NuevaContrasenaComponent, canActivate: [RedireccionGuard] },
-
-  // Pendiente ELIMINAR
-  { path: 'perfil/:id', component: ActualizarPerfilComponent },
 
   // Prinicpales
   // Catalogo

@@ -111,6 +111,11 @@ export class ReserveComponent implements OnInit {
 
   }
 
+  recibeActualizarVehiculoAgregado(nuevoVehiculo: any) {
+    this.vehiculos = nuevoVehiculo.usuario.vehiculos;
+
+  }
+
   ngAfterViewInit(): void {
   }page(e): void {
     switch (e) {

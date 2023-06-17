@@ -63,10 +63,12 @@
       />
     </div>
     <button class="chat-send-btn" (click)="sendMessage()">Enviar</button>
+
+
+  </div>
+  <div *ngIf="bloquearChat" class="chat-input-wrapper" [ngClass]="{ hidden: !isChatVisible }" role="alert">
+    <span
+    >El chat ya no se encuentra disponible, reinicia la pagina</span>
   </div>
   <!-- bootstrap, mensaje informativo -->
-  <div *ngIf="bloquearChat" class="alert alert-info" role="alert">
-    <span class="mb-0"
-    >El chat se encuentra bloqueado, por favor, espera a que un asesor te atienda.</span>
-  </div>
 </div>

@@ -97,7 +97,9 @@
                   <select id="departamento" formControlName="departamento" (change)="filtrarCiudades() ">
                     <option value="" selected disabled >Departamento</option>
                     <!-- departamentos de Colombia -->
-                      <option *ngFor="let departamento of departamentos" [value]="departamento">{{ departamento }}</option>
+                    <ng-container *ngFor="let departamento of departamentos">
+                      <option [value]="departamento" *ngIf="departamento != 'Archipiélago de San Andrés, Providencia y Santa Catalina'">{{ departamento }}</option>
+                    </ng-container>
                   </select>
                 </div>
 
