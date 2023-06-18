@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class anonimoService {
-  private apiUrl = 'http://localhost:4000/api/anonimo/';
+  private apiUrl = 'https://lavasoft-servidor.onrender.com/api/anonimo/';
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',

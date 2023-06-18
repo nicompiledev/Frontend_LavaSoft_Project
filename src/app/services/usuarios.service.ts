@@ -8,7 +8,7 @@ import { AuthService } from './security/auth.service';
 })
 export class UsuarioService {
 
-  private apiUrl = 'http://localhost:4000/api/usuarios/';
+  private apiUrl = 'https://lavasoft-servidor.onrender.com/api/usuarios/';
   private httpOptions: any = {};
 
   isLoggedIn: boolean;

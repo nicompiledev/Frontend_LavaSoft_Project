@@ -15,7 +15,7 @@ export class SocketService {
 
         this.auth.rol.subscribe(rol => this.rol = rol);
 
-        this.io = io('http://localhost:4000', {
+        this.io = io('https://lavasoft-servidor.onrender.com', {
           withCredentials: true,
           autoConnect: true,
           transportOptions: {

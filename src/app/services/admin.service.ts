@@ -7,7 +7,7 @@ import { AuthService } from './security/auth.service';
 })
 export class AdminService {
 
-  private url = 'http://localhost:4000/api/admins/';
+  private url = 'https://lavasoft-servidor.onrender.com/api/admins/';
   private httpOptions: any = {};
 
   isLoggedIn: boolean;

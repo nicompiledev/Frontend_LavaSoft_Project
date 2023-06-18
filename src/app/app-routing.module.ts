@@ -62,28 +62,28 @@ const routes: Routes = [
 
   // ADMIN
   { path: 'login-admin', component: LoginAdminComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard-admin', component: NavegacionComponent,
+  { path: 'dashboard-admin', component: NavegacionComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'peticion-empresa', component:  LavaderosPendientesComponent},
-      { path: 'reportes', component:  ReportesAdminComponent},
-      { path: 'chat-asesor', component:  ChatAdminComponent},
+      { path: 'peticion-empresa', component:  LavaderosPendientesComponent, canActivate: [AuthGuard]},
+      { path: 'reportes', component:  ReportesAdminComponent, canActivate: [AuthGuard]},
+      { path: 'chat-asesor', component:  ChatAdminComponent, canActivate: [AuthGuard]},
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ]
   },
-  { path: 'dashboard-lavadero', component: DashboardComponent,
+  { path: 'dashboard-lavadero', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'editarPerfil', component:  EditProfileCarwashComponent},
-      { path: 'reservas', component:  ReservasComponent,
+      { path: 'editarPerfil', component:  EditProfileCarwashComponent, canActivate: [AuthGuard]},
+      { path: 'reservas', component:  ReservasComponent, canActivate: [AuthGuard],
         children: [
-          { path: '', component:  PendingTableComponent},
-          { path: 'en-progreso', component:  InProgressTableComponent},
-          { path: 'completadas', component:  CompletedTableComponent},
+          { path: '', component:  PendingTableComponent, canActivate: [AuthGuard]},
+          { path: 'en-progreso', component:  InProgressTableComponent, canActivate: [AuthGuard]},
+          { path: 'completadas', component:  CompletedTableComponent, canActivate: [AuthGuard]},
         ]
       },
-      { path: 'subscripcion', component: SubscripcionComponent},
-      { path: 'reportes', component:  ReportesAdminComponent},
-      { path: 'chat-asesor', component:  ChatAdminComponent},
-      { path: '**', redirectTo: '', pathMatch: 'full' }
+      { path: 'subscripcion', component: SubscripcionComponent, canActivate: [AuthGuard]},
+      { path: 'reportes', component:  ReportesAdminComponent, canActivate: [AuthGuard]},
+      { path: 'chat-asesor', component:  ChatAdminComponent, canActivate: [AuthGuard]},
+      { path: '**', redirectTo: '', pathMatch: 'full', canActivate: [AuthGuard] }
     ]
   },
   { path: 'agradecimiento', component:  AgradecimientoComponent, canActivate: [AuthGuard] },

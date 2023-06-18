@@ -7,7 +7,7 @@ import { AuthService } from './security/auth.service';
 })
 export class LavaderoService {
 
-  private url = 'http://localhost:4000/api/lavaderos/';
+  private url = 'https://lavasoft-servidor.onrender.com/api/lavaderos/';
   private httpOptions: any = {};
   isLoggedIn: boolean;
 
