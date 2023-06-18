@@ -38,8 +38,6 @@ import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavader
 import { AgradecimientoComponent } from './componentes/lavaderos/agradecimiento/agradecimiento.component';
 import { RedireccionGuard } from './guard/redireccion.guard';
 const routes: Routes = [
-  //pruebas
-  {path: 'editarPerfil', component: EditProfileCarwashComponent},
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent },
@@ -53,40 +51,38 @@ const routes: Routes = [
   { path: 'catalogue' ,component:CatalogueComponent},
     {path: 'profile_carwash/:id', component: ProfileCarwashComponent},
     {path: 'data' , component:ProfileCarwashComponent},
-  // Enoresa
+  // Empresa
   {path: 'empresas' , component:CompaniesComponent},
     { path: 'empresas/registro_lavadero', component:  RegisterCarwashComponent},
 
   // Usuario
-  {path:'perfil_usuario' , component: PerfilUsuarioComponent, canActivate: [AuthGuard]},
+  {path:'perfil_usuario' , component: PerfilUsuarioComponent, canActivate: [AuthGuard]},  // Ruta privada del usuario
 
   // ADMIN
   { path: 'login-admin', component: LoginAdminComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard-admin', component: NavegacionComponent, canActivate: [AuthGuard],
+  { path: 'dashboard-admin', component: NavegacionComponent, canActivate: [AuthGuard],  // Ruta privada del admin
     children: [
-      { path: 'peticion-empresa', component:  LavaderosPendientesComponent, canActivate: [AuthGuard]},
-      { path: 'reportes', component:  ReportesAdminComponent, canActivate: [AuthGuard]},
-      { path: 'chat-asesor', component:  ChatAdminComponent, canActivate: [AuthGuard]},
-      { path: '**', redirectTo: '', pathMatch: 'full' }
+      { path: 'peticion-empresa', component:  LavaderosPendientesComponent, canActivate: [AuthGuard]}, // Ruta privada del admin
+      { path: 'reportes', component:  ReportesAdminComponent, canActivate: [AuthGuard]}, // Ruta privada del admin
+      { path: 'chat-asesor', component:  ChatAdminComponent, canActivate: [AuthGuard]}, // Ruta privada del admin
+      { path: '**', redirectTo: '', pathMatch: 'full' } // Ruta privada del admin
     ]
   },
-  { path: 'dashboard-lavadero', component: DashboardComponent, canActivate: [AuthGuard],
+  { path: 'dashboard-lavadero', component: DashboardComponent, canActivate: [AuthGuard], // Ruta privada del lavadero
     children: [
-      { path: 'editarPerfil', component:  EditProfileCarwashComponent, canActivate: [AuthGuard]},
-      { path: 'reservas', component:  ReservasComponent, canActivate: [AuthGuard],
+      { path: 'editarPerfil', component:  EditProfileCarwashComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
+      { path: 'reservas', component:  ReservasComponent, canActivate: [AuthGuard], // Ruta privada del lavadero
         children: [
-          { path: '', component:  PendingTableComponent, canActivate: [AuthGuard]},
-          { path: 'en-progreso', component:  InProgressTableComponent, canActivate: [AuthGuard]},
-          { path: 'completadas', component:  CompletedTableComponent, canActivate: [AuthGuard]},
+          { path: '', component:  PendingTableComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
+          { path: 'en-progreso', component:  InProgressTableComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
+          { path: 'completadas', component:  CompletedTableComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
         ]
       },
-      { path: 'subscripcion', component: SubscripcionComponent, canActivate: [AuthGuard]},
-      { path: 'reportes', component:  ReportesAdminComponent, canActivate: [AuthGuard]},
-      { path: 'chat-asesor', component:  ChatAdminComponent, canActivate: [AuthGuard]},
-      { path: '**', redirectTo: '', pathMatch: 'full', canActivate: [AuthGuard] }
+      { path: 'subscripcion', component: SubscripcionComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
+      { path: '**', redirectTo: '', pathMatch: 'full', canActivate: [AuthGuard] } // Ruta privada del lavadero
     ]
   },
-  { path: 'agradecimiento', component:  AgradecimientoComponent, canActivate: [AuthGuard] },
+  { path: 'agradecimiento', component:  AgradecimientoComponent, canActivate: [RedireccionGuard] },
   { path: '**', redirectTo: '/inicio', pathMatch: 'full' }
 ];
 

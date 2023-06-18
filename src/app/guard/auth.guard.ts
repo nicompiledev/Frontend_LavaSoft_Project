@@ -4,41 +4,47 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../services/security/auth.service'
 import { map, take } from 'rxjs/operators';
 
+// Crea un objeto que mapee cada rol a las rutas a las que tiene acceso
+const roleRoutes = {
+  admin: ['/dashboard-admin', '/dashboard-admin/peticion-empresa', '/dashboard-admin/reportes', '/dashboard-admin/chat-asesor'],
+  usuario: ['/perfil_usuario'],
+  lavadero: ['/dashboard-lavadero', '/dashboard-lavadero/editarPerfil', '/dashboard-lavadero/reservas', '/dashboard-lavadero/reservas/en-progreso', '/dashboard-lavadero/reservas/completadas',  '/dashboard-lavadero/subscripcion', ]
+  // Agrega más roles y rutas aquí
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
   rol: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(_: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    this.authService.rol.subscribe(rol => this.rol = rol);
+    return this.authService.isLoggedIn().pipe(
+      take(1),
+      map((isLoggedIn: boolean) => {
+        if (isLoggedIn) {
+          if (state.url === '/login-admin') {
+            this.router.navigate(['/inicio']);
+            return false;
+          }
+          if (roleRoutes[this.rol].includes(state.url)) {
+            return true;
+          } else {
+            this.router.navigate(['/inicio']);
+            return false;
+          }
+        } else {
 
-  this.authService.rol.subscribe(rol => this.rol = rol);
+          if(state.url === '/login-admin') {
+            return true;
+          }
 
-  return this.authService.isLoggedIn().pipe(
-    take(1),
-    map((isLoggedIn: boolean) => {
-      if (isLoggedIn) {
-        if (this.rol === 'admin' && (state.url === '/perfil_usuario' || state.url === '/login-admin')) {
-          this.router.navigate(['/dashboard-admin']);
           return false;
         }
-        if (this.rol === 'usuario' && (state.url === '/dashboard-admin' || state.url === '/login-admin')) {
-          this.router.navigate(['/inicio']);
-          return false;
-        }
-        return true;
-      } else {
-        if (state.url === '/perfil_usuario' || state.url === '/dashboard-admin') {
-          this.router.navigate(['/inicio']);
-          return false;
-        }
-        return true;
-      }
-    })
-  );
-
-}
+      })
+    );
+  }
 }
