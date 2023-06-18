@@ -91,6 +91,8 @@ export class ReserveComponent implements OnInit {
       this.horaPM = this.horasDisponibles.filter(hora => hora.includes('PM'));
       // Si contiene la palabra AM
       this.horaAM = this.horasDisponibles.filter(hora => hora.includes('AM'));
+
+      this.loader.hideLoader();
     });
 
     this.fechaSeleccionada = today.toISOString().slice(0, 10);
@@ -163,6 +165,7 @@ this.modal_service.estadomodal(true , 'vehicle_reserve')
   }
 
   actualizarHorario(fecha: string){
+    this.loader.showLoader();
     let id_servicios = this.ServiciosSeleccionados.map(servicio => servicio._id);
     let id_lavadero = this.route.snapshot.paramMap.get('id');
     let object = {id_lavadero, fecha, id_servicios};
