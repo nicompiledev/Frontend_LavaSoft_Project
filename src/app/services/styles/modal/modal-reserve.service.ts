@@ -8,9 +8,11 @@ export class ModalReserveService {
   $modal_report = new BehaviorSubject<boolean>(false)
   $modal_reserve = new BehaviorSubject<any>(false);
   $modal = new BehaviorSubject<number>(0);
-  $modal_vehicle = new BehaviorSubject<boolean>(false)
-  $modal_cancel = new BehaviorSubject<any>(false)
-  $modal_employee = new BehaviorSubject<any>(false)
+  $modal_vehicle = new BehaviorSubject<boolean>(false);
+  $modal_cancel = new BehaviorSubject<any>(false);
+  $modal_employee = new BehaviorSubject<any>(false);
+  $modal_register_reserve = new BehaviorSubject<any>(false);
+  
 
   constructor() {}
 
@@ -36,7 +38,7 @@ export class ModalReserveService {
       break;
 
       case 'register_reserve':
-        this.$modal_reserve.next(modal);
+        this.$modal_register_reserve.next(modal);
         break;
 
       case 'vehicle_reserve':

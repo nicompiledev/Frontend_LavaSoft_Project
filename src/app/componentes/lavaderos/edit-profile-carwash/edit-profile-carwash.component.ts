@@ -26,7 +26,7 @@ active:boolean;
   constructor(private fb: FormBuilder,  private departamentosService:DeparatamentosService , private modal: ModalReserveService) {
         
 
-    this.modal.$modal_reserve.subscribe((valor)=>{
+    this.modal.$modal_register_reserve.subscribe((valor)=>{
      this.active = valor;
     })
 
