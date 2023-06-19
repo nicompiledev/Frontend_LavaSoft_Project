@@ -174,6 +174,7 @@
           background-color: #ffffff;
           border-radius: 5px;
           border: 2px solid $gris-claro;
+          height: 45px;
           i {
             padding-inline: 10px;
             border-inline-end: 1px solid $gris-claro;
@@ -298,4 +299,10 @@
   z-index: 2;
   background: inherit;
   align-items: flex-end;
+}
+
+.anuncio{
+  margin: 0;
+  font-size: 12px;
+  padding-left: 5px;
 }

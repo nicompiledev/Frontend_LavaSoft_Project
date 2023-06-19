@@ -107,7 +107,11 @@ export class ReserveComponent implements OnInit {
     }))
     .subscribe((usuario: any) => {
       if(usuario){
-        this.vehiculos = usuario.vehiculos;
+        // usuario.vehiculos trae los vehiculos del usuario, necesito solo tener los que sean this.ServiciosSeleccionados[0].tipoVehiculo == usuario.vehiculos
+        this.vehiculos = usuario.vehiculos.filter((vehiculo: any) => {
+          return vehiculo.tipo_vehiculo == this.ServiciosSeleccionados[0].tipoVehiculo;
+        }
+        );
       }
     });
 

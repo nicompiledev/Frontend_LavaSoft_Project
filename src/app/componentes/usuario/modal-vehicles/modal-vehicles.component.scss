@@ -108,15 +108,16 @@
     font-size: 0.9em;
   }
   
-  .form label .input:focus + span,.form label .input:valid + span {
+  .form label .input:focus + span, .form label .input:valid + span {
     top: 35px;
     font-size: 0.7em;
     font-weight: 600;
   }
-  
-  .form label .input:valid + span {
-    color: green;
-  }
+
+.form label .input:valid + span {
+  color: green;
+}
+
 
   .errors{
     height: 15px;
@@ -187,4 +188,9 @@
       transform: scale(1.8);
       opacity: 0;
     }
+  }
+
+  .informacion{
+    margin: 0;
+    font-size: 12px;
   }

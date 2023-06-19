@@ -1,6 +1,8 @@
 <form class="form" [formGroup]="vehiculoForm">
   <p class="title">
-    <span class="ms-2">Registrar Vehiculo</span> <span (click)="closeModal(false , 'vehicle_reserve')" class="close">x</span>
+    <span class="ms-2">
+      {{ tipoVehiculo != undefined ? 'Registra tu ' + tipoVehiculo : 'Registrar Vehiculo' }}
+    </span> <span (click)="closeModal(false , 'vehicle_reserve')" class="close">x</span>
   </p>
   <p class="message">
     Llena todos los campos con informacion valida , esta se utilizara para
@@ -17,7 +19,7 @@
           class="input"
           formControlName="placa"
         />
-        <span>N° Placa</span>
+        <span>Placa</span>
       </label>
       <div class="errors">
         <div
@@ -65,11 +67,11 @@
       <input
         required=""
         placeholder=""
-        type="email"
+        type="text"
         class="input"
         formControlName="modelo"
       />
-      <span>modelo</span>
+      <span>Modelo</span>
     </label>
 
     <div class="errors">
@@ -89,13 +91,21 @@
 
   <div class="colum">
     <label>
+      <span *ngIf="tipoVehiculo" class="informacion"> Ya que estas en la categoria {{tipoVehiculo}} no puedes cambiarla</span>
       <select id="type-vehicle" formControlName="tipo_vehiculo">
         <option disabled selected value="">Tipo Vehículo</option>
-        <option value="Moto">Moto</option>
-        <option value="Carro">Carro</option>
-        <option value="Camioneta">Camioneta</option>
-        <option value="Camion">Camion</option>
-        <option value="Bus">Bus</option>
+        <ng-container *ngIf="tipoVehiculo ; else elseBlock">
+          <option value="{{tipoVehiculo}}" selected>{{tipoVehiculo}}</option>
+        </ng-container>
+
+        <ng-template #elseBlock>
+          <option value="Moto">Moto</option>
+          <option value="Carro">Carro</option>
+          <option value="Camioneta">Camioneta</option>
+          <option value="Camion">Camion</option>
+          <option value="Bus">Bus</option>
+        </ng-template>
+
       </select>
     </label>
 

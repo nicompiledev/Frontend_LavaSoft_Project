@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 import { UsuarioService } from 'src/app/services/usuarios.service';
@@ -12,6 +12,7 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 })
 export class ModalVehiclesComponent {
 
+  @Input () tipoVehiculo: any;
   @Output() usuarioConVehiculoNuevo = new EventEmitter<any>();
 
   vehiculoForm : FormGroup;
