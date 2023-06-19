@@ -25,6 +25,10 @@ export class LavaderoService {
     );
   }
 
+  getLavadero(){
+    return this.http.get(`${this.url}lavadero`, this.httpOptions);
+  }
+
   registrarLavadero(formData: FormData) {
     return this.http.post(`${this.url}peticion`, formData);
   }

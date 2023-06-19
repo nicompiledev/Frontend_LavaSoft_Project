@@ -132,6 +132,7 @@
                             </div>
                           </div>
               
+                          <p>Si quieres reemplazar todas las imágenes, debes cargarlas nuevamente (opcional).</p>
                           <div class="input-container">
                             <i class="fi fi-rr-picture"></i>
                             <input formControlName="imagenes" class="input_text_form" type="file" 
@@ -190,16 +191,12 @@
                             <div class="input_double">
                               <div class="input-container">
                                 <i class="fi fi-rs-house-building"></i>
-              
                                 <select id="ciudad" formControlName="ciudad">
-                                  <option value="" selected disabled >ciudad</option>
+                                  <option value="" selected disabled >Ciudad</option>
                                   <!-- Ciudades de Colombia -->
-                          
                                   <option *ngFor="let ciudad of ciudadesFiltradas" [value]="ciudad.municipio">{{ ciudad.municipio }}</option>
-                          
                                 </select>
                               </div>
-              
                               <div class="errors">
                                 <div *ngIf="
                                   lavaderoForm.get('ciudad').invalid &&
@@ -213,17 +210,12 @@
                               </div>
                             </div>
                           </div>
-              
                           <div class="double">
-              
                             <div class="input_double">
                               <div class="input-container">
                                 <i class="fi fi-br-map-marker-home"></i>
-              
                                 <input class="input_text_form" type="text" placeholder="Direccion" formControlName="direccion" />
-              
                               </div>
-              
                               <div class="errors">
                                 <div *ngIf="
                                     lavaderoForm.get('direccion').invalid &&
@@ -236,9 +228,7 @@
                                 </div>
                               </div>
                             </div>
-              
                             <div class="input_double">
-              
                              <div class="input-container">
                               <i class="fa-regular fa-compass"></i>
                               <select id="type-vehicle" formControlName="sector">
@@ -248,9 +238,7 @@
                                 <option value="norte">Norte</option>
                                 <option value="todos">Todos</option>
                               </select>
-              
-                             </div>
-              
+                            </div>
                               <div class="errors">
                                 <div *ngIf="
                                   lavaderoForm.get('sector').invalid &&
@@ -263,15 +251,13 @@
                                 </div>
                               </div>
                             </div>
-                           
                           </div>
-              
                           <div class="types">
-                            <span>Vehiculos que maneja </span>
+                            <span>Vehiculos que manejamos</span>
                             <div class="container_">
                               <div class="radio-tile-group">
                                 <label for="motorcycle" class="input_container">
-                                  <input id="motorcycle" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Moto')"> 
+                                  <input class="radio-button" type="checkbox" name="Moto" (change)="onCheckboxChange($event, 'Moto')"> 
                                   <div class="radio-tile">
                                     <div class="icon">
                                       <i class="fa-solid fa-motorcycle"></i>
@@ -284,7 +270,7 @@
                             <div class="container_">
                               <div class="radio-tile-group">
                                 <label for="car" class="input_container">
-                                  <input id="car" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Carro')">
+                                  <input class="radio-button" type="checkbox" name="Carro" (change)="onCheckboxChange($event, 'Carro')">
                                   <div class="radio-tile">
                                     <div class="icon">
                                       <i class="fa-solid fa-car-side"></i>
@@ -297,7 +283,7 @@
                             <div class="container_">
                               <div class="radio-tile-group">
                                 <label for="truck_small" class="input_container">
-                                  <input id="truck_small" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Camioneta')">
+                                  <input class="radio-button" type="checkbox" name="Camioneta" (change)="onCheckboxChange($event, 'Camioneta')">
                                   <div class="radio-tile">
                                     <div class="icon">
                                       <i class="fa-solid fa-truck-pickup"></i>
@@ -310,7 +296,7 @@
                             <div class="container_">
                               <div class="radio-tile-group">
                                 <label for="truck_big" class="input_container">
-                                  <input id="truck_big" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Camion')">
+                                  <input class="radio-button" type="checkbox" name="Camion" (change)="onCheckboxChange($event, 'Camion')">
                                   <div class="radio-tile">
                                     <div class="icon">
                                       <i class="fa-solid fa-truck"></i>
@@ -323,7 +309,7 @@
                             <div class="container_">
                               <div class="radio-tile-group">
                                 <label for="van" class="input_container">
-                                  <input id="van" class="radio-button" type="checkbox" name="radio" (change)="onCheckboxChange($event, 'Bus')">
+                                  <input class="radio-button" type="checkbox" name="Bus" (change)="onCheckboxChange($event, 'Bus')">
                                   <div class="radio-tile">
                                     <div class="icon">
                                       <i class="fa-solid fa-van-shuttle"></i>
@@ -349,7 +335,7 @@
                             <i class="fi fi-rr-circle-envelope"></i>
               
                             <input class="input_text_form" type="text" placeholder="Correo electrónico"
-                              formControlName="correo_electronico" />
+                              formControlName="correo_electronico" readonly/>
               
                           </div>
               
@@ -371,11 +357,9 @@
                             <div class="input_double">
                               <div class="input-container">
                                 <i class="fi fi-br-square-phone-hangup"></i>
-              
+
                                 <input class="input_text_form" type="text" placeholder="Telefono" formControlName="telefono" />
-              
                               </div>
-              
                               <div class="errors">
                                 <div *ngIf="
                                   lavaderoForm.get('telefono').invalid &&
@@ -390,16 +374,12 @@
                                 </div>
                               </div>
                             </div>
-              
                             <div class="input_double">
                               <div class="input-container">
                                 <i>N°</i>
-              
                                 <input class="input_text_form" type="number" min="0" placeholder="espacios de trabajo"
                                   formControlName="espacios_de_trabajo" />
-              
                               </div>
-              
                               <div class="errors">
                                 <div *ngIf="
                                   lavaderoForm.get('espacios_de_trabajo').invalid &&
@@ -480,11 +460,6 @@
                           </div>
                           <div id="map" style="height: 300px; width: 80%;"></div>
                         </div>
-                
-                        
-              
-              
-                 
                   </form>
                 </div>
               </div>

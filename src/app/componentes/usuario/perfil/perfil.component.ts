@@ -64,10 +64,7 @@ export class PerfilComponent implements OnInit {
   validarContrasenasIguales(group: FormGroup) {
     const password = group.get('nueva_contrasena').value;
     const confirmPassword = group.get('confirmar_contrasena').value;
-    console.log(confirmPassword);
-    console.log(password);
-    
-    
+
     return password === confirmPassword
       ? null
       : { contrasenasNoCoinciden: true };

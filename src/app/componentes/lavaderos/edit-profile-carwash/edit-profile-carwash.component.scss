@@ -112,30 +112,6 @@
                 justify-content: center;
                 align-items: center;
             }
-
-            .input_buscar_direccion{
-                display: flex;
-                flex-direction: row;
-                gap: 10px;
-                padding-bottom: 4px;
-
-
-                button{
-                    border-radius: 10px;
-                    border: none;
-                    padding: 5px;
-                    background-color: $azul-oscuro;
-                    color: $blanco;
-                }
-                input{
-                    border-radius: 10px;
-                }
-            }
-
-            #map{
-                border-radius: 10px;
-            }
-          
         }
     
     }
@@ -320,3 +296,34 @@ select{
     color: $negro_claro;
   }
   
+
+  p{
+    margin: 0;
+    margin-top: 5px;
+    font-size: 12px;
+    padding-left: 5px;
+  }
+
+
+  .input_buscar_direccion{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-bottom: 4px;
+    justify-content: center;
+
+    button{
+        border-radius: 10px;
+        border: none;
+        padding: 5px;
+        background-color: $azul-oscuro;
+        color: $blanco;
+    }
+    input{
+        border-radius: 10px;
+    }
+}
+  #map{
+    border-radius: 10px;
+    margin: 0 auto;
+}
