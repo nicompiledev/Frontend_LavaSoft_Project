@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
+import * as AOS from 'aos';
 import { DeparatamentosService } from 'src/app/services/departamentos/deparatamentos.service';
 import { FilterService } from 'src/app/services/filtro/filter.service';
 
@@ -7,7 +8,10 @@ import { FilterService } from 'src/app/services/filtro/filter.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit{
+  ngOnInit(): void {
+    AOS.init();
+  }
   //  departamentos y ciudades
   depJson: any[] = [];
   departamentos: any[] = [];

@@ -13,6 +13,7 @@ import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 import { LavaderoService } from 'src/app/services/lavadero.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-register-carwash',
@@ -102,6 +103,9 @@ export class RegisterCarwashComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    AOS.init();
+
     this.departamentosService.getDepartamento().subscribe((object: any) => {
       this.depJson = object;
       this.departamentos = this.obtenerDepartamentos();

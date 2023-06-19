@@ -39,14 +39,13 @@ export class DashboardComponent implements AfterViewInit{
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {
       this.loader.isLoading$.subscribe((isLoading: boolean) => {
-        this.isLoading = isLoading;
+        setTimeout(() => {
+          this.isLoading = isLoading;
+        });
       });
-    }, 1000);
-
   }
-
+  
   ocultarMenu = false;
   seleccionado = 'dashboard';
   // fontawesome
