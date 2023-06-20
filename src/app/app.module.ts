@@ -93,6 +93,7 @@ import { LavaderosPendientesComponent } from './componentes/admin/dashboard/lava
 import { LoginAdminComponent } from './componentes/admin/login-admin/login-admin.component';
 import { ReportesAdminComponent } from './componentes/admin/dashboard/reportes-admin/reportes-admin.component';
 import { AceptarLavaderosComponent } from './componentes/admin/dashboard/aceptar-lavaderos/aceptar-lavaderos.component';
+import { BookingHistoryComponent } from './componentes/usuario/booking-history/booking-history.component';
 import { EstadisticasComponent } from './componentes/lavaderos/dashboard-Lavadero/estadisticas/estadisticas.component';
 
 
@@ -163,6 +164,7 @@ import { EstadisticasComponent } from './componentes/lavaderos/dashboard-Lavader
     CancelarReservasComponent,
     AgradecimientoComponent,
     AddEmployeeComponent,
+    BookingHistoryComponent,
     EstadisticasComponent
 
 

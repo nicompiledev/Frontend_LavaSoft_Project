@@ -37,8 +37,12 @@ import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavad
 import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
 import { AgradecimientoComponent } from './componentes/lavaderos/agradecimiento/agradecimiento.component';
 import { RedireccionGuard } from './guard/redireccion.guard';
+import { BookingHistoryComponent } from './componentes/usuario/booking-history/booking-history.component';
 import { EstadisticasComponent } from './componentes/lavaderos/dashboard-Lavadero/estadisticas/estadisticas.component';
+
+
 const routes: Routes = [
+  {path: 'historial', component: BookingHistoryComponent},
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: 'inicio', component: PrincipalComponent },

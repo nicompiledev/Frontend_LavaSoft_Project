@@ -1,0 +1,160 @@
+@import '../../../app.component.scss';
+.container_all{
+background-color:$blanco;
+width: 800px;
+border-radius: 10px;
+overflow: hidden;
+}
+
+.header{
+    background-color: $negro_claro;
+    color:$blanco;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+    input{
+        background-color: transparent;
+        color: $blanco;
+        width: 50px;
+        height: 30px;
+        transition: all 500ms;
+        border: none;
+        border-radius: 10px;
+
+        &:hover{
+            background-color: $blanco;
+            color: $negro_claro;
+            transform: scale(1.1);
+        }
+
+    }
+}
+
+.view_all{
+    background-color: whitesmoke;
+   
+    summary{
+        padding: 5px;
+    }
+
+    th{
+        padding: 5px;
+    }
+}
+
+.body{
+    height: 500px;
+    background-color: $blanco;
+}
+
+.table_header{
+    background-color: $negro_claro;
+    color: $blanco;
+}
+
+.info {
+    display:flex; 
+    align-items:center; 
+    justify-content:flex-start; 
+   height: 50px;
+  }
+ 
+  .info-item {
+    display:flex; 
+    align-items:center; 
+    margin-right:10px; 
+  }
+ 
+  .info-color {
+    width:20px; 
+    height:20px; 
+    border-radius:50%; 
+    margin-right:5px; 
+  }
+
+  .info-color-muygraves {
+    background-color: #FF0000;
+  }
+  
+  .info-color-graves {
+    background-color: #FFA500;
+  }
+  
+  .info-color-leves {
+    background-color: #FFFF00;
+    color: #333;
+  }
+  
+ 
+ .history{
+    height: 70%;
+    overflow-y: auto;
+    padding-right: 10px;
+
+ }
+
+
+.input-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    border: 2px solid $gris-claro;
+        i{
+            font-weight: 500;
+         font-size: 20px;
+         margin-inline-start: 10px;
+        }
+        span{
+            width: 350px;
+            color: dimgrey;
+            margin-left: 0px;
+        }
+}
+input[type="date"]{
+    background-image: none !important;
+    width: 100%;
+    &::-webkit-calendar-picker-indicator {
+        position: absolute;
+        width: 100%;
+        background: none;
+
+
+
+      }
+}
+
+
+select , input[type="date"]{  
+    -webkit-appearance: none;
+    appearance: none;
+    background: url(https://cdn-icons-png.flaticon.com/512/32/32195.png) no-repeat 95% 50%;
+    background-size: 10px;
+    border: 0;
+    border-radius: 0;
+    width: 100%;
+    font-size: 15px;
+    color:dimgray;
+    font-weight: 300;
+    height: 54px;
+    cursor: pointer;
+    margin-left: 15px;
+    
+  
+      &:hover{
+          color: $negro_claro;
+      }
+          
+      &:focus{
+          outline: none !important;
+      }
+  }
+  
+  select::-ms-expand {
+      display: none;
+   }
