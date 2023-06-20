@@ -64,4 +64,10 @@ export class LavaderoService {
   refreshToken(){
     return this.http.get(`${this.url}refreshToken`, this.httpOptions);
   }
+
+  // Estadisticas:
+  obtenerGananciasPorMes(anio: number){
+    return this.http.post(`${this.url}estadisticas/ganancias`, {anio}, this.httpOptions);
+  }
+
 }

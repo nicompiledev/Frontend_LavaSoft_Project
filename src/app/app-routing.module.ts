@@ -37,6 +37,7 @@ import { CompletedTableComponent } from './componentes/lavaderos/dashboard-Lavad
 import { SubscripcionComponent } from './componentes/lavaderos/dashboard-Lavadero/subscripcion/subscripcion.component';
 import { AgradecimientoComponent } from './componentes/lavaderos/agradecimiento/agradecimiento.component';
 import { RedireccionGuard } from './guard/redireccion.guard';
+import { EstadisticasComponent } from './componentes/lavaderos/dashboard-Lavadero/estadisticas/estadisticas.component';
 const routes: Routes = [
   // Inicio
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -78,6 +79,7 @@ const routes: Routes = [
           { path: 'completadas', component:  CompletedTableComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
         ]
       },
+      { path: 'estadisticas', component:  EstadisticasComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
       { path: 'subscripcion', component: SubscripcionComponent, canActivate: [AuthGuard]}, // Ruta privada del lavadero
       { path: '**', redirectTo: '', pathMatch: 'full', canActivate: [AuthGuard] } // Ruta privada del lavadero
     ]

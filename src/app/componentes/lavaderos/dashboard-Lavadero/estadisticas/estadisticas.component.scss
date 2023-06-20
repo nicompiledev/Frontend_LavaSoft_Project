@@ -1,0 +1,49 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.statistics {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.statistics-title {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.statistics-description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.statistics-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.statistics-item {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.statistics-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.statistics-value {
+  color: #1E90FF;
+}
+
+.statistics-visualize {
+  font-size: 14px;
+  font-style: italic;
+  color: #888;
+  margin-top: 20px;
+}

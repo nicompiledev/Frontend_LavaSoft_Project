@@ -8,7 +8,7 @@ import { map, take } from 'rxjs/operators';
 const roleRoutes = {
   admin: ['/dashboard-admin', '/dashboard-admin/peticion-empresa', '/dashboard-admin/reportes', '/dashboard-admin/chat-asesor'],
   usuario: ['/perfil_usuario'],
-  lavadero: ['/dashboard-lavadero', '/dashboard-lavadero/editarPerfil', '/dashboard-lavadero/reservas', '/dashboard-lavadero/reservas/en-progreso', '/dashboard-lavadero/reservas/completadas',  '/dashboard-lavadero/subscripcion', ]
+  lavadero: ['/dashboard-lavadero', '/dashboard-lavadero/editarPerfil', '/dashboard-lavadero/reservas', '/dashboard-lavadero/reservas/en-progreso', '/dashboard-lavadero/reservas/completadas',  '/dashboard-lavadero/subscripcion', '/dashboard-lavadero/estadisticas'],
   // Agrega más roles y rutas aquí
 };
 
