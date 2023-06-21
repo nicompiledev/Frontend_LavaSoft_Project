@@ -10,6 +10,10 @@
           <span class="material-icons-outlined"> <i class="fi fi-rs-user-gear"></i> </span>
           <p>Editar Perfil</p>
         </li>
+        <li class="sub-item" *ngIf="(auth.rol | async) == 'usuario'" (click)="openModal()">
+          <span class="material-icons-outlined"> <i class="fi fi-rr-calendar-clock"></i> </span>
+          <p>Historial</p>
+        </li>
         <li class="sub-item" *ngIf="(auth.rol | async) == 'admin'" routerLink="/dashboard-admin">
           <span class="material-icons-outlined"> <i class="fa-solid fa-table-columns"></i> </span>
           <p>Dashboard</p>

@@ -4,7 +4,10 @@ background-color:$blanco;
 width: 800px;
 border-radius: 10px;
 overflow: hidden;
+height: 100%;
 }
+
+
 
 .header{
     background-color: $negro_claro;
@@ -15,14 +18,19 @@ overflow: hidden;
     align-items: center;
 
     
-    input{
+    button{
         background-color: transparent;
         color: $blanco;
-        width: 50px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         transition: all 500ms;
         border: none;
-        border-radius: 10px;
+        border-radius: 50%;
+        padding-top: 4px;
+
+        i{
+            font-size: 20px;
+        }
 
         &:hover{
             background-color: $blanco;
@@ -46,7 +54,6 @@ overflow: hidden;
 }
 
 .body{
-    height: 500px;
     background-color: $blanco;
 }
 
@@ -74,21 +81,28 @@ overflow: hidden;
     border-radius:50%; 
     margin-right:5px; 
   }
-
-  .info-color-muygraves {
-    background-color: #FF0000;
+  .info-color-pendiente {
+    background-color: #0dcaf0;
   }
   
-  .info-color-graves {
-    background-color: #FFA500;
+  .info-color-proceso {
+    background-color: #ffc107;
+    
   }
   
-  .info-color-leves {
-    background-color: #FFFF00;
-    color: #333;
+  .info-color-terminado {
+    background-color: #198754;
+    
   }
   
  
+
+  .info-color-cancelado{
+    background-color: #FF0000;
+  }
+  
+
+
  .history{
     height: 70%;
     overflow-y: auto;

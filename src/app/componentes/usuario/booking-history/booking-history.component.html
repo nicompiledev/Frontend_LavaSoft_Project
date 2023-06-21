@@ -2,7 +2,7 @@
     <div class="header">
         <h2 class="mb-0">Historial de Resevas</h2> 
 
-        <input type="button" value="X" >
+        <button (click)="closeModal()"><i class="fi fi-br-arrow-circle-right"></i></button>
     </div>
 
 
@@ -58,7 +58,7 @@
                           <span>Pendiente</span>
                         </div>
                         <div class="info-item">
-                          <div class="info-color info-color-proveso"></div>
+                          <div class="info-color info-color-proceso"></div>
                           <span>En Proceso</span>
                         </div>
                         <div class="info-item">
@@ -67,7 +67,7 @@
                         </div>
                       
                       <div class="info-item">
-                        <div class="info-color info-color-cancelado"></div>
+                        <div class="info-color  info-color-cancelado"></div>
                         <span>Cancelado</span>
                       </div>
                     </div>
@@ -84,8 +84,9 @@
                 <thead>
                   <tr class="table-active">
                     <th>N°</th>
-                    <th>lavadero</th>
-                    <th>Precio Total</th>
+                    <th>Nombre lavadero</th>
+                    <th>Tipo vehiculo</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
                   </tr>
                 </thead>
@@ -95,97 +96,68 @@
                     <!-- PRINCIPAL -->
                   <tr class="table_header">
                     <th class="text-center">1</th>
-                    <td>AutoiLmpio </td>
+                    <td>autolimpio </td>
                     <td>$300.000</td>
-                    <td><span  class="badge text-bg-success">Completada</span></td>
+                    <td>06/07/2023</td>
+                    <td>
+                      <span  class="badge text-bg-info">Pendiente</span>
+                      <span  class="badge text-bg-warning">Proceso</span>
+                      <span  class="badge text-bg-success">Completada</span>
+                      <span  class="badge text-bg-danger">Cancelado</span>
+                    </td>
+
+                   
                   </tr>
                   
     
                     <!--  MAS INFORMACION -->
                   <tr>
-                    <td colspan="4" class="view_all">
+                    <td colspan="5" class="view_all">
                         <details>
                             <summary>Ver mas</summary>
-                     <div>
-                        <table class="table mt-2">
-                            <thead class="table_header p-2">
-                              <th>Nombre Servicio</th>
-                              <th>Precio</th>
-                              <th>Duracion</th>
-                            </thead>
-      
-                            <tbody class="" >
-                              <tr>
-                                  <td>Encerado mate</td>
-                                  <td>100.000</td>
-                                  <td>45 Min</td>
-                              </tr>
-                              <tr>
-                                  <td>lavado sencillo</td>
-                                  <td>100.000</td>
-                                  <td>45 Min</td>
-                              </tr>
-                              <tr>
-                                  <td>lavado de llantas</td>
-                                  <td>100.000</td>
-                                  <td>45 Min</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                     </div>
-                     <div class="d-grid ">
-                        <button class="btn btn-danger" type="button">Cancelar</button>
-                      </div>
+                <div class="content p-3">
+                  <div>
+                    <table class="table mt-2">
+                        <thead class="table_header p-2">
+                          <th>Costo Total</th>
+                          <th>placa</th>
+                          <th>Marca</th>
+                        </thead>
+  
+                        <tbody class="" >
+                          <tr>
+                              <td>100.000</td>
+                              <td>MBN-123</td>
+                              <td>mazda</td>
+                          </tr>
+                          <!-- Servicios -->
+                          <td colspan="3">
+                               <table class="table mb-0">
+                                <thead class="table_header p-2">
+                                  <th>Nombre Servicios</th>
+                                </thead>
+
+                                <tbody class="" >
+                                  <tr>
+                                      <td>Encerado mate,Encerado mate,Encerado mate,Encerado mate,Encerado mate,Encerado mate,Encerado mate</td>
+                                  </tr>
+                                </tbody>
+                               </table>
+                          </td>
+                        </tbody>
+
+                 
+                      </table>
+                 </div>
+                 <div class="d-grid ">
+                    <button class="btn btn-danger" type="button">Cancelar</button>
+                  </div>
+                </div>
                         </details>
                     </td>
 
 
                   </tr>
-  
-                   
-                    <!-- HEADER -->
-                    <tr class="table_header">
-                        <th class="text-center">1</th>
-                        <td>AutoiLmpio </td>
-                        <td>$300.000</td>
-                        <td><span  class="badge text-bg-danger">Cancelada</span></td>
-                      </tr>
-        
-                        <!-- TITLE SERViCIOS -->
-                      <tr class="table-active">
-                        <th colspan="4">Servicios</th>
-                      </tr>
-                      <!-- SERVICIOS -->
-                      <tr>
-                        <td colspan="4">
-                            <table class="table mb-0">
-                              <thead >
-                                <th>Nombre Servicio</th>
-                                <th>Precio</th>
-                                <th>Duracion</th>
-                              </thead>
-        
-                              <tbody>
-                                <tr>
-                                    <td>Encerado mate</td>
-                                    <td>100.000</td>
-                                    <td>45 Min</td>
-                                </tr>
-                                <tr>
-                                    <td>lavado sencillo</td>
-                                    <td>100.000</td>
-                                    <td>45 Min</td>
-                                </tr>
-                                <tr>
-                                    <td>lavado de llantas</td>
-                                    <td>100.000</td>
-                                    <td>45 Min</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </td>
-                      </tr>
-    
                 </tbody>
     
               </table>

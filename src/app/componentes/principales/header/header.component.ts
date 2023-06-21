@@ -11,6 +11,10 @@ import { ViewportScroller } from '@angular/common';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  
+ //modal
+
+ active:boolean;
 
  condicion = false
 
@@ -50,6 +54,10 @@ export class HeaderComponent {
       this.Visualizado = response;
     });
 
+
+    this.modal_service.$modal_history.subscribe((valor) => {
+      this.active = valor
+    })
   }
 
   openModal(stateModal: number, focus: string) {

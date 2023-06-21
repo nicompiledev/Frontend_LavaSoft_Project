@@ -11,6 +11,7 @@
     <app-registrar></app-registrar>
   </ng-container>
 </div>
+
 <nav class="container-nav">
   <button data-text="Awesome" class="button" [routerLink]="['/inicio']">
     <span class="actual-text">&nbsp;&nbsp;LavaSoft&nbsp;&nbsp;</span>
@@ -74,6 +75,11 @@
       <a [routerLink]="'/dashboard-lavadero/editarPerfil'" class="btn">Actualizar perfil</a>
     </div>
   </div>
+
+  
+<div class="modal" [ngStyle]="{'left': active ? '57%' : '100%'}">
+  <app-booking-history ></app-booking-history>
+</div>
 </nav>
 
 <div class="rellenoBanner" *ngIf="(!(Pago) || !(Visualizado)) && (auth.isLogin | async) && (auth.rol | async) == 'lavadero'"></div>

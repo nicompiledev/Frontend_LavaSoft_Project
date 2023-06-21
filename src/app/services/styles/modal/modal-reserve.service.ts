@@ -12,6 +12,7 @@ export class ModalReserveService {
   $modal_cancel = new BehaviorSubject<any>(false);
   $modal_employee = new BehaviorSubject<any>(false);
   $modal_register_reserve = new BehaviorSubject<any>(false);
+  $modal_history = new BehaviorSubject<any>(false);
   
 
   constructor() {}
@@ -43,7 +44,6 @@ export class ModalReserveService {
 
       case 'vehicle_reserve':
         this.$modal_vehicle.next(modal);
-        console.log("modal vehicle")
         break;
 
       case 'cancel_reserve':
@@ -53,6 +53,10 @@ export class ModalReserveService {
       case 'add_employee':
         this.$modal_employee.next({ estado: modal, servicio: servicio });
         break;
+      case 'history':
+        this.$modal_history.next(modal);
+        break;
+        
       default:
         break;
     }

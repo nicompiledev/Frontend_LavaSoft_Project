@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/security/auth.service';
 import Swal from 'sweetalert2';
-
+import { ModalReserveService } from 'src/app/services/styles/modal/modal-reserve.service';
 @Component({
   selector: 'app-perfil-menu',
   templateUrl: './perfil-menu.component.html',
@@ -9,8 +9,13 @@ import Swal from 'sweetalert2';
 })
 export class PerfilMenuComponent {
 
-  constructor(public auth: AuthService){}
+  constructor(public auth: AuthService , private modalService:ModalReserveService){}
 
+  //modal
+  openModal(){
+    this.modalService.estadomodal(true , 'history');
+  }
+  
   logout(): void {
     Swal.fire({
       title: '¿Estás seguro?',
