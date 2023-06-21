@@ -49,6 +49,17 @@ export class ReserveComponent implements OnInit {
               private usuarioService: UsuarioService,
               private socket: SocketService) {
 
+                this.socket.io.on('horasLibres', (horas: string[]) => {
+                      this.horasDisponibles = horas.slice();  // slice() para copiar el array
+                      // Si contiene la palabra PM
+                      this.horaPM = this.horasDisponibles.filter(hora => hora.includes('PM'));
+                      // Si contiene la palabra AM
+                      this.horaAM = this.horasDisponibles.filter(hora => hora.includes('AM'));
+
+                      this.loader.hideLoader();
+
+                })
+
                 this.loader.showLoader();
 
                 //modal
@@ -81,22 +92,17 @@ export class ReserveComponent implements OnInit {
       let date = new Date(today);
       date.setDate(today.getDate() + i)
       // index, dia, numero, fecha en format YYYY-MM-DD
-      this.day.push({index: i, day: this.days[date.getDay()] , date: date.getDate(), dateISO: date.toISOString().slice(0, 10)});
+      let year = date.getFullYear().toString();
+      let month = (date.getMonth() + 1).toString().padStart(2, '0');
+      let day = date.getDate().toString().padStart(2, '0');
+      this.day.push({index: i, day: this.days[date.getDay()] , date: date.getDate(), dateISO: `${year}-${month}-${day}` });
     }
 
-    // Reserva:
-    this.horarioService.horasD$.subscribe(horas => {
-      this.horasDisponibles = horas.slice();  // slice() para copiar el array
-      // Si contiene la palabra PM
-      this.horaPM = this.horasDisponibles.filter(hora => hora.includes('PM'));
-      // Si contiene la palabra AM
-      this.horaAM = this.horasDisponibles.filter(hora => hora.includes('AM'));
-
-      this.loader.hideLoader();
-    });
-
-    this.fechaSeleccionada = today.toISOString().slice(0, 10);
-
+    let selectedDate = new Date();
+    let year = selectedDate.getFullYear().toString();
+    let month = (selectedDate.getMonth() + 1).toString().padStart(2, '0');
+    let day = selectedDate.getDate().toString().padStart(2, '0');
+    this.fechaSeleccionada = `${year}-${month}-${day}`;
     this.actualizarHorario(this.fechaSeleccionada);
 
     // Vehiculos del usuario
@@ -185,8 +191,6 @@ this.modal_service.estadomodal(true , 'vehicle_reserve')
       })
       return;
     }
-
-    console.log(this.vehiculoSeleccionado);
     
     if(this.vehiculoSeleccionado === undefined){
       Swal.fire({
@@ -197,6 +201,7 @@ this.modal_service.estadomodal(true , 'vehicle_reserve')
       return;
     }
 
+    
     let id_servicios = this.ServiciosSeleccionados.map(servicio => servicio._id);
     let parametro = this.route.snapshot.paramMap.get('id');
     let object = {
@@ -210,8 +215,8 @@ this.modal_service.estadomodal(true , 'vehicle_reserve')
     console.log(object);
     
 
-    this.horarioService.reservar(object);
-    this.loader.showLoader();
+/*     this.horarioService.reservar(object);
+    this.loader.showLoader(); */
   }
 
   // Vehiculos del usuario

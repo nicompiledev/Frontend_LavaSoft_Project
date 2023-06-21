@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { LavaderoService } from 'src/app/services/lavadero.service';
+import { finalize } from 'rxjs';
+import { LoaderService } from 'src/app/services/styles/loaders/loader.service';
 
 Chart.register(...registerables); // esto es para que funcione el grafico
 
@@ -11,7 +13,7 @@ Chart.register(...registerables); // esto es para que funcione el grafico
 })
 export class EstadisticasComponent implements OnInit {
 
-  constructor(private lavaderoService: LavaderoService) {}
+  constructor(private lavaderoService: LavaderoService, private loader : LoaderService) {}
 
   gananciasTotales: number;
   gananciasPromedio: number;
@@ -23,7 +25,10 @@ export class EstadisticasComponent implements OnInit {
   }
 
   RenderChart() {
-    this.lavaderoService.obtenerGananciasPorMes(2023).subscribe(
+    this.loader.showLoader();
+    this.lavaderoService.obtenerGananciasPorMes(2023)
+    .pipe(finalize(() => this.loader.hideLoader()))
+    .subscribe(
       (res: any) => {
          // res = {ganancias: (12) [0, 0, 0, 0, 0, 150000, 0, 0, 0, 0, 0, 0]}
 
