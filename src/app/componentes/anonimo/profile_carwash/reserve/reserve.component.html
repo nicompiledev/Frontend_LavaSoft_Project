@@ -7,24 +7,25 @@
     <div class="content" [ngStyle]="{ 'margin-left': margin }">
       <div class="page">
         <div>
-        <div class="input-container position-relative w-75"  >
-          <i class="fa-solid fa-car" *ngIf="'Carro' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
-          <i class="fa-solid fa-truck-pickup" *ngIf="'Camioneta' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
-          <i class="fa-solid fa-truck" *ngIf="'Camion' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
-          <i class="fa-solid fa-motorcycle" *ngIf="'Moto' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
-          <select class="inputs" name="vehiculo" id="vehiculo" (change)="onSelectVehiculo($event)">
-            <option value="" selected disabled>Seleciona tu vehiculo</option>
-            <option *ngIf="vehiculos.length <= 0" disabled>
-              No tienes vehiculos registrados
-            </option>
-            <option *ngFor="let vehiculo of vehiculos" value="{{ vehiculo._id }}">
-              {{ vehiculo.placa }}  |  {{ vehiculo.tipo_vehiculo }}
-            </option>
-          </select>
-          <button class="btn btn-success" (click)="openModal()">+ Agregar</button>
+          <div class="input-container position-relative w-75">
+            <i class="fa-solid fa-car" *ngIf="'Carro' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
+            <i class="fa-solid fa-truck-pickup" *ngIf="'Camioneta' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
+            <i class="fa-solid fa-truck" *ngIf="'Camion' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
+            <i class="fa-solid fa-motorcycle" *ngIf="'Moto' == this.ServiciosSeleccionados[0].tipoVehiculo"></i>
+            <select class="inputs" name="vehiculo" id="vehiculo" (change)="onSelectVehiculo($event)">
+              <option value="" selected disabled>Seleciona tu vehiculo</option>
+              <option *ngIf="vehiculos.length <= 0" disabled>
+                No tienes vehiculos registrados
+              </option>
+              <option *ngFor="let vehiculo of vehiculos" value="{{ vehiculo._id }}">
+                {{ vehiculo.placa }} | {{ vehiculo.tipo_vehiculo }}
+              </option>
+            </select>
+            <button class="btn btn-success" (click)="openModal()">+ Agregar</button>
+          </div>
+          <p class="anuncio">Solo seran visibles tus vehiculos que sean de la categoria {{
+            this.ServiciosSeleccionados[0].tipoVehiculo }}</p>
         </div>
-        <p class="anuncio">Solo seran visibles tus vehiculos que sean de la categoria {{ this.ServiciosSeleccionados[0].tipoVehiculo }}</p>
-      </div>
         <div class="description">
           <h4>Servicios a reservar</h4>
           <table>
@@ -56,14 +57,10 @@
             </button>
           </div>
           <div id="container" class="dates-container">
-            <div
-              *ngFor="let date of day"
-              class="dates-list"
-              (click)="cambiar(date)"
-              [ngClass]="{'selected': index === date.index}"
-            >
-            <div class="day">{{date.day}}</div>
-            <div class="date">{{date.date}}</div>
+            <div *ngFor="let date of day" class="dates-list" (click)="cambiar(date)"
+              [ngClass]="{'selected': index === date.index}">
+              <div class="day">{{date.day}}</div>
+              <div class="date">{{date.date}}</div>
             </div>
           </div>
           <div class="button-container">
@@ -72,57 +69,46 @@
         </div>
         <div class="container-time">
           <div class="container-time-name">
-            <div class="name">
-              <h4>AM</h4>
-              <div class="times">
-                <div class="box_time" *ngFor="let hora of horaAM" (click)="seleccionarHora(hora)" [ngClass]="{'horaSelect': horaSeleccionada === hora}">
-                  <span>{{hora}}</span>
+            <ng-container *ngIf="horaAM.length > 0 || horaPM.length > 0; else noHoras">
+              <div class="name">
+                <h4>AM</h4>
+                <div class="times">
+                  <div class="box_time" *ngFor="let hora of horaAM" (click)="seleccionarHora(hora)"
+                    [ngClass]="{'horaSelect': horaSeleccionada === hora}">
+                    <span>{{hora}}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="name">
-              <h4>PM</h4>
-              <div class="times">
-                <div class="box_time" *ngFor="let hora of horaPM" (click)="seleccionarHora(hora)" [ngClass]="{'horaSelect': horaSeleccionada === hora}">
-                  <span>{{hora}}</span>
+              <div class="name">
+                <h4>PM</h4>
+                <div class="times">
+                  <div class="box_time" *ngFor="let hora of horaPM" (click)="seleccionarHora(hora)"
+                    [ngClass]="{'horaSelect': horaSeleccionada === hora}">
+                    <span>{{hora}}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </ng-container>
+            <ng-template #noHoras>
+              <div class="noHoras">
+                <h4>No hay disponibilidad para el dia {{ fechaSeleccionada | slice: -2 }}</h4>
+              </div>
+            </ng-template>
           </div>
         </div>
       </div>
     </div>
     <div class="container-bottom">
       <div class="buttons">
-        <input
-          *ngIf="page2 == true"
-          (click)="page('back')"
-          type="button"
-          class="atras"
-          value="atras"
-        />
-        <input
-          *ngIf="page2 == false"
-          (click)="page('next')"
-          type="button"
-          class="siguiente"
-          value="Siguiente"
-        />
-        <input
-          *ngIf="page2 == true"
-          (click)="reservar()"
-          type="button"
-          class="siguiente"
-          value="finalizar"
-        />
+        <input *ngIf="page2 == true" (click)="page('back')" type="button" class="atras" value="atras" />
+        <input *ngIf="page2 == false" (click)="page('next')" type="button" class="siguiente" value="Siguiente" />
+        <input *ngIf="page2 == true" (click)="reservar()" type="button" class="siguiente" value="finalizar" />
       </div>
     </div>
   </form>
 
   <div class="modal" *ngIf="active">
-    <app-modal-vehicles
-    (usuarioConVehiculoNuevo)="recibeActualizarVehiculoAgregado($event)"
-    [tipoVehiculo]="this.ServiciosSeleccionados[0].tipoVehiculo"
-  ></app-modal-vehicles>
+    <app-modal-vehicles (usuarioConVehiculoNuevo)="recibeActualizarVehiculoAgregado($event)"
+      [tipoVehiculo]="this.ServiciosSeleccionados[0].tipoVehiculo"></app-modal-vehicles>
   </div>
 </div>

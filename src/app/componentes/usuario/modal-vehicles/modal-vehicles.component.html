@@ -91,22 +91,22 @@
 
   <div class="colum">
     <label>
-      <span *ngIf="tipoVehiculo" class="informacion"> Ya que estas en la categoria {{tipoVehiculo}} no puedes cambiarla</span>
+      <span *ngIf="tipoVehiculo" class="informacion"> Ya que estas en la categoria {{tipoVehiculo}} no puedes cambiar el [matTooltipPosition]="above"</span>
+      <ng-container *ngIf="tipoVehiculo ; else elseBlock">
+        <select id="type-vehicle" formControlName="tipo_vehiculo">
+          <option value="{{tipoVehiculo}}" selected >{{tipoVehiculo}}</option>
+        </select>
+      </ng-container>
+      <ng-template #elseBlock>
       <select id="type-vehicle" formControlName="tipo_vehiculo">
         <option disabled selected value="">Tipo Vehículo</option>
-        <ng-container *ngIf="tipoVehiculo ; else elseBlock">
-          <option value="{{tipoVehiculo}}" selected>{{tipoVehiculo}}</option>
-        </ng-container>
-
-        <ng-template #elseBlock>
           <option value="Moto">Moto</option>
           <option value="Carro">Carro</option>
           <option value="Camioneta">Camioneta</option>
           <option value="Camion">Camion</option>
           <option value="Bus">Bus</option>
-        </ng-template>
-
       </select>
+    </ng-template>
     </label>
 
     <div class="errors">
