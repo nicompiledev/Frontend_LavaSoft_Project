@@ -90,15 +90,9 @@
   </div>
 
   <div class="colum">
+    <span *ngIf="tipoVehiculo" class="informacion">Ya que estas registrando un {{tipoVehiculo}} no es necesario que selecciones el tipo de vehiculo</span>
     <label>
-      <span *ngIf="tipoVehiculo" class="informacion"> Ya que estas en la categoria {{tipoVehiculo}} no puedes cambiar el [matTooltipPosition]="above"</span>
-      <ng-container *ngIf="tipoVehiculo ; else elseBlock">
-        <select id="type-vehicle" formControlName="tipo_vehiculo">
-          <option value="{{tipoVehiculo}}" selected >{{tipoVehiculo}}</option>
-        </select>
-      </ng-container>
-      <ng-template #elseBlock>
-      <select id="type-vehicle" formControlName="tipo_vehiculo">
+      <select id="type-vehicle" formControlName="tipo_vehiculo" *ngIf="!tipoVehiculo">
         <option disabled selected value="">Tipo Vehículo</option>
           <option value="Moto">Moto</option>
           <option value="Carro">Carro</option>
@@ -106,10 +100,10 @@
           <option value="Camion">Camion</option>
           <option value="Bus">Bus</option>
       </select>
-    </ng-template>
+
     </label>
 
-    <div class="errors">
+    <div class="errors" *ngIf="!tipoVehiculo">
       <div
         *ngIf="
           vehiculoForm.get('tipo_vehiculo').invalid &&

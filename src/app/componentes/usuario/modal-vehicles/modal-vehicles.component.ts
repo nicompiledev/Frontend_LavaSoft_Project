@@ -27,14 +27,19 @@ export class ModalVehiclesComponent {
       placa: new FormControl('', [Validators.required]),
       marca: new FormControl('', [Validators.required]),
       modelo: new FormControl('', [Validators.required]),
-      tipo_vehiculo: new FormControl('', [Validators.required])
+      tipo_vehiculo: new FormControl('', [Validators.required]),
     })
   }
 
   agregarVehiculo() {
+
+  if(this.tipoVehiculo) {
+    this.vehiculoForm.controls['tipo_vehiculo'].setValue(this.tipoVehiculo);
+  }
+
     if(this.vehiculoForm.valid){
       this.loader.showLoader();
-      this.usuarioService.agregarVehiculo(this.vehiculoForm.value)
+    this.usuarioService.agregarVehiculo(this.vehiculoForm.value)
       .pipe(
         finalize(() => {
           this.loader.hideLoader();
